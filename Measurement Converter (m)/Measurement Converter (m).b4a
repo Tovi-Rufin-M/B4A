@@ -1,0 +1,129 @@
+﻿Build1=Default,b4a.example
+File1=Layout.bal
+FileGroup1=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=1
+NumberOfLibraries=2
+NumberOfModules=1
+Version=13.4
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Measurement Conversion
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private Selects As Spinner
+	Private Button1 As Button
+	Private EditText1 As EditText
+	Private Label2 As Label
+	Private Label4 As Label
+	Private Label6 As Label
+	Private Label7 As Label
+	Private Label8 As Label
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("Layout")
+	Selects.AddAll(Array As String("Kilometer","Centimeter","Millimeter","Inch","Foot","Yard"))
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Private Sub calculate
+    Dim selected As String
+    Dim sign As String
+    Dim ans As Double
+    Dim input As Double
+	selected = Selects.SelectedItem
+	input = EditText1.Text
+
+	Select Case selected
+		Case "Meter"
+			ans = input * 1
+			Label6.Text = input & " m"
+			Label7.Text = "*"
+			Label8.Text = 1
+			sign = "m"
+		Case "Kilometer"
+			ans = input / 1000
+			Label6.Text = input & " m"
+			Label7.Text = "/"
+			Label8.Text = 1000
+			sign = "km"
+		Case "Centimeter"
+			ans = input * 100
+			Label6.Text = input & " m"
+			Label7.Text = "*"
+			Label8.Text = 100
+			sign = "cm"
+		Case "Millimeter"
+			ans = input * 1000
+			Label6.Text = input & " m"
+			Label7.Text = "*"
+			Label8.Text = 1000
+			sign = "mm"
+		Case "Inch"
+			ans = input * 39.3701
+			Label6.Text = input & " m"
+			Label7.Text = "*"
+			Label8.Text = 39.3701
+			sign = "in"
+		Case "Foot"
+			ans = input * 3.28084
+			Label6.Text = input & " m"
+			Label7.Text = "*"
+			Label8.Text = 3.28084
+			sign = "ft"
+		Case "Yard"
+			ans = input * 1.09361
+			Label6.Text = input & " m"
+			Label7.Text = "*"
+			Label8.Text = 1.09361
+			sign = "yd"
+		Case Else
+			ans = 0
+			Label6.Text = ""
+			Label7.Text = ""
+			Label8.Text = ""
+			sign = ""
+	End Select
+
+    Label2.Text = ans
+    Label4.Text = sign
+End Sub
+
+
+Private Sub Button1_Click
+	calculate
+End Sub
+
+Private Sub EditText1_EnterPressed
+	calculate
+End Sub
