@@ -1,0 +1,100 @@
+﻿Build1=Default,b4a.example
+File1=Layout.bal
+FileGroup1=Default Group
+Group=Default Group
+Library1=core
+Library2=okhttputils2
+Library3=xui
+Library4=json
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=1
+NumberOfLibraries=4
+NumberOfModules=1
+Version=13.4
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: ChatBot
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+	Private const API_KEY As String = "AIzaSyCAs34hbVfGZ8SOicqBpxt2yNaMqUmwrjQ" 'Replace this!
+	Private const API_URL As String = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key="
+	Dim chathistory As List
+End Sub
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private EditText1 As EditText
+	Private Label1 As Label
+	Private EditText2 As EditText
+End Sub
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("Layout")
+	chathistory.initialize
+End Sub
+Sub Activity_Resume
+End Sub
+Sub Activity_Pause (UserClosed As Boolean)
+End Sub
+
+Private Sub Button1_Click
+	SendToGemini(EditText1.Text)
+End Sub
+Private Sub EditText1_EnterPressed
+	SendToGemini(EditText1.Text)
+End Sub
+Sub SendToGemini (UserText As String)
+	Dim j As HttpJob
+	j.Initialize("", Me)
+    
+	'Prepare the JSON body
+	Dim Map1 As Map = CreateMap("contents": Array(CreateMap("parts": Array(CreateMap("text": UserText)))))
+	Dim JSONGenerator As JSONGenerator
+	JSONGenerator.Initialize(Map1)
+	chathistory.Add("User: " & UserText)
+    
+	'Send the POST request
+	j.PostString(API_URL & API_KEY, JSONGenerator.ToString)
+	j.GetRequest.SetContentType("application/json")
+    
+	Wait For (j) JobDone(j As HttpJob)
+	If j.Success Then
+		Log(j.GetString)
+		ParseResponse(j.GetString)
+	Else
+		Log("Error: " & j.ErrorMessage)
+		Log("Full Response: " & j.GetString)
+	End If
+	j.Release
+End Sub
+Sub ParseResponse (Response As String)
+	Dim jp As JSONParser
+	jp.Initialize(Response)
+	Dim root As Map = jp.NextObject
+	Dim candidates As List = root.Get("candidates")
+	Dim firstCandidate As Map = candidates.Get(0)
+	Dim content As Map = firstCandidate.Get("content")
+	Dim parts As List = content.Get("parts")
+	Dim firstPart As Map = parts.Get(0)
+    
+	Dim BotText As String = firstPart.Get("text")
+	
+	Dim convo As String = ""
+	chathistory.Add("Bot: " & BotText)
+	For Each msg As String In chathistory
+		convo = convo & msg & CRLF
+	Next
+	Label1.Text = convo
+	EditText2.Text = convo
+End Sub

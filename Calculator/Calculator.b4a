@@ -1,0 +1,355 @@
+﻿Build1=Default,b4a.example
+File1=-.png
+File10=1bg.jpg
+File11=1prsd.png
+File12=2.png
+File13=2bg.jpg
+File14=2prds.png
+File15=3.png
+File16=3bg.jpg
+File17=3d-pixel-art-calculator-buttons-with-numbers-math-symbols-beige-purple-color-scheme_1163215-47-removebg-preview.png
+File18=3prsd.png
+File19=4.png
+File2=+.png
+File20=4prsd.png
+File21=5.png
+File22=5prsd.png
+File23=6.png
+File24=6prsd.png
+File25=7.png
+File26=7prsd.png
+File27=8.png
+File28=8prsd.png
+File29=9.png
+File3=+prsd.png
+File30=dev.png
+File31=devprsd.png
+File32=layout.bal
+File33=-prsd.png
+File34=rick.gif
+File35=x.png
+File36=xprsd.png
+File4==.png
+File5==prsd.png
+File6=0.png
+File7=04B_30__.TTF
+File8=0prsd.png
+File9=1.png
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Default Group
+FileGroup15=Default Group
+FileGroup16=Default Group
+FileGroup17=Default Group
+FileGroup18=Default Group
+FileGroup19=Default Group
+FileGroup2=Default Group
+FileGroup20=Default Group
+FileGroup21=Default Group
+FileGroup22=Default Group
+FileGroup23=Default Group
+FileGroup24=Default Group
+FileGroup25=Default Group
+FileGroup26=Default Group
+FileGroup27=Default Group
+FileGroup28=Default Group
+FileGroup29=Default Group
+FileGroup3=Default Group
+FileGroup30=Default Group
+FileGroup31=Default Group
+FileGroup32=Default Group
+FileGroup33=Default Group
+FileGroup34=Default Group
+FileGroup35=Default Group
+FileGroup36=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+Library3=b4xgifview
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=36
+NumberOfLibraries=3
+NumberOfModules=1
+Version=13.4
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Night Calculator
+	#VersionCode: 1
+	#VersionName: 1.1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+End Sub
+
+Sub Globals
+	Private Label1 As Label
+	Private Button0 As Button
+	Private Button1 As Button
+	Private Button2 As Button
+	Private Button3 As Button
+	Private Button4 As Button
+	Private Button5 As Button
+	Private Button6 As Button
+	Private Button7 As Button
+	Private Button8 As Button
+	Private Button9 As Button
+	Private Buttonback As Button
+	Private Buttondev As Button
+	Private Buttonequl As Button
+	Private Buttonmul As Button
+	Private Buttonplus As Button
+	Private Buttonsub As Button
+
+	Private tokens As List     ' stores tokens e.g. ["12", "+", "5"]
+	Private isNewInput As Boolean
+	Private B4XGifView1 As B4XGifView
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("Layout")
+	Dim tf As Typeface = Typeface.LoadFromAssets("04B_30__.ttf")
+	Label1.Typeface = tf
+	tokens.Initialize
+	tokens.Add("0")
+	Label1.Text = "0"
+	isNewInput = True
+End Sub
+
+Sub Activity_Resume
+End Sub
+
+Sub Activity_Pause(UserClosed As Boolean)
+End Sub
+
+' ─── Number Buttons ───────────────────────────────────────────
+
+Private Sub Button0_Click
+	AppendDigit("0")
+End Sub
+Private Sub Button1_Click
+	AppendDigit("1")
+End Sub
+Private Sub Button2_Click
+	AppendDigit("2")
+End Sub
+Private Sub Button3_Click
+	AppendDigit("3")
+End Sub
+Private Sub Button4_Click
+	AppendDigit("4")
+End Sub
+Private Sub Button5_Click
+	AppendDigit("5")
+End Sub
+Private Sub Button6_Click
+	AppendDigit("6")
+End Sub
+Private Sub Button7_Click
+	AppendDigit("7")
+End Sub
+Private Sub Button8_Click
+	AppendDigit("8")
+End Sub
+Private Sub Button9_Click
+	AppendDigit("9")
+End Sub
+
+' ─── Operator Buttons ─────────────────────────────────────────
+
+Private Sub Buttonplus_Click
+	SetOperator("+")
+End Sub
+Private Sub Buttonsub_Click
+	SetOperator("-")
+End Sub
+Private Sub Buttonmul_Click
+	SetOperator("*")
+End Sub
+Private Sub Buttondev_Click
+	SetOperator("/")
+End Sub
+
+' ─── Equals ───────────────────────────────────────────────────
+
+Private Sub Buttonequl_Click
+	' Need at least 3 tokens: number, operator, number
+	If tokens.Size < 3 Then 
+		Return
+	Else
+		Label1.Text = "error"
+	End If
+
+	Dim lastToken As String
+	lastToken = tokens.Get(tokens.Size - 1)
+
+	' Last token must not be an operator
+	If IsOperator(lastToken) Then Return
+
+	' Evaluate all tokens left to right
+	Dim result As Double
+	result = tokens.Get(0)
+
+	Dim i As Int
+	For i = 1 To tokens.Size - 2 Step 2
+		Dim op As String
+		Dim num As Double
+		op  = tokens.Get(i)
+		num = tokens.Get(i + 1)
+
+		Select Case op
+			Case "+"
+				result = result + num
+			Case "-"
+				result = result - num
+			Case "*"
+				result = result * num
+			Case "/"
+				If num = 0 Then
+					Label1.Text = "Error"
+					tokens.Initialize
+					tokens.Add("0")
+					isNewInput = True
+					Return
+				End If
+				result = result / num
+		End Select
+	Next
+
+	' Format and display result only
+	Label1.Text = result
+	
+	' Reset tokens with result as starting value
+	tokens.Initialize
+	tokens.Add(result)
+	isNewInput = True
+End Sub
+
+' ─── Backspace ────────────────────────────────────────────────
+
+Private Sub Buttonback_Click
+	B4XGifView1.mBase.Visible = False
+	If Label1.Text = "Error" Then
+		tokens.Initialize
+		tokens.Add("0")
+		UpdateLabel
+		Return
+	End If
+
+	Dim lastIndex As Int
+	Dim lastToken As String
+	lastIndex = tokens.Size - 1
+	lastToken = tokens.Get(lastIndex)
+
+	If IsOperator(lastToken) Then
+		' Remove the operator token entirely
+		tokens.RemoveAt(lastIndex)
+	Else
+		If lastToken.Length <= 1 Then
+			If tokens.Size > 1 Then
+				tokens.RemoveAt(lastIndex)   ' remove empty number token
+			Else
+				tokens.Set(0, "0")           ' always keep at least "0"
+			End If
+		Else
+			' Trim last digit from the number token
+			tokens.Set(lastIndex, lastToken.SubString2(0, lastToken.Length - 1))
+		End If
+	End If
+
+	UpdateLabel
+End Sub
+
+' ─── Helpers ──────────────────────────────────────────────────
+
+' Appends a digit to the last number token in the array
+Private Sub AppendDigit(digit As String)
+	Dim lastIndex As Int
+	Dim lastToken As String
+	lastIndex = tokens.Size - 1
+	lastToken = tokens.Get(lastIndex)
+
+	If IsOperator(lastToken) Then
+		' Operator was last — start a new number token
+		tokens.Add(digit)
+	Else
+		If isNewInput Then
+			tokens.Set(lastIndex, digit)
+			isNewInput = False
+		Else
+			If lastToken = "0" Then
+				tokens.Set(lastIndex, digit)
+			Else
+				If lastToken.Length < 12 Then
+					tokens.Set(lastIndex, lastToken & digit)
+				End If
+			End If
+		End If
+	End If
+	UpdateLabel
+End Sub
+
+' Appends an operator token; replaces if previous token was also an operator
+Private Sub SetOperator(op As String)
+	isNewInput = False
+	Dim lastIndex As Int
+	Dim lastToken As String
+	lastIndex = tokens.Size - 1
+	lastToken = tokens.Get(lastIndex)
+
+	If IsOperator(lastToken) Then
+		tokens.Set(lastIndex, op)    ' replace operator
+	Else
+		tokens.Add(op)               ' append new operator token
+	End If
+	UpdateLabel
+End Sub
+
+' Rebuilds the label from all tokens e.g. "12+5"
+Private Sub UpdateLabel
+	Dim display As String
+	display = ""
+	Dim i As Int
+	For i = 0 To tokens.Size - 1
+		display = display & tokens.Get(i)
+	Next
+	Label1.Text = display
+End Sub
+
+' Returns True if the string is a math operator
+Private Sub IsOperator(s As String) As Boolean
+	Return s = "+" Or s = "-" Or s = "*" Or s = "/"
+End Sub
+
+Private Sub Buttonequl_LongClick
+	B4XGifView1.mBase.Visible = True
+	B4XGifView1.SetGif(File.DirAssets, "rick.gif")
+End Sub
+
+Private Sub Buttonback_LongClick
+	' Long press = clear everything and reset to 0
+	tokens.Clear
+	tokens.Add("0")
+	isNewInput = True
+	Label1.Text = "0"
+End Sub

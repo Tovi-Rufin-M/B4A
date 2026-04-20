@@ -34,7 +34,7 @@ public class main extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.main");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.main");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,6 +335,47 @@ public class main extends Activity implements B4AActivity{
             
     }
 
+
+
+public static void initializeProcessGlobals() {
+    
+    if (main.processGlobalsRun == false) {
+	    main.processGlobalsRun = true;
+		try {
+		        		
+        } catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+    }
+}
+public static boolean isAnyActivityVisible() {
+    boolean vis = false;
+vis = vis | (main.mostCurrent != null);
+return vis;}
+
+private static BA killProgramHelper(BA ba) {
+    if (ba == null)
+        return null;
+    anywheresoftware.b4a.BA.SharedProcessBA sharedProcessBA = ba.sharedProcessBA;
+    if (sharedProcessBA == null || sharedProcessBA.activityBA == null)
+        return null;
+    return sharedProcessBA.activityBA.get();
+}
+public static void killProgram() {
+     {
+            Activity __a = null;
+            if (main.previousOne != null) {
+				__a = main.previousOne.get();
+			}
+            else {
+                BA ba = killProgramHelper(main.mostCurrent == null ? null : main.mostCurrent.processBA);
+                if (ba != null) __a = ba.activity;
+            }
+            if (__a != null)
+				__a.finish();}
+
+BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, starter.class));
+}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
 public anywheresoftware.b4a.objects.SpinnerWrapper _selects = null;
@@ -346,208 +387,243 @@ public anywheresoftware.b4a.objects.LabelWrapper _label6 = null;
 public anywheresoftware.b4a.objects.LabelWrapper _label7 = null;
 public anywheresoftware.b4a.objects.LabelWrapper _label8 = null;
 public b4a.example.starter _starter = null;
-
-public static boolean isAnyActivityVisible() {
-    boolean vis = false;
-vis = vis | (main.mostCurrent != null);
-return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 33;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 34;BA.debugLine="Activity.LoadLayout(\"Layout\")";
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
+RDebugUtils.currentLine=131072;
+ //BA.debugLineNum = 131072;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=131073;
+ //BA.debugLineNum = 131073;BA.debugLine="Activity.LoadLayout(\"Layout\")";
 mostCurrent._activity.LoadLayout("Layout",mostCurrent.activityBA);
- //BA.debugLineNum = 35;BA.debugLine="Selects.AddAll(Array As String(\"Kilometer\",\"Centi";
+RDebugUtils.currentLine=131074;
+ //BA.debugLineNum = 131074;BA.debugLine="Selects.AddAll(Array As String(\"Kilometer\",\"Centi";
 mostCurrent._selects.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"Kilometer","Centimeter","Millimeter","Inch","Foot","Yard"}));
- //BA.debugLineNum = 36;BA.debugLine="End Sub";
+RDebugUtils.currentLine=131075;
+ //BA.debugLineNum = 131075;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 42;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 44;BA.debugLine="End Sub";
+RDebugUtils.currentModule="main";
+RDebugUtils.currentLine=262144;
+ //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=262146;
+ //BA.debugLineNum = 262146;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 38;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 40;BA.debugLine="End Sub";
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
+RDebugUtils.currentLine=196608;
+ //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=196610;
+ //BA.debugLineNum = 196610;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
- //BA.debugLineNum = 110;BA.debugLine="Private Sub Button1_Click";
- //BA.debugLineNum = 111;BA.debugLine="calculate";
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "button1_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "button1_click", null));}
+RDebugUtils.currentLine=393216;
+ //BA.debugLineNum = 393216;BA.debugLine="Private Sub Button1_Click";
+RDebugUtils.currentLine=393217;
+ //BA.debugLineNum = 393217;BA.debugLine="calculate";
 _calculate();
- //BA.debugLineNum = 112;BA.debugLine="End Sub";
+RDebugUtils.currentLine=393218;
+ //BA.debugLineNum = 393218;BA.debugLine="End Sub";
 return "";
 }
 public static String  _calculate() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "calculate", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "calculate", null));}
 String _selected = "";
 String _sign = "";
 double _ans = 0;
 double _input = 0;
- //BA.debugLineNum = 46;BA.debugLine="Private Sub calculate";
- //BA.debugLineNum = 47;BA.debugLine="Dim selected As String";
+RDebugUtils.currentLine=327680;
+ //BA.debugLineNum = 327680;BA.debugLine="Private Sub calculate";
+RDebugUtils.currentLine=327681;
+ //BA.debugLineNum = 327681;BA.debugLine="Dim selected As String";
 _selected = "";
- //BA.debugLineNum = 48;BA.debugLine="Dim sign As String";
+RDebugUtils.currentLine=327682;
+ //BA.debugLineNum = 327682;BA.debugLine="Dim sign As String";
 _sign = "";
- //BA.debugLineNum = 49;BA.debugLine="Dim ans As Double";
+RDebugUtils.currentLine=327683;
+ //BA.debugLineNum = 327683;BA.debugLine="Dim ans As Double";
 _ans = 0;
- //BA.debugLineNum = 50;BA.debugLine="Dim input As Double";
+RDebugUtils.currentLine=327684;
+ //BA.debugLineNum = 327684;BA.debugLine="Dim input As Double";
 _input = 0;
- //BA.debugLineNum = 51;BA.debugLine="selected = Selects.SelectedItem";
+RDebugUtils.currentLine=327685;
+ //BA.debugLineNum = 327685;BA.debugLine="selected = Selects.SelectedItem";
 _selected = mostCurrent._selects.getSelectedItem();
- //BA.debugLineNum = 52;BA.debugLine="input = EditText1.Text";
+RDebugUtils.currentLine=327686;
+ //BA.debugLineNum = 327686;BA.debugLine="input = EditText1.Text";
 _input = (double)(Double.parseDouble(mostCurrent._edittext1.getText()));
- //BA.debugLineNum = 54;BA.debugLine="Select Case selected";
+RDebugUtils.currentLine=327688;
+ //BA.debugLineNum = 327688;BA.debugLine="Select Case selected";
 switch (BA.switchObjectToInt(_selected,"Meter","Kilometer","Centimeter","Millimeter","Inch","Foot","Yard")) {
 case 0: {
- //BA.debugLineNum = 56;BA.debugLine="ans = input * 1";
+RDebugUtils.currentLine=327690;
+ //BA.debugLineNum = 327690;BA.debugLine="ans = input * 1";
 _ans = _input*1;
- //BA.debugLineNum = 57;BA.debugLine="Label6.Text = input & \" m\"";
+RDebugUtils.currentLine=327691;
+ //BA.debugLineNum = 327691;BA.debugLine="Label6.Text = input & \" m\"";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(BA.NumberToString(_input)+" m"));
- //BA.debugLineNum = 58;BA.debugLine="Label7.Text = \"*\"";
+RDebugUtils.currentLine=327692;
+ //BA.debugLineNum = 327692;BA.debugLine="Label7.Text = \"*\"";
 mostCurrent._label7.setText(BA.ObjectToCharSequence("*"));
- //BA.debugLineNum = 59;BA.debugLine="Label8.Text = 1";
+RDebugUtils.currentLine=327693;
+ //BA.debugLineNum = 327693;BA.debugLine="Label8.Text = 1";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(1));
- //BA.debugLineNum = 60;BA.debugLine="sign = \"m\"";
+RDebugUtils.currentLine=327694;
+ //BA.debugLineNum = 327694;BA.debugLine="sign = \"m\"";
 _sign = "m";
  break; }
 case 1: {
- //BA.debugLineNum = 62;BA.debugLine="ans = input / 1000";
+RDebugUtils.currentLine=327696;
+ //BA.debugLineNum = 327696;BA.debugLine="ans = input / 1000";
 _ans = _input/(double)1000;
- //BA.debugLineNum = 63;BA.debugLine="Label6.Text = input & \" m\"";
+RDebugUtils.currentLine=327697;
+ //BA.debugLineNum = 327697;BA.debugLine="Label6.Text = input & \" m\"";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(BA.NumberToString(_input)+" m"));
- //BA.debugLineNum = 64;BA.debugLine="Label7.Text = \"/\"";
+RDebugUtils.currentLine=327698;
+ //BA.debugLineNum = 327698;BA.debugLine="Label7.Text = \"/\"";
 mostCurrent._label7.setText(BA.ObjectToCharSequence("/"));
- //BA.debugLineNum = 65;BA.debugLine="Label8.Text = 1000";
+RDebugUtils.currentLine=327699;
+ //BA.debugLineNum = 327699;BA.debugLine="Label8.Text = 1000";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(1000));
- //BA.debugLineNum = 66;BA.debugLine="sign = \"km\"";
+RDebugUtils.currentLine=327700;
+ //BA.debugLineNum = 327700;BA.debugLine="sign = \"km\"";
 _sign = "km";
  break; }
 case 2: {
- //BA.debugLineNum = 68;BA.debugLine="ans = input * 100";
+RDebugUtils.currentLine=327702;
+ //BA.debugLineNum = 327702;BA.debugLine="ans = input * 100";
 _ans = _input*100;
- //BA.debugLineNum = 69;BA.debugLine="Label6.Text = input & \" m\"";
+RDebugUtils.currentLine=327703;
+ //BA.debugLineNum = 327703;BA.debugLine="Label6.Text = input & \" m\"";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(BA.NumberToString(_input)+" m"));
- //BA.debugLineNum = 70;BA.debugLine="Label7.Text = \"*\"";
+RDebugUtils.currentLine=327704;
+ //BA.debugLineNum = 327704;BA.debugLine="Label7.Text = \"*\"";
 mostCurrent._label7.setText(BA.ObjectToCharSequence("*"));
- //BA.debugLineNum = 71;BA.debugLine="Label8.Text = 100";
+RDebugUtils.currentLine=327705;
+ //BA.debugLineNum = 327705;BA.debugLine="Label8.Text = 100";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(100));
- //BA.debugLineNum = 72;BA.debugLine="sign = \"cm\"";
+RDebugUtils.currentLine=327706;
+ //BA.debugLineNum = 327706;BA.debugLine="sign = \"cm\"";
 _sign = "cm";
  break; }
 case 3: {
- //BA.debugLineNum = 74;BA.debugLine="ans = input * 1000";
+RDebugUtils.currentLine=327708;
+ //BA.debugLineNum = 327708;BA.debugLine="ans = input * 1000";
 _ans = _input*1000;
- //BA.debugLineNum = 75;BA.debugLine="Label6.Text = input & \" m\"";
+RDebugUtils.currentLine=327709;
+ //BA.debugLineNum = 327709;BA.debugLine="Label6.Text = input & \" m\"";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(BA.NumberToString(_input)+" m"));
- //BA.debugLineNum = 76;BA.debugLine="Label7.Text = \"*\"";
+RDebugUtils.currentLine=327710;
+ //BA.debugLineNum = 327710;BA.debugLine="Label7.Text = \"*\"";
 mostCurrent._label7.setText(BA.ObjectToCharSequence("*"));
- //BA.debugLineNum = 77;BA.debugLine="Label8.Text = 1000";
+RDebugUtils.currentLine=327711;
+ //BA.debugLineNum = 327711;BA.debugLine="Label8.Text = 1000";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(1000));
- //BA.debugLineNum = 78;BA.debugLine="sign = \"mm\"";
+RDebugUtils.currentLine=327712;
+ //BA.debugLineNum = 327712;BA.debugLine="sign = \"mm\"";
 _sign = "mm";
  break; }
 case 4: {
- //BA.debugLineNum = 80;BA.debugLine="ans = input * 39.3701";
+RDebugUtils.currentLine=327714;
+ //BA.debugLineNum = 327714;BA.debugLine="ans = input * 39.3701";
 _ans = _input*39.3701;
- //BA.debugLineNum = 81;BA.debugLine="Label6.Text = input & \" m\"";
+RDebugUtils.currentLine=327715;
+ //BA.debugLineNum = 327715;BA.debugLine="Label6.Text = input & \" m\"";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(BA.NumberToString(_input)+" m"));
- //BA.debugLineNum = 82;BA.debugLine="Label7.Text = \"*\"";
+RDebugUtils.currentLine=327716;
+ //BA.debugLineNum = 327716;BA.debugLine="Label7.Text = \"*\"";
 mostCurrent._label7.setText(BA.ObjectToCharSequence("*"));
- //BA.debugLineNum = 83;BA.debugLine="Label8.Text = 39.3701";
+RDebugUtils.currentLine=327717;
+ //BA.debugLineNum = 327717;BA.debugLine="Label8.Text = 39.3701";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(39.3701));
- //BA.debugLineNum = 84;BA.debugLine="sign = \"in\"";
+RDebugUtils.currentLine=327718;
+ //BA.debugLineNum = 327718;BA.debugLine="sign = \"in\"";
 _sign = "in";
  break; }
 case 5: {
- //BA.debugLineNum = 86;BA.debugLine="ans = input * 3.28084";
+RDebugUtils.currentLine=327720;
+ //BA.debugLineNum = 327720;BA.debugLine="ans = input * 3.28084";
 _ans = _input*3.28084;
- //BA.debugLineNum = 87;BA.debugLine="Label6.Text = input & \" m\"";
+RDebugUtils.currentLine=327721;
+ //BA.debugLineNum = 327721;BA.debugLine="Label6.Text = input & \" m\"";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(BA.NumberToString(_input)+" m"));
- //BA.debugLineNum = 88;BA.debugLine="Label7.Text = \"*\"";
+RDebugUtils.currentLine=327722;
+ //BA.debugLineNum = 327722;BA.debugLine="Label7.Text = \"*\"";
 mostCurrent._label7.setText(BA.ObjectToCharSequence("*"));
- //BA.debugLineNum = 89;BA.debugLine="Label8.Text = 3.28084";
+RDebugUtils.currentLine=327723;
+ //BA.debugLineNum = 327723;BA.debugLine="Label8.Text = 3.28084";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(3.28084));
- //BA.debugLineNum = 90;BA.debugLine="sign = \"ft\"";
+RDebugUtils.currentLine=327724;
+ //BA.debugLineNum = 327724;BA.debugLine="sign = \"ft\"";
 _sign = "ft";
  break; }
 case 6: {
- //BA.debugLineNum = 92;BA.debugLine="ans = input * 1.09361";
+RDebugUtils.currentLine=327726;
+ //BA.debugLineNum = 327726;BA.debugLine="ans = input * 1.09361";
 _ans = _input*1.09361;
- //BA.debugLineNum = 93;BA.debugLine="Label6.Text = input & \" m\"";
+RDebugUtils.currentLine=327727;
+ //BA.debugLineNum = 327727;BA.debugLine="Label6.Text = input & \" m\"";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(BA.NumberToString(_input)+" m"));
- //BA.debugLineNum = 94;BA.debugLine="Label7.Text = \"*\"";
+RDebugUtils.currentLine=327728;
+ //BA.debugLineNum = 327728;BA.debugLine="Label7.Text = \"*\"";
 mostCurrent._label7.setText(BA.ObjectToCharSequence("*"));
- //BA.debugLineNum = 95;BA.debugLine="Label8.Text = 1.09361";
+RDebugUtils.currentLine=327729;
+ //BA.debugLineNum = 327729;BA.debugLine="Label8.Text = 1.09361";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(1.09361));
- //BA.debugLineNum = 96;BA.debugLine="sign = \"yd\"";
+RDebugUtils.currentLine=327730;
+ //BA.debugLineNum = 327730;BA.debugLine="sign = \"yd\"";
 _sign = "yd";
  break; }
 default: {
- //BA.debugLineNum = 98;BA.debugLine="ans = 0";
+RDebugUtils.currentLine=327732;
+ //BA.debugLineNum = 327732;BA.debugLine="ans = 0";
 _ans = 0;
- //BA.debugLineNum = 99;BA.debugLine="Label6.Text = \"\"";
+RDebugUtils.currentLine=327733;
+ //BA.debugLineNum = 327733;BA.debugLine="Label6.Text = \"\"";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 100;BA.debugLine="Label7.Text = \"\"";
+RDebugUtils.currentLine=327734;
+ //BA.debugLineNum = 327734;BA.debugLine="Label7.Text = \"\"";
 mostCurrent._label7.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 101;BA.debugLine="Label8.Text = \"\"";
+RDebugUtils.currentLine=327735;
+ //BA.debugLineNum = 327735;BA.debugLine="Label8.Text = \"\"";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 102;BA.debugLine="sign = \"\"";
+RDebugUtils.currentLine=327736;
+ //BA.debugLineNum = 327736;BA.debugLine="sign = \"\"";
 _sign = "";
  break; }
 }
 ;
- //BA.debugLineNum = 105;BA.debugLine="Label2.Text = ans";
+RDebugUtils.currentLine=327739;
+ //BA.debugLineNum = 327739;BA.debugLine="Label2.Text = ans";
 mostCurrent._label2.setText(BA.ObjectToCharSequence(_ans));
- //BA.debugLineNum = 106;BA.debugLine="Label4.Text = sign";
+RDebugUtils.currentLine=327740;
+ //BA.debugLineNum = 327740;BA.debugLine="Label4.Text = sign";
 mostCurrent._label4.setText(BA.ObjectToCharSequence(_sign));
- //BA.debugLineNum = 107;BA.debugLine="End Sub";
+RDebugUtils.currentLine=327741;
+ //BA.debugLineNum = 327741;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext1_enterpressed() throws Exception{
- //BA.debugLineNum = 114;BA.debugLine="Private Sub EditText1_EnterPressed";
- //BA.debugLineNum = 115;BA.debugLine="calculate";
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "edittext1_enterpressed", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "edittext1_enterpressed", null));}
+RDebugUtils.currentLine=458752;
+ //BA.debugLineNum = 458752;BA.debugLine="Private Sub EditText1_EnterPressed";
+RDebugUtils.currentLine=458753;
+ //BA.debugLineNum = 458753;BA.debugLine="calculate";
 _calculate();
- //BA.debugLineNum = 116;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 21;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 23;BA.debugLine="Private Selects As Spinner";
-mostCurrent._selects = new anywheresoftware.b4a.objects.SpinnerWrapper();
- //BA.debugLineNum = 24;BA.debugLine="Private Button1 As Button";
-mostCurrent._button1 = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 25;BA.debugLine="Private EditText1 As EditText";
-mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 26;BA.debugLine="Private Label2 As Label";
-mostCurrent._label2 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 27;BA.debugLine="Private Label4 As Label";
-mostCurrent._label4 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 28;BA.debugLine="Private Label6 As Label";
-mostCurrent._label6 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 29;BA.debugLine="Private Label7 As Label";
-mostCurrent._label7 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 30;BA.debugLine="Private Label8 As Label";
-mostCurrent._label8 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 31;BA.debugLine="End Sub";
-return "";
-}
-
-public static void initializeProcessGlobals() {
-    
-    if (main.processGlobalsRun == false) {
-	    main.processGlobalsRun = true;
-		try {
-		        main._process_globals();
-starter._process_globals();
-		
-        } catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-    }
-}public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 15;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 18;BA.debugLine="Private xui As XUI";
-_xui = new anywheresoftware.b4a.objects.B4XViewWrapper.XUI();
- //BA.debugLineNum = 19;BA.debugLine="End Sub";
+RDebugUtils.currentLine=458754;
+ //BA.debugLineNum = 458754;BA.debugLine="End Sub";
 return "";
 }
 }
