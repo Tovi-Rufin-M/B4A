@@ -366,8 +366,8 @@ return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
 anywheresoftware.b4a.keywords.constants.TypefaceWrapper _tf = null;
  //BA.debugLineNum = 45;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 46;BA.debugLine="Activity.LoadLayout(\"Layout\")";
-mostCurrent._activity.LoadLayout("Layout",mostCurrent.activityBA);
+ //BA.debugLineNum = 46;BA.debugLine="Activity.LoadLayout(\"layout\")";
+mostCurrent._activity.LoadLayout("layout",mostCurrent.activityBA);
  //BA.debugLineNum = 47;BA.debugLine="Dim tf As Typeface = Typeface.LoadFromAssets(\"04B";
 _tf = new anywheresoftware.b4a.keywords.constants.TypefaceWrapper();
 _tf = (anywheresoftware.b4a.keywords.constants.TypefaceWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.keywords.constants.TypefaceWrapper(), (android.graphics.Typeface)(anywheresoftware.b4a.keywords.Common.Typeface.LoadFromAssets("04B_30__.ttf")));

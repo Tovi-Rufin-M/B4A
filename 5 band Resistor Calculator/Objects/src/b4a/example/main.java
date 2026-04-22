@@ -634,7 +634,7 @@ mostCurrent._label9 = new anywheresoftware.b4a.objects.LabelWrapper();
 mostCurrent._label = new anywheresoftware.b4a.objects.LabelWrapper();
  //BA.debugLineNum = 51;BA.debugLine="Private B4XGifView1 As B4XGifView";
 mostCurrent._b4xgifview1 = new b4a.example.b4xgifview();
- //BA.debugLineNum = 52;BA.debugLine="Private isclick as Boolean";
+ //BA.debugLineNum = 52;BA.debugLine="Private isclick As Boolean";
 _isclick = false;
  //BA.debugLineNum = 53;BA.debugLine="End Sub";
 return "";

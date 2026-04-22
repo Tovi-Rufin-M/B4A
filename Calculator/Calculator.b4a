@@ -127,7 +127,7 @@ Sub Globals
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
-	Activity.LoadLayout("Layout")
+	Activity.LoadLayout("layout")
 	Dim tf As Typeface = Typeface.LoadFromAssets("04B_30__.ttf")
 	Label1.Typeface = tf
 	tokens.Initialize

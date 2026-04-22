@@ -79,7 +79,7 @@ Sub Globals
 	Private Label9 As Label
 	Private Label As Label
 	Private B4XGifView1 As B4XGifView
-	Private isclick as Boolean
+	Private isclick As Boolean
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
