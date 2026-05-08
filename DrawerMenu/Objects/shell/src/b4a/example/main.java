@@ -67,8 +67,11 @@ public static RemoteObject _btnpage3 = RemoteObject.declareNull("anywheresoftwar
 public static RemoteObject _btnpage4 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static RemoteObject _btnpage5 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static RemoteObject _btnpage6 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
+public static RemoteObject _edittext1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
+public static RemoteObject _label1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _units = RemoteObject.createImmutable("");
 public static b4a.example.starter _starter = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"btnHome",main.mostCurrent._btnhome,"btnPage1",main.mostCurrent._btnpage1,"btnPage2",main.mostCurrent._btnpage2,"btnPage3",main.mostCurrent._btnpage3,"btnPage4",main.mostCurrent._btnpage4,"btnPage5",main.mostCurrent._btnpage5,"btnPage6",main.mostCurrent._btnpage6,"Drawer",main.mostCurrent._drawer,"lblTitle",main.mostCurrent._lbltitle,"pnlMain",main.mostCurrent._pnlmain,"pnlMenu",main.mostCurrent._pnlmenu,"Starter",Debug.moduleToString(b4a.example.starter.class),"xui",main._xui};
+		return new Object[] {"Activity",main.mostCurrent._activity,"btnHome",main.mostCurrent._btnhome,"btnPage1",main.mostCurrent._btnpage1,"btnPage2",main.mostCurrent._btnpage2,"btnPage3",main.mostCurrent._btnpage3,"btnPage4",main.mostCurrent._btnpage4,"btnPage5",main.mostCurrent._btnpage5,"btnPage6",main.mostCurrent._btnpage6,"Drawer",main.mostCurrent._drawer,"EditText1",main.mostCurrent._edittext1,"Label1",main.mostCurrent._label1,"lblTitle",main.mostCurrent._lbltitle,"pnlMain",main.mostCurrent._pnlmain,"pnlMenu",main.mostCurrent._pnlmenu,"Starter",Debug.moduleToString(b4a.example.starter.class),"units",main.mostCurrent._units,"xui",main._xui};
 }
 }

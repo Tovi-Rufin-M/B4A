@@ -389,6 +389,9 @@ public anywheresoftware.b4a.objects.ButtonWrapper _btnpage3 = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _btnpage4 = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _btnpage5 = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _btnpage6 = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
+public static String _units = "";
 public b4a.example.starter _starter = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";
@@ -449,38 +452,38 @@ RDebugUtils.currentLine=393220;
  //BA.debugLineNum = 393220;BA.debugLine="btnPage1.Initialize(\"btnPage1\")";
 mostCurrent._btnpage1.Initialize(mostCurrent.activityBA,"btnPage1");
 RDebugUtils.currentLine=393221;
- //BA.debugLineNum = 393221;BA.debugLine="btnPage1.Text = \"Page 1\"";
-mostCurrent._btnpage1.setText(BA.ObjectToCharSequence("Page 1"));
+ //BA.debugLineNum = 393221;BA.debugLine="btnPage1.Text = \"Inches To Centimeter\"";
+mostCurrent._btnpage1.setText(BA.ObjectToCharSequence("Inches To Centimeter"));
 RDebugUtils.currentLine=393222;
  //BA.debugLineNum = 393222;BA.debugLine="btnPage2.Initialize(\"btnPage2\")";
 mostCurrent._btnpage2.Initialize(mostCurrent.activityBA,"btnPage2");
 RDebugUtils.currentLine=393223;
- //BA.debugLineNum = 393223;BA.debugLine="btnPage2.Text = \"Page 2\"";
-mostCurrent._btnpage2.setText(BA.ObjectToCharSequence("Page 2"));
+ //BA.debugLineNum = 393223;BA.debugLine="btnPage2.Text = \"Centimeter To Inches\"";
+mostCurrent._btnpage2.setText(BA.ObjectToCharSequence("Centimeter To Inches"));
 RDebugUtils.currentLine=393224;
  //BA.debugLineNum = 393224;BA.debugLine="btnPage3.Initialize(\"btnPage3\")";
 mostCurrent._btnpage3.Initialize(mostCurrent.activityBA,"btnPage3");
 RDebugUtils.currentLine=393225;
- //BA.debugLineNum = 393225;BA.debugLine="btnPage3.Text = \"Page 3\"";
-mostCurrent._btnpage3.setText(BA.ObjectToCharSequence("Page 3"));
+ //BA.debugLineNum = 393225;BA.debugLine="btnPage3.Text = \"Inches To Feet\"";
+mostCurrent._btnpage3.setText(BA.ObjectToCharSequence("Inches To Feet"));
 RDebugUtils.currentLine=393226;
  //BA.debugLineNum = 393226;BA.debugLine="btnPage4.Initialize(\"btnPage4\")";
 mostCurrent._btnpage4.Initialize(mostCurrent.activityBA,"btnPage4");
 RDebugUtils.currentLine=393227;
- //BA.debugLineNum = 393227;BA.debugLine="btnPage4.Text = \"Page 4\"";
-mostCurrent._btnpage4.setText(BA.ObjectToCharSequence("Page 4"));
+ //BA.debugLineNum = 393227;BA.debugLine="btnPage4.Text = \"Feet To Inches\"";
+mostCurrent._btnpage4.setText(BA.ObjectToCharSequence("Feet To Inches"));
 RDebugUtils.currentLine=393228;
  //BA.debugLineNum = 393228;BA.debugLine="btnPage5.Initialize(\"btnPage5\")";
 mostCurrent._btnpage5.Initialize(mostCurrent.activityBA,"btnPage5");
 RDebugUtils.currentLine=393229;
- //BA.debugLineNum = 393229;BA.debugLine="btnPage5.Text = \"Page 5\"";
-mostCurrent._btnpage5.setText(BA.ObjectToCharSequence("Page 5"));
+ //BA.debugLineNum = 393229;BA.debugLine="btnPage5.Text = \"Centimeter To Meter\"";
+mostCurrent._btnpage5.setText(BA.ObjectToCharSequence("Centimeter To Meter"));
 RDebugUtils.currentLine=393230;
  //BA.debugLineNum = 393230;BA.debugLine="btnPage6.Initialize(\"btnPage6\")";
 mostCurrent._btnpage6.Initialize(mostCurrent.activityBA,"btnPage6");
 RDebugUtils.currentLine=393231;
- //BA.debugLineNum = 393231;BA.debugLine="btnPage6.Text = \"Page 6\"";
-mostCurrent._btnpage6.setText(BA.ObjectToCharSequence("Page 6"));
+ //BA.debugLineNum = 393231;BA.debugLine="btnPage6.Text = \"Meter To Centimeter\"";
+mostCurrent._btnpage6.setText(BA.ObjectToCharSequence("Meter To Centimeter"));
 RDebugUtils.currentLine=393233;
  //BA.debugLineNum = 393233;BA.debugLine="For Each b As Button In Array(btnHome, btnPage1,";
 _b = new anywheresoftware.b4a.objects.ButtonWrapper();
@@ -651,8 +654,8 @@ RDebugUtils.currentLine=720898;
  //BA.debugLineNum = 720898;BA.debugLine="pnlMain.LoadLayout(\"page1\")";
 mostCurrent._pnlmain.LoadLayout("page1",mostCurrent.activityBA);
 RDebugUtils.currentLine=720899;
- //BA.debugLineNum = 720899;BA.debugLine="lblTitle.Text = \"Page 1\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 1"));
+ //BA.debugLineNum = 720899;BA.debugLine="lblTitle.Text = \"Inches To Centimeter\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Inches To Centimeter"));
 RDebugUtils.currentLine=720900;
  //BA.debugLineNum = 720900;BA.debugLine="End Sub";
 return "";
@@ -686,8 +689,8 @@ RDebugUtils.currentLine=786434;
  //BA.debugLineNum = 786434;BA.debugLine="pnlMain.LoadLayout(\"page2\")";
 mostCurrent._pnlmain.LoadLayout("page2",mostCurrent.activityBA);
 RDebugUtils.currentLine=786435;
- //BA.debugLineNum = 786435;BA.debugLine="lblTitle.Text = \"Page 2\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 2"));
+ //BA.debugLineNum = 786435;BA.debugLine="lblTitle.Text = \"Centimeter To Inches\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Centimeter To Inches"));
 RDebugUtils.currentLine=786436;
  //BA.debugLineNum = 786436;BA.debugLine="End Sub";
 return "";
@@ -721,8 +724,8 @@ RDebugUtils.currentLine=2621442;
  //BA.debugLineNum = 2621442;BA.debugLine="pnlMain.LoadLayout(\"page3\")";
 mostCurrent._pnlmain.LoadLayout("page3",mostCurrent.activityBA);
 RDebugUtils.currentLine=2621443;
- //BA.debugLineNum = 2621443;BA.debugLine="lblTitle.Text = \"Page 3\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 3"));
+ //BA.debugLineNum = 2621443;BA.debugLine="lblTitle.Text = \"Inches To Feet\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Inches To Feet"));
 RDebugUtils.currentLine=2621444;
  //BA.debugLineNum = 2621444;BA.debugLine="End Sub";
 return "";
@@ -756,8 +759,8 @@ RDebugUtils.currentLine=2686978;
  //BA.debugLineNum = 2686978;BA.debugLine="pnlMain.LoadLayout(\"page4\")";
 mostCurrent._pnlmain.LoadLayout("page4",mostCurrent.activityBA);
 RDebugUtils.currentLine=2686979;
- //BA.debugLineNum = 2686979;BA.debugLine="lblTitle.Text = \"Page 4\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 4"));
+ //BA.debugLineNum = 2686979;BA.debugLine="lblTitle.Text = \"Feet To Inches\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Feet To Inches"));
 RDebugUtils.currentLine=2686980;
  //BA.debugLineNum = 2686980;BA.debugLine="End Sub";
 return "";
@@ -791,8 +794,8 @@ RDebugUtils.currentLine=2752514;
  //BA.debugLineNum = 2752514;BA.debugLine="pnlMain.LoadLayout(\"page5\")";
 mostCurrent._pnlmain.LoadLayout("page5",mostCurrent.activityBA);
 RDebugUtils.currentLine=2752515;
- //BA.debugLineNum = 2752515;BA.debugLine="lblTitle.Text = \"Page 5\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 5"));
+ //BA.debugLineNum = 2752515;BA.debugLine="lblTitle.Text = \"Centimeter To Meter\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Centimeter To Meter"));
 RDebugUtils.currentLine=2752516;
  //BA.debugLineNum = 2752516;BA.debugLine="End Sub";
 return "";
@@ -826,10 +829,101 @@ RDebugUtils.currentLine=2818050;
  //BA.debugLineNum = 2818050;BA.debugLine="pnlMain.LoadLayout(\"page6\")";
 mostCurrent._pnlmain.LoadLayout("page6",mostCurrent.activityBA);
 RDebugUtils.currentLine=2818051;
- //BA.debugLineNum = 2818051;BA.debugLine="lblTitle.Text = \"Page 6\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 6"));
+ //BA.debugLineNum = 2818051;BA.debugLine="lblTitle.Text = \"Meter To Centimeter\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Meter To Centimeter"));
 RDebugUtils.currentLine=2818052;
  //BA.debugLineNum = 2818052;BA.debugLine="End Sub";
+return "";
+}
+public static String  _button1_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "button1_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "button1_click", null));}
+double _ans = 0;
+RDebugUtils.currentLine=3407872;
+ //BA.debugLineNum = 3407872;BA.debugLine="Private Sub Button1_Click";
+RDebugUtils.currentLine=3407874;
+ //BA.debugLineNum = 3407874;BA.debugLine="If EditText1.Text = \"\" Then";
+if ((mostCurrent._edittext1.getText()).equals("")) { 
+RDebugUtils.currentLine=3407875;
+ //BA.debugLineNum = 3407875;BA.debugLine="MsgboxAsync(\"Please enter a value\", \"Input Error";
+anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence("Please enter a value"),BA.ObjectToCharSequence("Input Error"),processBA);
+RDebugUtils.currentLine=3407876;
+ //BA.debugLineNum = 3407876;BA.debugLine="Return";
+if (true) return "";
+ };
+RDebugUtils.currentLine=3407879;
+ //BA.debugLineNum = 3407879;BA.debugLine="Dim Ans As Double";
+_ans = 0;
+RDebugUtils.currentLine=3407880;
+ //BA.debugLineNum = 3407880;BA.debugLine="Dim units As String ' Ensure this is declared if";
+mostCurrent._units = "";
+RDebugUtils.currentLine=3407882;
+ //BA.debugLineNum = 3407882;BA.debugLine="Select lblTitle.Text";
+switch (BA.switchObjectToInt(mostCurrent._lbltitle.getText(),"Inches To Centimeter","Centimeter To Inches","Inches To Feet","Feet To Inches","Centimeter To Meter","Meter To Centimeter")) {
+case 0: {
+RDebugUtils.currentLine=3407884;
+ //BA.debugLineNum = 3407884;BA.debugLine="Ans = (EditText1.Text) * 2.54";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*2.54;
+RDebugUtils.currentLine=3407885;
+ //BA.debugLineNum = 3407885;BA.debugLine="units = \" cm\"";
+mostCurrent._units = " cm";
+ break; }
+case 1: {
+RDebugUtils.currentLine=3407888;
+ //BA.debugLineNum = 3407888;BA.debugLine="Ans = (EditText1.Text) / 2.54";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)2.54;
+RDebugUtils.currentLine=3407889;
+ //BA.debugLineNum = 3407889;BA.debugLine="units = \" in\"";
+mostCurrent._units = " in";
+ break; }
+case 2: {
+RDebugUtils.currentLine=3407892;
+ //BA.debugLineNum = 3407892;BA.debugLine="Ans = (EditText1.Text) / 12";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)12;
+RDebugUtils.currentLine=3407893;
+ //BA.debugLineNum = 3407893;BA.debugLine="units = \" ft\"";
+mostCurrent._units = " ft";
+ break; }
+case 3: {
+RDebugUtils.currentLine=3407896;
+ //BA.debugLineNum = 3407896;BA.debugLine="Ans = (EditText1.Text) * 12";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*12;
+RDebugUtils.currentLine=3407897;
+ //BA.debugLineNum = 3407897;BA.debugLine="units = \" in\"";
+mostCurrent._units = " in";
+ break; }
+case 4: {
+RDebugUtils.currentLine=3407900;
+ //BA.debugLineNum = 3407900;BA.debugLine="Ans = (EditText1.Text) / 100";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)100;
+RDebugUtils.currentLine=3407901;
+ //BA.debugLineNum = 3407901;BA.debugLine="units = \" m\"";
+mostCurrent._units = " m";
+ break; }
+case 5: {
+RDebugUtils.currentLine=3407904;
+ //BA.debugLineNum = 3407904;BA.debugLine="Ans = (EditText1.Text) * 100";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*100;
+RDebugUtils.currentLine=3407905;
+ //BA.debugLineNum = 3407905;BA.debugLine="units = \" cm\"";
+mostCurrent._units = " cm";
+ break; }
+default: {
+RDebugUtils.currentLine=3407908;
+ //BA.debugLineNum = 3407908;BA.debugLine="Ans = 0";
+_ans = 0;
+RDebugUtils.currentLine=3407909;
+ //BA.debugLineNum = 3407909;BA.debugLine="units = \"\"";
+mostCurrent._units = "";
+ break; }
+}
+;
+RDebugUtils.currentLine=3407914;
+ //BA.debugLineNum = 3407914;BA.debugLine="Label1.Text = NumberFormat(Ans, 1, 2) & units";
+mostCurrent._label1.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.NumberFormat(_ans,(int) (1),(int) (2))+mostCurrent._units));
+RDebugUtils.currentLine=3407915;
+ //BA.debugLineNum = 3407915;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pnl1_click() throws Exception{

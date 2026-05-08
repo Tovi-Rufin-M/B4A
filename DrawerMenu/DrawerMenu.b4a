@@ -55,6 +55,10 @@ Sub Globals
 	'Private lblMenu As Label
 	Private lblTitle As Label
 	Private btnHome, btnPage1, btnPage2, btnPage3, btnPage4, btnPage5, btnPage6 As Button
+	
+	Private EditText1 As EditText
+	Private Label1 As Label
+	Private units As String
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -90,17 +94,17 @@ Sub CreateMenu
 	btnHome.Initialize("btnHome")
 	btnHome.Text = "Home"
 	btnPage1.Initialize("btnPage1")
-	btnPage1.Text = "Page 1"
+	btnPage1.Text = "Inches To Centimeter"
 	btnPage2.Initialize("btnPage2")
-	btnPage2.Text = "Page 2"
+	btnPage2.Text = "Centimeter To Inches"
 	btnPage3.Initialize("btnPage3")
-	btnPage3.Text = "Page 3"
+	btnPage3.Text = "Inches To Feet"
 	btnPage4.Initialize("btnPage4")
-	btnPage4.Text = "Page 4"
+	btnPage4.Text = "Feet To Inches"
 	btnPage5.Initialize("btnPage5")
-	btnPage5.Text = "Page 5"
+	btnPage5.Text = "Centimeter To Meter"
 	btnPage6.Initialize("btnPage6")
-	btnPage6.Text = "Page 6"
+	btnPage6.Text = "Meter To Centimeter"
 	
 	For Each b As Button In Array(btnHome, btnPage1, btnPage2, btnPage3, btnPage4, btnPage5, btnPage6)
 		b.TextSize = 16
@@ -166,37 +170,37 @@ End Sub
 Sub ShowPage1
 	pnlMain.RemoveAllViews
 	pnlMain.LoadLayout("page1")
-	lblTitle.Text = "Page 1"
+	lblTitle.Text = "Inches To Centimeter"
 End Sub
 
 Sub ShowPage2
 	pnlMain.RemoveAllViews
 	pnlMain.LoadLayout("page2")
-	lblTitle.Text = "Page 2"
+	lblTitle.Text = "Centimeter To Inches"
 End Sub
 
 Sub ShowPage3
 	pnlMain.RemoveAllViews
 	pnlMain.LoadLayout("page3")
-	lblTitle.Text = "Page 3"
+	lblTitle.Text = "Inches To Feet"
 End Sub
 
 Sub ShowPage4
 	pnlMain.RemoveAllViews
 	pnlMain.LoadLayout("page4")
-	lblTitle.Text = "Page 4"
+	lblTitle.Text = "Feet To Inches"
 End Sub
 
 Sub ShowPage5
 	pnlMain.RemoveAllViews
 	pnlMain.LoadLayout("page5")
-	lblTitle.Text = "Page 5"
+	lblTitle.Text = "Centimeter To Meter"
 End Sub
 
 Sub ShowPage6
 	pnlMain.RemoveAllViews
 	pnlMain.LoadLayout("page6")
-	lblTitle.Text = "Page 6"
+	lblTitle.Text = "Meter To Centimeter"
 End Sub
 
 Sub Activity_KeyPress (KeyCode As Int) As Boolean
@@ -229,4 +233,49 @@ End Sub
 
 Private Sub pnl1_Click
 	ShowPage1
+End Sub
+
+Private Sub Button1_Click
+	' 1. Check if the EditText is empty to prevent a crash
+	If EditText1.Text = "" Then
+		MsgboxAsync("Please enter a value", "Input Error")
+		Return
+	End If
+
+	Dim Ans As Double
+	Dim units As String ' Ensure this is declared if not in Globals
+
+	Select lblTitle.Text
+		Case "Inches To Centimeter"
+			Ans = (EditText1.Text) * 2.54
+			units = " cm"
+            
+		Case "Centimeter To Inches"
+			Ans = (EditText1.Text) / 2.54
+			units = " in"
+            
+		Case "Inches To Feet"
+			Ans = (EditText1.Text) / 12
+			units = " ft"
+            
+		Case "Feet To Inches"
+			Ans = (EditText1.Text) * 12
+			units = " in"
+            
+		Case "Centimeter To Meter"
+			Ans = (EditText1.Text) / 100
+			units = " m"
+            
+		Case "Meter To Centimeter"
+			Ans = (EditText1.Text) * 100
+			units = " cm"
+            
+		Case Else
+			Ans = 0
+			units = ""
+	End Select
+
+	' 2. Use "&" instead of "+" to join numbers and text
+	' NumberFormat helps round the decimal so it doesn't look messy
+	Label1.Text = NumberFormat(Ans, 1, 2) & units
 End Sub
