@@ -5,18 +5,18 @@ b4xdrawer
 1
 b4xdrawer
 main,activity_create,1,0,32,46
-,lbltitle,,pnlmenu,,drawer,,pnlmain,,btnhome,,btnpage1,,btnpage2
+,lbltitle,,pnlmenu,,drawer,,pnlmain,,btnhome,,btnpage1,,btnpage2,,btnpage3,,btnpage4,,btnpage5,,btnpage6
 ,lbltitle,,pnlmenu,,pnlmain,,btnhome,,btnpage1,,btnpage2
 b4xdrawer,initialize,b4xdrawer,getcenterpanel,b4xdrawer,getleftpanel,,createmenu,,showhome
-main,createmenu,0,0,60,78
-,btnhome,,btnpage1,,btnpage2,,pnlmenu
+main,createmenu,0,0,60,91
+,btnhome,,btnpage1,,btnpage2,,btnpage3,,btnpage4,,btnpage5,,btnpage6,,pnlmenu
 ,btnhome,,btnpage1,,btnpage2
 
-main,showhome,1,0,95,100
+main,showhome,1,0,132,136
 ,pnlmain,,lbltitle
 
 
-main,activity_keypress,0,0,114,120
+main,activity_keypress,0,0,174,180
 ,drawer
 
 b4xdrawer,getleftopen,b4xdrawer,setleftopen,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
@@ -28,7 +28,7 @@ main,activity_resume,0,0,48,50
 
 
 
-main,btnhome_click,1,0,80,83
+main,btnhome_click,1,0,95,98
 ,drawer,,pnlmain,,lbltitle
 
 b4xdrawer,setleftopen,,showhome,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
@@ -36,19 +36,51 @@ main,btnmenu_click,0,0,56,58
 ,drawer
 
 b4xdrawer,setleftopen,b4xdrawer,getleftopen,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
-main,btnpage1_click,1,0,85,88
+main,btnpage1_click,1,0,100,103
 ,drawer,,pnlmain,,lbltitle
 
 b4xdrawer,setleftopen,,showpage1,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
-main,showpage1,1,0,102,106
+main,showpage1,1,0,138,142
 ,pnlmain,,lbltitle
 
 
-main,btnpage2_click,1,0,90,93
+main,btnpage2_click,1,0,105,108
 ,drawer,,pnlmain,,lbltitle
 
 b4xdrawer,setleftopen,,showpage2,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
-main,showpage2,1,0,108,112
+main,showpage2,1,0,144,148
+,pnlmain,,lbltitle
+
+
+main,btnpage3_click,1,0,110,113
+,drawer,,pnlmain,,lbltitle
+
+b4xdrawer,setleftopen,,showpage3,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
+main,showpage3,1,0,150,154
+,pnlmain,,lbltitle
+
+
+main,btnpage4_click,1,0,115,118
+,drawer,,pnlmain,,lbltitle
+
+b4xdrawer,setleftopen,,showpage4,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
+main,showpage4,1,0,156,160
+,pnlmain,,lbltitle
+
+
+main,btnpage5_click,1,0,120,123
+,drawer,,pnlmain,,lbltitle
+
+b4xdrawer,setleftopen,,showpage5,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
+main,showpage5,1,0,162,166
+,pnlmain,,lbltitle
+
+
+main,btnpage6_click,1,0,125,128
+,drawer,,pnlmain,,lbltitle
+
+b4xdrawer,setleftopen,,showpage6,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
+main,showpage6,1,0,168,172
 ,pnlmain,,lbltitle
 
 
@@ -56,6 +88,30 @@ main,globals,0,1,21,30
 
 
 
+main,pnl1_click,1,0,202,204
+,pnlmain,,lbltitle
+
+,showpage1
+main,pnl2_click,1,0,198,200
+,pnlmain,,lbltitle
+
+,showpage2
+main,pnl3_click,1,0,194,196
+,pnlmain,,lbltitle
+
+,showpage3
+main,pnl4_click,1,0,190,192
+,pnlmain,,lbltitle
+
+,showpage4
+main,pnl5_click,1,0,186,188
+,pnlmain,,lbltitle
+
+,showpage5
+main,pnl6_click,1,0,182,184
+,pnlmain,,lbltitle
+
+,showpage6
 main,process_globals,0,1,15,19
 
 

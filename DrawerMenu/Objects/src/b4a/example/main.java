@@ -385,6 +385,10 @@ public anywheresoftware.b4a.objects.LabelWrapper _lbltitle = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _btnhome = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _btnpage1 = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _btnpage2 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _btnpage3 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _btnpage4 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _btnpage5 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _btnpage6 = null;
 public b4a.example.starter _starter = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";
@@ -454,43 +458,79 @@ RDebugUtils.currentLine=393223;
  //BA.debugLineNum = 393223;BA.debugLine="btnPage2.Text = \"Page 2\"";
 mostCurrent._btnpage2.setText(BA.ObjectToCharSequence("Page 2"));
 RDebugUtils.currentLine=393224;
- //BA.debugLineNum = 393224;BA.debugLine="For Each b As Button In Array(btnHome, btnPage1,";
+ //BA.debugLineNum = 393224;BA.debugLine="btnPage3.Initialize(\"btnPage3\")";
+mostCurrent._btnpage3.Initialize(mostCurrent.activityBA,"btnPage3");
+RDebugUtils.currentLine=393225;
+ //BA.debugLineNum = 393225;BA.debugLine="btnPage3.Text = \"Page 3\"";
+mostCurrent._btnpage3.setText(BA.ObjectToCharSequence("Page 3"));
+RDebugUtils.currentLine=393226;
+ //BA.debugLineNum = 393226;BA.debugLine="btnPage4.Initialize(\"btnPage4\")";
+mostCurrent._btnpage4.Initialize(mostCurrent.activityBA,"btnPage4");
+RDebugUtils.currentLine=393227;
+ //BA.debugLineNum = 393227;BA.debugLine="btnPage4.Text = \"Page 4\"";
+mostCurrent._btnpage4.setText(BA.ObjectToCharSequence("Page 4"));
+RDebugUtils.currentLine=393228;
+ //BA.debugLineNum = 393228;BA.debugLine="btnPage5.Initialize(\"btnPage5\")";
+mostCurrent._btnpage5.Initialize(mostCurrent.activityBA,"btnPage5");
+RDebugUtils.currentLine=393229;
+ //BA.debugLineNum = 393229;BA.debugLine="btnPage5.Text = \"Page 5\"";
+mostCurrent._btnpage5.setText(BA.ObjectToCharSequence("Page 5"));
+RDebugUtils.currentLine=393230;
+ //BA.debugLineNum = 393230;BA.debugLine="btnPage6.Initialize(\"btnPage6\")";
+mostCurrent._btnpage6.Initialize(mostCurrent.activityBA,"btnPage6");
+RDebugUtils.currentLine=393231;
+ //BA.debugLineNum = 393231;BA.debugLine="btnPage6.Text = \"Page 6\"";
+mostCurrent._btnpage6.setText(BA.ObjectToCharSequence("Page 6"));
+RDebugUtils.currentLine=393233;
+ //BA.debugLineNum = 393233;BA.debugLine="For Each b As Button In Array(btnHome, btnPage1,";
 _b = new anywheresoftware.b4a.objects.ButtonWrapper();
 {
-final Object[] group8 = new Object[]{(Object)(mostCurrent._btnhome.getObject()),(Object)(mostCurrent._btnpage1.getObject()),(Object)(mostCurrent._btnpage2.getObject())};
-final int groupLen8 = group8.length
-;int index8 = 0;
+final Object[] group16 = new Object[]{(Object)(mostCurrent._btnhome.getObject()),(Object)(mostCurrent._btnpage1.getObject()),(Object)(mostCurrent._btnpage2.getObject()),(Object)(mostCurrent._btnpage3.getObject()),(Object)(mostCurrent._btnpage4.getObject()),(Object)(mostCurrent._btnpage5.getObject()),(Object)(mostCurrent._btnpage6.getObject())};
+final int groupLen16 = group16.length
+;int index16 = 0;
 ;
-for (; index8 < groupLen8;index8++){
-_b = (anywheresoftware.b4a.objects.ButtonWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ButtonWrapper(), (android.widget.Button)(group8[index8]));
-RDebugUtils.currentLine=393225;
- //BA.debugLineNum = 393225;BA.debugLine="b.TextSize = 16";
+for (; index16 < groupLen16;index16++){
+_b = (anywheresoftware.b4a.objects.ButtonWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ButtonWrapper(), (android.widget.Button)(group16[index16]));
+RDebugUtils.currentLine=393234;
+ //BA.debugLineNum = 393234;BA.debugLine="b.TextSize = 16";
 _b.setTextSize((float) (16));
-RDebugUtils.currentLine=393226;
- //BA.debugLineNum = 393226;BA.debugLine="b.Gravity = Gravity.LEFT + Gravity.CENTER_VERTIC";
+RDebugUtils.currentLine=393235;
+ //BA.debugLineNum = 393235;BA.debugLine="b.Gravity = Gravity.LEFT + Gravity.CENTER_VERTIC";
 _b.setGravity((int) (anywheresoftware.b4a.keywords.Common.Gravity.LEFT+anywheresoftware.b4a.keywords.Common.Gravity.CENTER_VERTICAL));
-RDebugUtils.currentLine=393227;
- //BA.debugLineNum = 393227;BA.debugLine="b.Color = Colors.Transparent";
+RDebugUtils.currentLine=393236;
+ //BA.debugLineNum = 393236;BA.debugLine="b.Color = Colors.Transparent";
 _b.setColor(anywheresoftware.b4a.keywords.Common.Colors.Transparent);
-RDebugUtils.currentLine=393228;
- //BA.debugLineNum = 393228;BA.debugLine="b.TextColor = Colors.White";
+RDebugUtils.currentLine=393237;
+ //BA.debugLineNum = 393237;BA.debugLine="b.TextColor = Colors.White";
 _b.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=393229;
- //BA.debugLineNum = 393229;BA.debugLine="pnlMenu.AddView(b, 10dip, 0, 240dip, 50dip)";
+RDebugUtils.currentLine=393238;
+ //BA.debugLineNum = 393238;BA.debugLine="pnlMenu.AddView(b, 10dip, 0, 240dip, 50dip)";
 mostCurrent._pnlmenu.AddView((android.view.View)(_b.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),(int) (0),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (240)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
  }
 };
-RDebugUtils.currentLine=393231;
- //BA.debugLineNum = 393231;BA.debugLine="btnHome.Top = 120dip";
+RDebugUtils.currentLine=393240;
+ //BA.debugLineNum = 393240;BA.debugLine="btnHome.Top = 120dip";
 mostCurrent._btnhome.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (120)));
-RDebugUtils.currentLine=393232;
- //BA.debugLineNum = 393232;BA.debugLine="btnPage1.Top = 180dip";
+RDebugUtils.currentLine=393241;
+ //BA.debugLineNum = 393241;BA.debugLine="btnPage1.Top = 180dip";
 mostCurrent._btnpage1.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (180)));
-RDebugUtils.currentLine=393233;
- //BA.debugLineNum = 393233;BA.debugLine="btnPage2.Top = 240dip";
+RDebugUtils.currentLine=393242;
+ //BA.debugLineNum = 393242;BA.debugLine="btnPage2.Top = 240dip";
 mostCurrent._btnpage2.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (240)));
-RDebugUtils.currentLine=393234;
- //BA.debugLineNum = 393234;BA.debugLine="End Sub";
+RDebugUtils.currentLine=393243;
+ //BA.debugLineNum = 393243;BA.debugLine="btnPage3.Top = 300dip";
+mostCurrent._btnpage3.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)));
+RDebugUtils.currentLine=393244;
+ //BA.debugLineNum = 393244;BA.debugLine="btnPage4.Top = 360dip";
+mostCurrent._btnpage4.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (360)));
+RDebugUtils.currentLine=393245;
+ //BA.debugLineNum = 393245;BA.debugLine="btnPage5.Top = 420dip";
+mostCurrent._btnpage5.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (420)));
+RDebugUtils.currentLine=393246;
+ //BA.debugLineNum = 393246;BA.debugLine="btnPage6.Top = 480dip";
+mostCurrent._btnpage6.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (480)));
+RDebugUtils.currentLine=393247;
+ //BA.debugLineNum = 393247;BA.debugLine="End Sub";
 return "";
 }
 public static String  _showhome() throws Exception{
@@ -508,8 +548,8 @@ mostCurrent._pnlmain.LoadLayout("home",mostCurrent.activityBA);
 RDebugUtils.currentLine=655363;
  //BA.debugLineNum = 655363;BA.debugLine="lblTitle.Text = \"Home\"";
 mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Home"));
-RDebugUtils.currentLine=655365;
- //BA.debugLineNum = 655365;BA.debugLine="End Sub";
+RDebugUtils.currentLine=655364;
+ //BA.debugLineNum = 655364;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _activity_keypress(int _keycode) throws Exception{
@@ -650,6 +690,224 @@ RDebugUtils.currentLine=786435;
 mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 2"));
 RDebugUtils.currentLine=786436;
  //BA.debugLineNum = 786436;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage3_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage3_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage3_click", null));}
+RDebugUtils.currentLine=2359296;
+ //BA.debugLineNum = 2359296;BA.debugLine="Sub btnPage3_Click";
+RDebugUtils.currentLine=2359297;
+ //BA.debugLineNum = 2359297;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=2359298;
+ //BA.debugLineNum = 2359298;BA.debugLine="ShowPage3";
+_showpage3();
+RDebugUtils.currentLine=2359299;
+ //BA.debugLineNum = 2359299;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage3() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage3", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage3", null));}
+RDebugUtils.currentLine=2621440;
+ //BA.debugLineNum = 2621440;BA.debugLine="Sub ShowPage3";
+RDebugUtils.currentLine=2621441;
+ //BA.debugLineNum = 2621441;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+RDebugUtils.currentLine=2621442;
+ //BA.debugLineNum = 2621442;BA.debugLine="pnlMain.LoadLayout(\"page3\")";
+mostCurrent._pnlmain.LoadLayout("page3",mostCurrent.activityBA);
+RDebugUtils.currentLine=2621443;
+ //BA.debugLineNum = 2621443;BA.debugLine="lblTitle.Text = \"Page 3\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 3"));
+RDebugUtils.currentLine=2621444;
+ //BA.debugLineNum = 2621444;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage4_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage4_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage4_click", null));}
+RDebugUtils.currentLine=2424832;
+ //BA.debugLineNum = 2424832;BA.debugLine="Sub btnPage4_Click";
+RDebugUtils.currentLine=2424833;
+ //BA.debugLineNum = 2424833;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=2424834;
+ //BA.debugLineNum = 2424834;BA.debugLine="ShowPage4";
+_showpage4();
+RDebugUtils.currentLine=2424835;
+ //BA.debugLineNum = 2424835;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage4() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage4", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage4", null));}
+RDebugUtils.currentLine=2686976;
+ //BA.debugLineNum = 2686976;BA.debugLine="Sub ShowPage4";
+RDebugUtils.currentLine=2686977;
+ //BA.debugLineNum = 2686977;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+RDebugUtils.currentLine=2686978;
+ //BA.debugLineNum = 2686978;BA.debugLine="pnlMain.LoadLayout(\"page4\")";
+mostCurrent._pnlmain.LoadLayout("page4",mostCurrent.activityBA);
+RDebugUtils.currentLine=2686979;
+ //BA.debugLineNum = 2686979;BA.debugLine="lblTitle.Text = \"Page 4\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 4"));
+RDebugUtils.currentLine=2686980;
+ //BA.debugLineNum = 2686980;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage5_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage5_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage5_click", null));}
+RDebugUtils.currentLine=2490368;
+ //BA.debugLineNum = 2490368;BA.debugLine="Sub btnPage5_Click";
+RDebugUtils.currentLine=2490369;
+ //BA.debugLineNum = 2490369;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=2490370;
+ //BA.debugLineNum = 2490370;BA.debugLine="ShowPage5";
+_showpage5();
+RDebugUtils.currentLine=2490371;
+ //BA.debugLineNum = 2490371;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage5() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage5", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage5", null));}
+RDebugUtils.currentLine=2752512;
+ //BA.debugLineNum = 2752512;BA.debugLine="Sub ShowPage5";
+RDebugUtils.currentLine=2752513;
+ //BA.debugLineNum = 2752513;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+RDebugUtils.currentLine=2752514;
+ //BA.debugLineNum = 2752514;BA.debugLine="pnlMain.LoadLayout(\"page5\")";
+mostCurrent._pnlmain.LoadLayout("page5",mostCurrent.activityBA);
+RDebugUtils.currentLine=2752515;
+ //BA.debugLineNum = 2752515;BA.debugLine="lblTitle.Text = \"Page 5\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 5"));
+RDebugUtils.currentLine=2752516;
+ //BA.debugLineNum = 2752516;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage6_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage6_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage6_click", null));}
+RDebugUtils.currentLine=2555904;
+ //BA.debugLineNum = 2555904;BA.debugLine="Sub btnPage6_Click";
+RDebugUtils.currentLine=2555905;
+ //BA.debugLineNum = 2555905;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=2555906;
+ //BA.debugLineNum = 2555906;BA.debugLine="ShowPage6";
+_showpage6();
+RDebugUtils.currentLine=2555907;
+ //BA.debugLineNum = 2555907;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage6() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage6", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage6", null));}
+RDebugUtils.currentLine=2818048;
+ //BA.debugLineNum = 2818048;BA.debugLine="Sub ShowPage6";
+RDebugUtils.currentLine=2818049;
+ //BA.debugLineNum = 2818049;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+RDebugUtils.currentLine=2818050;
+ //BA.debugLineNum = 2818050;BA.debugLine="pnlMain.LoadLayout(\"page6\")";
+mostCurrent._pnlmain.LoadLayout("page6",mostCurrent.activityBA);
+RDebugUtils.currentLine=2818051;
+ //BA.debugLineNum = 2818051;BA.debugLine="lblTitle.Text = \"Page 6\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Page 6"));
+RDebugUtils.currentLine=2818052;
+ //BA.debugLineNum = 2818052;BA.debugLine="End Sub";
+return "";
+}
+public static String  _pnl1_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl1_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl1_click", null));}
+RDebugUtils.currentLine=3342336;
+ //BA.debugLineNum = 3342336;BA.debugLine="Private Sub pnl1_Click";
+RDebugUtils.currentLine=3342337;
+ //BA.debugLineNum = 3342337;BA.debugLine="ShowPage1";
+_showpage1();
+RDebugUtils.currentLine=3342338;
+ //BA.debugLineNum = 3342338;BA.debugLine="End Sub";
+return "";
+}
+public static String  _pnl2_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl2_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl2_click", null));}
+RDebugUtils.currentLine=3276800;
+ //BA.debugLineNum = 3276800;BA.debugLine="Private Sub pnl2_Click";
+RDebugUtils.currentLine=3276801;
+ //BA.debugLineNum = 3276801;BA.debugLine="ShowPage2";
+_showpage2();
+RDebugUtils.currentLine=3276802;
+ //BA.debugLineNum = 3276802;BA.debugLine="End Sub";
+return "";
+}
+public static String  _pnl3_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl3_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl3_click", null));}
+RDebugUtils.currentLine=3211264;
+ //BA.debugLineNum = 3211264;BA.debugLine="Private Sub pnl3_Click";
+RDebugUtils.currentLine=3211265;
+ //BA.debugLineNum = 3211265;BA.debugLine="ShowPage3";
+_showpage3();
+RDebugUtils.currentLine=3211266;
+ //BA.debugLineNum = 3211266;BA.debugLine="End Sub";
+return "";
+}
+public static String  _pnl4_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl4_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl4_click", null));}
+RDebugUtils.currentLine=3145728;
+ //BA.debugLineNum = 3145728;BA.debugLine="Private Sub pnl4_Click";
+RDebugUtils.currentLine=3145729;
+ //BA.debugLineNum = 3145729;BA.debugLine="ShowPage4";
+_showpage4();
+RDebugUtils.currentLine=3145730;
+ //BA.debugLineNum = 3145730;BA.debugLine="End Sub";
+return "";
+}
+public static String  _pnl5_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl5_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl5_click", null));}
+RDebugUtils.currentLine=3080192;
+ //BA.debugLineNum = 3080192;BA.debugLine="Private Sub pnl5_Click";
+RDebugUtils.currentLine=3080193;
+ //BA.debugLineNum = 3080193;BA.debugLine="ShowPage5";
+_showpage5();
+RDebugUtils.currentLine=3080194;
+ //BA.debugLineNum = 3080194;BA.debugLine="End Sub";
+return "";
+}
+public static String  _pnl6_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl6_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl6_click", null));}
+RDebugUtils.currentLine=3014656;
+ //BA.debugLineNum = 3014656;BA.debugLine="Private Sub pnl6_Click";
+RDebugUtils.currentLine=3014657;
+ //BA.debugLineNum = 3014657;BA.debugLine="ShowPage6";
+_showpage6();
+RDebugUtils.currentLine=3014658;
+ //BA.debugLineNum = 3014658;BA.debugLine="End Sub";
 return "";
 }
 }

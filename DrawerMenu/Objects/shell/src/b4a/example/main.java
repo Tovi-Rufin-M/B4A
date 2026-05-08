@@ -63,8 +63,12 @@ public static RemoteObject _lbltitle = RemoteObject.declareNull("anywheresoftwar
 public static RemoteObject _btnhome = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static RemoteObject _btnpage1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static RemoteObject _btnpage2 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
+public static RemoteObject _btnpage3 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
+public static RemoteObject _btnpage4 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
+public static RemoteObject _btnpage5 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
+public static RemoteObject _btnpage6 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
 public static b4a.example.starter _starter = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"btnHome",main.mostCurrent._btnhome,"btnPage1",main.mostCurrent._btnpage1,"btnPage2",main.mostCurrent._btnpage2,"Drawer",main.mostCurrent._drawer,"lblTitle",main.mostCurrent._lbltitle,"pnlMain",main.mostCurrent._pnlmain,"pnlMenu",main.mostCurrent._pnlmenu,"Starter",Debug.moduleToString(b4a.example.starter.class),"xui",main._xui};
+		return new Object[] {"Activity",main.mostCurrent._activity,"btnHome",main.mostCurrent._btnhome,"btnPage1",main.mostCurrent._btnpage1,"btnPage2",main.mostCurrent._btnpage2,"btnPage3",main.mostCurrent._btnpage3,"btnPage4",main.mostCurrent._btnpage4,"btnPage5",main.mostCurrent._btnpage5,"btnPage6",main.mostCurrent._btnpage6,"Drawer",main.mostCurrent._drawer,"lblTitle",main.mostCurrent._lbltitle,"pnlMain",main.mostCurrent._pnlmain,"pnlMenu",main.mostCurrent._pnlmenu,"Starter",Debug.moduleToString(b4a.example.starter.class),"xui",main._xui};
 }
 }

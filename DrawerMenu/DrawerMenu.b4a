@@ -3,17 +3,25 @@ File1=HOME.bal
 File2=main.bal
 File3=page1.bal
 File4=page2.bal
+File5=page3.bal
+File6=page4.bal
+File7=page5.bal
+File8=page6.bal
 FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
 Group=Default Group
 Library1=core
 Library2=xui
 Library3=b4xdrawer
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=Starter
-NumberOfFiles=4
+NumberOfFiles=8
 NumberOfLibraries=3
 NumberOfModules=1
 Version=13.4
@@ -23,7 +31,7 @@ Version=13.4
 	#VersionCode: 1
 	#VersionName: 
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
-	#SupportedOrientations: unspecified
+	#SupportedOrientations: portrait
 	#CanInstallToExternalStorage: False
 #End Region
 
@@ -46,7 +54,7 @@ Sub Globals
 
 	'Private lblMenu As Label
 	Private lblTitle As Label
-	Private btnHome, btnPage1, btnPage2 As Button
+	Private btnHome, btnPage1, btnPage2, btnPage3, btnPage4, btnPage5, btnPage6 As Button
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -85,7 +93,16 @@ Sub CreateMenu
 	btnPage1.Text = "Page 1"
 	btnPage2.Initialize("btnPage2")
 	btnPage2.Text = "Page 2"
-	For Each b As Button In Array(btnHome, btnPage1, btnPage2)
+	btnPage3.Initialize("btnPage3")
+	btnPage3.Text = "Page 3"
+	btnPage4.Initialize("btnPage4")
+	btnPage4.Text = "Page 4"
+	btnPage5.Initialize("btnPage5")
+	btnPage5.Text = "Page 5"
+	btnPage6.Initialize("btnPage6")
+	btnPage6.Text = "Page 6"
+	
+	For Each b As Button In Array(btnHome, btnPage1, btnPage2, btnPage3, btnPage4, btnPage5, btnPage6)
 		b.TextSize = 16
 		b.Gravity = Gravity.LEFT + Gravity.CENTER_VERTICAL
 		b.Color = Colors.Transparent
@@ -95,7 +112,13 @@ Sub CreateMenu
 	btnHome.Top = 120dip
 	btnPage1.Top = 180dip
 	btnPage2.Top = 240dip
+	btnPage3.Top = 300dip
+	btnPage4.Top = 360dip
+	btnPage5.Top = 420dip
+	btnPage6.Top = 480dip
 End Sub
+
+'--- Click Events ---
 
 Sub btnHome_Click
 	Drawer.LeftOpen = False
@@ -112,11 +135,32 @@ Sub btnPage2_Click
 	ShowPage2
 End Sub
 
+Sub btnPage3_Click
+	Drawer.LeftOpen = False
+	ShowPage3
+End Sub
+
+Sub btnPage4_Click
+	Drawer.LeftOpen = False
+	ShowPage4
+End Sub
+
+Sub btnPage5_Click
+	Drawer.LeftOpen = False
+	ShowPage5
+End Sub
+
+Sub btnPage6_Click
+	Drawer.LeftOpen = False
+	ShowPage6
+End Sub
+
+'--- Show Layout Subs ---
+
 Sub ShowHome
 	pnlMain.RemoveAllViews
 	pnlMain.LoadLayout("home")
 	lblTitle.Text = "Home"
-	
 End Sub
 
 Sub ShowPage1
@@ -131,10 +175,58 @@ Sub ShowPage2
 	lblTitle.Text = "Page 2"
 End Sub
 
+Sub ShowPage3
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page3")
+	lblTitle.Text = "Page 3"
+End Sub
+
+Sub ShowPage4
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page4")
+	lblTitle.Text = "Page 4"
+End Sub
+
+Sub ShowPage5
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page5")
+	lblTitle.Text = "Page 5"
+End Sub
+
+Sub ShowPage6
+	pnlMain.RemoveAllViews
+	pnlMain.LoadLayout("page6")
+	lblTitle.Text = "Page 6"
+End Sub
+
 Sub Activity_KeyPress (KeyCode As Int) As Boolean
 	If KeyCode = KeyCodes.KEYCODE_BACK And Drawer.LeftOpen Then
 		Drawer.LeftOpen = False
 		Return True
 	End If
 	Return False
+End Sub
+
+Private Sub pnl6_Click
+	ShowPage6
+End Sub
+
+Private Sub pnl5_Click
+	ShowPage5
+End Sub
+
+Private Sub pnl4_Click
+	ShowPage4
+End Sub
+
+Private Sub pnl3_Click
+	ShowPage3
+End Sub
+
+Private Sub pnl2_Click
+	ShowPage2
+End Sub
+
+Private Sub pnl1_Click
+	ShowPage1
 End Sub
