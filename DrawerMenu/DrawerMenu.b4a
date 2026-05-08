@@ -27,7 +27,7 @@ NumberOfModules=1
 Version=13.4
 @EndOfDesignText@
 #Region  Project Attributes 
-	#ApplicationLabel: Drawer Demo
+	#ApplicationLabel: Drawer Unit Converter App
 	#VersionCode: 1
 	#VersionName: 
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
