@@ -508,8 +508,8 @@ mostCurrent._pnlmain.LoadLayout("home",mostCurrent.activityBA);
 RDebugUtils.currentLine=655363;
  //BA.debugLineNum = 655363;BA.debugLine="lblTitle.Text = \"Home\"";
 mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Home"));
-RDebugUtils.currentLine=655364;
- //BA.debugLineNum = 655364;BA.debugLine="End Sub";
+RDebugUtils.currentLine=655365;
+ //BA.debugLineNum = 655365;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _activity_keypress(int _keycode) throws Exception{

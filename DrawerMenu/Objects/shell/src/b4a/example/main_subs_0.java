@@ -52,26 +52,26 @@ finally {
 		}}
 public static RemoteObject  _activity_keypress(RemoteObject _keycode) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_KeyPress (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,113);
+		Debug.PushSubsStack("Activity_KeyPress (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,114);
 if (RapidSub.canDelegate("activity_keypress")) { return b4a.example.main.remoteMe.runUserSub(false, "main","activity_keypress", _keycode);}
 Debug.locals.put("KeyCode", _keycode);
- BA.debugLineNum = 113;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
-Debug.ShouldStop(65536);
- BA.debugLineNum = 114;BA.debugLine="If KeyCode = KeyCodes.KEYCODE_BACK And Drawer.Lef";
+ BA.debugLineNum = 114;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
 Debug.ShouldStop(131072);
-if (RemoteObject.solveBoolean("=",_keycode,BA.numberCast(double.class, main.mostCurrent.__c.getField(false,"KeyCodes").getField(true,"KEYCODE_BACK"))) && RemoteObject.solveBoolean(".",main.mostCurrent._drawer.runClassMethod (b4a.example.b4xdrawer.class, "_getleftopen" /*RemoteObject*/ ))) { 
- BA.debugLineNum = 115;BA.debugLine="Drawer.LeftOpen = False";
+ BA.debugLineNum = 115;BA.debugLine="If KeyCode = KeyCodes.KEYCODE_BACK And Drawer.Lef";
 Debug.ShouldStop(262144);
-main.mostCurrent._drawer.runClassMethod (b4a.example.b4xdrawer.class, "_setleftopen" /*RemoteObject*/ ,main.mostCurrent.__c.getField(true,"False"));
- BA.debugLineNum = 116;BA.debugLine="Return True";
+if (RemoteObject.solveBoolean("=",_keycode,BA.numberCast(double.class, main.mostCurrent.__c.getField(false,"KeyCodes").getField(true,"KEYCODE_BACK"))) && RemoteObject.solveBoolean(".",main.mostCurrent._drawer.runClassMethod (b4a.example.b4xdrawer.class, "_getleftopen" /*RemoteObject*/ ))) { 
+ BA.debugLineNum = 116;BA.debugLine="Drawer.LeftOpen = False";
 Debug.ShouldStop(524288);
+main.mostCurrent._drawer.runClassMethod (b4a.example.b4xdrawer.class, "_setleftopen" /*RemoteObject*/ ,main.mostCurrent.__c.getField(true,"False"));
+ BA.debugLineNum = 117;BA.debugLine="Return True";
+Debug.ShouldStop(1048576);
 if (true) return main.mostCurrent.__c.getField(true,"True");
  };
- BA.debugLineNum = 118;BA.debugLine="Return False";
-Debug.ShouldStop(2097152);
-if (true) return main.mostCurrent.__c.getField(true,"False");
- BA.debugLineNum = 119;BA.debugLine="End Sub";
+ BA.debugLineNum = 119;BA.debugLine="Return False";
 Debug.ShouldStop(4194304);
+if (true) return main.mostCurrent.__c.getField(true,"False");
+ BA.debugLineNum = 120;BA.debugLine="End Sub";
+Debug.ShouldStop(8388608);
 return RemoteObject.createImmutable(false);
 }
 catch (Exception e) {
@@ -331,8 +331,8 @@ main.mostCurrent._pnlmain.runMethodAndSync(false,"LoadLayout",(Object)(RemoteObj
  BA.debugLineNum = 98;BA.debugLine="lblTitle.Text = \"Home\"";
 Debug.ShouldStop(2);
 main.mostCurrent._lbltitle.runMethod(true,"setText",BA.ObjectToCharSequence("Home"));
- BA.debugLineNum = 99;BA.debugLine="End Sub";
-Debug.ShouldStop(4);
+ BA.debugLineNum = 100;BA.debugLine="End Sub";
+Debug.ShouldStop(8);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -343,21 +343,21 @@ finally {
 		}}
 public static RemoteObject  _showpage1() throws Exception{
 try {
-		Debug.PushSubsStack("ShowPage1 (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,101);
+		Debug.PushSubsStack("ShowPage1 (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,102);
 if (RapidSub.canDelegate("showpage1")) { return b4a.example.main.remoteMe.runUserSub(false, "main","showpage1");}
- BA.debugLineNum = 101;BA.debugLine="Sub ShowPage1";
-Debug.ShouldStop(16);
- BA.debugLineNum = 102;BA.debugLine="pnlMain.RemoveAllViews";
+ BA.debugLineNum = 102;BA.debugLine="Sub ShowPage1";
 Debug.ShouldStop(32);
-main.mostCurrent._pnlmain.runVoidMethod ("RemoveAllViews");
- BA.debugLineNum = 103;BA.debugLine="pnlMain.LoadLayout(\"page1\")";
+ BA.debugLineNum = 103;BA.debugLine="pnlMain.RemoveAllViews";
 Debug.ShouldStop(64);
-main.mostCurrent._pnlmain.runMethodAndSync(false,"LoadLayout",(Object)(RemoteObject.createImmutable("page1")),main.mostCurrent.activityBA);
- BA.debugLineNum = 104;BA.debugLine="lblTitle.Text = \"Page 1\"";
+main.mostCurrent._pnlmain.runVoidMethod ("RemoveAllViews");
+ BA.debugLineNum = 104;BA.debugLine="pnlMain.LoadLayout(\"page1\")";
 Debug.ShouldStop(128);
-main.mostCurrent._lbltitle.runMethod(true,"setText",BA.ObjectToCharSequence("Page 1"));
- BA.debugLineNum = 105;BA.debugLine="End Sub";
+main.mostCurrent._pnlmain.runMethodAndSync(false,"LoadLayout",(Object)(RemoteObject.createImmutable("page1")),main.mostCurrent.activityBA);
+ BA.debugLineNum = 105;BA.debugLine="lblTitle.Text = \"Page 1\"";
 Debug.ShouldStop(256);
+main.mostCurrent._lbltitle.runMethod(true,"setText",BA.ObjectToCharSequence("Page 1"));
+ BA.debugLineNum = 106;BA.debugLine="End Sub";
+Debug.ShouldStop(512);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -368,21 +368,21 @@ finally {
 		}}
 public static RemoteObject  _showpage2() throws Exception{
 try {
-		Debug.PushSubsStack("ShowPage2 (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,107);
+		Debug.PushSubsStack("ShowPage2 (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,108);
 if (RapidSub.canDelegate("showpage2")) { return b4a.example.main.remoteMe.runUserSub(false, "main","showpage2");}
- BA.debugLineNum = 107;BA.debugLine="Sub ShowPage2";
-Debug.ShouldStop(1024);
- BA.debugLineNum = 108;BA.debugLine="pnlMain.RemoveAllViews";
+ BA.debugLineNum = 108;BA.debugLine="Sub ShowPage2";
 Debug.ShouldStop(2048);
-main.mostCurrent._pnlmain.runVoidMethod ("RemoveAllViews");
- BA.debugLineNum = 109;BA.debugLine="pnlMain.LoadLayout(\"page2\")";
+ BA.debugLineNum = 109;BA.debugLine="pnlMain.RemoveAllViews";
 Debug.ShouldStop(4096);
-main.mostCurrent._pnlmain.runMethodAndSync(false,"LoadLayout",(Object)(RemoteObject.createImmutable("page2")),main.mostCurrent.activityBA);
- BA.debugLineNum = 110;BA.debugLine="lblTitle.Text = \"Page 2\"";
+main.mostCurrent._pnlmain.runVoidMethod ("RemoveAllViews");
+ BA.debugLineNum = 110;BA.debugLine="pnlMain.LoadLayout(\"page2\")";
 Debug.ShouldStop(8192);
-main.mostCurrent._lbltitle.runMethod(true,"setText",BA.ObjectToCharSequence("Page 2"));
- BA.debugLineNum = 111;BA.debugLine="End Sub";
+main.mostCurrent._pnlmain.runMethodAndSync(false,"LoadLayout",(Object)(RemoteObject.createImmutable("page2")),main.mostCurrent.activityBA);
+ BA.debugLineNum = 111;BA.debugLine="lblTitle.Text = \"Page 2\"";
 Debug.ShouldStop(16384);
+main.mostCurrent._lbltitle.runMethod(true,"setText",BA.ObjectToCharSequence("Page 2"));
+ BA.debugLineNum = 112;BA.debugLine="End Sub";
+Debug.ShouldStop(32768);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {

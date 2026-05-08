@@ -116,6 +116,7 @@ Sub ShowHome
 	pnlMain.RemoveAllViews
 	pnlMain.LoadLayout("home")
 	lblTitle.Text = "Home"
+	
 End Sub
 
 Sub ShowPage1

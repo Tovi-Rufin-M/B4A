@@ -12,11 +12,11 @@ main,createmenu,0,0,60,78
 ,btnhome,,btnpage1,,btnpage2,,pnlmenu
 ,btnhome,,btnpage1,,btnpage2
 
-main,showhome,1,0,95,99
+main,showhome,1,0,95,100
 ,pnlmain,,lbltitle
 
 
-main,activity_keypress,0,0,113,119
+main,activity_keypress,0,0,114,120
 ,drawer
 
 b4xdrawer,getleftopen,b4xdrawer,setleftopen,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
@@ -40,7 +40,7 @@ main,btnpage1_click,1,0,85,88
 ,drawer,,pnlmain,,lbltitle
 
 b4xdrawer,setleftopen,,showpage1,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
-main,showpage1,1,0,101,105
+main,showpage1,1,0,102,106
 ,pnlmain,,lbltitle
 
 
@@ -48,7 +48,7 @@ main,btnpage2_click,1,0,90,93
 ,drawer,,pnlmain,,lbltitle
 
 b4xdrawer,setleftopen,,showpage2,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
-main,showpage2,1,0,107,111
+main,showpage2,1,0,108,112
 ,pnlmain,,lbltitle
 
 
