@@ -4,11 +4,11 @@ b4a.example
 b4xdrawer
 1
 b4xdrawer
-main,activity_create,1,1,41,57
+main,activity_create,1,0,41,57
 ,lbltitle,,pnlmenu,,drawer,,pnlmain,,items,,btnhome,,btnpage1,,btnpage2,,btnpage3,,btnpage4,,btnpage5,,btnpage6,,label1,,label3,,label6
 ,lbltitle,,pnlmenu,,pnlmain,,btnhome,,btnpage1,,btnpage2,,label1,,label3,,label6
 b4xdrawer,initialize,b4xdrawer,getcenterpanel,b4xdrawer,getleftpanel,,setgradient,,createmenu,,showhome
-main,setgradient,0,1,60,64
+main,setgradient,0,0,60,64
 
 
 
@@ -20,7 +20,7 @@ main,showhome,1,0,180,184
 ,pnlmain,,label1,,label3,,label6,,lbltitle
 ,label1,,label3,,label6
 
-main,activity_keypress,0,1,457,467
+main,activity_keypress,0,0,457,467
 ,drawer
 
 b4xdrawer,getleftopen,b4xdrawer,setleftopen,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
@@ -44,7 +44,7 @@ main,btnpage1_click,1,0,148,151
 ,drawer,,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 b4xdrawer,setleftopen,,showpage1,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,setspinner
-main,showpage1,1,1,204,212
+main,showpage1,1,0,204,212
 ,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 ,setspinner
@@ -52,7 +52,7 @@ main,btnpage2_click,1,0,153,156
 ,drawer,,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 b4xdrawer,setleftopen,,showpage2,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,setspinner
-main,showpage2,1,1,214,222
+main,showpage2,1,0,214,222
 ,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 ,setspinner
@@ -60,7 +60,7 @@ main,btnpage3_click,1,0,158,161
 ,drawer,,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 b4xdrawer,setleftopen,,showpage3,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,setspinner
-main,showpage3,1,1,224,232
+main,showpage3,1,0,224,232
 ,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 ,setspinner
@@ -68,7 +68,7 @@ main,btnpage4_click,1,0,163,166
 ,drawer,,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 b4xdrawer,setleftopen,,showpage4,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,setspinner
-main,showpage4,1,1,234,242
+main,showpage4,1,0,234,242
 ,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 ,setspinner
@@ -76,7 +76,7 @@ main,btnpage5_click,1,0,168,171
 ,drawer,,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 b4xdrawer,setleftopen,,showpage5,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,setspinner
-main,showpage5,1,1,244,252
+main,showpage5,1,0,244,252
 ,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 ,setspinner
@@ -84,23 +84,23 @@ main,btnpage6_click,1,0,173,176
 ,drawer,,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 b4xdrawer,setleftopen,,showpage6,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,setspinner
-main,showpage6,1,1,254,262
+main,showpage6,1,0,254,262
 ,pnlmain,,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3,,lbltitle,,items
 ,edittext1,,edittext2,,label1,,label3,,label6,,spinner1,,spinner2,,spinner3
 ,setspinner
-main,convert,0,1,371,455
+main,convert,0,0,371,455
 ,lbltitle,,edittext2,,spinner2,,spinner3,,label6
 
 
-main,edittext1_enterpressed,0,1,485,487
+main,edittext1_enterpressed,0,0,485,487
 ,spinner1,,lbltitle,,edittext1,,label3
 
 ,qick
-main,qick,0,1,264,369
+main,qick,0,0,264,369
 ,spinner1,,lbltitle,,edittext1,,label3
 
 
-main,edittext2_enterpressed,0,1,481,483
+main,edittext2_enterpressed,0,0,481,483
 ,lbltitle,,edittext2,,spinner2,,spinner3,,label6
 
 ,convert
@@ -140,15 +140,15 @@ main,setspinner,0,0,186,202
 ,spinner2,,spinner3,,spinner1
 
 
-main,spinner1_itemclick,0,1,477,479
+main,spinner1_itemclick,0,0,477,479
 ,spinner1,,lbltitle,,edittext1,,label3
 
 ,qick
-main,spinner2_itemclick,0,1,473,475
+main,spinner2_itemclick,0,0,473,475
 ,lbltitle,,edittext2,,spinner2,,spinner3,,label6
 
 ,convert
-main,spinner3_itemclick,0,1,469,471
+main,spinner3_itemclick,0,0,469,471
 ,lbltitle,,edittext2,,spinner2,,spinner3,,label6
 
 ,convert
