@@ -1,0 +1,205 @@
+﻿Build1=Default,b4a.example
+File1=Layout.bal
+FileGroup1=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+Library3=network
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=1
+NumberOfLibraries=3
+NumberOfModules=1
+Version=13.4
+@EndOfDesignText@
+#Region  Project Attributes
+    #ApplicationLabel: PC Keyboard
+    #VersionCode: 1
+    #VersionName:
+    #SupportedOrientations: portrait
+    #CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes
+    #FullScreen: False
+    #IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	Dim socket1 As Socket
+	Dim writer As TextWriter
+	Dim connected As Boolean
+End Sub
+
+Sub Globals
+	Dim btnConnect As Button
+	Dim txtIP As EditText
+	Dim txtPort As EditText
+	Dim lblStatus As Label
+
+	' Key buttons
+	Dim btnA As Button, btnB As Button, btnC As Button
+	Dim btnD As Button, btnE As Button, btnF As Button
+	Dim btnG As Button, btnH As Button, btnI As Button
+	Dim btnJ As Button, btnK As Button, btnL As Button
+	Dim btnM As Button, btnN As Button, btnO As Button
+	Dim btnP As Button, btnQ As Button, btnR As Button
+	Dim btnS As Button, btnT As Button, btnU As Button
+	Dim btnV As Button, btnW As Button, btnX As Button
+	Dim btnY As Button, btnZ As Button
+	Dim btnSpace As Button
+	Dim btnEnter As Button
+	Dim btnBackspace As Button
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	' Build UI programmatically
+	Activity.Color = Colors.RGB(30, 30, 30)  ' Dark background
+
+	' IP input
+	txtIP.Initialize("txtIP")
+	txtIP.Text = "192.168.1.x"   ' change to your PC IP (or 127.0.0.1 for ADB)
+	txtIP.TextSize = 14
+	Activity.AddView(txtIP, 5%x, 2%y, 60%x, 8%y)
+
+	' Port input
+	txtPort.Initialize("txtPort")
+	txtPort.Text = "5000"
+	txtPort.TextSize = 14
+	Activity.AddView(txtPort, 68%x, 2%y, 27%x, 8%y)
+
+	' Connect button
+	btnConnect.Initialize("btnConnect")
+	btnConnect.Text = "Connect"
+	btnConnect.Color = Colors.RGB(0, 122, 255)
+	Activity.AddView(btnConnect, 5%x, 11%y, 90%x, 8%y)
+
+	' Status label
+	lblStatus.Initialize("lblStatus")
+	lblStatus.Text = "Not connected"
+	lblStatus.TextColor = Colors.Red
+	lblStatus.Gravity = Gravity.CENTER
+	Activity.AddView(lblStatus, 5%x, 20%y, 90%x, 5%y)
+
+	' Build keyboard rows
+	BuildKeyboardRow(Array As String("Q","W","E","R","T","Y","U","I","O","P"), 26%y)
+	BuildKeyboardRow(Array As String("A","S","D","F","G","H","J","K","L"), 36%y)
+	BuildKeyboardRow(Array As String("Z","X","C","V","B","N","M"), 46%y)
+
+	' Special keys
+	btnSpace.Initialize("btnSpace")
+	btnSpace.Text = "SPACE"
+	btnSpace.Color = Colors.RGB(80, 80, 80)
+	btnSpace.TextColor = Colors.White
+	Activity.AddView(btnSpace, 5%x, 56%y, 55%x, 8%y)
+
+	btnBackspace.Initialize("btnBackspace")
+	btnBackspace.Text = "⌫"
+	btnBackspace.Color = Colors.RGB(180, 60, 60)
+	btnBackspace.TextColor = Colors.White
+	Activity.AddView(btnBackspace, 63%x, 56%y, 32%x, 8%y)
+
+	btnEnter.Initialize("btnEnter")
+	btnEnter.Text = "ENTER ↵"
+	btnEnter.Color = Colors.RGB(0, 180, 80)
+	btnEnter.TextColor = Colors.White
+	Activity.AddView(btnEnter, 5%x, 66%y, 90%x, 8%y)
+
+	connected = False
+End Sub
+
+' Dynamically creates a row of letter buttons
+Sub BuildKeyboardRow(keys() As String, yPos As Float)
+	Dim totalKeys As Int = keys.Length
+	Dim btnWidth As Float = 90%x / totalKeys
+	Dim xStart As Float = 5%x
+
+	For i = 0 To totalKeys - 1
+		Dim btn As Button
+		btn.Initialize("btnKey")
+		btn.Text = keys(i)
+		btn.Color = Colors.RGB(60, 60, 60)
+		btn.TextColor = Colors.White
+		btn.TextSize = 14
+		Activity.AddView(btn, xStart + (i * btnWidth), yPos, btnWidth - 1%x, 8%y)
+	Next
+End Sub
+
+' Connect button clicked
+Sub btnConnect_Click
+	If connected Then
+		DisconnectFromPC
+	Else
+		ConnectToPC
+	End If
+End Sub
+
+Sub ConnectToPC
+	Dim ip As String = txtIP.Text
+	Dim port As Int = txtPort.Text
+
+	socket1.Initialize("socket1")
+	socket1.Connect(ip, port, 5000)   ' 5 second timeout socket1.OutputStream, "UTF8"
+End Sub
+
+Sub socket1_Connected(Successful As Boolean)
+	If Successful Then
+		writer.Initialize(socket1.OutputStream)
+		connected = True
+		lblStatus.Text = "✅ Connected!"
+		lblStatus.TextColor = Colors.Green
+		btnConnect.Text = "Disconnect"
+	Else
+		lblStatus.Text = "❌ Connection failed"
+		lblStatus.TextColor = Colors.Red
+	End If
+End Sub
+
+Sub DisconnectFromPC
+	Try
+		writer.Close
+		socket1.Close
+	Catch
+	End Try
+	connected = False
+	lblStatus.Text = "Disconnected"
+	lblStatus.TextColor = Colors.Red
+	btnConnect.Text = "Connect"
+End Sub
+
+' All letter key buttons route here
+Sub btnKey_Click
+	Dim btn As Button = Sender
+	SendKey(btn.Text.ToLowerCase)
+End Sub
+
+Sub btnSpace_Click
+	SendKey("space")
+End Sub
+
+Sub btnEnter_Click
+	SendKey("enter")
+End Sub
+
+Sub btnBackspace_Click
+	SendKey("backspace")
+End Sub
+
+' Core function — sends a key string to the PC
+Sub SendKey(key As String)
+	If connected = False Then
+		ToastMessageShow("Not connected to PC!", False)
+		Return
+	End If
+	Try
+		writer.WriteLine(key)
+		writer.Flush
+	Catch
+		lblStatus.Text = "⚠️ Send error"
+		lblStatus.TextColor = Colors.Yellow
+	End Try
+End Sub
+
+Sub Activity_Pause(UserClosed As Boolean)
+	If UserClosed Then DisconnectFromPC
+End Sub
