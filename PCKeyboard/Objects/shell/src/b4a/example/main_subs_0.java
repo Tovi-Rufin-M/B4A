@@ -19,9 +19,9 @@ main.mostCurrent._activity.runVoidMethod ("setColor",main.mostCurrent.__c.getFie
  BA.debugLineNum = 46;BA.debugLine="txtIP.Initialize(\"txtIP\")";
 Debug.ShouldStop(8192);
 main.mostCurrent._txtip.runVoidMethod ("Initialize",main.mostCurrent.activityBA,(Object)(RemoteObject.createImmutable("txtIP")));
- BA.debugLineNum = 47;BA.debugLine="txtIP.Text = \"192.168.1.x\"   ' change to your PC";
+ BA.debugLineNum = 47;BA.debugLine="txtIP.Text = \"192.168.254.105\"   ' change to your";
 Debug.ShouldStop(16384);
-main.mostCurrent._txtip.runMethodAndSync(true,"setText",BA.ObjectToCharSequence("192.168.1.x"));
+main.mostCurrent._txtip.runMethodAndSync(true,"setText",BA.ObjectToCharSequence("192.168.254.105"));
  BA.debugLineNum = 48;BA.debugLine="txtIP.TextSize = 14";
 Debug.ShouldStop(32768);
 main.mostCurrent._txtip.runMethod(true,"setTextSize",BA.numberCast(float.class, 14));
@@ -136,17 +136,17 @@ finally {
 		}}
 public static RemoteObject  _activity_pause(RemoteObject _userclosed) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Pause (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,189);
+		Debug.PushSubsStack("Activity_Pause (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,187);
 if (RapidSub.canDelegate("activity_pause")) { return b4a.example.main.remoteMe.runUserSub(false, "main","activity_pause", _userclosed);}
 Debug.locals.put("UserClosed", _userclosed);
- BA.debugLineNum = 189;BA.debugLine="Sub Activity_Pause(UserClosed As Boolean)";
-Debug.ShouldStop(268435456);
- BA.debugLineNum = 190;BA.debugLine="If UserClosed Then DisconnectFromPC";
-Debug.ShouldStop(536870912);
+ BA.debugLineNum = 187;BA.debugLine="Sub Activity_Pause(UserClosed As Boolean)";
+Debug.ShouldStop(67108864);
+ BA.debugLineNum = 188;BA.debugLine="If UserClosed Then DisconnectFromPC";
+Debug.ShouldStop(134217728);
 if (_userclosed.<Boolean>get().booleanValue()) { 
 _disconnectfrompc();};
- BA.debugLineNum = 191;BA.debugLine="End Sub";
-Debug.ShouldStop(1073741824);
+ BA.debugLineNum = 189;BA.debugLine="End Sub";
+Debug.ShouldStop(268435456);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -157,15 +157,15 @@ finally {
 		}}
 public static RemoteObject  _btnbackspace_click() throws Exception{
 try {
-		Debug.PushSubsStack("btnBackspace_Click (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,170);
+		Debug.PushSubsStack("btnBackspace_Click (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,157);
 if (RapidSub.canDelegate("btnbackspace_click")) { return b4a.example.main.remoteMe.runUserSub(false, "main","btnbackspace_click");}
- BA.debugLineNum = 170;BA.debugLine="Sub btnBackspace_Click";
-Debug.ShouldStop(512);
- BA.debugLineNum = 171;BA.debugLine="SendKey(\"backspace\")";
-Debug.ShouldStop(1024);
+ BA.debugLineNum = 157;BA.debugLine="Sub btnBackspace_Click";
+Debug.ShouldStop(268435456);
+ BA.debugLineNum = 158;BA.debugLine="SendKey(\"backspace\")";
+Debug.ShouldStop(536870912);
 _sendkey(RemoteObject.createImmutable("backspace"));
- BA.debugLineNum = 172;BA.debugLine="End Sub";
-Debug.ShouldStop(2048);
+ BA.debugLineNum = 159;BA.debugLine="End Sub";
+Debug.ShouldStop(1073741824);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -203,15 +203,15 @@ finally {
 		}}
 public static RemoteObject  _btnenter_click() throws Exception{
 try {
-		Debug.PushSubsStack("btnEnter_Click (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,166);
+		Debug.PushSubsStack("btnEnter_Click (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,153);
 if (RapidSub.canDelegate("btnenter_click")) { return b4a.example.main.remoteMe.runUserSub(false, "main","btnenter_click");}
- BA.debugLineNum = 166;BA.debugLine="Sub btnEnter_Click";
-Debug.ShouldStop(32);
- BA.debugLineNum = 167;BA.debugLine="SendKey(\"enter\")";
-Debug.ShouldStop(64);
+ BA.debugLineNum = 153;BA.debugLine="Sub btnEnter_Click";
+Debug.ShouldStop(16777216);
+ BA.debugLineNum = 154;BA.debugLine="SendKey(\"enter\")";
+Debug.ShouldStop(33554432);
 _sendkey(RemoteObject.createImmutable("enter"));
- BA.debugLineNum = 168;BA.debugLine="End Sub";
-Debug.ShouldStop(128);
+ BA.debugLineNum = 155;BA.debugLine="End Sub";
+Debug.ShouldStop(67108864);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -222,20 +222,20 @@ finally {
 		}}
 public static RemoteObject  _btnkey_click() throws Exception{
 try {
-		Debug.PushSubsStack("btnKey_Click (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,157);
+		Debug.PushSubsStack("btnKey_Click (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,144);
 if (RapidSub.canDelegate("btnkey_click")) { return b4a.example.main.remoteMe.runUserSub(false, "main","btnkey_click");}
 RemoteObject _btn = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
- BA.debugLineNum = 157;BA.debugLine="Sub btnKey_Click";
-Debug.ShouldStop(268435456);
- BA.debugLineNum = 158;BA.debugLine="Dim btn As Button = Sender";
-Debug.ShouldStop(536870912);
+ BA.debugLineNum = 144;BA.debugLine="Sub btnKey_Click";
+Debug.ShouldStop(32768);
+ BA.debugLineNum = 145;BA.debugLine="Dim btn As Button = Sender";
+Debug.ShouldStop(65536);
 _btn = RemoteObject.createNew ("anywheresoftware.b4a.objects.ButtonWrapper");
 _btn = RemoteObject.declareNull("anywheresoftware.b4a.AbsObjectWrapper").runMethod(false, "ConvertToWrapper", RemoteObject.createNew("anywheresoftware.b4a.objects.ButtonWrapper"), main.mostCurrent.__c.runMethod(false,"Sender",main.mostCurrent.activityBA));Debug.locals.put("btn", _btn);Debug.locals.put("btn", _btn);
- BA.debugLineNum = 159;BA.debugLine="SendKey(btn.Text.ToLowerCase)";
-Debug.ShouldStop(1073741824);
+ BA.debugLineNum = 146;BA.debugLine="SendKey(btn.Text.ToLowerCase)";
+Debug.ShouldStop(131072);
 _sendkey(_btn.runMethod(true,"getText").runMethod(true,"toLowerCase"));
- BA.debugLineNum = 160;BA.debugLine="End Sub";
-Debug.ShouldStop(-2147483648);
+ BA.debugLineNum = 147;BA.debugLine="End Sub";
+Debug.ShouldStop(262144);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -246,15 +246,15 @@ finally {
 		}}
 public static RemoteObject  _btnspace_click() throws Exception{
 try {
-		Debug.PushSubsStack("btnSpace_Click (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,162);
+		Debug.PushSubsStack("btnSpace_Click (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,149);
 if (RapidSub.canDelegate("btnspace_click")) { return b4a.example.main.remoteMe.runUserSub(false, "main","btnspace_click");}
- BA.debugLineNum = 162;BA.debugLine="Sub btnSpace_Click";
-Debug.ShouldStop(2);
- BA.debugLineNum = 163;BA.debugLine="SendKey(\"space\")";
-Debug.ShouldStop(4);
+ BA.debugLineNum = 149;BA.debugLine="Sub btnSpace_Click";
+Debug.ShouldStop(1048576);
+ BA.debugLineNum = 150;BA.debugLine="SendKey(\"space\")";
+Debug.ShouldStop(2097152);
 _sendkey(RemoteObject.createImmutable("space"));
- BA.debugLineNum = 164;BA.debugLine="End Sub";
-Debug.ShouldStop(8);
+ BA.debugLineNum = 151;BA.debugLine="End Sub";
+Debug.ShouldStop(4194304);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -359,36 +359,36 @@ finally {
 		}}
 public static RemoteObject  _disconnectfrompc() throws Exception{
 try {
-		Debug.PushSubsStack("DisconnectFromPC (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,144);
+		Debug.PushSubsStack("DisconnectFromPC (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,131);
 if (RapidSub.canDelegate("disconnectfrompc")) { return b4a.example.main.remoteMe.runUserSub(false, "main","disconnectfrompc");}
- BA.debugLineNum = 144;BA.debugLine="Sub DisconnectFromPC";
-Debug.ShouldStop(32768);
- BA.debugLineNum = 145;BA.debugLine="Try";
-Debug.ShouldStop(65536);
-try { BA.debugLineNum = 146;BA.debugLine="writer.Close";
-Debug.ShouldStop(131072);
+ BA.debugLineNum = 131;BA.debugLine="Sub DisconnectFromPC";
+Debug.ShouldStop(4);
+ BA.debugLineNum = 132;BA.debugLine="Try";
+Debug.ShouldStop(8);
+try { BA.debugLineNum = 133;BA.debugLine="writer.Close";
+Debug.ShouldStop(16);
 main._writer.runVoidMethod ("Close");
- BA.debugLineNum = 147;BA.debugLine="socket1.Close";
-Debug.ShouldStop(262144);
+ BA.debugLineNum = 134;BA.debugLine="socket1.Close";
+Debug.ShouldStop(32);
 main._socket1.runVoidMethod ("Close");
  Debug.CheckDeviceExceptions();
 } 
        catch (Exception e5) {
 			BA.rdebugUtils.runVoidMethod("setLastException",main.processBA, e5.toString()); };
- BA.debugLineNum = 150;BA.debugLine="connected = False";
-Debug.ShouldStop(2097152);
+ BA.debugLineNum = 137;BA.debugLine="connected = False";
+Debug.ShouldStop(256);
 main._connected = main.mostCurrent.__c.getField(true,"False");
- BA.debugLineNum = 151;BA.debugLine="lblStatus.Text = \"Disconnected\"";
-Debug.ShouldStop(4194304);
+ BA.debugLineNum = 138;BA.debugLine="lblStatus.Text = \"Disconnected\"";
+Debug.ShouldStop(512);
 main.mostCurrent._lblstatus.runMethod(true,"setText",BA.ObjectToCharSequence("Disconnected"));
- BA.debugLineNum = 152;BA.debugLine="lblStatus.TextColor = Colors.Red";
-Debug.ShouldStop(8388608);
+ BA.debugLineNum = 139;BA.debugLine="lblStatus.TextColor = Colors.Red";
+Debug.ShouldStop(1024);
 main.mostCurrent._lblstatus.runMethod(true,"setTextColor",main.mostCurrent.__c.getField(false,"Colors").getField(true,"Red"));
- BA.debugLineNum = 153;BA.debugLine="btnConnect.Text = \"Connect\"";
-Debug.ShouldStop(16777216);
+ BA.debugLineNum = 140;BA.debugLine="btnConnect.Text = \"Connect\"";
+Debug.ShouldStop(2048);
 main.mostCurrent._btnconnect.runMethod(true,"setText",BA.ObjectToCharSequence("Connect"));
- BA.debugLineNum = 154;BA.debugLine="End Sub";
-Debug.ShouldStop(33554432);
+ BA.debugLineNum = 141;BA.debugLine="End Sub";
+Debug.ShouldStop(4096);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -479,41 +479,41 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _sendkey(RemoteObject _key) throws Exception{
 try {
-		Debug.PushSubsStack("SendKey (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,175);
+		Debug.PushSubsStack("SendKey (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,163);
 if (RapidSub.canDelegate("sendkey")) { return b4a.example.main.remoteMe.runUserSub(false, "main","sendkey", _key);}
 Debug.locals.put("key", _key);
- BA.debugLineNum = 175;BA.debugLine="Sub SendKey(key As String)";
-Debug.ShouldStop(16384);
- BA.debugLineNum = 176;BA.debugLine="If connected = False Then";
-Debug.ShouldStop(32768);
+ BA.debugLineNum = 163;BA.debugLine="Sub SendKey(key As String)";
+Debug.ShouldStop(4);
+ BA.debugLineNum = 164;BA.debugLine="ToastMessageShow(\"Sending: \" & key, False)   '";
+Debug.ShouldStop(8);
+main.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence(RemoteObject.concat(RemoteObject.createImmutable("Sending: "),_key))),(Object)(main.mostCurrent.__c.getField(true,"False")));
+ BA.debugLineNum = 165;BA.debugLine="If connected = False Then";
+Debug.ShouldStop(16);
 if (RemoteObject.solveBoolean("=",main._connected,main.mostCurrent.__c.getField(true,"False"))) { 
- BA.debugLineNum = 177;BA.debugLine="ToastMessageShow(\"Not connected to PC!\", False)";
-Debug.ShouldStop(65536);
-main.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence("Not connected to PC!")),(Object)(main.mostCurrent.__c.getField(true,"False")));
- BA.debugLineNum = 178;BA.debugLine="Return";
-Debug.ShouldStop(131072);
+ BA.debugLineNum = 166;BA.debugLine="ToastMessageShow(\"Not connected!\", False)";
+Debug.ShouldStop(32);
+main.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence("Not connected!")),(Object)(main.mostCurrent.__c.getField(true,"False")));
+ BA.debugLineNum = 167;BA.debugLine="Return";
+Debug.ShouldStop(64);
 if (true) return RemoteObject.createImmutable("");
  };
- BA.debugLineNum = 180;BA.debugLine="Try";
-Debug.ShouldStop(524288);
-try { BA.debugLineNum = 181;BA.debugLine="writer.WriteLine(key)";
-Debug.ShouldStop(1048576);
+ BA.debugLineNum = 169;BA.debugLine="Try";
+Debug.ShouldStop(256);
+try { BA.debugLineNum = 170;BA.debugLine="writer.WriteLine(key)";
+Debug.ShouldStop(512);
 main._writer.runVoidMethod ("WriteLine",(Object)(_key));
- BA.debugLineNum = 182;BA.debugLine="writer.Flush";
-Debug.ShouldStop(2097152);
+ BA.debugLineNum = 171;BA.debugLine="writer.Flush";
+Debug.ShouldStop(1024);
 main._writer.runVoidMethod ("Flush");
  Debug.CheckDeviceExceptions();
 } 
-       catch (Exception e9) {
-			BA.rdebugUtils.runVoidMethod("setLastException",main.processBA, e9.toString()); BA.debugLineNum = 184;BA.debugLine="lblStatus.Text = \"⚠️ Send error\"";
-Debug.ShouldStop(8388608);
-main.mostCurrent._lblstatus.runMethod(true,"setText",BA.ObjectToCharSequence("⚠️ Send error"));
- BA.debugLineNum = 185;BA.debugLine="lblStatus.TextColor = Colors.Yellow";
-Debug.ShouldStop(16777216);
-main.mostCurrent._lblstatus.runMethod(true,"setTextColor",main.mostCurrent.__c.getField(false,"Colors").getField(true,"Yellow"));
+       catch (Exception e10) {
+			BA.rdebugUtils.runVoidMethod("setLastException",main.processBA, e10.toString()); BA.debugLineNum = 173;BA.debugLine="ToastMessageShow(\"Write error!\", False)";
+Debug.ShouldStop(4096);
+main.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence("Write error!")),(Object)(main.mostCurrent.__c.getField(true,"False")));
  };
- BA.debugLineNum = 187;BA.debugLine="End Sub";
-Debug.ShouldStop(67108864);
+ BA.debugLineNum = 175;BA.debugLine="End Sub";
+Debug.ShouldStop(16384);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -524,39 +524,30 @@ finally {
 		}}
 public static RemoteObject  _socket1_connected(RemoteObject _successful) throws Exception{
 try {
-		Debug.PushSubsStack("socket1_Connected (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,131);
+		Debug.PushSubsStack("socket1_Connected (main) ","main",0,main.mostCurrent.activityBA,main.mostCurrent,177);
 if (RapidSub.canDelegate("socket1_connected")) { return b4a.example.main.remoteMe.runUserSub(false, "main","socket1_connected", _successful);}
 Debug.locals.put("Successful", _successful);
- BA.debugLineNum = 131;BA.debugLine="Sub socket1_Connected(Successful As Boolean)";
-Debug.ShouldStop(4);
- BA.debugLineNum = 132;BA.debugLine="If Successful Then";
-Debug.ShouldStop(8);
+ BA.debugLineNum = 177;BA.debugLine="Sub socket1_Connected(Successful As Boolean)";
+Debug.ShouldStop(65536);
+ BA.debugLineNum = 178;BA.debugLine="If Successful Then";
+Debug.ShouldStop(131072);
 if (_successful.<Boolean>get().booleanValue()) { 
- BA.debugLineNum = 133;BA.debugLine="writer.Initialize(socket1.OutputStream)";
-Debug.ShouldStop(16);
+ BA.debugLineNum = 179;BA.debugLine="writer.Initialize(socket1.OutputStream)";
+Debug.ShouldStop(262144);
 main._writer.runVoidMethod ("Initialize",(Object)(main._socket1.runMethod(false,"getOutputStream")));
- BA.debugLineNum = 134;BA.debugLine="connected = True";
-Debug.ShouldStop(32);
+ BA.debugLineNum = 180;BA.debugLine="connected = True";
+Debug.ShouldStop(524288);
 main._connected = main.mostCurrent.__c.getField(true,"True");
- BA.debugLineNum = 135;BA.debugLine="lblStatus.Text = \"✅ Connected!\"";
-Debug.ShouldStop(64);
-main.mostCurrent._lblstatus.runMethod(true,"setText",BA.ObjectToCharSequence("✅ Connected!"));
- BA.debugLineNum = 136;BA.debugLine="lblStatus.TextColor = Colors.Green";
-Debug.ShouldStop(128);
-main.mostCurrent._lblstatus.runMethod(true,"setTextColor",main.mostCurrent.__c.getField(false,"Colors").getField(true,"Green"));
- BA.debugLineNum = 137;BA.debugLine="btnConnect.Text = \"Disconnect\"";
-Debug.ShouldStop(256);
-main.mostCurrent._btnconnect.runMethod(true,"setText",BA.ObjectToCharSequence("Disconnect"));
+ BA.debugLineNum = 181;BA.debugLine="ToastMessageShow(\"Connected OK!\", True)";
+Debug.ShouldStop(1048576);
+main.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence("Connected OK!")),(Object)(main.mostCurrent.__c.getField(true,"True")));
  }else {
- BA.debugLineNum = 139;BA.debugLine="lblStatus.Text = \"❌ Connection failed\"";
-Debug.ShouldStop(1024);
-main.mostCurrent._lblstatus.runMethod(true,"setText",BA.ObjectToCharSequence("❌ Connection failed"));
- BA.debugLineNum = 140;BA.debugLine="lblStatus.TextColor = Colors.Red";
-Debug.ShouldStop(2048);
-main.mostCurrent._lblstatus.runMethod(true,"setTextColor",main.mostCurrent.__c.getField(false,"Colors").getField(true,"Red"));
+ BA.debugLineNum = 183;BA.debugLine="ToastMessageShow(\"FAILED to connect!\", Tru";
+Debug.ShouldStop(4194304);
+main.mostCurrent.__c.runVoidMethod ("ToastMessageShow",(Object)(BA.ObjectToCharSequence("FAILED to connect!")),(Object)(main.mostCurrent.__c.getField(true,"True")));
  };
- BA.debugLineNum = 142;BA.debugLine="End Sub";
-Debug.ShouldStop(8192);
+ BA.debugLineNum = 185;BA.debugLine="End Sub";
+Debug.ShouldStop(16777216);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {

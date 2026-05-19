@@ -4,6 +4,6 @@ ModuleBreakpoints0=
 ModuleBreakpoints1=
 ModuleClosedNodes0=
 ModuleClosedNodes1=1
-NavigationStack=Visual Designer,Layout.bal,-100,1,Main,Activity_Create,25,4,Main,Process_Globals,18,4,Main,Activity_Pause,189,0,Main,Globals,26,0,Main,DisconnectFromPC,148,0,Main,ConnectToPC,127,0,Main,socket1_Connected,132,0
+NavigationStack=Visual Designer,Layout.bal,-100,1,Main,Process_Globals,18,4,Main,DisconnectFromPC,148,0,Main,Globals,25,0,Main,Activity_Create,46,4,Main,btnBackspace_Click,173,0,Main,SendKey,189,0,Main,ConnectToPC,128,0,Main,socket1_Connected,178,0
 SelectedBuild=0
 VisibleModules=1

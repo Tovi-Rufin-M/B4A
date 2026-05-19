@@ -427,8 +427,8 @@ RDebugUtils.currentLine=131077;
  //BA.debugLineNum = 131077;BA.debugLine="txtIP.Initialize(\"txtIP\")";
 mostCurrent._txtip.Initialize(mostCurrent.activityBA,"txtIP");
 RDebugUtils.currentLine=131078;
- //BA.debugLineNum = 131078;BA.debugLine="txtIP.Text = \"192.168.1.x\"   ' change to your PC";
-mostCurrent._txtip.setText(BA.ObjectToCharSequence("192.168.1.x"));
+ //BA.debugLineNum = 131078;BA.debugLine="txtIP.Text = \"192.168.254.105\"   ' change to your";
+mostCurrent._txtip.setText(BA.ObjectToCharSequence("192.168.254.105"));
 RDebugUtils.currentLine=131079;
  //BA.debugLineNum = 131079;BA.debugLine="txtIP.TextSize = 14";
 mostCurrent._txtip.setTextSize((float) (14));
@@ -544,165 +544,165 @@ float _btnwidth = 0f;
 float _xstart = 0f;
 int _i = 0;
 anywheresoftware.b4a.objects.ButtonWrapper _btn = null;
-RDebugUtils.currentLine=786432;
- //BA.debugLineNum = 786432;BA.debugLine="Sub BuildKeyboardRow(keys() As String, yPos As Flo";
-RDebugUtils.currentLine=786433;
- //BA.debugLineNum = 786433;BA.debugLine="Dim totalKeys As Int = keys.Length";
+RDebugUtils.currentLine=196608;
+ //BA.debugLineNum = 196608;BA.debugLine="Sub BuildKeyboardRow(keys() As String, yPos As Flo";
+RDebugUtils.currentLine=196609;
+ //BA.debugLineNum = 196609;BA.debugLine="Dim totalKeys As Int = keys.Length";
 _totalkeys = _keys.length;
-RDebugUtils.currentLine=786434;
- //BA.debugLineNum = 786434;BA.debugLine="Dim btnWidth As Float = 90%x / totalKeys";
+RDebugUtils.currentLine=196610;
+ //BA.debugLineNum = 196610;BA.debugLine="Dim btnWidth As Float = 90%x / totalKeys";
 _btnwidth = (float) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (90),mostCurrent.activityBA)/(double)_totalkeys);
-RDebugUtils.currentLine=786435;
- //BA.debugLineNum = 786435;BA.debugLine="Dim xStart As Float = 5%x";
+RDebugUtils.currentLine=196611;
+ //BA.debugLineNum = 196611;BA.debugLine="Dim xStart As Float = 5%x";
 _xstart = (float) (anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (5),mostCurrent.activityBA));
-RDebugUtils.currentLine=786437;
- //BA.debugLineNum = 786437;BA.debugLine="For i = 0 To totalKeys - 1";
+RDebugUtils.currentLine=196613;
+ //BA.debugLineNum = 196613;BA.debugLine="For i = 0 To totalKeys - 1";
 {
 final int step4 = 1;
 final int limit4 = (int) (_totalkeys-1);
 _i = (int) (0) ;
 for (;_i <= limit4 ;_i = _i + step4 ) {
-RDebugUtils.currentLine=786438;
- //BA.debugLineNum = 786438;BA.debugLine="Dim btn As Button";
+RDebugUtils.currentLine=196614;
+ //BA.debugLineNum = 196614;BA.debugLine="Dim btn As Button";
 _btn = new anywheresoftware.b4a.objects.ButtonWrapper();
-RDebugUtils.currentLine=786439;
- //BA.debugLineNum = 786439;BA.debugLine="btn.Initialize(\"btnKey\")";
+RDebugUtils.currentLine=196615;
+ //BA.debugLineNum = 196615;BA.debugLine="btn.Initialize(\"btnKey\")";
 _btn.Initialize(mostCurrent.activityBA,"btnKey");
-RDebugUtils.currentLine=786440;
- //BA.debugLineNum = 786440;BA.debugLine="btn.Text = keys(i)";
+RDebugUtils.currentLine=196616;
+ //BA.debugLineNum = 196616;BA.debugLine="btn.Text = keys(i)";
 _btn.setText(BA.ObjectToCharSequence(_keys[_i]));
-RDebugUtils.currentLine=786441;
- //BA.debugLineNum = 786441;BA.debugLine="btn.Color = Colors.RGB(60, 60, 60)";
+RDebugUtils.currentLine=196617;
+ //BA.debugLineNum = 196617;BA.debugLine="btn.Color = Colors.RGB(60, 60, 60)";
 _btn.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (60),(int) (60),(int) (60)));
-RDebugUtils.currentLine=786442;
- //BA.debugLineNum = 786442;BA.debugLine="btn.TextColor = Colors.White";
+RDebugUtils.currentLine=196618;
+ //BA.debugLineNum = 196618;BA.debugLine="btn.TextColor = Colors.White";
 _btn.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=786443;
- //BA.debugLineNum = 786443;BA.debugLine="btn.TextSize = 14";
+RDebugUtils.currentLine=196619;
+ //BA.debugLineNum = 196619;BA.debugLine="btn.TextSize = 14";
 _btn.setTextSize((float) (14));
-RDebugUtils.currentLine=786444;
- //BA.debugLineNum = 786444;BA.debugLine="Activity.AddView(btn, xStart + (i * btnWidth), y";
+RDebugUtils.currentLine=196620;
+ //BA.debugLineNum = 196620;BA.debugLine="Activity.AddView(btn, xStart + (i * btnWidth), y";
 mostCurrent._activity.AddView((android.view.View)(_btn.getObject()),(int) (_xstart+(_i*_btnwidth)),(int) (_ypos),(int) (_btnwidth-anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (1),mostCurrent.activityBA)),anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (8),mostCurrent.activityBA));
  }
 };
-RDebugUtils.currentLine=786446;
- //BA.debugLineNum = 786446;BA.debugLine="End Sub";
+RDebugUtils.currentLine=196622;
+ //BA.debugLineNum = 196622;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
 RDebugUtils.currentModule="main";
-RDebugUtils.currentLine=262144;
- //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Pause(UserClosed As Boolean)";
-RDebugUtils.currentLine=262145;
- //BA.debugLineNum = 262145;BA.debugLine="If UserClosed Then DisconnectFromPC";
+RDebugUtils.currentLine=851968;
+ //BA.debugLineNum = 851968;BA.debugLine="Sub Activity_Pause(UserClosed As Boolean)";
+RDebugUtils.currentLine=851969;
+ //BA.debugLineNum = 851969;BA.debugLine="If UserClosed Then DisconnectFromPC";
 if (_userclosed) { 
 _disconnectfrompc();};
-RDebugUtils.currentLine=262146;
- //BA.debugLineNum = 262146;BA.debugLine="End Sub";
+RDebugUtils.currentLine=851970;
+ //BA.debugLineNum = 851970;BA.debugLine="End Sub";
 return "";
 }
 public static String  _disconnectfrompc() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "disconnectfrompc", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "disconnectfrompc", null));}
-RDebugUtils.currentLine=1048576;
- //BA.debugLineNum = 1048576;BA.debugLine="Sub DisconnectFromPC";
-RDebugUtils.currentLine=1048577;
- //BA.debugLineNum = 1048577;BA.debugLine="Try";
-try {RDebugUtils.currentLine=1048578;
- //BA.debugLineNum = 1048578;BA.debugLine="writer.Close";
+RDebugUtils.currentLine=458752;
+ //BA.debugLineNum = 458752;BA.debugLine="Sub DisconnectFromPC";
+RDebugUtils.currentLine=458753;
+ //BA.debugLineNum = 458753;BA.debugLine="Try";
+try {RDebugUtils.currentLine=458754;
+ //BA.debugLineNum = 458754;BA.debugLine="writer.Close";
 _writer.Close();
-RDebugUtils.currentLine=1048579;
- //BA.debugLineNum = 1048579;BA.debugLine="socket1.Close";
+RDebugUtils.currentLine=458755;
+ //BA.debugLineNum = 458755;BA.debugLine="socket1.Close";
 _socket1.Close();
  } 
        catch (Exception e5) {
 			processBA.setLastException(e5); };
-RDebugUtils.currentLine=1048582;
- //BA.debugLineNum = 1048582;BA.debugLine="connected = False";
+RDebugUtils.currentLine=458758;
+ //BA.debugLineNum = 458758;BA.debugLine="connected = False";
 _connected = anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=1048583;
- //BA.debugLineNum = 1048583;BA.debugLine="lblStatus.Text = \"Disconnected\"";
+RDebugUtils.currentLine=458759;
+ //BA.debugLineNum = 458759;BA.debugLine="lblStatus.Text = \"Disconnected\"";
 mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Disconnected"));
-RDebugUtils.currentLine=1048584;
- //BA.debugLineNum = 1048584;BA.debugLine="lblStatus.TextColor = Colors.Red";
+RDebugUtils.currentLine=458760;
+ //BA.debugLineNum = 458760;BA.debugLine="lblStatus.TextColor = Colors.Red";
 mostCurrent._lblstatus.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Red);
-RDebugUtils.currentLine=1048585;
- //BA.debugLineNum = 1048585;BA.debugLine="btnConnect.Text = \"Connect\"";
+RDebugUtils.currentLine=458761;
+ //BA.debugLineNum = 458761;BA.debugLine="btnConnect.Text = \"Connect\"";
 mostCurrent._btnconnect.setText(BA.ObjectToCharSequence("Connect"));
-RDebugUtils.currentLine=1048586;
- //BA.debugLineNum = 1048586;BA.debugLine="End Sub";
+RDebugUtils.currentLine=458762;
+ //BA.debugLineNum = 458762;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnbackspace_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnbackspace_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnbackspace_click", null));}
-RDebugUtils.currentLine=1310720;
- //BA.debugLineNum = 1310720;BA.debugLine="Sub btnBackspace_Click";
-RDebugUtils.currentLine=1310721;
- //BA.debugLineNum = 1310721;BA.debugLine="SendKey(\"backspace\")";
+RDebugUtils.currentLine=720896;
+ //BA.debugLineNum = 720896;BA.debugLine="Sub btnBackspace_Click";
+RDebugUtils.currentLine=720897;
+ //BA.debugLineNum = 720897;BA.debugLine="SendKey(\"backspace\")";
 _sendkey("backspace");
-RDebugUtils.currentLine=1310722;
- //BA.debugLineNum = 1310722;BA.debugLine="End Sub";
+RDebugUtils.currentLine=720898;
+ //BA.debugLineNum = 720898;BA.debugLine="End Sub";
 return "";
 }
 public static String  _sendkey(String _key) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "sendkey", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "sendkey", new Object[] {_key}));}
-RDebugUtils.currentLine=1376256;
- //BA.debugLineNum = 1376256;BA.debugLine="Sub SendKey(key As String)";
-RDebugUtils.currentLine=1376257;
- //BA.debugLineNum = 1376257;BA.debugLine="If connected = False Then";
+RDebugUtils.currentLine=786432;
+ //BA.debugLineNum = 786432;BA.debugLine="Sub SendKey(key As String)";
+RDebugUtils.currentLine=786433;
+ //BA.debugLineNum = 786433;BA.debugLine="ToastMessageShow(\"Sending: \" & key, False)   '";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Sending: "+_key),anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=786434;
+ //BA.debugLineNum = 786434;BA.debugLine="If connected = False Then";
 if (_connected==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=1376258;
- //BA.debugLineNum = 1376258;BA.debugLine="ToastMessageShow(\"Not connected to PC!\", False)";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Not connected to PC!"),anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=1376259;
- //BA.debugLineNum = 1376259;BA.debugLine="Return";
+RDebugUtils.currentLine=786435;
+ //BA.debugLineNum = 786435;BA.debugLine="ToastMessageShow(\"Not connected!\", False)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Not connected!"),anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=786436;
+ //BA.debugLineNum = 786436;BA.debugLine="Return";
 if (true) return "";
  };
-RDebugUtils.currentLine=1376261;
- //BA.debugLineNum = 1376261;BA.debugLine="Try";
-try {RDebugUtils.currentLine=1376262;
- //BA.debugLineNum = 1376262;BA.debugLine="writer.WriteLine(key)";
+RDebugUtils.currentLine=786438;
+ //BA.debugLineNum = 786438;BA.debugLine="Try";
+try {RDebugUtils.currentLine=786439;
+ //BA.debugLineNum = 786439;BA.debugLine="writer.WriteLine(key)";
 _writer.WriteLine(_key);
-RDebugUtils.currentLine=1376263;
- //BA.debugLineNum = 1376263;BA.debugLine="writer.Flush";
+RDebugUtils.currentLine=786440;
+ //BA.debugLineNum = 786440;BA.debugLine="writer.Flush";
 _writer.Flush();
  } 
-       catch (Exception e9) {
-			processBA.setLastException(e9);RDebugUtils.currentLine=1376265;
- //BA.debugLineNum = 1376265;BA.debugLine="lblStatus.Text = \"⚠️ Send error\"";
-mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("⚠️ Send error"));
-RDebugUtils.currentLine=1376266;
- //BA.debugLineNum = 1376266;BA.debugLine="lblStatus.TextColor = Colors.Yellow";
-mostCurrent._lblstatus.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Yellow);
+       catch (Exception e10) {
+			processBA.setLastException(e10);RDebugUtils.currentLine=786442;
+ //BA.debugLineNum = 786442;BA.debugLine="ToastMessageShow(\"Write error!\", False)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Write error!"),anywheresoftware.b4a.keywords.Common.False);
  };
-RDebugUtils.currentLine=1376268;
- //BA.debugLineNum = 1376268;BA.debugLine="End Sub";
+RDebugUtils.currentLine=786444;
+ //BA.debugLineNum = 786444;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnconnect_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnconnect_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnconnect_click", null));}
-RDebugUtils.currentLine=851968;
- //BA.debugLineNum = 851968;BA.debugLine="Sub btnConnect_Click";
-RDebugUtils.currentLine=851969;
- //BA.debugLineNum = 851969;BA.debugLine="If connected Then";
+RDebugUtils.currentLine=262144;
+ //BA.debugLineNum = 262144;BA.debugLine="Sub btnConnect_Click";
+RDebugUtils.currentLine=262145;
+ //BA.debugLineNum = 262145;BA.debugLine="If connected Then";
 if (_connected) { 
-RDebugUtils.currentLine=851970;
- //BA.debugLineNum = 851970;BA.debugLine="DisconnectFromPC";
+RDebugUtils.currentLine=262146;
+ //BA.debugLineNum = 262146;BA.debugLine="DisconnectFromPC";
 _disconnectfrompc();
  }else {
-RDebugUtils.currentLine=851972;
- //BA.debugLineNum = 851972;BA.debugLine="ConnectToPC";
+RDebugUtils.currentLine=262148;
+ //BA.debugLineNum = 262148;BA.debugLine="ConnectToPC";
 _connecttopc();
  };
-RDebugUtils.currentLine=851974;
- //BA.debugLineNum = 851974;BA.debugLine="End Sub";
+RDebugUtils.currentLine=262150;
+ //BA.debugLineNum = 262150;BA.debugLine="End Sub";
 return "";
 }
 public static String  _connecttopc() throws Exception{
@@ -711,35 +711,35 @@ if (Debug.shouldDelegate(mostCurrent.activityBA, "connecttopc", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "connecttopc", null));}
 String _ip = "";
 int _port = 0;
-RDebugUtils.currentLine=917504;
- //BA.debugLineNum = 917504;BA.debugLine="Sub ConnectToPC";
-RDebugUtils.currentLine=917505;
- //BA.debugLineNum = 917505;BA.debugLine="Dim ip As String = txtIP.Text";
+RDebugUtils.currentLine=327680;
+ //BA.debugLineNum = 327680;BA.debugLine="Sub ConnectToPC";
+RDebugUtils.currentLine=327681;
+ //BA.debugLineNum = 327681;BA.debugLine="Dim ip As String = txtIP.Text";
 _ip = mostCurrent._txtip.getText();
-RDebugUtils.currentLine=917506;
- //BA.debugLineNum = 917506;BA.debugLine="Dim port As Int = txtPort.Text";
+RDebugUtils.currentLine=327682;
+ //BA.debugLineNum = 327682;BA.debugLine="Dim port As Int = txtPort.Text";
 _port = (int)(Double.parseDouble(mostCurrent._txtport.getText()));
-RDebugUtils.currentLine=917508;
- //BA.debugLineNum = 917508;BA.debugLine="socket1.Initialize(\"socket1\")";
+RDebugUtils.currentLine=327684;
+ //BA.debugLineNum = 327684;BA.debugLine="socket1.Initialize(\"socket1\")";
 _socket1.Initialize("socket1");
-RDebugUtils.currentLine=917509;
- //BA.debugLineNum = 917509;BA.debugLine="socket1.Connect(ip, port, 5000)   ' 5 second time";
+RDebugUtils.currentLine=327685;
+ //BA.debugLineNum = 327685;BA.debugLine="socket1.Connect(ip, port, 5000)   ' 5 second time";
 _socket1.Connect(processBA,_ip,_port,(int) (5000));
-RDebugUtils.currentLine=917510;
- //BA.debugLineNum = 917510;BA.debugLine="End Sub";
+RDebugUtils.currentLine=327686;
+ //BA.debugLineNum = 327686;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnenter_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnenter_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnenter_click", null));}
-RDebugUtils.currentLine=1245184;
- //BA.debugLineNum = 1245184;BA.debugLine="Sub btnEnter_Click";
-RDebugUtils.currentLine=1245185;
- //BA.debugLineNum = 1245185;BA.debugLine="SendKey(\"enter\")";
+RDebugUtils.currentLine=655360;
+ //BA.debugLineNum = 655360;BA.debugLine="Sub btnEnter_Click";
+RDebugUtils.currentLine=655361;
+ //BA.debugLineNum = 655361;BA.debugLine="SendKey(\"enter\")";
 _sendkey("enter");
-RDebugUtils.currentLine=1245186;
- //BA.debugLineNum = 1245186;BA.debugLine="End Sub";
+RDebugUtils.currentLine=655362;
+ //BA.debugLineNum = 655362;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnkey_click() throws Exception{
@@ -747,66 +747,57 @@ RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnkey_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnkey_click", null));}
 anywheresoftware.b4a.objects.ButtonWrapper _btn = null;
-RDebugUtils.currentLine=1114112;
- //BA.debugLineNum = 1114112;BA.debugLine="Sub btnKey_Click";
-RDebugUtils.currentLine=1114113;
- //BA.debugLineNum = 1114113;BA.debugLine="Dim btn As Button = Sender";
+RDebugUtils.currentLine=524288;
+ //BA.debugLineNum = 524288;BA.debugLine="Sub btnKey_Click";
+RDebugUtils.currentLine=524289;
+ //BA.debugLineNum = 524289;BA.debugLine="Dim btn As Button = Sender";
 _btn = new anywheresoftware.b4a.objects.ButtonWrapper();
 _btn = (anywheresoftware.b4a.objects.ButtonWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ButtonWrapper(), (android.widget.Button)(anywheresoftware.b4a.keywords.Common.Sender(mostCurrent.activityBA)));
-RDebugUtils.currentLine=1114114;
- //BA.debugLineNum = 1114114;BA.debugLine="SendKey(btn.Text.ToLowerCase)";
+RDebugUtils.currentLine=524290;
+ //BA.debugLineNum = 524290;BA.debugLine="SendKey(btn.Text.ToLowerCase)";
 _sendkey(_btn.getText().toLowerCase());
-RDebugUtils.currentLine=1114115;
- //BA.debugLineNum = 1114115;BA.debugLine="End Sub";
+RDebugUtils.currentLine=524291;
+ //BA.debugLineNum = 524291;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnspace_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnspace_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnspace_click", null));}
-RDebugUtils.currentLine=1179648;
- //BA.debugLineNum = 1179648;BA.debugLine="Sub btnSpace_Click";
-RDebugUtils.currentLine=1179649;
- //BA.debugLineNum = 1179649;BA.debugLine="SendKey(\"space\")";
+RDebugUtils.currentLine=589824;
+ //BA.debugLineNum = 589824;BA.debugLine="Sub btnSpace_Click";
+RDebugUtils.currentLine=589825;
+ //BA.debugLineNum = 589825;BA.debugLine="SendKey(\"space\")";
 _sendkey("space");
-RDebugUtils.currentLine=1179650;
- //BA.debugLineNum = 1179650;BA.debugLine="End Sub";
+RDebugUtils.currentLine=589826;
+ //BA.debugLineNum = 589826;BA.debugLine="End Sub";
 return "";
 }
 public static String  _socket1_connected(boolean _successful) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "socket1_connected", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "socket1_connected", new Object[] {_successful}));}
-RDebugUtils.currentLine=983040;
- //BA.debugLineNum = 983040;BA.debugLine="Sub socket1_Connected(Successful As Boolean)";
-RDebugUtils.currentLine=983041;
- //BA.debugLineNum = 983041;BA.debugLine="If Successful Then";
+RDebugUtils.currentLine=393216;
+ //BA.debugLineNum = 393216;BA.debugLine="Sub socket1_Connected(Successful As Boolean)";
+RDebugUtils.currentLine=393217;
+ //BA.debugLineNum = 393217;BA.debugLine="If Successful Then";
 if (_successful) { 
-RDebugUtils.currentLine=983042;
- //BA.debugLineNum = 983042;BA.debugLine="writer.Initialize(socket1.OutputStream)";
+RDebugUtils.currentLine=393218;
+ //BA.debugLineNum = 393218;BA.debugLine="writer.Initialize(socket1.OutputStream)";
 _writer.Initialize(_socket1.getOutputStream());
-RDebugUtils.currentLine=983043;
- //BA.debugLineNum = 983043;BA.debugLine="connected = True";
+RDebugUtils.currentLine=393219;
+ //BA.debugLineNum = 393219;BA.debugLine="connected = True";
 _connected = anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=983044;
- //BA.debugLineNum = 983044;BA.debugLine="lblStatus.Text = \"✅ Connected!\"";
-mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("✅ Connected!"));
-RDebugUtils.currentLine=983045;
- //BA.debugLineNum = 983045;BA.debugLine="lblStatus.TextColor = Colors.Green";
-mostCurrent._lblstatus.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Green);
-RDebugUtils.currentLine=983046;
- //BA.debugLineNum = 983046;BA.debugLine="btnConnect.Text = \"Disconnect\"";
-mostCurrent._btnconnect.setText(BA.ObjectToCharSequence("Disconnect"));
+RDebugUtils.currentLine=393220;
+ //BA.debugLineNum = 393220;BA.debugLine="ToastMessageShow(\"Connected OK!\", True)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Connected OK!"),anywheresoftware.b4a.keywords.Common.True);
  }else {
-RDebugUtils.currentLine=983048;
- //BA.debugLineNum = 983048;BA.debugLine="lblStatus.Text = \"❌ Connection failed\"";
-mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("❌ Connection failed"));
-RDebugUtils.currentLine=983049;
- //BA.debugLineNum = 983049;BA.debugLine="lblStatus.TextColor = Colors.Red";
-mostCurrent._lblstatus.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Red);
+RDebugUtils.currentLine=393222;
+ //BA.debugLineNum = 393222;BA.debugLine="ToastMessageShow(\"FAILED to connect!\", Tru";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("FAILED to connect!"),anywheresoftware.b4a.keywords.Common.True);
  };
-RDebugUtils.currentLine=983051;
- //BA.debugLineNum = 983051;BA.debugLine="End Sub";
+RDebugUtils.currentLine=393224;
+ //BA.debugLineNum = 393224;BA.debugLine="End Sub";
 return "";
 }
 }

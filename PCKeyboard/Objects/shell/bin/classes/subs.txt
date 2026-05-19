@@ -10,20 +10,20 @@ main,buildkeyboardrow,0,0,98,112
 
 
 
-main,activity_pause,0,0,189,191
+main,activity_pause,0,0,187,189
 ,writer,,socket1,,connected,,lblstatus,,btnconnect
 ,connected
 ,disconnectfrompc
-main,disconnectfrompc,0,0,144,154
+main,disconnectfrompc,0,0,131,141
 ,writer,,socket1,,connected,,lblstatus,,btnconnect
 ,connected
 
-main,btnbackspace_click,0,0,170,172
-,connected,,writer,,lblstatus
+main,btnbackspace_click,0,0,157,159
+,connected,,writer
 
 ,sendkey
-main,sendkey,0,0,175,187
-,connected,,writer,,lblstatus
+main,sendkey,0,0,163,175
+,connected,,writer
 
 
 main,btnconnect_click,0,0,115,121
@@ -34,16 +34,16 @@ main,connecttopc,0,0,123,129
 ,txtip,,txtport,,socket1
 
 
-main,btnenter_click,0,0,166,168
-,connected,,writer,,lblstatus
+main,btnenter_click,0,0,153,155
+,connected,,writer
 
 ,sendkey
-main,btnkey_click,0,0,157,160
-,connected,,writer,,lblstatus
+main,btnkey_click,0,0,144,147
+,connected,,writer
 
 ,sendkey
-main,btnspace_click,0,0,162,164
-,connected,,writer,,lblstatus
+main,btnspace_click,0,0,149,151
+,connected,,writer
 
 ,sendkey
 main,globals,0,1,20,39
@@ -54,8 +54,8 @@ main,process_globals,0,1,14,18
 
 
 
-main,socket1_connected,0,0,131,142
-,writer,,socket1,,connected,,lblstatus,,btnconnect
+main,socket1_connected,0,0,177,185
+,writer,,socket1,,connected
 ,connected
 
 starter,application_error,0,0,27,29

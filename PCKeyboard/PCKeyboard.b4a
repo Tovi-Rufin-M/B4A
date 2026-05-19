@@ -58,7 +58,7 @@ Sub Activity_Create(FirstTime As Boolean)
 
 	' IP input
 	txtIP.Initialize("txtIP")
-	txtIP.Text = "192.168.1.x"   ' change to your PC IP (or 127.0.0.1 for ADB)
+	txtIP.Text = "192.168.254.105"   ' change to your PC IP (or 127.0.0.1 for ADB)
 	txtIP.TextSize = 14
 	Activity.AddView(txtIP, 5%x, 2%y, 60%x, 8%y)
 
@@ -142,19 +142,6 @@ Sub ConnectToPC
 	socket1.Connect(ip, port, 5000)   ' 5 second timeout socket1.OutputStream, "UTF8"
 End Sub
 
-Sub socket1_Connected(Successful As Boolean)
-	If Successful Then
-		writer.Initialize(socket1.OutputStream)
-		connected = True
-		lblStatus.Text = "✅ Connected!"
-		lblStatus.TextColor = Colors.Green
-		btnConnect.Text = "Disconnect"
-	Else
-		lblStatus.Text = "❌ Connection failed"
-		lblStatus.TextColor = Colors.Red
-	End If
-End Sub
-
 Sub DisconnectFromPC
 	Try
 		writer.Close
@@ -186,18 +173,29 @@ Sub btnBackspace_Click
 End Sub
 
 ' Core function — sends a key string to the PC
+
 Sub SendKey(key As String)
-	If connected = False Then
-		ToastMessageShow("Not connected to PC!", False)
-		Return
-	End If
-	Try
-		writer.WriteLine(key)
-		writer.Flush
-	Catch
-		lblStatus.Text = "⚠️ Send error"
-		lblStatus.TextColor = Colors.Yellow
-	End Try
+    ToastMessageShow("Sending: " & key, False)   ' ← add this
+    If connected = False Then
+        ToastMessageShow("Not connected!", False)
+        Return
+    End If
+    Try
+        writer.WriteLine(key)
+        writer.Flush
+    Catch
+        ToastMessageShow("Write error!", False)
+    End Try
+End Sub
+
+Sub socket1_Connected(Successful As Boolean)
+    If Successful Then
+        writer.Initialize(socket1.OutputStream)
+        connected = True
+        ToastMessageShow("Connected OK!", True)   ' ← add this
+    Else
+        ToastMessageShow("FAILED to connect!", True)  ' ← add this
+    End If
 End Sub
 
 Sub Activity_Pause(UserClosed As Boolean)
