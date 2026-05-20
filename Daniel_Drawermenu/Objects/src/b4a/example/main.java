@@ -34,7 +34,7 @@ public class main extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.main");
+			processBA = new BA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.main");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,47 +335,6 @@ public class main extends Activity implements B4AActivity{
             
     }
 
-
-
-public static void initializeProcessGlobals() {
-    
-    if (main.processGlobalsRun == false) {
-	    main.processGlobalsRun = true;
-		try {
-		        		
-        } catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-    }
-}
-public static boolean isAnyActivityVisible() {
-    boolean vis = false;
-vis = vis | (main.mostCurrent != null);
-return vis;}
-
-private static BA killProgramHelper(BA ba) {
-    if (ba == null)
-        return null;
-    anywheresoftware.b4a.BA.SharedProcessBA sharedProcessBA = ba.sharedProcessBA;
-    if (sharedProcessBA == null || sharedProcessBA.activityBA == null)
-        return null;
-    return sharedProcessBA.activityBA.get();
-}
-public static void killProgram() {
-     {
-            Activity __a = null;
-            if (main.previousOne != null) {
-				__a = main.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(main.mostCurrent == null ? null : main.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
-            }
-            if (__a != null)
-				__a.finish();}
-
-BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, starter.class));
-}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
 public b4a.example.b4xdrawer _drawer = null;
@@ -393,99 +352,229 @@ public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
 public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
 public static String _units = "";
 public b4a.example.starter _starter = null;
+
+public static boolean isAnyActivityVisible() {
+    boolean vis = false;
+vis = vis | (main.mostCurrent != null);
+return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-RDebugUtils.currentLine=131072;
- //BA.debugLineNum = 131072;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=131073;
- //BA.debugLineNum = 131073;BA.debugLine="Activity.LoadLayout(\"main\")";
+ //BA.debugLineNum = 36;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 37;BA.debugLine="Activity.LoadLayout(\"main\")";
 mostCurrent._activity.LoadLayout("main",mostCurrent.activityBA);
-RDebugUtils.currentLine=131075;
- //BA.debugLineNum = 131075;BA.debugLine="Drawer.Initialize(Me, \"Drawer\", Activity, 260dip)";
-mostCurrent._drawer._initialize /*String*/ (null,mostCurrent.activityBA,main.getObject(),"Drawer",(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(mostCurrent._activity.getObject())),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (260)));
-RDebugUtils.currentLine=131076;
- //BA.debugLineNum = 131076;BA.debugLine="Drawer.CenterPanel.BringToFront";
-mostCurrent._drawer._getcenterpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ (null).BringToFront();
-RDebugUtils.currentLine=131077;
- //BA.debugLineNum = 131077;BA.debugLine="Drawer.LeftPanel.BringToFront";
-mostCurrent._drawer._getleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ (null).BringToFront();
-RDebugUtils.currentLine=131079;
- //BA.debugLineNum = 131079;BA.debugLine="pnlMain = Drawer.CenterPanel";
-mostCurrent._pnlmain = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._drawer._getcenterpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ (null).getObject()));
-RDebugUtils.currentLine=131080;
- //BA.debugLineNum = 131080;BA.debugLine="pnlMenu = Drawer.LeftPanel";
-mostCurrent._pnlmenu = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._drawer._getleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ (null).getObject()));
-RDebugUtils.currentLine=131082;
- //BA.debugLineNum = 131082;BA.debugLine="pnlMenu.Color = Colors.RGB(33,150,243)";
+ //BA.debugLineNum = 39;BA.debugLine="Drawer.Initialize(Me, \"Drawer\", Activity, 260dip)";
+mostCurrent._drawer._initialize /*String*/ (mostCurrent.activityBA,main.getObject(),"Drawer",(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(mostCurrent._activity.getObject())),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (260)));
+ //BA.debugLineNum = 40;BA.debugLine="Drawer.CenterPanel.BringToFront";
+mostCurrent._drawer._getcenterpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ ().BringToFront();
+ //BA.debugLineNum = 41;BA.debugLine="Drawer.LeftPanel.BringToFront";
+mostCurrent._drawer._getleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ ().BringToFront();
+ //BA.debugLineNum = 43;BA.debugLine="pnlMain = Drawer.CenterPanel";
+mostCurrent._pnlmain = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._drawer._getcenterpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ ().getObject()));
+ //BA.debugLineNum = 44;BA.debugLine="pnlMenu = Drawer.LeftPanel";
+mostCurrent._pnlmenu = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._drawer._getleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ ().getObject()));
+ //BA.debugLineNum = 46;BA.debugLine="pnlMenu.Color = Colors.RGB(33,150,243)";
 mostCurrent._pnlmenu.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (33),(int) (150),(int) (243)));
-RDebugUtils.currentLine=131084;
- //BA.debugLineNum = 131084;BA.debugLine="CreateMenu";
+ //BA.debugLineNum = 48;BA.debugLine="CreateMenu";
 _createmenu();
-RDebugUtils.currentLine=131085;
- //BA.debugLineNum = 131085;BA.debugLine="ShowHome";
+ //BA.debugLineNum = 49;BA.debugLine="ShowHome";
 _showhome();
-RDebugUtils.currentLine=131086;
- //BA.debugLineNum = 131086;BA.debugLine="End Sub";
+ //BA.debugLineNum = 50;BA.debugLine="End Sub";
+return "";
+}
+public static boolean  _activity_keypress(int _keycode) throws Exception{
+ //BA.debugLineNum = 178;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
+ //BA.debugLineNum = 179;BA.debugLine="If KeyCode = KeyCodes.KEYCODE_BACK And Drawer.Lef";
+if (_keycode==anywheresoftware.b4a.keywords.Common.KeyCodes.KEYCODE_BACK && mostCurrent._drawer._getleftopen /*boolean*/ ()) { 
+ //BA.debugLineNum = 180;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 181;BA.debugLine="Return True";
+if (true) return anywheresoftware.b4a.keywords.Common.True;
+ };
+ //BA.debugLineNum = 183;BA.debugLine="Return False";
+if (true) return anywheresoftware.b4a.keywords.Common.False;
+ //BA.debugLineNum = 184;BA.debugLine="End Sub";
+return false;
+}
+public static String  _activity_pause(boolean _userclosed) throws Exception{
+ //BA.debugLineNum = 56;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 58;BA.debugLine="End Sub";
+return "";
+}
+public static String  _activity_resume() throws Exception{
+ //BA.debugLineNum = 52;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 54;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnhome_click() throws Exception{
+ //BA.debugLineNum = 99;BA.debugLine="Sub btnHome_Click";
+ //BA.debugLineNum = 100;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 101;BA.debugLine="ShowHome";
+_showhome();
+ //BA.debugLineNum = 102;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnmenu_click() throws Exception{
+ //BA.debugLineNum = 60;BA.debugLine="Sub btnMenu_Click";
+ //BA.debugLineNum = 61;BA.debugLine="Drawer.LeftOpen = Not(Drawer.LeftOpen)";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.Not(mostCurrent._drawer._getleftopen /*boolean*/ ()));
+ //BA.debugLineNum = 62;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage1_click() throws Exception{
+ //BA.debugLineNum = 104;BA.debugLine="Sub btnPage1_Click";
+ //BA.debugLineNum = 105;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 106;BA.debugLine="ShowPage1";
+_showpage1();
+ //BA.debugLineNum = 107;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage2_click() throws Exception{
+ //BA.debugLineNum = 109;BA.debugLine="Sub btnPage2_Click";
+ //BA.debugLineNum = 110;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 111;BA.debugLine="ShowPage2";
+_showpage2();
+ //BA.debugLineNum = 112;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage3_click() throws Exception{
+ //BA.debugLineNum = 114;BA.debugLine="Sub btnPage3_Click";
+ //BA.debugLineNum = 115;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 116;BA.debugLine="ShowPage3";
+_showpage3();
+ //BA.debugLineNum = 117;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage4_click() throws Exception{
+ //BA.debugLineNum = 119;BA.debugLine="Sub btnPage4_Click";
+ //BA.debugLineNum = 120;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 121;BA.debugLine="ShowPage4";
+_showpage4();
+ //BA.debugLineNum = 122;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage5_click() throws Exception{
+ //BA.debugLineNum = 124;BA.debugLine="Sub btnPage5_Click";
+ //BA.debugLineNum = 125;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 126;BA.debugLine="ShowPage5";
+_showpage5();
+ //BA.debugLineNum = 127;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnpage6_click() throws Exception{
+ //BA.debugLineNum = 129;BA.debugLine="Sub btnPage6_Click";
+ //BA.debugLineNum = 130;BA.debugLine="Drawer.LeftOpen = False";
+mostCurrent._drawer._setleftopen /*boolean*/ (anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 131;BA.debugLine="ShowPage6";
+_showpage6();
+ //BA.debugLineNum = 132;BA.debugLine="End Sub";
+return "";
+}
+public static String  _button1_click() throws Exception{
+double _ans = 0;
+ //BA.debugLineNum = 210;BA.debugLine="Private Sub Button1_Click";
+ //BA.debugLineNum = 212;BA.debugLine="If EditText1.Text = \"\" Then";
+if ((mostCurrent._edittext1.getText()).equals("")) { 
+ //BA.debugLineNum = 213;BA.debugLine="MsgboxAsync(\"Please enter a value\", \"Input Error";
+anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence("Please enter a value"),BA.ObjectToCharSequence("Input Error"),processBA);
+ //BA.debugLineNum = 214;BA.debugLine="Return";
+if (true) return "";
+ };
+ //BA.debugLineNum = 217;BA.debugLine="Dim Ans As Double";
+_ans = 0;
+ //BA.debugLineNum = 218;BA.debugLine="Dim units As String ' Ensure this is declared if";
+mostCurrent._units = "";
+ //BA.debugLineNum = 220;BA.debugLine="Select lblTitle.Text";
+switch (BA.switchObjectToInt(mostCurrent._lbltitle.getText(),"Inches To Centimeter","Centimeter To Inches","Inches To Feet","Feet To Inches","Centimeter To Meter","Meter To Centimeter")) {
+case 0: {
+ //BA.debugLineNum = 222;BA.debugLine="Ans = (EditText1.Text) * 2.54";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*2.54;
+ //BA.debugLineNum = 223;BA.debugLine="units = \" cm\"";
+mostCurrent._units = " cm";
+ break; }
+case 1: {
+ //BA.debugLineNum = 226;BA.debugLine="Ans = (EditText1.Text) / 2.54";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)2.54;
+ //BA.debugLineNum = 227;BA.debugLine="units = \" in\"";
+mostCurrent._units = " in";
+ break; }
+case 2: {
+ //BA.debugLineNum = 230;BA.debugLine="Ans = (EditText1.Text) / 12";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)12;
+ //BA.debugLineNum = 231;BA.debugLine="units = \" ft\"";
+mostCurrent._units = " ft";
+ break; }
+case 3: {
+ //BA.debugLineNum = 234;BA.debugLine="Ans = (EditText1.Text) * 12";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*12;
+ //BA.debugLineNum = 235;BA.debugLine="units = \" in\"";
+mostCurrent._units = " in";
+ break; }
+case 4: {
+ //BA.debugLineNum = 238;BA.debugLine="Ans = (EditText1.Text) / 100";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)100;
+ //BA.debugLineNum = 239;BA.debugLine="units = \" m\"";
+mostCurrent._units = " m";
+ break; }
+case 5: {
+ //BA.debugLineNum = 242;BA.debugLine="Ans = (EditText1.Text) * 100";
+_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*100;
+ //BA.debugLineNum = 243;BA.debugLine="units = \" cm\"";
+mostCurrent._units = " cm";
+ break; }
+default: {
+ //BA.debugLineNum = 246;BA.debugLine="Ans = 0";
+_ans = 0;
+ //BA.debugLineNum = 247;BA.debugLine="units = \"\"";
+mostCurrent._units = "";
+ break; }
+}
+;
+ //BA.debugLineNum = 252;BA.debugLine="Label1.Text = NumberFormat(Ans, 1, 2) & units";
+mostCurrent._label1.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.NumberFormat(_ans,(int) (1),(int) (2))+mostCurrent._units));
+ //BA.debugLineNum = 253;BA.debugLine="End Sub";
 return "";
 }
 public static String  _createmenu() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "createmenu", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "createmenu", null));}
 anywheresoftware.b4a.objects.ButtonWrapper _b = null;
-RDebugUtils.currentLine=393216;
- //BA.debugLineNum = 393216;BA.debugLine="Sub CreateMenu";
-RDebugUtils.currentLine=393217;
- //BA.debugLineNum = 393217;BA.debugLine="Dim btnHome, btnPage1, btnPage2 As Button";
+ //BA.debugLineNum = 64;BA.debugLine="Sub CreateMenu";
+ //BA.debugLineNum = 65;BA.debugLine="Dim btnHome, btnPage1, btnPage2 As Button";
 mostCurrent._btnhome = new anywheresoftware.b4a.objects.ButtonWrapper();
 mostCurrent._btnpage1 = new anywheresoftware.b4a.objects.ButtonWrapper();
 mostCurrent._btnpage2 = new anywheresoftware.b4a.objects.ButtonWrapper();
-RDebugUtils.currentLine=393218;
- //BA.debugLineNum = 393218;BA.debugLine="btnHome.Initialize(\"btnHome\")";
+ //BA.debugLineNum = 66;BA.debugLine="btnHome.Initialize(\"btnHome\")";
 mostCurrent._btnhome.Initialize(mostCurrent.activityBA,"btnHome");
-RDebugUtils.currentLine=393219;
- //BA.debugLineNum = 393219;BA.debugLine="btnHome.Text = \"Home\"";
+ //BA.debugLineNum = 67;BA.debugLine="btnHome.Text = \"Home\"";
 mostCurrent._btnhome.setText(BA.ObjectToCharSequence("Home"));
-RDebugUtils.currentLine=393220;
- //BA.debugLineNum = 393220;BA.debugLine="btnPage1.Initialize(\"btnPage1\")";
+ //BA.debugLineNum = 68;BA.debugLine="btnPage1.Initialize(\"btnPage1\")";
 mostCurrent._btnpage1.Initialize(mostCurrent.activityBA,"btnPage1");
-RDebugUtils.currentLine=393221;
- //BA.debugLineNum = 393221;BA.debugLine="btnPage1.Text = \"Inches To Centimeter\"";
+ //BA.debugLineNum = 69;BA.debugLine="btnPage1.Text = \"Inches To Centimeter\"";
 mostCurrent._btnpage1.setText(BA.ObjectToCharSequence("Inches To Centimeter"));
-RDebugUtils.currentLine=393222;
- //BA.debugLineNum = 393222;BA.debugLine="btnPage2.Initialize(\"btnPage2\")";
+ //BA.debugLineNum = 70;BA.debugLine="btnPage2.Initialize(\"btnPage2\")";
 mostCurrent._btnpage2.Initialize(mostCurrent.activityBA,"btnPage2");
-RDebugUtils.currentLine=393223;
- //BA.debugLineNum = 393223;BA.debugLine="btnPage2.Text = \"Centimeter To Inches\"";
+ //BA.debugLineNum = 71;BA.debugLine="btnPage2.Text = \"Centimeter To Inches\"";
 mostCurrent._btnpage2.setText(BA.ObjectToCharSequence("Centimeter To Inches"));
-RDebugUtils.currentLine=393224;
- //BA.debugLineNum = 393224;BA.debugLine="btnPage3.Initialize(\"btnPage3\")";
+ //BA.debugLineNum = 72;BA.debugLine="btnPage3.Initialize(\"btnPage3\")";
 mostCurrent._btnpage3.Initialize(mostCurrent.activityBA,"btnPage3");
-RDebugUtils.currentLine=393225;
- //BA.debugLineNum = 393225;BA.debugLine="btnPage3.Text = \"Inches To Feet\"";
+ //BA.debugLineNum = 73;BA.debugLine="btnPage3.Text = \"Inches To Feet\"";
 mostCurrent._btnpage3.setText(BA.ObjectToCharSequence("Inches To Feet"));
-RDebugUtils.currentLine=393226;
- //BA.debugLineNum = 393226;BA.debugLine="btnPage4.Initialize(\"btnPage4\")";
+ //BA.debugLineNum = 74;BA.debugLine="btnPage4.Initialize(\"btnPage4\")";
 mostCurrent._btnpage4.Initialize(mostCurrent.activityBA,"btnPage4");
-RDebugUtils.currentLine=393227;
- //BA.debugLineNum = 393227;BA.debugLine="btnPage4.Text = \"Feet To Inches\"";
+ //BA.debugLineNum = 75;BA.debugLine="btnPage4.Text = \"Feet To Inches\"";
 mostCurrent._btnpage4.setText(BA.ObjectToCharSequence("Feet To Inches"));
-RDebugUtils.currentLine=393228;
- //BA.debugLineNum = 393228;BA.debugLine="btnPage5.Initialize(\"btnPage5\")";
+ //BA.debugLineNum = 76;BA.debugLine="btnPage5.Initialize(\"btnPage5\")";
 mostCurrent._btnpage5.Initialize(mostCurrent.activityBA,"btnPage5");
-RDebugUtils.currentLine=393229;
- //BA.debugLineNum = 393229;BA.debugLine="btnPage5.Text = \"Centimeter To Meter\"";
+ //BA.debugLineNum = 77;BA.debugLine="btnPage5.Text = \"Centimeter To Meter\"";
 mostCurrent._btnpage5.setText(BA.ObjectToCharSequence("Centimeter To Meter"));
-RDebugUtils.currentLine=393230;
- //BA.debugLineNum = 393230;BA.debugLine="btnPage6.Initialize(\"btnPage6\")";
+ //BA.debugLineNum = 78;BA.debugLine="btnPage6.Initialize(\"btnPage6\")";
 mostCurrent._btnpage6.Initialize(mostCurrent.activityBA,"btnPage6");
-RDebugUtils.currentLine=393231;
- //BA.debugLineNum = 393231;BA.debugLine="btnPage6.Text = \"Meter To Centimeter\"";
+ //BA.debugLineNum = 79;BA.debugLine="btnPage6.Text = \"Meter To Centimeter\"";
 mostCurrent._btnpage6.setText(BA.ObjectToCharSequence("Meter To Centimeter"));
-RDebugUtils.currentLine=393233;
- //BA.debugLineNum = 393233;BA.debugLine="For Each b As Button In Array(btnHome, btnPage1,";
+ //BA.debugLineNum = 81;BA.debugLine="For Each b As Button In Array(btnHome, btnPage1,";
 _b = new anywheresoftware.b4a.objects.ButtonWrapper();
 {
 final Object[] group16 = new Object[]{(Object)(mostCurrent._btnhome.getObject()),(Object)(mostCurrent._btnpage1.getObject()),(Object)(mostCurrent._btnpage2.getObject()),(Object)(mostCurrent._btnpage3.getObject()),(Object)(mostCurrent._btnpage4.getObject()),(Object)(mostCurrent._btnpage5.getObject()),(Object)(mostCurrent._btnpage6.getObject())};
@@ -494,514 +583,199 @@ final int groupLen16 = group16.length
 ;
 for (; index16 < groupLen16;index16++){
 _b = (anywheresoftware.b4a.objects.ButtonWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ButtonWrapper(), (android.widget.Button)(group16[index16]));
-RDebugUtils.currentLine=393234;
- //BA.debugLineNum = 393234;BA.debugLine="b.TextSize = 16";
+ //BA.debugLineNum = 82;BA.debugLine="b.TextSize = 16";
 _b.setTextSize((float) (16));
-RDebugUtils.currentLine=393235;
- //BA.debugLineNum = 393235;BA.debugLine="b.Gravity = Gravity.LEFT + Gravity.CENTER_VERTIC";
+ //BA.debugLineNum = 83;BA.debugLine="b.Gravity = Gravity.LEFT + Gravity.CENTER_VERTIC";
 _b.setGravity((int) (anywheresoftware.b4a.keywords.Common.Gravity.LEFT+anywheresoftware.b4a.keywords.Common.Gravity.CENTER_VERTICAL));
-RDebugUtils.currentLine=393236;
- //BA.debugLineNum = 393236;BA.debugLine="b.Color = Colors.Transparent";
+ //BA.debugLineNum = 84;BA.debugLine="b.Color = Colors.Transparent";
 _b.setColor(anywheresoftware.b4a.keywords.Common.Colors.Transparent);
-RDebugUtils.currentLine=393237;
- //BA.debugLineNum = 393237;BA.debugLine="b.TextColor = Colors.White";
+ //BA.debugLineNum = 85;BA.debugLine="b.TextColor = Colors.White";
 _b.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=393238;
- //BA.debugLineNum = 393238;BA.debugLine="pnlMenu.AddView(b, 10dip, 0, 240dip, 50dip)";
+ //BA.debugLineNum = 86;BA.debugLine="pnlMenu.AddView(b, 10dip, 0, 240dip, 50dip)";
 mostCurrent._pnlmenu.AddView((android.view.View)(_b.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),(int) (0),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (240)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
  }
 };
-RDebugUtils.currentLine=393240;
- //BA.debugLineNum = 393240;BA.debugLine="btnHome.Top = 120dip";
+ //BA.debugLineNum = 88;BA.debugLine="btnHome.Top = 120dip";
 mostCurrent._btnhome.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (120)));
-RDebugUtils.currentLine=393241;
- //BA.debugLineNum = 393241;BA.debugLine="btnPage1.Top = 180dip";
+ //BA.debugLineNum = 89;BA.debugLine="btnPage1.Top = 180dip";
 mostCurrent._btnpage1.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (180)));
-RDebugUtils.currentLine=393242;
- //BA.debugLineNum = 393242;BA.debugLine="btnPage2.Top = 240dip";
+ //BA.debugLineNum = 90;BA.debugLine="btnPage2.Top = 240dip";
 mostCurrent._btnpage2.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (240)));
-RDebugUtils.currentLine=393243;
- //BA.debugLineNum = 393243;BA.debugLine="btnPage3.Top = 300dip";
+ //BA.debugLineNum = 91;BA.debugLine="btnPage3.Top = 300dip";
 mostCurrent._btnpage3.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)));
-RDebugUtils.currentLine=393244;
- //BA.debugLineNum = 393244;BA.debugLine="btnPage4.Top = 360dip";
+ //BA.debugLineNum = 92;BA.debugLine="btnPage4.Top = 360dip";
 mostCurrent._btnpage4.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (360)));
-RDebugUtils.currentLine=393245;
- //BA.debugLineNum = 393245;BA.debugLine="btnPage5.Top = 420dip";
+ //BA.debugLineNum = 93;BA.debugLine="btnPage5.Top = 420dip";
 mostCurrent._btnpage5.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (420)));
-RDebugUtils.currentLine=393246;
- //BA.debugLineNum = 393246;BA.debugLine="btnPage6.Top = 480dip";
+ //BA.debugLineNum = 94;BA.debugLine="btnPage6.Top = 480dip";
 mostCurrent._btnpage6.setTop(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (480)));
-RDebugUtils.currentLine=393247;
- //BA.debugLineNum = 393247;BA.debugLine="End Sub";
+ //BA.debugLineNum = 95;BA.debugLine="End Sub";
 return "";
 }
-public static String  _showhome() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showhome", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showhome", null));}
-RDebugUtils.currentLine=917504;
- //BA.debugLineNum = 917504;BA.debugLine="Sub ShowHome";
-RDebugUtils.currentLine=917505;
- //BA.debugLineNum = 917505;BA.debugLine="pnlMain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=917506;
- //BA.debugLineNum = 917506;BA.debugLine="pnlMain.LoadLayout(\"home\")";
-mostCurrent._pnlmain.LoadLayout("home",mostCurrent.activityBA);
-RDebugUtils.currentLine=917507;
- //BA.debugLineNum = 917507;BA.debugLine="lblTitle.Text = \"Home\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Home"));
-RDebugUtils.currentLine=917508;
- //BA.debugLineNum = 917508;BA.debugLine="End Sub";
-return "";
-}
-public static boolean  _activity_keypress(int _keycode) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_keypress", false))
-	 {return ((Boolean) Debug.delegate(mostCurrent.activityBA, "activity_keypress", new Object[] {_keycode}));}
-RDebugUtils.currentLine=1376256;
- //BA.debugLineNum = 1376256;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
-RDebugUtils.currentLine=1376257;
- //BA.debugLineNum = 1376257;BA.debugLine="If KeyCode = KeyCodes.KEYCODE_BACK And Drawer.Lef";
-if (_keycode==anywheresoftware.b4a.keywords.Common.KeyCodes.KEYCODE_BACK && mostCurrent._drawer._getleftopen /*boolean*/ (null)) { 
-RDebugUtils.currentLine=1376258;
- //BA.debugLineNum = 1376258;BA.debugLine="Drawer.LeftOpen = False";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=1376259;
- //BA.debugLineNum = 1376259;BA.debugLine="Return True";
-if (true) return anywheresoftware.b4a.keywords.Common.True;
- };
-RDebugUtils.currentLine=1376261;
- //BA.debugLineNum = 1376261;BA.debugLine="Return False";
-if (true) return anywheresoftware.b4a.keywords.Common.False;
-RDebugUtils.currentLine=1376262;
- //BA.debugLineNum = 1376262;BA.debugLine="End Sub";
-return false;
-}
-public static String  _activity_pause(boolean _userclosed) throws Exception{
-RDebugUtils.currentModule="main";
-RDebugUtils.currentLine=262144;
- //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=262146;
- //BA.debugLineNum = 262146;BA.debugLine="End Sub";
-return "";
-}
-public static String  _activity_resume() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=196608;
- //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=196610;
- //BA.debugLineNum = 196610;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnhome_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnhome_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnhome_click", null));}
-RDebugUtils.currentLine=458752;
- //BA.debugLineNum = 458752;BA.debugLine="Sub btnHome_Click";
-RDebugUtils.currentLine=458753;
- //BA.debugLineNum = 458753;BA.debugLine="Drawer.LeftOpen = False";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=458754;
- //BA.debugLineNum = 458754;BA.debugLine="ShowHome";
-_showhome();
-RDebugUtils.currentLine=458755;
- //BA.debugLineNum = 458755;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnmenu_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnmenu_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnmenu_click", null));}
-RDebugUtils.currentLine=327680;
- //BA.debugLineNum = 327680;BA.debugLine="Sub btnMenu_Click";
-RDebugUtils.currentLine=327681;
- //BA.debugLineNum = 327681;BA.debugLine="Drawer.LeftOpen = Not(Drawer.LeftOpen)";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.Not(mostCurrent._drawer._getleftopen /*boolean*/ (null)));
-RDebugUtils.currentLine=327682;
- //BA.debugLineNum = 327682;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnpage1_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage1_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage1_click", null));}
-RDebugUtils.currentLine=524288;
- //BA.debugLineNum = 524288;BA.debugLine="Sub btnPage1_Click";
-RDebugUtils.currentLine=524289;
- //BA.debugLineNum = 524289;BA.debugLine="Drawer.LeftOpen = False";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=524290;
- //BA.debugLineNum = 524290;BA.debugLine="ShowPage1";
-_showpage1();
-RDebugUtils.currentLine=524291;
- //BA.debugLineNum = 524291;BA.debugLine="End Sub";
-return "";
-}
-public static String  _showpage1() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage1", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage1", null));}
-RDebugUtils.currentLine=983040;
- //BA.debugLineNum = 983040;BA.debugLine="Sub ShowPage1";
-RDebugUtils.currentLine=983041;
- //BA.debugLineNum = 983041;BA.debugLine="pnlMain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=983042;
- //BA.debugLineNum = 983042;BA.debugLine="pnlMain.LoadLayout(\"page1\")";
-mostCurrent._pnlmain.LoadLayout("page1",mostCurrent.activityBA);
-RDebugUtils.currentLine=983043;
- //BA.debugLineNum = 983043;BA.debugLine="lblTitle.Text = \"Inches To Centimeter\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Inches To Centimeter"));
-RDebugUtils.currentLine=983044;
- //BA.debugLineNum = 983044;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnpage2_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage2_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage2_click", null));}
-RDebugUtils.currentLine=589824;
- //BA.debugLineNum = 589824;BA.debugLine="Sub btnPage2_Click";
-RDebugUtils.currentLine=589825;
- //BA.debugLineNum = 589825;BA.debugLine="Drawer.LeftOpen = False";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=589826;
- //BA.debugLineNum = 589826;BA.debugLine="ShowPage2";
-_showpage2();
-RDebugUtils.currentLine=589827;
- //BA.debugLineNum = 589827;BA.debugLine="End Sub";
-return "";
-}
-public static String  _showpage2() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage2", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage2", null));}
-RDebugUtils.currentLine=1048576;
- //BA.debugLineNum = 1048576;BA.debugLine="Sub ShowPage2";
-RDebugUtils.currentLine=1048577;
- //BA.debugLineNum = 1048577;BA.debugLine="pnlMain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=1048578;
- //BA.debugLineNum = 1048578;BA.debugLine="pnlMain.LoadLayout(\"page2\")";
-mostCurrent._pnlmain.LoadLayout("page2",mostCurrent.activityBA);
-RDebugUtils.currentLine=1048579;
- //BA.debugLineNum = 1048579;BA.debugLine="lblTitle.Text = \"Centimeter To Inches\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Centimeter To Inches"));
-RDebugUtils.currentLine=1048580;
- //BA.debugLineNum = 1048580;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnpage3_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage3_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage3_click", null));}
-RDebugUtils.currentLine=655360;
- //BA.debugLineNum = 655360;BA.debugLine="Sub btnPage3_Click";
-RDebugUtils.currentLine=655361;
- //BA.debugLineNum = 655361;BA.debugLine="Drawer.LeftOpen = False";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=655362;
- //BA.debugLineNum = 655362;BA.debugLine="ShowPage3";
-_showpage3();
-RDebugUtils.currentLine=655363;
- //BA.debugLineNum = 655363;BA.debugLine="End Sub";
-return "";
-}
-public static String  _showpage3() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage3", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage3", null));}
-RDebugUtils.currentLine=1114112;
- //BA.debugLineNum = 1114112;BA.debugLine="Sub ShowPage3";
-RDebugUtils.currentLine=1114113;
- //BA.debugLineNum = 1114113;BA.debugLine="pnlMain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=1114114;
- //BA.debugLineNum = 1114114;BA.debugLine="pnlMain.LoadLayout(\"page3\")";
-mostCurrent._pnlmain.LoadLayout("page3",mostCurrent.activityBA);
-RDebugUtils.currentLine=1114115;
- //BA.debugLineNum = 1114115;BA.debugLine="lblTitle.Text = \"Inches To Feet\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Inches To Feet"));
-RDebugUtils.currentLine=1114116;
- //BA.debugLineNum = 1114116;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnpage4_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage4_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage4_click", null));}
-RDebugUtils.currentLine=720896;
- //BA.debugLineNum = 720896;BA.debugLine="Sub btnPage4_Click";
-RDebugUtils.currentLine=720897;
- //BA.debugLineNum = 720897;BA.debugLine="Drawer.LeftOpen = False";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=720898;
- //BA.debugLineNum = 720898;BA.debugLine="ShowPage4";
-_showpage4();
-RDebugUtils.currentLine=720899;
- //BA.debugLineNum = 720899;BA.debugLine="End Sub";
-return "";
-}
-public static String  _showpage4() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage4", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage4", null));}
-RDebugUtils.currentLine=1179648;
- //BA.debugLineNum = 1179648;BA.debugLine="Sub ShowPage4";
-RDebugUtils.currentLine=1179649;
- //BA.debugLineNum = 1179649;BA.debugLine="pnlMain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=1179650;
- //BA.debugLineNum = 1179650;BA.debugLine="pnlMain.LoadLayout(\"page4\")";
-mostCurrent._pnlmain.LoadLayout("page4",mostCurrent.activityBA);
-RDebugUtils.currentLine=1179651;
- //BA.debugLineNum = 1179651;BA.debugLine="lblTitle.Text = \"Feet To Inches\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Feet To Inches"));
-RDebugUtils.currentLine=1179652;
- //BA.debugLineNum = 1179652;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnpage5_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage5_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage5_click", null));}
-RDebugUtils.currentLine=786432;
- //BA.debugLineNum = 786432;BA.debugLine="Sub btnPage5_Click";
-RDebugUtils.currentLine=786433;
- //BA.debugLineNum = 786433;BA.debugLine="Drawer.LeftOpen = False";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=786434;
- //BA.debugLineNum = 786434;BA.debugLine="ShowPage5";
-_showpage5();
-RDebugUtils.currentLine=786435;
- //BA.debugLineNum = 786435;BA.debugLine="End Sub";
-return "";
-}
-public static String  _showpage5() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage5", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage5", null));}
-RDebugUtils.currentLine=1245184;
- //BA.debugLineNum = 1245184;BA.debugLine="Sub ShowPage5";
-RDebugUtils.currentLine=1245185;
- //BA.debugLineNum = 1245185;BA.debugLine="pnlMain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=1245186;
- //BA.debugLineNum = 1245186;BA.debugLine="pnlMain.LoadLayout(\"page5\")";
-mostCurrent._pnlmain.LoadLayout("page5",mostCurrent.activityBA);
-RDebugUtils.currentLine=1245187;
- //BA.debugLineNum = 1245187;BA.debugLine="lblTitle.Text = \"Centimeter To Meter\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Centimeter To Meter"));
-RDebugUtils.currentLine=1245188;
- //BA.debugLineNum = 1245188;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnpage6_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnpage6_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnpage6_click", null));}
-RDebugUtils.currentLine=851968;
- //BA.debugLineNum = 851968;BA.debugLine="Sub btnPage6_Click";
-RDebugUtils.currentLine=851969;
- //BA.debugLineNum = 851969;BA.debugLine="Drawer.LeftOpen = False";
-mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=851970;
- //BA.debugLineNum = 851970;BA.debugLine="ShowPage6";
-_showpage6();
-RDebugUtils.currentLine=851971;
- //BA.debugLineNum = 851971;BA.debugLine="End Sub";
-return "";
-}
-public static String  _showpage6() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showpage6", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showpage6", null));}
-RDebugUtils.currentLine=1310720;
- //BA.debugLineNum = 1310720;BA.debugLine="Sub ShowPage6";
-RDebugUtils.currentLine=1310721;
- //BA.debugLineNum = 1310721;BA.debugLine="pnlMain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=1310722;
- //BA.debugLineNum = 1310722;BA.debugLine="pnlMain.LoadLayout(\"page6\")";
-mostCurrent._pnlmain.LoadLayout("page6",mostCurrent.activityBA);
-RDebugUtils.currentLine=1310723;
- //BA.debugLineNum = 1310723;BA.debugLine="lblTitle.Text = \"Meter To Centimeter\"";
-mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Meter To Centimeter"));
-RDebugUtils.currentLine=1310724;
- //BA.debugLineNum = 1310724;BA.debugLine="End Sub";
-return "";
-}
-public static String  _button1_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "button1_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "button1_click", null));}
-double _ans = 0;
-RDebugUtils.currentLine=1835008;
- //BA.debugLineNum = 1835008;BA.debugLine="Private Sub Button1_Click";
-RDebugUtils.currentLine=1835010;
- //BA.debugLineNum = 1835010;BA.debugLine="If EditText1.Text = \"\" Then";
-if ((mostCurrent._edittext1.getText()).equals("")) { 
-RDebugUtils.currentLine=1835011;
- //BA.debugLineNum = 1835011;BA.debugLine="MsgboxAsync(\"Please enter a value\", \"Input Error";
-anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence("Please enter a value"),BA.ObjectToCharSequence("Input Error"),processBA);
-RDebugUtils.currentLine=1835012;
- //BA.debugLineNum = 1835012;BA.debugLine="Return";
-if (true) return "";
- };
-RDebugUtils.currentLine=1835015;
- //BA.debugLineNum = 1835015;BA.debugLine="Dim Ans As Double";
-_ans = 0;
-RDebugUtils.currentLine=1835016;
- //BA.debugLineNum = 1835016;BA.debugLine="Dim units As String ' Ensure this is declared if";
+public static String  _globals() throws Exception{
+ //BA.debugLineNum = 21;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 23;BA.debugLine="Private Drawer As B4XDrawer";
+mostCurrent._drawer = new b4a.example.b4xdrawer();
+ //BA.debugLineNum = 24;BA.debugLine="Private pnlMain As Panel";
+mostCurrent._pnlmain = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 25;BA.debugLine="Private pnlMenu As Panel";
+mostCurrent._pnlmenu = new anywheresoftware.b4a.objects.PanelWrapper();
+ //BA.debugLineNum = 28;BA.debugLine="Private lblTitle As Label";
+mostCurrent._lbltitle = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 29;BA.debugLine="Private btnHome, btnPage1, btnPage2, btnPage3, bt";
+mostCurrent._btnhome = new anywheresoftware.b4a.objects.ButtonWrapper();
+mostCurrent._btnpage1 = new anywheresoftware.b4a.objects.ButtonWrapper();
+mostCurrent._btnpage2 = new anywheresoftware.b4a.objects.ButtonWrapper();
+mostCurrent._btnpage3 = new anywheresoftware.b4a.objects.ButtonWrapper();
+mostCurrent._btnpage4 = new anywheresoftware.b4a.objects.ButtonWrapper();
+mostCurrent._btnpage5 = new anywheresoftware.b4a.objects.ButtonWrapper();
+mostCurrent._btnpage6 = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 31;BA.debugLine="Private EditText1 As EditText";
+mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
+ //BA.debugLineNum = 32;BA.debugLine="Private Label1 As Label";
+mostCurrent._label1 = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 33;BA.debugLine="Private units As String";
 mostCurrent._units = "";
-RDebugUtils.currentLine=1835018;
- //BA.debugLineNum = 1835018;BA.debugLine="Select lblTitle.Text";
-switch (BA.switchObjectToInt(mostCurrent._lbltitle.getText(),"Inches To Centimeter","Centimeter To Inches","Inches To Feet","Feet To Inches","Centimeter To Meter","Meter To Centimeter")) {
-case 0: {
-RDebugUtils.currentLine=1835020;
- //BA.debugLineNum = 1835020;BA.debugLine="Ans = (EditText1.Text) * 2.54";
-_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*2.54;
-RDebugUtils.currentLine=1835021;
- //BA.debugLineNum = 1835021;BA.debugLine="units = \" cm\"";
-mostCurrent._units = " cm";
- break; }
-case 1: {
-RDebugUtils.currentLine=1835024;
- //BA.debugLineNum = 1835024;BA.debugLine="Ans = (EditText1.Text) / 2.54";
-_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)2.54;
-RDebugUtils.currentLine=1835025;
- //BA.debugLineNum = 1835025;BA.debugLine="units = \" in\"";
-mostCurrent._units = " in";
- break; }
-case 2: {
-RDebugUtils.currentLine=1835028;
- //BA.debugLineNum = 1835028;BA.debugLine="Ans = (EditText1.Text) / 12";
-_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)12;
-RDebugUtils.currentLine=1835029;
- //BA.debugLineNum = 1835029;BA.debugLine="units = \" ft\"";
-mostCurrent._units = " ft";
- break; }
-case 3: {
-RDebugUtils.currentLine=1835032;
- //BA.debugLineNum = 1835032;BA.debugLine="Ans = (EditText1.Text) * 12";
-_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*12;
-RDebugUtils.currentLine=1835033;
- //BA.debugLineNum = 1835033;BA.debugLine="units = \" in\"";
-mostCurrent._units = " in";
- break; }
-case 4: {
-RDebugUtils.currentLine=1835036;
- //BA.debugLineNum = 1835036;BA.debugLine="Ans = (EditText1.Text) / 100";
-_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))/(double)100;
-RDebugUtils.currentLine=1835037;
- //BA.debugLineNum = 1835037;BA.debugLine="units = \" m\"";
-mostCurrent._units = " m";
- break; }
-case 5: {
-RDebugUtils.currentLine=1835040;
- //BA.debugLineNum = 1835040;BA.debugLine="Ans = (EditText1.Text) * 100";
-_ans = (double)(Double.parseDouble((mostCurrent._edittext1.getText())))*100;
-RDebugUtils.currentLine=1835041;
- //BA.debugLineNum = 1835041;BA.debugLine="units = \" cm\"";
-mostCurrent._units = " cm";
- break; }
-default: {
-RDebugUtils.currentLine=1835044;
- //BA.debugLineNum = 1835044;BA.debugLine="Ans = 0";
-_ans = 0;
-RDebugUtils.currentLine=1835045;
- //BA.debugLineNum = 1835045;BA.debugLine="units = \"\"";
-mostCurrent._units = "";
- break; }
-}
-;
-RDebugUtils.currentLine=1835050;
- //BA.debugLineNum = 1835050;BA.debugLine="Label1.Text = NumberFormat(Ans, 1, 2) & units";
-mostCurrent._label1.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.NumberFormat(_ans,(int) (1),(int) (2))+mostCurrent._units));
-RDebugUtils.currentLine=1835051;
- //BA.debugLineNum = 1835051;BA.debugLine="End Sub";
+ //BA.debugLineNum = 34;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pnl1_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl1_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl1_click", null));}
-RDebugUtils.currentLine=1769472;
- //BA.debugLineNum = 1769472;BA.debugLine="Private Sub pnl1_Click";
-RDebugUtils.currentLine=1769473;
- //BA.debugLineNum = 1769473;BA.debugLine="ShowPage1";
+ //BA.debugLineNum = 206;BA.debugLine="Private Sub pnl1_Click";
+ //BA.debugLineNum = 207;BA.debugLine="ShowPage1";
 _showpage1();
-RDebugUtils.currentLine=1769474;
- //BA.debugLineNum = 1769474;BA.debugLine="End Sub";
+ //BA.debugLineNum = 208;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pnl2_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl2_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl2_click", null));}
-RDebugUtils.currentLine=1703936;
- //BA.debugLineNum = 1703936;BA.debugLine="Private Sub pnl2_Click";
-RDebugUtils.currentLine=1703937;
- //BA.debugLineNum = 1703937;BA.debugLine="ShowPage2";
+ //BA.debugLineNum = 202;BA.debugLine="Private Sub pnl2_Click";
+ //BA.debugLineNum = 203;BA.debugLine="ShowPage2";
 _showpage2();
-RDebugUtils.currentLine=1703938;
- //BA.debugLineNum = 1703938;BA.debugLine="End Sub";
+ //BA.debugLineNum = 204;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pnl3_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl3_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl3_click", null));}
-RDebugUtils.currentLine=1638400;
- //BA.debugLineNum = 1638400;BA.debugLine="Private Sub pnl3_Click";
-RDebugUtils.currentLine=1638401;
- //BA.debugLineNum = 1638401;BA.debugLine="ShowPage3";
+ //BA.debugLineNum = 198;BA.debugLine="Private Sub pnl3_Click";
+ //BA.debugLineNum = 199;BA.debugLine="ShowPage3";
 _showpage3();
-RDebugUtils.currentLine=1638402;
- //BA.debugLineNum = 1638402;BA.debugLine="End Sub";
+ //BA.debugLineNum = 200;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pnl4_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl4_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl4_click", null));}
-RDebugUtils.currentLine=1572864;
- //BA.debugLineNum = 1572864;BA.debugLine="Private Sub pnl4_Click";
-RDebugUtils.currentLine=1572865;
- //BA.debugLineNum = 1572865;BA.debugLine="ShowPage4";
+ //BA.debugLineNum = 194;BA.debugLine="Private Sub pnl4_Click";
+ //BA.debugLineNum = 195;BA.debugLine="ShowPage4";
 _showpage4();
-RDebugUtils.currentLine=1572866;
- //BA.debugLineNum = 1572866;BA.debugLine="End Sub";
+ //BA.debugLineNum = 196;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pnl5_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl5_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl5_click", null));}
-RDebugUtils.currentLine=1507328;
- //BA.debugLineNum = 1507328;BA.debugLine="Private Sub pnl5_Click";
-RDebugUtils.currentLine=1507329;
- //BA.debugLineNum = 1507329;BA.debugLine="ShowPage5";
+ //BA.debugLineNum = 190;BA.debugLine="Private Sub pnl5_Click";
+ //BA.debugLineNum = 191;BA.debugLine="ShowPage5";
 _showpage5();
-RDebugUtils.currentLine=1507330;
- //BA.debugLineNum = 1507330;BA.debugLine="End Sub";
+ //BA.debugLineNum = 192;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pnl6_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "pnl6_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnl6_click", null));}
-RDebugUtils.currentLine=1441792;
- //BA.debugLineNum = 1441792;BA.debugLine="Private Sub pnl6_Click";
-RDebugUtils.currentLine=1441793;
- //BA.debugLineNum = 1441793;BA.debugLine="ShowPage6";
+ //BA.debugLineNum = 186;BA.debugLine="Private Sub pnl6_Click";
+ //BA.debugLineNum = 187;BA.debugLine="ShowPage6";
 _showpage6();
-RDebugUtils.currentLine=1441794;
- //BA.debugLineNum = 1441794;BA.debugLine="End Sub";
+ //BA.debugLineNum = 188;BA.debugLine="End Sub";
+return "";
+}
+
+public static void initializeProcessGlobals() {
+    
+    if (main.processGlobalsRun == false) {
+	    main.processGlobalsRun = true;
+		try {
+		        main._process_globals();
+starter._process_globals();
+		
+        } catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+    }
+}public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 15;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 18;BA.debugLine="Private xui As XUI";
+_xui = new anywheresoftware.b4a.objects.B4XViewWrapper.XUI();
+ //BA.debugLineNum = 19;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showhome() throws Exception{
+ //BA.debugLineNum = 136;BA.debugLine="Sub ShowHome";
+ //BA.debugLineNum = 137;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+ //BA.debugLineNum = 138;BA.debugLine="pnlMain.LoadLayout(\"home\")";
+mostCurrent._pnlmain.LoadLayout("home",mostCurrent.activityBA);
+ //BA.debugLineNum = 139;BA.debugLine="lblTitle.Text = \"Home\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Home"));
+ //BA.debugLineNum = 140;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage1() throws Exception{
+ //BA.debugLineNum = 142;BA.debugLine="Sub ShowPage1";
+ //BA.debugLineNum = 143;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+ //BA.debugLineNum = 144;BA.debugLine="pnlMain.LoadLayout(\"page1\")";
+mostCurrent._pnlmain.LoadLayout("page1",mostCurrent.activityBA);
+ //BA.debugLineNum = 145;BA.debugLine="lblTitle.Text = \"Inches To Centimeter\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Inches To Centimeter"));
+ //BA.debugLineNum = 146;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage2() throws Exception{
+ //BA.debugLineNum = 148;BA.debugLine="Sub ShowPage2";
+ //BA.debugLineNum = 149;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+ //BA.debugLineNum = 150;BA.debugLine="pnlMain.LoadLayout(\"page2\")";
+mostCurrent._pnlmain.LoadLayout("page2",mostCurrent.activityBA);
+ //BA.debugLineNum = 151;BA.debugLine="lblTitle.Text = \"Centimeter To Inches\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Centimeter To Inches"));
+ //BA.debugLineNum = 152;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage3() throws Exception{
+ //BA.debugLineNum = 154;BA.debugLine="Sub ShowPage3";
+ //BA.debugLineNum = 155;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+ //BA.debugLineNum = 156;BA.debugLine="pnlMain.LoadLayout(\"page3\")";
+mostCurrent._pnlmain.LoadLayout("page3",mostCurrent.activityBA);
+ //BA.debugLineNum = 157;BA.debugLine="lblTitle.Text = \"Inches To Feet\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Inches To Feet"));
+ //BA.debugLineNum = 158;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage4() throws Exception{
+ //BA.debugLineNum = 160;BA.debugLine="Sub ShowPage4";
+ //BA.debugLineNum = 161;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+ //BA.debugLineNum = 162;BA.debugLine="pnlMain.LoadLayout(\"page4\")";
+mostCurrent._pnlmain.LoadLayout("page4",mostCurrent.activityBA);
+ //BA.debugLineNum = 163;BA.debugLine="lblTitle.Text = \"Feet To Inches\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Feet To Inches"));
+ //BA.debugLineNum = 164;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage5() throws Exception{
+ //BA.debugLineNum = 166;BA.debugLine="Sub ShowPage5";
+ //BA.debugLineNum = 167;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+ //BA.debugLineNum = 168;BA.debugLine="pnlMain.LoadLayout(\"page5\")";
+mostCurrent._pnlmain.LoadLayout("page5",mostCurrent.activityBA);
+ //BA.debugLineNum = 169;BA.debugLine="lblTitle.Text = \"Centimeter To Meter\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Centimeter To Meter"));
+ //BA.debugLineNum = 170;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showpage6() throws Exception{
+ //BA.debugLineNum = 172;BA.debugLine="Sub ShowPage6";
+ //BA.debugLineNum = 173;BA.debugLine="pnlMain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+ //BA.debugLineNum = 174;BA.debugLine="pnlMain.LoadLayout(\"page6\")";
+mostCurrent._pnlmain.LoadLayout("page6",mostCurrent.activityBA);
+ //BA.debugLineNum = 175;BA.debugLine="lblTitle.Text = \"Meter To Centimeter\"";
+mostCurrent._lbltitle.setText(BA.ObjectToCharSequence("Meter To Centimeter"));
+ //BA.debugLineNum = 176;BA.debugLine="End Sub";
 return "";
 }
 }

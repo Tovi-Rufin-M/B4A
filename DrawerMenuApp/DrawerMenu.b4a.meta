@@ -4,6 +4,6 @@ ModuleBreakpoints0=
 ModuleBreakpoints1=
 ModuleClosedNodes0=
 ModuleClosedNodes1=1
-NavigationStack=Main,qick,259,5,Main,ShowHome,174,0,Main,setspinner,189,0,Main,Activity_Create,54,6,Visual Designer,HOME.bal,-100,2,Main,ShowPage3,226,0,Main,SetGradient,61,1,Visual Designer,main.bal,-100,6,Main,Activity_KeyPress,462,6,Main,Globals,33,0,Main,Process_Globals,14,0
+NavigationStack=Main,ShowHome,174,0,Main,setspinner,189,0,Main,Activity_Create,54,6,Main,ShowPage3,226,0,Main,SetGradient,61,1,Main,Activity_KeyPress,462,6,Main,Globals,33,0,Main,Process_Globals,14,0,Visual Designer,main.bal,-100,6,Visual Designer,HOME.bal,-100,3
 SelectedBuild=0
 VisibleModules=1
