@@ -1,0 +1,153 @@
+﻿Build1=Default,b4a.example
+File1=Layout.bal
+FileGroup1=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=1
+NumberOfLibraries=2
+NumberOfModules=1
+Version=13.5
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Student Hub
+	#VersionCode: 1
+	#VersionName: 
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	' No external libraries needed
+End Sub
+
+Sub Globals
+	' Using standard native Android Views
+	Private pnlBackground As Panel
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	' Create the main background (Light Blue pixel sky color) using native Panel
+	pnlBackground.Initialize("")
+	pnlBackground.Color = Colors.RGB(173, 226, 244)
+	Activity.AddView(pnlBackground, 0, 0, 100%x, 100%y)
+	
+	BuildHeader
+	BuildGrid
+	BuildBottomNav
+End Sub
+
+Sub BuildHeader
+	' Top Header Container
+	Dim pnlHeader As Panel
+	pnlHeader.Initialize("")
+	pnlHeader.Color = Colors.RGB(255, 204, 51) ' Yellow header
+	pnlBackground.AddView(pnlHeader, 5%x, 5%y, 90%x, 80dip)
+	
+	' Add a thick black border to the header using a background panel
+	Dim pnlHeaderBorder As Panel
+	pnlHeaderBorder.Initialize("")
+	pnlHeaderBorder.Color = Colors.Black
+	pnlBackground.AddView(pnlHeaderBorder, pnlHeader.Left - 2dip, pnlHeader.Top - 2dip, pnlHeader.Width + 4dip, pnlHeader.Height + 4dip)
+	pnlHeaderBorder.SendToBack
+	
+	' Header Title
+	Dim lblTitle As Label
+	lblTitle.Initialize("")
+	lblTitle.Text = "STUDENT HUB"
+	lblTitle.Typeface = Typeface.DEFAULT_BOLD ' Using default bold font temporarily
+	lblTitle.TextSize = 18
+	lblTitle.TextColor = Colors.Black
+	lblTitle.Gravity = Gravity.CENTER_VERTICAL
+	pnlHeader.AddView(lblTitle, 80dip, 10dip, pnlHeader.Width - 90dip, 30dip)
+	
+	' Welcome Text below header
+	Dim lblWelcome As Label
+	lblWelcome.Initialize("")
+	lblWelcome.Text = "Welcome, Alex!" & CRLF & "SEP 24, 2024"
+	lblWelcome.Typeface = Typeface.DEFAULT_BOLD ' Using default bold font temporarily
+	lblWelcome.TextSize = 14
+	lblWelcome.TextColor = Colors.Black
+	pnlBackground.AddView(lblWelcome, 5%x, pnlHeader.Top + pnlHeader.Height + 20dip, 90%x, 50dip)
+End Sub
+
+Sub BuildGrid
+	Dim startY As Int = 230dip
+	Dim btnWidth As Int = 42%x
+	Dim btnHeight As Int = 80dip
+	Dim spacing As Int = 4%x
+	Dim leftCol As Int = 6%x
+	Dim rightCol As Int = leftCol + btnWidth + spacing
+	
+	' Row 1
+	CreatePixelButton("My Grades", Colors.RGB(102, 204, 255), leftCol, startY, btnWidth, btnHeight)
+	CreatePixelButton("Schedule", Colors.RGB(153, 204, 102), rightCol, startY, btnWidth, btnHeight)
+	
+	' Row 2
+	CreatePixelButton("Assignments", Colors.RGB(255, 204, 102), leftCol, startY + btnHeight + 15dip, btnWidth, btnHeight)
+	CreatePixelButton("Attendance", Colors.RGB(153, 204, 102), rightCol, startY + btnHeight + 15dip, btnWidth, btnHeight)
+	
+	' Row 3
+	CreatePixelButton("Profile", Colors.RGB(255, 204, 102), leftCol, startY + (btnHeight * 2) + 30dip, btnWidth, btnHeight)
+	CreatePixelButton("Library", Colors.RGB(255, 128, 64), rightCol, startY + (btnHeight * 2) + 30dip, btnWidth, btnHeight)
+End Sub
+
+Sub BuildBottomNav
+	Dim pnlNav As Panel
+	pnlNav.Initialize("")
+	pnlNav.Color = Colors.RGB(51, 102, 153) ' Dark blue nav
+	pnlBackground.AddView(pnlNav, 0, 100%y - 70dip, 100%x, 70dip)
+	
+	' Add a thick top border to the nav
+	Dim topBorder As Panel
+	topBorder.Initialize("")
+	topBorder.Color = Colors.Black
+	pnlBackground.AddView(topBorder, 0, pnlNav.Top - 3dip, 100%x, 3dip)
+End Sub
+
+Sub CreatePixelButton(Text As String, InnerColor As Int, Left As Int, Top As Int, Width As Int, Height As Int)
+	' 1. Create the outer black border
+	Dim pnlBorder As Panel
+	pnlBorder.Initialize("PixelButton")
+	pnlBorder.Color = Colors.Black
+	pnlBackground.AddView(pnlBorder, Left, Top, Width, Height)
+	
+	' 2. Create the inner colored panel
+	Dim pnlInner As Panel
+	pnlInner.Initialize("")
+	pnlInner.Color = InnerColor
+	pnlBorder.AddView(pnlInner, 3dip, 3dip, Width - 6dip, Height - 6dip)
+	
+	' 3. Add an inner highlight for the 3D pixel effect
+	Dim pnlHighlight As Panel
+	pnlHighlight.Initialize("")
+	pnlHighlight.Color = Colors.ARGB(80, 255, 255, 255)
+	pnlInner.AddView(pnlHighlight, 0, 0, pnlInner.Width, 4dip)
+	
+	' 4. Add the Text
+	Dim lbl As Label
+	lbl.Initialize("")
+	lbl.Text = Text
+	lbl.Typeface = Typeface.DEFAULT_BOLD ' Using default bold font temporarily
+	lbl.TextSize = 14
+	lbl.TextColor = Colors.Black
+	lbl.Gravity = Gravity.CENTER
+	pnlInner.AddView(lbl, 0, pnlInner.Height - 30dip, pnlInner.Width, 30dip)
+End Sub
+
+Sub PixelButton_Click
+	Log("A pure B4A Pixel Button was clicked!")
+End Sub
+
+Sub Activity_Resume
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+End Sub
