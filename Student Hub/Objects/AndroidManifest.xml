@@ -16,13 +16,13 @@
 	<application
 		android:name="androidx.multidex.MultiDexApplication"
 		android:icon="@drawable/icon"
-		android:label="B4A Example"
+		android:label="Student Hub"
 		android:theme="@style/LightTheme">
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
 			android:name=".main"
-			android:label="B4A Example"
+			android:label="Student Hub"
 			android:screenOrientation="portrait"
 			android:exported="true">
 			<intent-filter>

@@ -1,40 +1,11 @@
-City,Country,Longitude,Latitude
-Aberdeen,United Kingdom,-2.07,57.13
-Abu Dhabi,United Arab Emirates,54.52,24.42
-Addis Ababa,Ethiopia,38.75,9.02
-"Adelaide, SA",Australia,138.6,-34.93
-"Agana, GU",Guam,144.75,13.47
-Ahmadabad,India,72.6,23.05
-Akita,Japan,140.11,39.7
-"Akron, OH",USA,-81.49,41.08
-Alborg,Denmark,9.51,57.05
-"Albuquerque, NM",USA,-106.65,35.08
-"Alexandria, VA",USA,-77.06,38.8
-Algiers,Algeria,3.05,36.77
-"Allentown, PA",USA,-75.46,40.59
-Amman,Jordan,35.93,31.95
-Amsterdam,Netherlands,4.9,52.38
-"Anaheim, CA",USA,-117.91,33.83
-"Anchorage, AK",USA,-149.88,61.21
-Andorra la Vella,Andorra,1.52,42.51
-Angers,France,-0.55,47.47
-Ankara,Turkey,32.85,39.93
-Antananarivo,Madagascar,47.52,-18.92
-Antwerp,Belgium,4.4,51.21
-Apia,Samoa,-171.74,-13.86
-Asuncion,Paraguay,-57.64,-25.27
-Athens,Greece,23.71,37.96
-"Atlanta, GA",USA,-84.39,33.74
-Auckland,New Zealand,174.76,-36.86
-"Austin, TX",USA,-97.73,30.28
-Azama,Japan,127.819,26.178
-Badajoz,Spain,-6.96,38.88
-Baghdad,Iraq,44.4,33.33
-"Baltimore, MD",USA,-76.61,39.29
-Bangalore,India,77.59,12.98
-Bangkok,Thailand,100.52,13.73
-Barcelona,Spain,2.17,41.38
-Bari,Italy,16.87,41.12
-"Baton Rouge, LA",USA,-91.15,30.45
-"Beaumont, TX",USA,-94.1,30.08
-Beijing,China,116.37,39.91
+STUDENT_NAME,STUDENT_ID,SUBJECTS,ACTIVITY,ATTENDANCE,RATE
+Juan Dela Cruz,2024-001,math102,lab1,late,11/20
+Maria Santos,2024-002,eng101,essay,present,21/89
+Carlos Reyes,2024-003,phy201,experiment,absent,8/17
+Ana Garcia,2024-004,hist105,presentation,present,24/87
+Jose Rizal,2024-005,bio101,lab2,present,63/75
+Juan Dela Cruz,2024-001,cs101,project,late,13/16
+Maria Santos,2024-002,chem102,lab3,present,72/74
+Carlos Reyes,2024-003,pe101,exercise,absent,4/37
+Ana Garcia,2024-004,art101,portfolio,present,14/29
+Jose Rizal,2024-005,math102,quiz1,present,69/98

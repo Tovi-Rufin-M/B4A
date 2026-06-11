@@ -1,28 +1,34 @@
 ﻿Build1=Default,b4a.example
 File1=535807274_630713246745989_4407531234143344490_n.jpg
 File2=citylist.csv
-File3=dashboard.bal
-File4=main.bal
-File5=profile.bal
+File3=CREAT.bal
+File4=dashboard.bal
+File5=edit.bal
+File6=grades.bal
+File7=main.bal
+File8=profile.bal
 FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
 FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
 Group=Default Group
-Library1=core
-Library2=stringutils
-Library3=xui
-Library4=b4xdrawer
+Library1=b4xdrawer
+Library2=core
+Library3=stringutils
+Library4=xui
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=Starter
-NumberOfFiles=5
+NumberOfFiles=8
 NumberOfLibraries=4
 NumberOfModules=1
 Version=13.5
 @EndOfDesignText@
 #Region Project Attributes 
-	#ApplicationLabel: B4A Example
+	#ApplicationLabel: Student Hub
 	#VersionCode: 1
 	#VersionName: 
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
@@ -35,54 +41,94 @@ Version=13.5
 	#IncludeTitle: False
 #End Region
 
+'=============================================================================
+' SECTION 1: GLOBALS
+'=============================================================================
+
 Sub Process_Globals
-	'These global variables will be declared once when the application starts.
-	'These variables can be accessed from all modules.
 	Private xui As XUI
 	Dim StringUtils1 As StringUtils
 End Sub
 
 Sub Globals
-	'These global variables will be redeclared each time the activity is created.
-	Private SV As ScrollView
-	Type RowCol (Row As Int, Col As Int)
-	Private Table As Panel
-	
-	Dim List1 As List
-	
-	Dim NumberOfColumns, RowHeight, ColumnWidth, Alignment As Int
-	Dim HeaderColor, FontColor, HeaderFontColor As Int
-	Dim FontSize As Float
-	
+	' --- Drawer & Navigation ---
 	Private Drawer As B4XDrawer
 	Private pnlmain As Panel
 	Private pnlmenu As Panel
-	Private Panel36 As Panel
+	Private profilebtn, dashbtn, grdbtn, editbtn As Panel
+	
+	' --- Dashboard ---
+	Private datapnl As Panel
+	
+	' --- Grades ---
+	Private gradepnl As Panel
+	Private SV1 As ScrollView
+	
+	' --- Profile (Table) ---
+	Private SV As ScrollView
+	Private Table As Panel
+	Type RowCol (Row As Int, Col As Int)
+	Dim NumberOfColumns, RowHeight, ColumnWidth As Int
+	Dim HeaderColor, FontColor, HeaderFontColor As Int
+	Dim FontSize As Float
+	Dim Alignment As Int
+	
+	' --- CREAT Form ---
+	Private Panel1 As Panel
+	Private CheckBox1 As CheckBox
+	Private EditText As EditText   ' Student Name
+	Private EditText1 As EditText  ' Activity Title
+	Private EditText2 As EditText  ' Result (e.g. 11/20)
+	Private EditText3 As EditText  ' Student ID
+	
+	' --- DATA: Single Source of Truth ---
+	Dim StudentList As List        ' Each item is a String() array: {NAME, ID, SUBJECT, ACTIVITY, ATTENDANCE, RATE}
+	Dim CSVHeaders As List         ' Header row from CSV
+	Dim EditingRowIndex As Int     ' -1 = creating new, >= 0 = editing existing row
+	
+	' --- Constants ---
+	Dim COL_NAME As Int : COL_NAME = 0
+	Dim COL_ID As Int : COL_ID = 1
+	Dim COL_SUBJECT As Int : COL_SUBJECT = 2
+	Dim COL_ACTIVITY As Int : COL_ACTIVITY = 3
+	Dim COL_ATTENDANCE As Int : COL_ATTENDANCE = 4
+	Dim COL_RATE As Int : COL_RATE = 5
 End Sub
 
-Sub Activity_Resume
-
-End Sub
-
-Sub Activity_Pause (UserClosed As Boolean)
-
-End Sub
+'=============================================================================
+' SECTION 2: ACTIVITY LIFECYCLE
+'=============================================================================
 
 Sub Activity_Create(FirstTime As Boolean)
-	' Load your layout (Make sure your ScrollView 'SV' is in this layout)
 	Activity.LoadLayout("main")
 	
 	initdrawer
-	'Table settings (initialize before any table operations)
+	
+	' Table display settings
 	HeaderColor = Colors.Transparent
-	NumberOfColumns = 4 'will be overwritten when loading from CSV file.
+	NumberOfColumns = 6
 	RowHeight = 30dip
-	'TableColor = Colors.Red
 	FontColor = Colors.Black
 	HeaderFontColor = Colors.Black
 	FontSize = 14
-	Alignment = Gravity.LEFT 'change to Gravity.LEFT or Gravity.RIGHT for other alignments.
+	Alignment = Gravity.LEFT
+	
+	' Load data from internal CSV
+	LoadStudentData
+	
+	' Show grades as the default screen
+	showgrades
 End Sub
+
+Sub Activity_Resume
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+End Sub
+
+'=============================================================================
+' SECTION 3: DRAWER & MENU
+'=============================================================================
 
 Sub btnMenu_Click
 	Drawer.LeftOpen = Not(Drawer.LeftOpen)
@@ -101,17 +147,17 @@ Sub initdrawer
 End Sub
 
 Sub CreateMenu
-	Dim btnDashBoard, btnGrades, btnSubjects, btnProfile As Button
-	btnDashBoard.Initialize("btnHome")
-	btnDashBoard.Text = "DashBoard"
+	Dim btnDashBoard, btnGrades, btnedit, btnProfile As Button
+	btnDashBoard.Initialize("btnDashBoard")
+	btnDashBoard.Text = "Dashboard"
 	btnGrades.Initialize("btnGrades")
 	btnGrades.Text = "Grades"
-	btnSubjects.Initialize("btnSubjects")
-	btnSubjects.Text = "Subjects" 'temporary text
+	btnedit.Initialize("btnedit")
+	btnedit.Text = "Edit"
 	btnProfile.Initialize("btnProfile")
-	btnProfile.Text = "Profile" 'temporary text
+	btnProfile.Text = "Profile"
 	
-	For Each b As Button In Array(btnDashBoard, btnGrades, btnSubjects, btnProfile)
+	For Each b As Button In Array(btnDashBoard, btnGrades, btnedit, btnProfile)
 		b.TextSize = 16
 		b.Gravity = Gravity.LEFT + Gravity.CENTER_VERTICAL
 		b.Color = Colors.Transparent
@@ -120,7 +166,7 @@ Sub CreateMenu
 	Next
 	btnDashBoard.Top = 120dip
 	btnGrades.Top = 180dip
-	btnSubjects.Top = 240dip
+	btnedit.Top = 240dip
 	btnProfile.Top = 300dip
 End Sub
 
@@ -134,8 +180,9 @@ Sub btnGrades_Click
 	showgrades
 End Sub
 
-Sub btnSubjects_Click
+Sub btnedit_Click
 	Drawer.LeftOpen = False
+	showedit
 End Sub
 
 Sub btnProfile_Click
@@ -143,66 +190,596 @@ Sub btnProfile_Click
 	showprofile
 End Sub
 
+Private Sub dashbtn_Click
+	HighlightTab(dashbtn)
+	showdashboard
+End Sub
+
+Private Sub grdbtn_Click
+	HighlightTab(grdbtn)
+	showgrades
+End Sub
+
+Private Sub editbtn_Click
+	HighlightTab(editbtn)
+	showedit
+End Sub
+
+Private Sub profilebtn_Click
+	HighlightTab(profilebtn)
+	showprofile
+End Sub
+
+Sub HighlightTab(activeBtn As Panel)
+	dashbtn.Color = Colors.White
+	grdbtn.Color = Colors.White
+	editbtn.Color = Colors.White
+	profilebtn.Color = Colors.White
+	activeBtn.Color = 0xFF1AEA00
+End Sub
+
+'=============================================================================
+' SECTION 4: DATA LAYER (Load, Save, Grade Computation)
+'=============================================================================
+
+Sub LoadStudentData
+	CSVHeaders.Initialize
+	StudentList = StringUtils1.LoadCSV2(File.DirInternal, "citylist.csv", ",", CSVHeaders)
+	Log("Loaded " & StudentList.Size & " student records")
+End Sub
+
+Sub SaveStudentData
+	StringUtils1.SaveCSV2(File.DirInternal, "citylist.csv", ",", StudentList, CSVHeaders)
+	Log("Saved " & StudentList.Size & " student records")
+End Sub
+
+' Parses a rate string like "11/20" and returns a percentage (0-100)
+Sub ComputePercentage(rate As String) As Double
+	If rate.Contains("/") = False Then Return 0
+	Dim parts() As String = Regex.Split("/", rate)
+	If parts.Length <> 2 Then Return 0
+	Dim numerator As Double = parts(0)
+	Dim denominator As Double = parts(1)
+	If denominator = 0 Then Return 0
+	Return (numerator / denominator) * 100
+End Sub
+
+' Returns a letter grade from a percentage
+Sub PercentageToGrade(pct As Double) As String
+	If pct >= 90 Then Return "A"
+	If pct >= 80 Then Return "B"
+	If pct >= 70 Then Return "C"
+	If pct >= 60 Then Return "D"
+	Return "F"
+End Sub
+
+' Computes letter grade directly from a rate string
+Sub ComputeGrade(rate As String) As String
+	Return PercentageToGrade(ComputePercentage(rate))
+End Sub
+
+' Returns a list of unique student names
+Sub GetUniqueStudentNames As List
+	Dim names As List
+	names.Initialize
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		Dim name As String = row(COL_NAME)
+		If names.IndexOf(name) = -1 Then
+			names.Add(name)
+		End If
+	Next
+	Return names
+End Sub
+
+' Computes average percentage across all records for a student
+Sub GetStudentAvgPercentage(studentName As String) As Double
+	Dim total As Double = 0
+	Dim count As Int = 0
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		If row(COL_NAME) = studentName Then
+			total = total + ComputePercentage(row(COL_RATE))
+			count = count + 1
+		End If
+	Next
+	If count = 0 Then Return 0
+	Return total / count
+End Sub
+
+' Returns the letter grade for a student's average
+Sub GetStudentGrade(studentName As String) As String
+	Return PercentageToGrade(GetStudentAvgPercentage(studentName))
+End Sub
+
+'=============================================================================
+' SECTION 5: UTILITY SUBS
+'=============================================================================
+
+Sub SetGradient(pnl As Panel, Color1 As Int, Color2 As Int)
+	Dim gd As GradientDrawable
+	gd.Initialize("BR_TL", Array As Int(Color1, Color2))
+	pnl.Background = gd
+End Sub
+
+'=============================================================================
+' SECTION 6: DASHBOARD SCREEN
+'=============================================================================
+
 Sub showdashboard
 	pnlmain.RemoveAllViews
 	pnlmain.LoadLayout("dashboard")
+	generategraph
 End Sub
+
+Sub generategraph
+	Dim names As List = GetUniqueStudentNames
+	If names.Size = 0 Then Return
+	
+	Dim numCols As Int = names.Size
+	Dim colWidth As Int = datapnl.Width / numCols
+	
+	' Bar colors
+	Dim barColors() As Int = Array As Int( _
+		Colors.RGB(66, 133, 244), _
+		Colors.RGB(234, 67, 53), _
+		Colors.RGB(251, 188, 4), _
+		Colors.RGB(52, 168, 83), _
+		Colors.RGB(156, 39, 176))
+	
+	' Find max for scaling
+	Dim maxVal As Double = 0
+	For i = 0 To names.Size - 1
+		Dim avg As Double = GetStudentAvgPercentage(names.Get(i))
+		If avg > maxVal Then maxVal = avg
+	Next
+	If maxVal = 0 Then maxVal = 100
+	
+	Dim rowHeight As Int = 40dip
+	Dim valueLabelHeight As Int = 30dip
+	Dim chartAreaHeight As Int = datapnl.Height - rowHeight - valueLabelHeight
+	Dim barPadding As Int = 10dip
+	
+	For i = 0 To numCols - 1
+		Dim studentName As String = names.Get(i)
+		Dim avgPct As Double = GetStudentAvgPercentage(studentName)
+		
+		' --- Bar ---
+		Dim barHeight As Int
+		If maxVal > 0 Then
+			barHeight = (avgPct / maxVal) * chartAreaHeight
+		Else
+			barHeight = 0
+		End If
+		
+		Dim barTop As Int = datapnl.Height - rowHeight - barHeight
+		
+		Dim pnlBar As Panel
+		pnlBar.Initialize("pnlBar")
+		pnlBar.Color = barColors(i Mod barColors.Length)
+		pnlBar.Tag = i
+		datapnl.AddView(pnlBar, _
+			(colWidth * i) + barPadding, _
+			barTop, _
+			colWidth - (barPadding * 2), _
+			barHeight)
+		
+		' --- Value Label (percentage on top) ---
+		Dim lblValue As Label
+		lblValue.Initialize("lblValue")
+		lblValue.Text = Round2(avgPct, 0) & "%"
+		lblValue.Gravity = Gravity.CENTER
+		lblValue.TextSize = 12
+		lblValue.TextColor = Colors.Black
+		datapnl.AddView(lblValue, _
+			colWidth * i, _
+			barTop - valueLabelHeight, _
+			colWidth, _
+			valueLabelHeight)
+		
+		' --- Name Label (at the bottom) ---
+		Dim l As Label
+		l.Initialize("labels")
+		' Show first name only if name is long
+		Dim displayName As String = studentName
+		If displayName.Length > 8 Then
+			Dim nameParts() As String = Regex.Split(" ", displayName)
+			displayName = nameParts(0)
+		End If
+		l.Text = displayName
+		l.Gravity = Gravity.CENTER
+		l.TextSize = 10
+		l.Color = 0x00ffffff
+		l.TextColor = Colors.Black
+		l.Padding = Array As Int(0dip, 5dip, 0dip, 5dip)
+		l.Tag = i
+		datapnl.AddView(l, _
+			colWidth * i, _
+			datapnl.Height - rowHeight, _
+			colWidth, _
+			rowHeight)
+	Next
+End Sub
+
+'=============================================================================
+' SECTION 7: GRADES SCREEN
+'=============================================================================
 
 Sub showgrades
 	pnlmain.RemoveAllViews
-	pnlmain.LoadLayout("dashboard")
+	pnlmain.LoadLayout("grades")
+
+	gradepnl = SV1.Panel
+	gradepnl.Width = SV1.Width
+
+	Dim names As List = GetUniqueStudentNames
+	Dim studentSize As Int = names.Size
+
+	gradepnl.Height = (studentSize * 108dip) + 20dip
+	makeshadow(studentSize, names)
 End Sub
 
+Sub makeshadow(numstudent As Int, studentNames As List)
+	Dim itemSpacing As Int = 108dip
+	Dim startTopMargin As Int = 20dip
+
+	For i = 0 To numstudent - 1
+		Dim currentTop As Int = startTopMargin + (i * itemSpacing)
+		
+		' Shadow panel
+		Dim pnlShadow As Panel
+		pnlShadow.Initialize("pnlShadow")
+
+		Dim cd As ColorDrawable
+		cd.Initialize2(0xFF000000, 4dip, 0dip, 0xFF000000)
+		pnlShadow.Background = cd
+		pnlShadow.Elevation = 0
+
+		Dim pnlWidth As Int = 330dip
+		Dim pnlHeight As Int = 88dip
+		
+		Dim shadowLeftPos As Int = gradepnl.Width - 13dip - pnlWidth
+		Dim shadowTopPos As Int = currentTop + 7dip
+
+		gradepnl.AddView(pnlShadow, shadowLeftPos, shadowTopPos, pnlWidth, pnlHeight)
+		
+		Dim name As String = studentNames.Get(i)
+		Dim grade As String = GetStudentGrade(name)
+		studentgrade(name, grade, currentTop)
+	Next
+End Sub
+
+Sub studentgrade(studentName As String, grade As String, currentTop As Int)
+	Dim pnlCard As Panel
+	pnlCard.Initialize("pnlCard")
+
+	Dim cd As ColorDrawable
+	cd.Initialize2(0xFFFFD400, 2dip, 2dip, 0xFF000000)
+	pnlCard.Background = cd
+	pnlCard.Elevation = 0
+
+	Dim pnlWidth As Int = 330dip
+	Dim pnlHeight As Int = 88dip
+	Dim rightEdgeDistance As Int = 20dip
+
+	Dim leftPos As Int = gradepnl.Width - rightEdgeDistance - pnlWidth
+	Dim topPos As Int = currentTop
+
+	gradepnl.AddView(pnlCard, leftPos, topPos, pnlWidth, pnlHeight)
+
+	' --- Grade Label (left side of the card) ---
+	Dim lblGrade As Label
+	lblGrade.Initialize("lblGrade")
+	lblGrade.Text = grade
+	lblGrade.TextSize = 30
+	lblGrade.TextColor = Colors.Black
+	lblGrade.Gravity = Bit.Or(Gravity.CENTER_HORIZONTAL, Gravity.CENTER_VERTICAL)
+	lblGrade.Typeface = Typeface.CreateNew(Typeface.SERIF, Typeface.STYLE_BOLD_ITALIC)
+	lblGrade.SingleLine = False
+	lblGrade.Enabled = True
+	lblGrade.Visible = True
+
+	Dim gradeRightEdge As Int = 264dip
+	Dim gradeWidth As Int = pnlWidth - gradeRightEdge  ' 66dip
+	pnlCard.AddView(lblGrade, 0, 0, gradeWidth, pnlHeight)
+
+	' --- Name Label (right side of the card) ---
+	Dim lbl As Label
+	lbl.Initialize("lbl")
+	lbl.Text = studentName
+	lbl.Gravity = Gravity.CENTER_VERTICAL
+	lbl.Typeface = Typeface.CreateNew(Typeface.SERIF, Typeface.STYLE_BOLD_ITALIC)
+	lbl.TextSize = 20
+	lbl.TextColor = Colors.Black
+	lbl.Padding = Array As Int(10dip, 5dip, 10dip, 5dip)
+	pnlCard.AddView(lbl, gradeWidth, 0, pnlWidth - gradeWidth, pnlHeight)
+End Sub
+
+'=============================================================================
+' SECTION 8: EDIT SCREEN (Record List with Edit/Delete)
+'=============================================================================
+
+Sub showedit
+	pnlmain.RemoveAllViews
+	pnlmain.LoadLayout("edit")
+	BuildEditList
+End Sub
+
+Sub BuildEditList
+	' Use the edit layout's ScrollView (SV1) to show all records
+	' We create the list programmatically inside pnlmain
+	
+	Dim sv2 As ScrollView
+	sv2.Initialize(0)
+	pnlmain.AddView(sv2, 0, 50dip, pnlmain.Width, pnlmain.Height - 110dip)
+	
+	Dim listPanel As Panel = sv2.Panel
+	listPanel.Width = sv2.Width
+	
+	Dim rowH As Int = 80dip
+	Dim spacing As Int = 5dip
+	Dim currentY As Int = 10dip
+	
+	' --- "Add New" button at top ---
+	Dim btnAdd As Button
+	btnAdd.Initialize("btnAddNew")
+	btnAdd.Text = "+ Add New Student Record"
+	btnAdd.TextSize = 14
+	btnAdd.TextColor = Colors.White
+	btnAdd.Color = Colors.RGB(52, 168, 83)
+	listPanel.AddView(btnAdd, 10dip, currentY, sv2.Width - 20dip, 45dip)
+	currentY = currentY + 55dip
+	
+	' --- Record rows ---
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		
+		' Card panel for each record
+		Dim pnlRow As Panel
+		pnlRow.Initialize("pnlRow")
+		Dim cd As ColorDrawable
+		cd.Initialize2(Colors.White, 4dip, 1dip, Colors.RGB(200, 200, 200))
+		pnlRow.Background = cd
+		pnlRow.Tag = i
+		listPanel.AddView(pnlRow, 10dip, currentY, sv2.Width - 20dip, rowH)
+		
+		' Student info labels
+		Dim lblInfo As Label
+		lblInfo.Initialize("")
+		lblInfo.Text = row(COL_NAME) & " (" & row(COL_ID) & ")"
+		lblInfo.TextSize = 13
+		lblInfo.TextColor = Colors.Black
+		lblInfo.Gravity = Gravity.CENTER_VERTICAL
+		lblInfo.Typeface = Typeface.DEFAULT_BOLD
+		lblInfo.Padding = Array As Int(10dip, 0, 0, 0)
+		pnlRow.AddView(lblInfo, 0, 0, sv2.Width - 180dip, 40dip)
+		
+		Dim lblDetail As Label
+		lblDetail.Initialize("")
+		lblDetail.Text = row(COL_SUBJECT) & " | " & row(COL_ACTIVITY) & " | " & row(COL_ATTENDANCE) & " | " & row(COL_RATE) & " (" & ComputeGrade(row(COL_RATE)) & ")"
+		lblDetail.TextSize = 11
+		lblDetail.TextColor = Colors.DarkGray
+		lblDetail.Gravity = Gravity.CENTER_VERTICAL
+		lblDetail.Padding = Array As Int(10dip, 0, 0, 0)
+		pnlRow.AddView(lblDetail, 0, 38dip, sv2.Width - 180dip, 40dip)
+		
+		' Edit button
+		Dim btnEdit As Button
+		btnEdit.Initialize("btnEditRow")
+		btnEdit.Text = "Edit"
+		btnEdit.TextSize = 12
+		btnEdit.TextColor = Colors.White
+		btnEdit.Color = Colors.RGB(66, 133, 244)
+		btnEdit.Tag = i
+		pnlRow.AddView(btnEdit, sv2.Width - 175dip, 15dip, 70dip, 45dip)
+		
+		' Delete button
+		Dim btnDel As Button
+		btnDel.Initialize("btnDeleteRow")
+		btnDel.Text = "Del"
+		btnDel.TextSize = 12
+		btnDel.TextColor = Colors.White
+		btnDel.Color = Colors.RGB(234, 67, 53)
+		btnDel.Tag = i
+		pnlRow.AddView(btnDel, sv2.Width - 95dip, 15dip, 70dip, 45dip)
+		
+		currentY = currentY + rowH + spacing
+	Next
+	
+	listPanel.Height = currentY + 20dip
+End Sub
+
+Sub btnAddNew_Click
+	EditingRowIndex = -1
+	ShowCREATForm("", "", "", "", False)
+End Sub
+
+Sub btnEditRow_Click
+	Dim btn As Button = Sender
+	EditingRowIndex = btn.Tag
+	Dim row() As String = StudentList.Get(EditingRowIndex)
+	Dim isPresent As Boolean = (row(COL_ATTENDANCE).ToLowerCase = "present")
+	ShowCREATForm(row(COL_NAME), row(COL_ID), row(COL_ACTIVITY), row(COL_RATE), isPresent)
+End Sub
+
+Sub btnDeleteRow_Click
+	Dim btn As Button = Sender
+	Dim deleteIndex As Int = btn.Tag
+	Dim row() As String = StudentList.Get(deleteIndex)
+	Dim msg As String = "Delete record for " & row(COL_NAME) & " (" & row(COL_SUBJECT) & ")?"
+	
+	Dim result As Int = Msgbox2(msg, "Confirm Delete", "Delete", "", "Cancel", Null)
+	If result = DialogResponse.POSITIVE Then
+		StudentList.RemoveAt(deleteIndex)
+		SaveStudentData
+		showedit ' refresh list
+	End If
+End Sub
+
+'=============================================================================
+' SECTION 9: CREAT SCREEN (Create / Update Form)
+'=============================================================================
+
+Sub ShowCREATForm(name As String, id As String, activityTitle As String, rate As String, attendance As Boolean)
+	pnlmain.RemoveAllViews
+	pnlmain.LoadLayout("CREAT")
+	
+	' Pre-fill fields
+	EditText.Text = name         ' Student Name
+	EditText3.Text = id          ' Student ID
+	EditText1.Text = activityTitle    ' Activity Title
+	EditText2.Text = rate        ' Result
+	CheckBox1.Checked = attendance
+	
+	' Create SAVE button programmatically on Panel1
+	Dim btnSave As Button
+	btnSave.Initialize("btnSave")
+	If EditingRowIndex >= 0 Then
+		btnSave.Text = "UPDATE RECORD"
+	Else
+		btnSave.Text = "SAVE RECORD"
+	End If
+	btnSave.TextSize = 16
+	btnSave.TextColor = Colors.Black
+	btnSave.Color = 0xFFFFD400
+	btnSave.Typeface = Typeface.DEFAULT_BOLD
+	
+	' Position at the bottom of Panel1
+	pnlmain.AddView(btnSave, 20dip, pnlmain.Height - 120dip, pnlmain.Width - 40dip, 50dip)
+End Sub
+
+Private Sub Button1_Click
+	' BACK button on CREAT layout — go back to edit screen
+	showedit
+End Sub
+
+Private Sub CREAT_Click
+	' "Add" button from the edit layout
+	EditingRowIndex = -1
+	ShowCREATForm("", "", "", "", False)
+End Sub
+
+Sub btnSave_Click
+	' Validate
+	Dim sName As String = EditText.Text.Trim
+	Dim sID As String = EditText3.Text.Trim
+	Dim sActivity As String = EditText1.Text.Trim
+	Dim sRate As String = EditText2.Text.Trim
+	
+	If sName.Length = 0 Then
+		Msgbox("Please enter a Student Name.", "Validation Error")
+		Return
+	End If
+	If sID.Length = 0 Then
+		Msgbox("Please enter a Student ID.", "Validation Error")
+		Return
+	End If
+	If sActivity.Length = 0 Then
+		Msgbox("Please enter an Activity Title.", "Validation Error")
+		Return
+	End If
+	If sRate.Length = 0 Or sRate.Contains("/") = False Then
+		Msgbox("Please enter a valid Result (e.g. 11/20).", "Validation Error")
+		Return
+	End If
+	
+	' Determine attendance
+	Dim sAttendance As String
+	If CheckBox1.Checked Then
+		sAttendance = "present"
+	Else
+		sAttendance = "absent"
+	End If
+	
+	' Determine subject — for new records use a default, for edits keep existing
+	Dim sSubject As String
+	If EditingRowIndex >= 0 Then
+		Dim existingRow() As String = StudentList.Get(EditingRowIndex)
+		sSubject = existingRow(COL_SUBJECT)
+	Else
+		' For new records, derive subject from activity or use a placeholder
+		sSubject = "general"
+	End If
+	
+	' Build the row
+	Dim newRow(6) As String
+	newRow(COL_NAME) = sName
+	newRow(COL_ID) = sID
+	newRow(COL_SUBJECT) = sSubject
+	newRow(COL_ACTIVITY) = sActivity
+	newRow(COL_ATTENDANCE) = sAttendance
+	newRow(COL_RATE) = sRate
+	
+	If EditingRowIndex >= 0 Then
+		' UPDATE existing row
+		StudentList.Set(EditingRowIndex, newRow)
+		Log("Updated row at index " & EditingRowIndex)
+	Else
+		' CREATE new row
+		StudentList.Add(newRow)
+		Log("Added new row, total: " & StudentList.Size)
+	End If
+	
+	' Save & go back
+	SaveStudentData
+	EditingRowIndex = -1
+	showedit
+End Sub
+
+'=============================================================================
+' SECTION 10: PROFILE SCREEN (Table View)
+'=============================================================================
+
 Sub showprofile
+	HighlightTab(profilebtn)
 	ShowTable
-	Panel36.Color = 0xFF1AEA00
 End Sub
 
 Sub ShowTable
 	pnlmain.RemoveAllViews
-	pnlmain.LoadLayout("profile") 'layout contains the ScrollView SV
+	pnlmain.LoadLayout("profile")
 	Table = SV.Panel
+	NumberOfColumns = 6
 	ColumnWidth = SV.Width / NumberOfColumns
-	loadtable(File.DirAssets, "citylist.csv")
+	loadtable
 End Sub
 
-Sub loadtable(Dir As String, Filename As String)
-	header(Dir, Filename)
-	For i = 0 To List1.Size - 1
-		Dim row() As String
-		row = List1.Get(i)
-		AddRow(row)
-	Next
-End Sub
-
-Sub header(Dir As String, Filename As String)
-    Dim headers As List
-    headers.Initialize ' FIX 1: Initialize the list before passing it to LoadCSV2
-    ' Load the CSV
-    List1 = StringUtils1.LoadCSV2(Dir, Filename, ",", headers)
-    NumberOfColumns = headers.Size
-    ColumnWidth = SV.Width / NumberOfColumns ' update the columns widths
-    For i = 0 To NumberOfColumns - 1
-        Dim l As Label
-        l.Initialize("header")
-        l.Text = headers.Get(i) ' Read directly from the headers list
-        l.Gravity = Gravity.LEFT
-        l.TextSize = FontSize
-        l.Color = HeaderColor
-        l.TextColor = HeaderFontColor
-		l.Padding = Array As Int (10dip, 5dip, 0dip, 5dip)
-        l.Tag = i
+Sub loadtable
+	' Header
+	Dim List1 As List
+	Dim headers As List
+	headers.Initialize
+	List1 = StringUtils1.LoadCSV2(File.DirInternal, "citylist.csv", ",", headers)
+	NumberOfColumns = headers.Size
+	ColumnWidth = SV.Width / NumberOfColumns
+	
+	For i = 0 To NumberOfColumns - 1
+		Dim l As Label
+		l.Initialize("header")
+		l.Text = headers.Get(i)
+		l.Gravity = Gravity.LEFT
+		l.TextSize = FontSize
+		l.Color = HeaderColor
+		l.TextColor = HeaderFontColor
+		l.Padding = Array As Int(10dip, 5dip, 0dip, 5dip)
+		l.Tag = i
 		Table.AddView(l, ColumnWidth * i, 0, ColumnWidth, RowHeight)
 	Next
+	
+	' Data rows
+	For i = 0 To List1.Size - 1
+		Dim row() As String = List1.Get(i)
+		AddTableRow(row, i + 1)  ' +1 to skip header row height
+	Next
+	
+	Table.Height = (List1.Size + 1) * RowHeight
 End Sub
-'Adds a row to the table
-Sub AddRow(Values() As String)
+
+Sub AddTableRow(Values() As String, rowIndex As Int)
 	If Values.Length <> NumberOfColumns Then
 		Log("Wrong number of values.")
 		Return
 	End If
-	Dim lastRow As Int
-	lastRow = NumberOfRows
 	For i = 0 To NumberOfColumns - 1
 		Dim l As Label
 		l.Initialize("cell")
@@ -210,25 +787,12 @@ Sub AddRow(Values() As String)
 		l.Gravity = Alignment
 		l.TextSize = FontSize
 		l.TextColor = FontColor
-		l.Padding = Array As Int (10dip, 0, 0, 0)
+		l.Padding = Array As Int(10dip, 0, 0, 0)
 		Dim rc As RowCol
 		rc.Initialize
 		rc.Col = i
-		rc.Row = lastRow
+		rc.Row = rowIndex
 		l.Tag = rc
-		Table.AddView(l, ColumnWidth * i, RowHeight * lastRow, ColumnWidth, RowHeight)
+		Table.AddView(l, ColumnWidth * i, RowHeight * rowIndex, ColumnWidth, RowHeight)
 	Next
-	Table.Height = NumberOfRows * RowHeight
 End Sub
-
-Sub NumberOfRows As Int
-	Return Table.NumberOfViews / NumberOfColumns
-End Sub
-
-' Add this Sub to your code
-Sub SetGradient(Panel As Panel, Color1 As Int, Color2 As Int)
-	Dim gd As GradientDrawable
-	gd.Initialize("BR_TL", Array As Int(Color1, Color2))
-	Panel.Background = gd
-End Sub
-
