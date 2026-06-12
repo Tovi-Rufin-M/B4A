@@ -20,9 +20,9 @@ Sub Service_Create
 	'This is a good place to load resources that are not specific to a single activity.
 	
 	' Copy seed CSV to internal storage on first launch
-	If File.Exists(File.DirInternal, "citylist.csv") = False Then
-		File.Copy(File.DirAssets, "citylist.csv", File.DirInternal, "citylist.csv")
-		Log("First launch: copied citylist.csv to DirInternal")
+	If File.Exists(File.DirInternal, "student.csv") = False Then
+		File.Copy(File.DirAssets, "student.csv", File.DirInternal, "student.csv")
+		Log("First launch: copied student.csv to DirInternal")
 	End If
 End Sub
 

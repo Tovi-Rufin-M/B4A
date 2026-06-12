@@ -4,182 +4,226 @@ b4a.example
 b4xdrawer
 1
 b4xdrawer
-main,activity_create,1,0,73,92
-,dashbtn,,editbtn,,grdbtn,,pnlmain,,profilebtn,,headercolor,,numberofcolumns,,rowheight,,fontcolor,,headerfontcolor,,fontsize,,alignment,,drawer,,pnlmenu,,csvheaders,,studentlist,,stringutils1,,gradepnl,,sv1,,col_name,,col_rate
-,dashbtn,,editbtn,,grdbtn,,pnlmain,,profilebtn,,headercolor,,numberofcolumns,,rowheight,,fontcolor,,headerfontcolor,,fontsize,,alignment,,pnlmenu,,studentlist,,gradepnl,,sv1
-,initdrawer,,loadstudentdata,,showgrades,b4xdrawer,initialize,b4xdrawer,getcenterpanel,b4xdrawer,getleftpanel,,setgradient,,createmenu,,getuniquestudentnames,,makeshadow,,getstudentgrade,,studentgrade,,percentagetograde,,getstudentavgpercentage,,computepercentage
-main,initdrawer,0,0,108,118
+main,activity_create,1,0,99,117
+,dashbtn,,editbtn,,grdbtn,,pnlmain,,profilebtn,,headercolor,,numberofcolumns,,rowheight,,fontcolor,,headerfontcolor,,fontsize,,alignment,,drawer,,pnlmenu,,csvheaders,,studentlist,,stringutils1,,student_names,,student_ids,,student_subjects,,student_activitys,,student_attendance,,student_rate,,panel1,,update
+,dashbtn,,editbtn,,grdbtn,,pnlmain,,profilebtn,,headercolor,,numberofcolumns,,rowheight,,fontcolor,,headerfontcolor,,fontsize,,alignment,,pnlmenu,,studentlist,,panel1,,update
+,initdrawer,,loadstudentdata,,showedit,b4xdrawer,initialize,b4xdrawer,getcenterpanel,b4xdrawer,getleftpanel,,setgradient,,createmenu
+main,initdrawer,0,0,133,143
 ,drawer,,pnlmain,,pnlmenu
 ,pnlmain,,pnlmenu
 b4xdrawer,initialize,b4xdrawer,getcenterpanel,b4xdrawer,getleftpanel,,setgradient,,createmenu
-main,loadstudentdata,0,0,196,200
-,csvheaders,,studentlist,,stringutils1
+main,loadstudentdata,0,0,221,243
+,csvheaders,,studentlist,,stringutils1,,student_names,,student_ids,,student_subjects,,student_activitys,,student_attendance,,student_rate
 ,studentlist
 
-main,showgrades,1,0,379,391
-,pnlmain,,gradepnl,,sv1,,studentlist,,col_name,,col_rate
-,gradepnl,,sv1
-,getuniquestudentnames,,makeshadow,,getstudentgrade,,studentgrade,,percentagetograde,,getstudentavgpercentage,,computepercentage
-main,activity_pause,0,0,97,98
+main,showedit,1,0,688,691
+,pnlmain,,panel1,,update
+,panel1,,update
+
+main,activity_pause,0,0,122,123
 
 
 
-main,activity_resume,0,0,94,95
+main,activity_resume,0,0,119,120
 
 
 
-main,addtablerow,0,0,749,769
+main,add_click,1,0,995,1010
+,editrowindex,,todelete,,pnlmain,,checkbox1,,checkbox2,,checkbox3,,edittext1,,edittext2,,panel1,,selectsubjects,,student_activity,,student_id,,student_name,,student_subjects,,student_activitys
+,editrowindex,,todelete,,checkbox1,,checkbox2,,checkbox3,,edittext1,,edittext2,,panel1,,selectsubjects,,student_activity,,student_id,,student_name
+,loadspinner,,getunique
+main,loadspinner,0,0,788,801
+,student_subjects,,selectsubjects,,student_activitys,,student_activity
+
+,getunique
+main,addtablerow,0,0,750,770
 ,numberofcolumns,,alignment,,fontsize,,fontcolor,,table,,columnwidth,,rowheight
 
 
-main,btnaddnew_click,1,0,563,566
-,editingrowindex,,pnlmain,,checkbox1,,edittext,,edittext1,,edittext2,,edittext3,,panel1
-,editingrowindex,,checkbox1,,edittext,,edittext1,,edittext2,,edittext3,,panel1
-,showcreatform
-main,showcreatform,1,0,594,620
-,pnlmain,,checkbox1,,edittext,,edittext1,,edittext2,,edittext3,,panel1,,editingrowindex
-,checkbox1,,edittext,,edittext1,,edittext2,,edittext3,,panel1
-
-main,btndashboard_click,1,0,144,147
-,drawer,,pnlmain,,datapnl,,panel1,,rowheight,,studentlist,,col_name,,col_rate
-,datapnl,,panel1,,rowheight
-b4xdrawer,setleftopen,,showdashboard,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,generategraph,,getuniquestudentnames,,getstudentavgpercentage,,computepercentage
-main,showdashboard,1,0,280,284
-,pnlmain,,datapnl,,panel1,,rowheight,,studentlist,,col_name,,col_rate
-,datapnl,,panel1,,rowheight
-,generategraph,,getuniquestudentnames,,getstudentavgpercentage,,computepercentage
-main,btndeleterow_click,1,0,576,588
-,studentlist,,col_name,,col_subject,,stringutils1,,csvheaders,,pnlmain,,panel1,,col_id,,col_activity,,col_attendance,,col_rate
-,panel1
-,savestudentdata,,showedit,,buildeditlist,,computegrade,,percentagetograde,,computepercentage
-main,savestudentdata,0,0,202,205
-,stringutils1,,studentlist,,csvheaders
-
-
-main,showedit,1,0,473,477
-,pnlmain,,panel1,,studentlist,,col_name,,col_id,,col_subject,,col_activity,,col_attendance,,col_rate
-,panel1
-,buildeditlist,,computegrade,,percentagetograde,,computepercentage
-main,btnedit_click,1,0,154,157
-,drawer,,pnlmain,,panel1,,studentlist,,col_name,,col_id,,col_subject,,col_activity,,col_attendance,,col_rate
-,panel1
-b4xdrawer,setleftopen,,showedit,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,buildeditlist,,computegrade,,percentagetograde,,computepercentage
-main,btneditrow_click,1,0,568,574
-,editingrowindex,,studentlist,,col_attendance,,col_name,,col_id,,col_activity,,col_rate,,pnlmain,,checkbox1,,edittext,,edittext1,,edittext2,,edittext3,,panel1
-,editingrowindex,,checkbox1,,edittext,,edittext1,,edittext2,,edittext3,,panel1
-,showcreatform
-main,btngrades_click,1,0,149,152
+main,bak_click,0,0,970,981
+,isselectingid,,showselectid,,update,,bak,,spinner,,student_ids
+,showselectid,,isselectingid
+,showselectids,,getunique
+main,showselectids,0,0,803,871
+,showselectid,,isselectingid,,update,,bak,,spinner,,student_ids
+,isselectingid
+,getunique
+main,btn_click,1,0,873,968
+,spinner,,showselectid,,isselectingid,,update,,editrowindex,,studentlist,,todelete,,stringutils1,,csvheaders,,xui,,pnlmain,,checkbox1,,checkbox2,,checkbox3,,edittext1,,edittext2,,panel1,,selectsubjects,,student_activity,,student_id,,student_name,,bak,,student_ids,,student_names,,student_subjects,,student_activitys,,student_attendance,,student_rate
+,showselectid,,isselectingid,,editrowindex,,todelete,,checkbox1,,checkbox2,,checkbox3,,edittext1,,edittext2,,panel1,,selectsubjects,,student_activity,,student_id,,student_name,,studentlist
+,showselectids,,loadstudentdata,,loadspinner,,getunique
+main,btndashboard_click,1,0,169,172
+,drawer,,pnlmain,,activity1,,activity2,,activity3,,datapnl,,name1,,name2,,name3,,panel1,,rate1,,rate2,,rate3,,rowheight,,studentlist,,col_name,,col_rate,,col_activity
+,activity1,,activity2,,activity3,,datapnl,,name1,,name2,,name3,,panel1,,rate1,,rate2,,rate3,,rowheight
+b4xdrawer,setleftopen,,showdashboard,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,generategraph,,getuniquestudentnames,,getstudentavgpercentage,,getstudenttopactivity,,computepercentage,,getactivity
+main,showdashboard,1,0,443,447
+,pnlmain,,activity1,,activity2,,activity3,,datapnl,,name1,,name2,,name3,,panel1,,rate1,,rate2,,rate3,,rowheight,,studentlist,,col_name,,col_rate,,col_activity
+,activity1,,activity2,,activity3,,datapnl,,name1,,name2,,name3,,panel1,,rate1,,rate2,,rate3,,rowheight
+,generategraph,,getuniquestudentnames,,getstudentavgpercentage,,getstudenttopactivity,,computepercentage,,getactivity
+main,btnedit_click,1,0,179,182
+,drawer,,pnlmain,,panel1,,update
+,panel1,,update
+b4xdrawer,setleftopen,,showedit,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
+main,btngrades_click,1,0,174,177
 ,drawer,,pnlmain,,gradepnl,,sv1,,studentlist,,col_name,,col_rate
 ,gradepnl,,sv1
 b4xdrawer,setleftopen,,showgrades,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,getuniquestudentnames,,makeshadow,,getstudentgrade,,studentgrade,,percentagetograde,,getstudentavgpercentage,,computepercentage
-main,btnmenu_click,0,0,104,106
+main,showgrades,1,0,591,608
+,pnlmain,,gradepnl,,sv1,,studentlist,,col_name,,col_rate
+,gradepnl,,sv1
+,getuniquestudentnames,,makeshadow,,getstudentgrade,,studentgrade,,percentagetograde,,getstudentavgpercentage,,computepercentage
+main,btnmenu_click,0,0,129,131
 ,drawer
 
 b4xdrawer,setleftopen,b4xdrawer,getleftopen,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor
-main,btnprofile_click,1,0,159,162
-,drawer,,profilebtn,,dashbtn,,grdbtn,,editbtn,,pnlmain,,sv,,table,,numberofcolumns,,columnwidth,,stringutils1,,fontsize,,headercolor,,headerfontcolor,,rowheight,,alignment,,fontcolor
+main,btnprofile_click,1,0,184,187
+,drawer,,profilebtn,,dashbtn,,grdbtn,,editbtn,,pnlmain,,sv,,table,,numberofcolumns,,columnwidth,,csvheaders,,fontsize,,headercolor,,headerfontcolor,,rowheight,,studentlist,,alignment,,fontcolor
 ,sv,,table,,numberofcolumns,,columnwidth
 b4xdrawer,setleftopen,,showprofile,b4xdrawer,changeoffset,b4xdrawer,setisopen,b4xdrawer,offsettocolor,,highlighttab,,showtable,,loadtable,,addtablerow
-main,showprofile,1,0,704,707
-,profilebtn,,dashbtn,,grdbtn,,editbtn,,pnlmain,,sv,,table,,numberofcolumns,,columnwidth,,stringutils1,,fontsize,,headercolor,,headerfontcolor,,rowheight,,alignment,,fontcolor
+main,showprofile,1,0,708,711
+,profilebtn,,dashbtn,,grdbtn,,editbtn,,pnlmain,,sv,,table,,numberofcolumns,,columnwidth,,csvheaders,,fontsize,,headercolor,,headerfontcolor,,rowheight,,studentlist,,alignment,,fontcolor
 ,sv,,table,,numberofcolumns,,columnwidth
 ,highlighttab,,showtable,,loadtable,,addtablerow
-main,btnsave_click,1,0,633,698
-,edittext,,edittext3,,edittext1,,edittext2,,checkbox1,,editingrowindex,,studentlist,,col_subject,,col_name,,col_id,,col_activity,,col_attendance,,col_rate,,stringutils1,,csvheaders,,pnlmain,,panel1
-,editingrowindex,,panel1
-,savestudentdata,,showedit,,buildeditlist,,computegrade,,percentagetograde,,computepercentage
-main,buildeditlist,0,0,479,561
-,pnlmain,,studentlist,,col_name,,col_id,,col_subject,,col_activity,,col_attendance,,col_rate
+main,button1_click,1,0,698,701
+,pnlmain,,panel1,,update
+,panel1,,update
+,showedit
+main,calculatestudentgpa,0,1,267,296
+,studentlist,,col_name,,col_rate
 
-,computegrade,,percentagetograde,,computepercentage
-main,computegrade,0,0,228,230
-
-
-,percentagetograde,,computepercentage
-main,button1_click,1,0,622,625
-,pnlmain,,panel1,,studentlist,,col_name,,col_id,,col_subject,,col_activity,,col_attendance,,col_rate
-,panel1
-,showedit,,buildeditlist,,computegrade,,percentagetograde,,computepercentage
-main,percentagetograde,0,0,219,225
+,computepercentage,,percentagetograde
+main,computepercentage,0,0,247,255
 
 
 
-main,computepercentage,0,0,208,216
+main,percentagetograde,0,0,258,264
 
 
 
-main,creat_click,1,0,627,631
-,editingrowindex,,pnlmain,,checkbox1,,edittext,,edittext1,,edittext2,,edittext3,,panel1
-,editingrowindex,,checkbox1,,edittext,,edittext1,,edittext2,,edittext3,,panel1
-,showcreatform
-main,createmenu,0,0,120,142
+main,checkbox1_click,1,0,1012,1017
+,checkbox1,,checkbox2,,checkbox3
+
+
+main,checkbox2_click,1,0,1019,1024
+,checkbox2,,checkbox1,,checkbox3
+
+
+main,checkbox3_click,1,0,1026,1031
+,checkbox3,,checkbox1,,checkbox2
+
+
+main,createmenu,0,0,145,167
 ,pnlmenu
 
 
-main,dashbtn_click,1,0,164,167
-,dashbtn,,grdbtn,,editbtn,,profilebtn,,pnlmain,,datapnl,,panel1,,rowheight,,studentlist,,col_name,,col_rate
-,datapnl,,panel1,,rowheight
-,highlighttab,,showdashboard,,generategraph,,getuniquestudentnames,,getstudentavgpercentage,,computepercentage
-main,highlighttab,0,0,184,190
+main,dashbtn_click,1,0,189,192
+,dashbtn,,grdbtn,,editbtn,,profilebtn,,pnlmain,,activity1,,activity2,,activity3,,datapnl,,name1,,name2,,name3,,panel1,,rate1,,rate2,,rate3,,rowheight,,studentlist,,col_name,,col_rate,,col_activity
+,activity1,,activity2,,activity3,,datapnl,,name1,,name2,,name3,,panel1,,rate1,,rate2,,rate3,,rowheight
+,highlighttab,,showdashboard,,generategraph,,getuniquestudentnames,,getstudentavgpercentage,,getstudenttopactivity,,computepercentage,,getactivity
+main,highlighttab,0,0,209,215
 ,dashbtn,,grdbtn,,editbtn,,profilebtn
 
 
-main,editbtn_click,1,0,174,177
-,editbtn,,dashbtn,,grdbtn,,profilebtn,,pnlmain,,panel1,,studentlist,,col_name,,col_id,,col_subject,,col_activity,,col_attendance,,col_rate
-,panel1
-,highlighttab,,showedit,,buildeditlist,,computegrade,,percentagetograde,,computepercentage
-main,generategraph,0,0,286,373
-,datapnl,,rowheight,,studentlist,,col_name,,col_rate
+main,delete_click,0,0,989,993
+,showselectid,,todelete,,isselectingid,,update,,bak,,spinner,,student_ids
+,showselectid,,todelete,,isselectingid
+,showselectids,,getunique
+main,editbtn_click,1,0,199,202
+,editbtn,,dashbtn,,grdbtn,,profilebtn,,pnlmain,,panel1,,update
+,panel1,,update
+,highlighttab,,showedit
+main,generategraph,0,0,449,585
+,datapnl,,rowheight,,name1,,rate1,,activity1,,name2,,rate2,,activity2,,name3,,rate3,,activity3,,studentlist,,col_name,,col_rate,,col_activity
 ,rowheight
-,getuniquestudentnames,,getstudentavgpercentage,,computepercentage
-main,getuniquestudentnames,0,0,233,244
+,getuniquestudentnames,,getstudentavgpercentage,,getstudenttopactivity,,computepercentage,,getactivity
+main,getuniquestudentnames,0,0,374,385
 ,studentlist,,col_name
 
 
-main,getstudentavgpercentage,0,0,247,259
+main,getstudentavgpercentage,0,0,388,400
 ,studentlist,,col_name,,col_rate
 
 ,computepercentage
-main,getstudentgrade,0,0,262,264
+main,getstudenttopactivity,0,0,432,437
+,studentlist,,col_name,,col_activity
+
+,getactivity
+main,getactivity,0,0,417,430
+,studentlist,,col_name,,col_activity
+
+
+main,getaverageattendancescore,0,1,310,338
+,studentlist,,col_name
+
+
+main,getaverageattendancescoredisplay,0,1,340,372
+,studentlist,,col_name
+
+,getaverageattendancescore
+main,getgpadisplaytext,0,1,298,307
+,studentlist,,col_name,,col_rate
+
+,calculatestudentgpa,,computepercentage,,percentagetograde
+main,getstudentgrade,0,0,403,405
 ,studentlist,,col_name,,col_rate
 
 ,percentagetograde,,getstudentavgpercentage,,computepercentage
-main,globals,0,1,24,67
-,col_name,,col_id,,col_subject,,col_activity,,col_attendance,,col_rate
-,col_name,,col_id,,col_subject,,col_activity,,col_attendance,,col_rate
+main,getunique,0,0,772,786
 
-main,grdbtn_click,1,0,169,172
+
+
+main,globals,0,1,24,93
+,col_name,,col_rate,,col_activity,,editrowindex,,todelete
+,col_name,,col_rate,,col_activity,,editrowindex,,todelete
+
+main,grdbtn_click,1,0,194,197
 ,grdbtn,,dashbtn,,editbtn,,profilebtn,,pnlmain,,gradepnl,,sv1,,studentlist,,col_name,,col_rate
 ,gradepnl,,sv1
 ,highlighttab,,showgrades,,getuniquestudentnames,,makeshadow,,getstudentgrade,,studentgrade,,percentagetograde,,getstudentavgpercentage,,computepercentage
-main,setgradient,0,0,270,274
+main,setgradient,0,0,411,415
 
 
 
-main,loadtable,0,0,718,747
-,stringutils1,,numberofcolumns,,columnwidth,,sv,,fontsize,,headercolor,,headerfontcolor,,table,,rowheight,,alignment,,fontcolor
+main,loadtable,0,0,722,748
+,numberofcolumns,,csvheaders,,columnwidth,,sv,,fontsize,,headercolor,,headerfontcolor,,table,,rowheight,,studentlist,,alignment,,fontcolor
 ,numberofcolumns,,columnwidth
 ,addtablerow
-main,makeshadow,0,0,393,421
-,gradepnl,,studentlist,,col_name,,col_rate
+main,makeshadow,0,0,609,637
+,gradepnl,,sv1,,studentlist,,col_name,,col_rate
 
 ,getstudentgrade,,studentgrade,,percentagetograde,,getstudentavgpercentage,,computepercentage
-main,studentgrade,0,0,423,467
-,gradepnl
+main,studentgrade,0,0,639,682
+,gradepnl,,sv1
 
 
+main,panel2_click,1,0,1033,1035
+,student_name,,student_id,,xui,,edittext1,,edittext2,,checkbox2,,checkbox3,,editrowindex,,studentlist,,selectsubjects,,student_activity,,stringutils1,,csvheaders,,student_names,,student_ids,,student_subjects,,student_activitys,,student_attendance,,student_rate,,pnlmain,,panel1,,update
+,studentlist,,panel1,,update
+,updatedata,,loadstudentdata,,showedit
+main,updatedata,1,0,1041,1099
+,student_name,,student_id,,xui,,edittext1,,edittext2,,checkbox2,,checkbox3,,editrowindex,,studentlist,,selectsubjects,,student_activity,,stringutils1,,csvheaders,,student_names,,student_ids,,student_subjects,,student_activitys,,student_attendance,,student_rate,,pnlmain,,panel1,,update
+,studentlist,,panel1,,update
+,loadstudentdata,,showedit
 main,process_globals,0,1,19,22
 
 
 
-main,profilebtn_click,1,0,179,182
-,profilebtn,,dashbtn,,grdbtn,,editbtn,,pnlmain,,sv,,table,,numberofcolumns,,columnwidth,,stringutils1,,fontsize,,headercolor,,headerfontcolor,,rowheight,,alignment,,fontcolor
+main,profilebtn_click,1,0,204,207
+,profilebtn,,dashbtn,,grdbtn,,editbtn,,pnlmain,,sv,,table,,numberofcolumns,,columnwidth,,csvheaders,,fontsize,,headercolor,,headerfontcolor,,rowheight,,studentlist,,alignment,,fontcolor
 ,sv,,table,,numberofcolumns,,columnwidth
 ,highlighttab,,showprofile,,showtable,,loadtable,,addtablerow
-main,showtable,1,0,709,716
-,pnlmain,,sv,,table,,numberofcolumns,,columnwidth,,stringutils1,,fontsize,,headercolor,,headerfontcolor,,rowheight,,alignment,,fontcolor
+main,showtable,1,0,713,720
+,pnlmain,,sv,,table,,numberofcolumns,,columnwidth,,csvheaders,,fontsize,,headercolor,,headerfontcolor,,rowheight,,studentlist,,alignment,,fontcolor
 ,sv,,table,,numberofcolumns,,columnwidth
 ,loadtable,,addtablerow
+main,update_click,0,0,983,987
+,todelete,,showselectid,,isselectingid,,update,,bak,,spinner,,student_ids
+,todelete,,showselectid,,isselectingid
+,showselectids,,getunique
+main,updatedata_click,1,0,1037,1039
+,student_name,,student_id,,xui,,edittext1,,edittext2,,checkbox2,,checkbox3,,editrowindex,,studentlist,,selectsubjects,,student_activity,,stringutils1,,csvheaders,,student_names,,student_ids,,student_subjects,,student_activitys,,student_attendance,,student_rate,,pnlmain,,panel1,,update
+,studentlist,,panel1,,update
+,updatedata,,loadstudentdata,,showedit
 b4xdrawer,setleftopen,0,0,230,235
 
 

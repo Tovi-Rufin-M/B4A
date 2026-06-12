@@ -1,12 +1,12 @@
 ﻿Build1=Default,b4a.example
 File1=535807274_630713246745989_4407531234143344490_n.jpg
-File2=citylist.csv
-File3=CREAT.bal
-File4=dashboard.bal
-File5=edit.bal
-File6=grades.bal
-File7=main.bal
-File8=profile.bal
+File2=CREAT.bal
+File3=dashboard.bal
+File4=edit.bal
+File5=grades.bal
+File6=main.bal
+File7=profile.bal
+File8=student.csv
 FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
@@ -57,6 +57,13 @@ Sub Globals
 	Private pnlmenu As Panel
 	Private profilebtn, dashbtn, grdbtn, editbtn As Panel
 	
+		' storage
+	Dim student_names, student_ids, student_subjects As List
+	Dim student_activitys, student_attendance, student_rate As List
+	Dim isselectingid As Boolean
+	Dim showselectid As Boolean
+	dim todelete as Boolean
+	
 	' --- Dashboard ---
 	Private datapnl As Panel
 	
@@ -75,24 +82,43 @@ Sub Globals
 	
 	' --- CREAT Form ---
 	Private Panel1 As Panel
-	Private CheckBox1 As CheckBox
-	Private EditText As EditText   ' Student Name
-	Private EditText1 As EditText  ' Activity Title
-	Private EditText2 As EditText  ' Result (e.g. 11/20)
-	Private EditText3 As EditText  ' Student ID
 	
 	' --- DATA: Single Source of Truth ---
 	Dim StudentList As List        ' Each item is a String() array: {NAME, ID, SUBJECT, ACTIVITY, ATTENDANCE, RATE}
 	Dim CSVHeaders As List         ' Header row from CSV
-	Dim EditingRowIndex As Int     ' -1 = creating new, >= 0 = editing existing row
 	
 	' --- Constants ---
 	Dim COL_NAME As Int : COL_NAME = 0
-	Dim COL_ID As Int : COL_ID = 1
-	Dim COL_SUBJECT As Int : COL_SUBJECT = 2
-	Dim COL_ACTIVITY As Int : COL_ACTIVITY = 3
-	Dim COL_ATTENDANCE As Int : COL_ATTENDANCE = 4
 	Dim COL_RATE As Int : COL_RATE = 5
+	Dim COL_ACTIVITY As Int : COL_ACTIVITY = 3
+	
+	' of dashboard top 3 student
+	Private NAME1 As Label
+	Private NAME2 As Label
+	Private NAME3 As Label
+	Private RATE1 As Label
+	Private RATE2 As Label
+	Private RATE3 As Label
+	Private ACTIVITY1 As Label
+	Private ACTIVITY2 As Label
+	Private ACTIVITY3 As Label
+	
+
+	
+	Private CheckBox1 As CheckBox
+	Private CheckBox2 As CheckBox
+	Private CheckBox3 As CheckBox
+	Private EditText1 As EditText
+	Private EditText2 As EditText
+	Private SELECTSUBJECTS As Spinner
+	Private STUDENT_ID As EditText
+	Private STUDENT_NAME As EditText
+	Private STUDENT_ACTIVITY As Spinner
+	Private update As Panel
+	Private bak As Panel
+	Private spinner As Spinner
+	Private editRowIndex As Int = -1
+	Private todelete As Boolean = False
 End Sub
 
 '=============================================================================
@@ -115,9 +141,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	' Load data from internal CSV
 	LoadStudentData
-	
 	' Show grades as the default screen
-	showgrades
+	showedit
 End Sub
 
 Sub Activity_Resume
@@ -224,14 +249,28 @@ End Sub
 
 Sub LoadStudentData
 	CSVHeaders.Initialize
-	StudentList = StringUtils1.LoadCSV2(File.DirInternal, "citylist.csv", ",", CSVHeaders)
-	Log("Loaded " & StudentList.Size & " student records")
+	StudentList = StringUtils1.LoadCSV2(File.DirInternal, "student.csv", ",", CSVHeaders)
+	
+	' Initialize global lists for student properties
+	student_names.Initialize
+	student_ids.Initialize
+	student_subjects.Initialize
+	student_activitys.Initialize
+	student_attendance.Initialize
+	student_rate.Initialize
+	
+	' Populate global lists from the single source of truth (StudentList)
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		student_names.Add(row(0))
+		student_ids.Add(row(1))
+		student_subjects.Add(row(2))
+		student_activitys.Add(row(3))
+		student_attendance.Add(row(4))
+		student_rate.Add(row(5))
+	Next
 End Sub
 
-Sub SaveStudentData
-	StringUtils1.SaveCSV2(File.DirInternal, "citylist.csv", ",", StudentList, CSVHeaders)
-	Log("Saved " & StudentList.Size & " student records")
-End Sub
 
 ' Parses a rate string like "11/20" and returns a percentage (0-100)
 Sub ComputePercentage(rate As String) As Double
@@ -253,11 +292,189 @@ Sub PercentageToGrade(pct As Double) As String
 	Return "F"
 End Sub
 
-' Computes letter grade directly from a rate string
-Sub ComputeGrade(rate As String) As String
-	Return PercentageToGrade(ComputePercentage(rate))
+' Calculates the GPA for a student. Returns -1.0 if they have fewer than 3 activities.
+Sub CalculateStudentGPA(studentName As String) As Double
+	Dim totalPoints As Double = 0
+	Dim activityCount As Int = 0
+	
+	' Loop through all student records
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		Dim currentName As String = row(COL_NAME)
+		
+		' Check if the record belongs to the target student
+		If currentName = studentName Then
+			Dim rateString As String = row(COL_RATE)
+			
+			' Compute percentage for this activity
+			Dim pct As Double = ComputePercentage(rateString)
+			
+			' Convert percentage to 4.0 scale points and add to sum
+			totalPoints = totalPoints + PercentageToGrade(pct)
+			activityCount = activityCount + 1
+		End If
+	Next
+	
+	' ENFORCE MINIMUM 3 ACTIVITIES CONSTRAINT:
+	If activityCount < 3 Then
+		Return -1.0 ' Return -1.0 as a flag meaning "Not enough activities to calculate GPA"
+	End If
+	
+	' Return GPA averaged out
+	Return totalPoints / activityCount
 End Sub
 
+Sub GetGPADisplayText(studentName As String) As String
+	Dim gpa As Double = CalculateStudentGPA(studentName)
+	
+	If gpa = -1.0 Then
+		Return "N/A (Min 3 activities required)"
+	Else
+		' Format to 2 decimal places (e.g., "3.67")
+		Return NumberFormat2(gpa, 1, 2, 2, False)
+	End If
+End Sub
+
+' Calculates the average attendance points (out of 10) for a student
+Sub GetAverageAttendanceScore(studentName As String) As Double
+	Dim totalPoints As Int = 0
+	Dim count As Int = 0
+	
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		Dim name As String = row(COL_NAME)
+		
+		If name = studentName Then
+			Dim status As String = row(4).Trim.ToLowerCase
+			
+			' Map each status to points
+			Select Case status
+				Case "present"
+					totalPoints = totalPoints + 10
+				Case "late"
+					totalPoints = totalPoints + 5
+				Case "absent"
+					totalPoints = totalPoints + 0
+			End Select
+			count = count + 1
+		End If
+	Next
+	
+	' Avoid division by zero if student has no records
+	If count = 0 Then Return 0
+	
+	Return totalPoints / count
+End Sub
+
+Sub GetAverageAttendanceScoredisplay(studentName As String) As String
+	Dim aas As Double = GetAverageAttendanceScore(studentName)
+	Dim disply As String
+	
+	Select Case True
+		Case aas = 10
+			disply = "A+"
+		Case aas >= 9.0
+			disply = "A"
+		Case aas >= 8.5
+			disply = "A-"
+		Case aas >= 8.0
+			disply = "B+"
+		Case aas >= 7.0
+			disply = "B"
+		Case aas >= 6.0
+			disply = "B-"
+		Case aas >= 5.0
+			disply = "C+"
+		Case aas >= 4.0
+			disply = "C"
+		Case aas >= 3.5
+			disply = "D+"
+		Case aas >= 3.0
+			disply = "D"
+		Case aas >= 1.0
+			disply = "E"
+		Case Else
+			disply = "F"
+	End Select
+	
+	Return disply
+End Sub
+
+' Returns a list containing the top 3 subjects with the highest averages for a student.
+' Each item in the returned list is a 2-element array: Array As Object(SubjectName As String, AverageScore As Double)
+Sub GetTop3Subjects(studentName As String) As List
+	Dim subjectSums As Map
+	Dim subjectCounts As Map
+	subjectSums.Initialize
+	subjectCounts.Initialize
+	
+	' 1. Group and sum percentages by subject for the selected student
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		Dim name As String = row(COL_NAME)
+		
+		If name = studentName Then
+			Dim subject As String = row(2) ' Subject is at index 2
+			Dim pct As Double = ComputePercentage(row(5)) ' Rate is at index 5
+			
+			' Accumulate sum
+			Dim currentSum As Double = 0
+			If subjectSums.ContainsKey(subject) Then currentSum = subjectSums.Get(subject)
+			subjectSums.Put(subject, currentSum + pct)
+			
+			' Accumulate count
+			Dim currentCount As Int = 0
+			If subjectCounts.ContainsKey(subject) Then currentCount = subjectCounts.Get(subject)
+			subjectCounts.Put(subject, currentCount + 1)
+		End If
+	Next
+	
+	' 2. Calculate the average score for each subject
+	Dim subjectAvgs As List
+	subjectAvgs.Initialize
+	For Each subject As String In subjectSums.Keys
+		Dim totalScore As Double = subjectSums.Get(subject)
+		Dim count As Int = subjectCounts.Get(subject)
+		Dim avg As Double = totalScore / count
+		subjectAvgs.Add(Array As Object(subject, avg))
+	Next
+	
+	' 3. Extract the top 3 highest averages using a simple selection sort
+	Dim top3 As List
+	top3.Initialize
+	
+	For rank = 0 To Min(2, subjectAvgs.Size - 1)
+		Dim bestIdx As Int = -1
+		Dim bestVal As Double = -1
+		
+		For j = 0 To subjectAvgs.Size - 1
+			Dim entry() As Object = subjectAvgs.Get(j)
+			Dim val As Double = entry(1) ' The average percentage
+			If val > bestVal Then
+				bestVal = val
+				bestIdx = j
+			End If
+		Next
+		
+		If bestIdx >= 0 Then
+			top3.Add(subjectAvgs.Get(bestIdx))
+			subjectAvgs.RemoveAt(bestIdx) ' Remove it so the next loop finds the next highest
+		End If
+	Next
+	
+	Return top3
+End Sub
+
+Sub displaytop3(studentName As String)
+	Dim topList As List = GetTop3Subjects(studentName)
+
+	For i = 0 To topList.Size - 1
+		Dim entry() As Object = topList.Get(i)
+		Dim subject As String = entry(0)
+		Dim avgScore As Double = entry(1)
+	Next
+	
+End Sub
 ' Returns a list of unique student names
 Sub GetUniqueStudentNames As List
 	Dim names As List
@@ -273,12 +490,12 @@ Sub GetUniqueStudentNames As List
 End Sub
 
 ' Computes average percentage across all records for a student
-Sub GetStudentAvgPercentage(studentName As String) As Double
+Sub GetStudentAvgPercentage(studentname As String) As Double
 	Dim total As Double = 0
 	Dim count As Int = 0
 	For i = 0 To StudentList.Size - 1
 		Dim row() As String = StudentList.Get(i)
-		If row(COL_NAME) = studentName Then
+		If row(COL_NAME) = studentname Then
 			total = total + ComputePercentage(row(COL_RATE))
 			count = count + 1
 		End If
@@ -288,8 +505,8 @@ Sub GetStudentAvgPercentage(studentName As String) As Double
 End Sub
 
 ' Returns the letter grade for a student's average
-Sub GetStudentGrade(studentName As String) As String
-	Return PercentageToGrade(GetStudentAvgPercentage(studentName))
+Sub GetStudentGrade(studentname As String) As String
+	Return PercentageToGrade(GetStudentAvgPercentage(studentname))
 End Sub
 
 '=============================================================================
@@ -300,6 +517,28 @@ Sub SetGradient(pnl As Panel, Color1 As Int, Color2 As Int)
 	Dim gd As GradientDrawable
 	gd.Initialize("BR_TL", Array As Int(Color1, Color2))
 	pnl.Background = gd
+End Sub
+
+Sub getActivity(studentName As String) As String
+	Dim activities As String
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		Dim name As String = row(COL_NAME) ' compare against student name column
+		If name = studentName Then
+			Dim Activitys As String = row(COL_ACTIVITY)
+			If activities.IndexOf(Activitys) = -1 Then
+				activities = Activitys
+			End If
+		End If
+	Next
+	Return activities
+End Sub
+
+Sub GetStudentTopActivity(studentName As String) As String
+	' Return the activity name with the highest score, or most recent activity
+	' Adjust this based on your data structure
+
+	Return getActivity(studentName)
 End Sub
 
 '=============================================================================
@@ -335,9 +574,9 @@ Sub generategraph
 	Next
 	If maxVal = 0 Then maxVal = 100
 	
-	Dim rowHeight As Int = 40dip
+	Dim RowHeight As Int = 40dip
 	Dim valueLabelHeight As Int = 30dip
-	Dim chartAreaHeight As Int = datapnl.Height - rowHeight - valueLabelHeight
+	Dim chartAreaHeight As Int = datapnl.Height - RowHeight - valueLabelHeight
 	Dim barPadding As Int = 10dip
 	
 	For i = 0 To numCols - 1
@@ -352,7 +591,7 @@ Sub generategraph
 			barHeight = 0
 		End If
 		
-		Dim barTop As Int = datapnl.Height - rowHeight - barHeight
+		Dim barTop As Int = datapnl.Height - RowHeight - barHeight
 		
 		Dim pnlBar As Panel
 		pnlBar.Initialize("pnlBar")
@@ -395,10 +634,59 @@ Sub generategraph
 		l.Tag = i
 		datapnl.AddView(l, _
 			colWidth * i, _
-			datapnl.Height - rowHeight, _
+			datapnl.Height - RowHeight, _
 			colWidth, _
-			rowHeight)
+			RowHeight)
 	Next
+	' --- Top 3 Students ---
+	' Build a list of name-average pairs and sort descending
+	Dim studentAvgs As List
+	studentAvgs.Initialize
+	For i = 0 To names.Size - 1
+		Dim avg As Double = GetStudentAvgPercentage(names.Get(i))
+		studentAvgs.Add(Array As Object(names.Get(i), avg))
+	Next
+
+	' Simple sort: find top 3 by highest average
+	Dim topNames(3) As String
+	Dim topRates(3) As Double
+	Dim topActivities(3) As String
+
+	For rank = 0 To Min(2, studentAvgs.Size - 1)
+		Dim bestIdx As Int = -1
+		Dim bestVal As Double = -1
+		For j = 0 To studentAvgs.Size - 1
+			Dim entry() As Object = studentAvgs.Get(j)
+			If entry(1) > bestVal Then
+				bestVal = entry(1)
+				bestIdx = j
+			End If
+		Next
+		If bestIdx >= 0 Then
+			Dim bestEntry() As Object = studentAvgs.Get(bestIdx)
+			topNames(rank) = bestEntry(0)
+			topRates(rank) = bestEntry(1)
+			topActivities(rank) = GetStudentTopActivity(bestEntry(0)) ' <-- you need this helper
+			studentAvgs.RemoveAt(bestIdx) ' remove so next iteration finds the next best
+		End If
+	Next
+
+	' Assign to dashboard labels
+	If topNames(0) <> "" Then
+		NAME1.Text = topNames(0)
+		RATE1.Text = Round2(topRates(0), 1) & "%"
+		ACTIVITY1.Text = topActivities(0)
+	End If
+	If topNames(1) <> "" Then
+		NAME2.Text = topNames(1)
+		RATE2.Text = Round2(topRates(1), 1) & "%"
+		ACTIVITY2.Text = topActivities(1)
+	End If
+	If topNames(2) <> "" Then
+		NAME3.Text = topNames(2)
+		RATE3.Text = Round2(topRates(2), 1) & "%"
+		ACTIVITY3.Text = topActivities(2)
+	End If
 End Sub
 
 '=============================================================================
@@ -409,16 +697,20 @@ Sub showgrades
 	pnlmain.RemoveAllViews
 	pnlmain.LoadLayout("grades")
 
-	gradepnl = SV1.Panel
-	gradepnl.Width = SV1.Width
-
+	' SV1 is now loaded from layout — get its actual width before touching its panel
 	Dim names As List = GetUniqueStudentNames
 	Dim studentSize As Int = names.Size
 
-	gradepnl.Height = (studentSize * 108dip) + 20dip
+	' ✅ Set the inner panel height FIRST, before adding any views
+	' This is what makes the ScrollView actually scrollable
+	Dim totalHeight As Int = (studentSize * 108dip) + 40dip
+	SV1.Panel.Height = totalHeight
+	SV1.Panel.Width = SV1.Width
+
+	SV1.Panel.RemoveAllViews
+
 	makeshadow(studentSize, names)
 End Sub
-
 Sub makeshadow(numstudent As Int, studentNames As List)
 	Dim itemSpacing As Int = 108dip
 	Dim startTopMargin As Int = 20dip
@@ -441,7 +733,7 @@ Sub makeshadow(numstudent As Int, studentNames As List)
 		Dim shadowLeftPos As Int = gradepnl.Width - 13dip - pnlWidth
 		Dim shadowTopPos As Int = currentTop + 7dip
 
-		gradepnl.AddView(pnlShadow, shadowLeftPos, shadowTopPos, pnlWidth, pnlHeight)
+		SV1.Panel.AddView(pnlShadow, shadowLeftPos, shadowTopPos, pnlWidth, pnlHeight)
 		
 		Dim name As String = studentNames.Get(i)
 		Dim grade As String = GetStudentGrade(name)
@@ -464,8 +756,6 @@ Sub studentgrade(studentName As String, grade As String, currentTop As Int)
 
 	Dim leftPos As Int = gradepnl.Width - rightEdgeDistance - pnlWidth
 	Dim topPos As Int = currentTop
-
-	gradepnl.AddView(pnlCard, leftPos, topPos, pnlWidth, pnlHeight)
 
 	' --- Grade Label (left side of the card) ---
 	Dim lblGrade As Label
@@ -493,6 +783,7 @@ Sub studentgrade(studentName As String, grade As String, currentTop As Int)
 	lbl.TextColor = Colors.Black
 	lbl.Padding = Array As Int(10dip, 5dip, 10dip, 5dip)
 	pnlCard.AddView(lbl, gradeWidth, 0, pnlWidth - gradeWidth, pnlHeight)
+	SV1.Panel.AddView(pnlCard, leftPos, topPos, pnlWidth, pnlHeight)
 End Sub
 
 '=============================================================================
@@ -502,229 +793,18 @@ End Sub
 Sub showedit
 	pnlmain.RemoveAllViews
 	pnlmain.LoadLayout("edit")
-	BuildEditList
-End Sub
-
-Sub BuildEditList
-	' Use the edit layout's ScrollView (SV1) to show all records
-	' We create the list programmatically inside pnlmain
-	
-	Dim sv2 As ScrollView
-	sv2.Initialize(0)
-	pnlmain.AddView(sv2, 0, 50dip, pnlmain.Width, pnlmain.Height - 110dip)
-	
-	Dim listPanel As Panel = sv2.Panel
-	listPanel.Width = sv2.Width
-	
-	Dim rowH As Int = 80dip
-	Dim spacing As Int = 5dip
-	Dim currentY As Int = 10dip
-	
-	' --- "Add New" button at top ---
-	Dim btnAdd As Button
-	btnAdd.Initialize("btnAddNew")
-	btnAdd.Text = "+ Add New Student Record"
-	btnAdd.TextSize = 14
-	btnAdd.TextColor = Colors.White
-	btnAdd.Color = Colors.RGB(52, 168, 83)
-	listPanel.AddView(btnAdd, 10dip, currentY, sv2.Width - 20dip, 45dip)
-	currentY = currentY + 55dip
-	
-	' --- Record rows ---
-	For i = 0 To StudentList.Size - 1
-		Dim row() As String = StudentList.Get(i)
-		
-		' Card panel for each record
-		Dim pnlRow As Panel
-		pnlRow.Initialize("pnlRow")
-		Dim cd As ColorDrawable
-		cd.Initialize2(Colors.White, 4dip, 1dip, Colors.RGB(200, 200, 200))
-		pnlRow.Background = cd
-		pnlRow.Tag = i
-		listPanel.AddView(pnlRow, 10dip, currentY, sv2.Width - 20dip, rowH)
-		
-		' Student info labels
-		Dim lblInfo As Label
-		lblInfo.Initialize("")
-		lblInfo.Text = row(COL_NAME) & " (" & row(COL_ID) & ")"
-		lblInfo.TextSize = 13
-		lblInfo.TextColor = Colors.Black
-		lblInfo.Gravity = Gravity.CENTER_VERTICAL
-		lblInfo.Typeface = Typeface.DEFAULT_BOLD
-		lblInfo.Padding = Array As Int(10dip, 0, 0, 0)
-		pnlRow.AddView(lblInfo, 0, 0, sv2.Width - 180dip, 40dip)
-		
-		Dim lblDetail As Label
-		lblDetail.Initialize("")
-		lblDetail.Text = row(COL_SUBJECT) & " | " & row(COL_ACTIVITY) & " | " & row(COL_ATTENDANCE) & " | " & row(COL_RATE) & " (" & ComputeGrade(row(COL_RATE)) & ")"
-		lblDetail.TextSize = 11
-		lblDetail.TextColor = Colors.DarkGray
-		lblDetail.Gravity = Gravity.CENTER_VERTICAL
-		lblDetail.Padding = Array As Int(10dip, 0, 0, 0)
-		pnlRow.AddView(lblDetail, 0, 38dip, sv2.Width - 180dip, 40dip)
-		
-		' Edit button
-		Dim btnEdit As Button
-		btnEdit.Initialize("btnEditRow")
-		btnEdit.Text = "Edit"
-		btnEdit.TextSize = 12
-		btnEdit.TextColor = Colors.White
-		btnEdit.Color = Colors.RGB(66, 133, 244)
-		btnEdit.Tag = i
-		pnlRow.AddView(btnEdit, sv2.Width - 175dip, 15dip, 70dip, 45dip)
-		
-		' Delete button
-		Dim btnDel As Button
-		btnDel.Initialize("btnDeleteRow")
-		btnDel.Text = "Del"
-		btnDel.TextSize = 12
-		btnDel.TextColor = Colors.White
-		btnDel.Color = Colors.RGB(234, 67, 53)
-		btnDel.Tag = i
-		pnlRow.AddView(btnDel, sv2.Width - 95dip, 15dip, 70dip, 45dip)
-		
-		currentY = currentY + rowH + spacing
-	Next
-	
-	listPanel.Height = currentY + 20dip
-End Sub
-
-Sub btnAddNew_Click
-	EditingRowIndex = -1
-	ShowCREATForm("", "", "", "", False)
-End Sub
-
-Sub btnEditRow_Click
-	Dim btn As Button = Sender
-	EditingRowIndex = btn.Tag
-	Dim row() As String = StudentList.Get(EditingRowIndex)
-	Dim isPresent As Boolean = (row(COL_ATTENDANCE).ToLowerCase = "present")
-	ShowCREATForm(row(COL_NAME), row(COL_ID), row(COL_ACTIVITY), row(COL_RATE), isPresent)
-End Sub
-
-Sub btnDeleteRow_Click
-	Dim btn As Button = Sender
-	Dim deleteIndex As Int = btn.Tag
-	Dim row() As String = StudentList.Get(deleteIndex)
-	Dim msg As String = "Delete record for " & row(COL_NAME) & " (" & row(COL_SUBJECT) & ")?"
-	
-	Dim result As Int = Msgbox2(msg, "Confirm Delete", "Delete", "", "Cancel", Null)
-	If result = DialogResponse.POSITIVE Then
-		StudentList.RemoveAt(deleteIndex)
-		SaveStudentData
-		showedit ' refresh list
-	End If
 End Sub
 
 '=============================================================================
 ' SECTION 9: CREAT SCREEN (Create / Update Form)
 '=============================================================================
 
-Sub ShowCREATForm(name As String, id As String, activityTitle As String, rate As String, attendance As Boolean)
-	pnlmain.RemoveAllViews
-	pnlmain.LoadLayout("CREAT")
-	
-	' Pre-fill fields
-	EditText.Text = name         ' Student Name
-	EditText3.Text = id          ' Student ID
-	EditText1.Text = activityTitle    ' Activity Title
-	EditText2.Text = rate        ' Result
-	CheckBox1.Checked = attendance
-	
-	' Create SAVE button programmatically on Panel1
-	Dim btnSave As Button
-	btnSave.Initialize("btnSave")
-	If EditingRowIndex >= 0 Then
-		btnSave.Text = "UPDATE RECORD"
-	Else
-		btnSave.Text = "SAVE RECORD"
-	End If
-	btnSave.TextSize = 16
-	btnSave.TextColor = Colors.Black
-	btnSave.Color = 0xFFFFD400
-	btnSave.Typeface = Typeface.DEFAULT_BOLD
-	
-	' Position at the bottom of Panel1
-	pnlmain.AddView(btnSave, 20dip, pnlmain.Height - 120dip, pnlmain.Width - 40dip, 50dip)
-End Sub
 
 Private Sub Button1_Click
 	' BACK button on CREAT layout — go back to edit screen
 	showedit
 End Sub
 
-Private Sub CREAT_Click
-	' "Add" button from the edit layout
-	EditingRowIndex = -1
-	ShowCREATForm("", "", "", "", False)
-End Sub
-
-Sub btnSave_Click
-	' Validate
-	Dim sName As String = EditText.Text.Trim
-	Dim sID As String = EditText3.Text.Trim
-	Dim sActivity As String = EditText1.Text.Trim
-	Dim sRate As String = EditText2.Text.Trim
-	
-	If sName.Length = 0 Then
-		Msgbox("Please enter a Student Name.", "Validation Error")
-		Return
-	End If
-	If sID.Length = 0 Then
-		Msgbox("Please enter a Student ID.", "Validation Error")
-		Return
-	End If
-	If sActivity.Length = 0 Then
-		Msgbox("Please enter an Activity Title.", "Validation Error")
-		Return
-	End If
-	If sRate.Length = 0 Or sRate.Contains("/") = False Then
-		Msgbox("Please enter a valid Result (e.g. 11/20).", "Validation Error")
-		Return
-	End If
-	
-	' Determine attendance
-	Dim sAttendance As String
-	If CheckBox1.Checked Then
-		sAttendance = "present"
-	Else
-		sAttendance = "absent"
-	End If
-	
-	' Determine subject — for new records use a default, for edits keep existing
-	Dim sSubject As String
-	If EditingRowIndex >= 0 Then
-		Dim existingRow() As String = StudentList.Get(EditingRowIndex)
-		sSubject = existingRow(COL_SUBJECT)
-	Else
-		' For new records, derive subject from activity or use a placeholder
-		sSubject = "general"
-	End If
-	
-	' Build the row
-	Dim newRow(6) As String
-	newRow(COL_NAME) = sName
-	newRow(COL_ID) = sID
-	newRow(COL_SUBJECT) = sSubject
-	newRow(COL_ACTIVITY) = sActivity
-	newRow(COL_ATTENDANCE) = sAttendance
-	newRow(COL_RATE) = sRate
-	
-	If EditingRowIndex >= 0 Then
-		' UPDATE existing row
-		StudentList.Set(EditingRowIndex, newRow)
-		Log("Updated row at index " & EditingRowIndex)
-	Else
-		' CREATE new row
-		StudentList.Add(newRow)
-		Log("Added new row, total: " & StudentList.Size)
-	End If
-	
-	' Save & go back
-	SaveStudentData
-	EditingRowIndex = -1
-	showedit
-End Sub
 
 '=============================================================================
 ' SECTION 10: PROFILE SCREEN (Table View)
@@ -745,20 +825,17 @@ Sub ShowTable
 End Sub
 
 Sub loadtable
-	' Header
-	Dim List1 As List
-	Dim headers As List
-	headers.Initialize
-	List1 = StringUtils1.LoadCSV2(File.DirInternal, "citylist.csv", ",", headers)
-	NumberOfColumns = headers.Size
+	' Use already loaded CSV headers and list from single source of truth
+	NumberOfColumns = CSVHeaders.Size
 	ColumnWidth = SV.Width / NumberOfColumns
 	
+	' Render Header Row
 	For i = 0 To NumberOfColumns - 1
 		Dim l As Label
 		l.Initialize("header")
-		l.Text = headers.Get(i)
+		l.Text = CSVHeaders.Get(i)
 		l.Gravity = Gravity.LEFT
-		l.TextSize = FontSize
+		l.TextSize = FontSize - 4
 		l.Color = HeaderColor
 		l.TextColor = HeaderFontColor
 		l.Padding = Array As Int(10dip, 5dip, 0dip, 5dip)
@@ -766,13 +843,13 @@ Sub loadtable
 		Table.AddView(l, ColumnWidth * i, 0, ColumnWidth, RowHeight)
 	Next
 	
-	' Data rows
-	For i = 0 To List1.Size - 1
-		Dim row() As String = List1.Get(i)
+	' Render Data Rows
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
 		AddTableRow(row, i + 1)  ' +1 to skip header row height
 	Next
 	
-	Table.Height = (List1.Size + 1) * RowHeight
+	Table.Height = (StudentList.Size + 1) * RowHeight
 End Sub
 
 Sub AddTableRow(Values() As String, rowIndex As Int)
@@ -795,4 +872,333 @@ Sub AddTableRow(Values() As String, rowIndex As Int)
 		l.Tag = rc
 		Table.AddView(l, ColumnWidth * i, RowHeight * rowIndex, ColumnWidth, RowHeight)
 	Next
+End Sub
+
+Sub GetUnique(source As List) As List
+	Dim seen As Map
+	seen.Initialize
+	Dim unique As List
+	unique.Initialize
+	Dim item As String        ' ✅ Declared outside the loop
+	For i = 0 To source.Size - 1
+		item = source.Get(i)  ' ✅ Only assignment inside
+		If seen.ContainsKey(item) = False Then
+			seen.Put(item, True)
+			unique.Add(item)
+		End If
+	Next
+	Return unique
+End Sub
+
+Sub loadspinner
+	If student_subjects.IsInitialized = False Then Return
+	SELECTSUBJECTS.Clear
+	Dim unique_subjects As List = GetUnique(student_subjects)
+	For i = 0 To unique_subjects.Size - 1
+		SELECTSUBJECTS.Add(unique_subjects.Get(i))
+	Next
+	If student_activitys.IsInitialized = False Then Return
+	STUDENT_ACTIVITY.Clear
+	Dim unique_activities As List = GetUnique(student_activitys)
+	For i = 0 To unique_activities.Size - 1
+		STUDENT_ACTIVITY.Add(unique_activities.Get(i))
+	Next
+End Sub
+
+Sub showselectids
+	If showselectid Then
+		isselectingid = True
+		update.Enabled = False
+		
+		' 1. Safely remove the overlay if it was already initialized
+		If bak.IsInitialized Then
+			bak.RemoveView
+		End If
+		
+		' 2. Initialize background overlay
+		bak.Initialize("bak")
+		bak.Color = 0x68000000
+		
+		Dim pnlCard As Panel
+		pnlCard.Initialize("pnlCard")
+
+		' 3. Create a unique drawable for the Card Panel
+		Dim cdCard As ColorDrawable
+		cdCard.Initialize2(0xFF2C2C2C, 40dip, 0dip, 0xFF000000)
+		pnlCard.Background = cdCard
+		pnlCard.Elevation = 4dip
+
+		' Define card dimensions and positioning
+		Dim pnlLeft As Int = 30dip
+		Dim pnlTop As Int = 220dip
+		Dim pnlWidth As Int = 300dip
+		Dim pnlHeight As Int = 280dip
+	
+		' Title Label (Padding removed as it is not a default B4A property)
+		Dim lbl As Label
+		lbl.Initialize("lbl")
+		lbl.Text = "SELECT ID"
+		lbl.Gravity = Bit.Or(Gravity.CENTER_HORIZONTAL, Gravity.CENTER_VERTICAL)
+		lbl.Typeface = Typeface.CreateNew(Typeface.SERIF, Typeface.STYLE_BOLD_ITALIC)
+		lbl.TextSize = 20
+		lbl.TextColor = Colors.White
+		pnlCard.AddView(lbl, 35dip, 30dip, 230dip, 40dip)
+
+		' Spinner
+		spinner.Initialize("spinner")
+		spinner.TextColor = Colors.Black
+		spinner.AddAll(GetUnique(student_ids))
+		spinner.Color = Colors.White
+		pnlCard.AddView(spinner, 75dip, 115dip, 150dip, 50dip)
+
+		' Action Button
+		Dim btn As Button
+		btn.Initialize("btn")
+		btn.Text = "SELECT"
+		btn.Gravity = Bit.Or(Gravity.CENTER_HORIZONTAL, Gravity.CENTER_VERTICAL)
+		btn.Typeface = Typeface.DEFAULT_BOLD
+		btn.TextColor = Colors.Black
+		btn.Color = Colors.White
+		pnlCard.AddView(btn, 50dip, 210dip, 200dip, 43dip)
+		
+		' Add the card to the background overlay
+		bak.AddView(pnlCard, pnlLeft, pnlTop, pnlWidth, pnlHeight)
+		
+		' 4. Add the overlay to the center of the Activity screen
+		Activity.AddView(bak, 0, 0, Activity.Width, Activity.Height)
+		
+	Else
+		' 5. Clean up the panel from the screen when closing
+		If bak.IsInitialized Then
+			bak.RemoveView
+		End If
+	End If
+End Sub
+
+Private Sub btn_Click
+	' 1. Select the spinner item
+	Dim serch_id As String = spinner.SelectedItem
+	
+	' 2. Hide/remove the overlay panel
+	showselectid = False
+	isselectingid = False
+	update.Enabled = True
+	showselectids
+	
+	' 3. Find student index
+	editRowIndex = -1
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		If row(1) = serch_id Then
+			editRowIndex = i
+			Exit
+		End If
+	Next
+	
+	' 4. Handle deletion if todelete flag is True
+	If editRowIndex > -1 Then
+		If todelete Then
+			Dim row() As String = StudentList.Get(editRowIndex)
+			Dim studentName As String = row(0)
+			
+			' Remove from list
+			StudentList.RemoveAt(editRowIndex)
+			
+			' Save the updated list back to CSV file
+			StringUtils1.SaveCSV2(File.DirInternal, "student.csv", ",", StudentList, CSVHeaders)
+			
+			' Reload data to refresh all lists in memory
+			LoadStudentData
+			
+			xui.MsgboxAsync("Deleted record for " & studentName & " successfully.", "Success")
+			
+			editRowIndex = -1
+			todelete = False
+			Return
+		End If
+	End If
+	
+	' 5. Load the layout into pnlmain for editing (if not deleting)
+	pnlmain.RemoveAllViews
+	pnlmain.LoadLayout("CREAT")
+	
+	If editRowIndex > -1 Then
+		Dim row() As String = StudentList.Get(editRowIndex)
+		STUDENT_NAME.Text = row(0)
+		STUDENT_ID.Text = row(1)
+		
+		' Fill the spinner selections
+		loadspinner
+		
+		' Set selected subject in SELECTSUBJECTS spinner
+		Dim subject As String = row(2)
+		For i = 0 To SELECTSUBJECTS.Size - 1
+			If SELECTSUBJECTS.GetItem(i) = subject Then
+				SELECTSUBJECTS.SelectedIndex = i
+				Exit
+			End If
+		Next
+		
+		' Set selected activity in STUDENT_ACTIVITY spinner
+		Dim activity11 As String = row(3)
+		For i = 0 To STUDENT_ACTIVITY.Size - 1
+			If STUDENT_ACTIVITY.GetItem(i) = activity11 Then
+				STUDENT_ACTIVITY.SelectedIndex = i
+				Exit
+			End If
+		Next
+		
+		' Set attendance check boxes
+		Dim attendance As String = row(4)
+		CheckBox1.Checked = (attendance = "present")
+		CheckBox2.Checked = (attendance = "late")
+		CheckBox3.Checked = (attendance = "absent")
+		
+		' Set rate
+		Dim rate As String = row(5)
+		If rate.Contains("/") Then
+			Dim parts() As String = Regex.Split("/", rate)
+			If parts.Length = 2 Then
+				EditText1.Text = parts(0)
+				EditText2.Text = parts(1)
+			Else
+				EditText1.Text = rate
+				EditText2.Text = ""
+			End If
+		Else
+			EditText1.Text = rate
+			EditText2.Text = ""
+		End If
+	End If
+End Sub
+
+Private Sub bak_Click
+	If isselectingid Then
+		showselectid = False
+		isselectingid = False
+		update.Enabled = True
+		showselectids
+	Else
+		showselectids
+		MsgboxAsync("run", "works") ' Fixed warning #34 by using Async method
+		Return
+	End If
+End Sub
+
+Private Sub update_Click
+	todelete = False
+	showselectid = True
+	showselectids
+End Sub
+
+Private Sub delete_Click
+	showselectid = True
+	todelete = True
+	showselectids
+End Sub
+
+Private Sub add_Click
+	editRowIndex = -1
+	todelete = False
+	pnlmain.RemoveAllViews
+	pnlmain.LoadLayout("CREAT")
+	loadspinner
+	
+	' Reset fields and checkbox states
+	STUDENT_NAME.Text = ""
+	STUDENT_ID.Text = ""
+	EditText1.Text = ""
+	EditText2.Text = ""
+	CheckBox1.Checked = True
+	CheckBox2.Checked = False
+	CheckBox3.Checked = False
+End Sub
+
+Private Sub CheckBox1_Click
+	If CheckBox1.Checked Then
+		CheckBox2.Checked = False
+		CheckBox3.Checked = False
+	End If
+End Sub
+
+Private Sub CheckBox2_Click
+	If CheckBox2.Checked Then
+		CheckBox1.Checked = False
+		CheckBox3.Checked = False
+	End If
+End Sub
+
+Private Sub CheckBox3_Click
+	If CheckBox3.Checked Then
+		CheckBox1.Checked = False
+		CheckBox2.Checked = False
+	End If
+End Sub
+
+Private Sub Panel2_Click
+	updatedata
+End Sub
+
+Private Sub updatedata_Click
+	updatedata
+End Sub
+
+Sub updatedata
+	' Validate name and ID
+	If STUDENT_NAME.Text.Trim = "" Or STUDENT_ID.Text.Trim = "" Then
+		xui.MsgboxAsync("Please enter Student Name and Student ID.", "Validation Error")
+		Return
+	End If
+	
+	' Validate scores
+	If EditText1.Text.Trim = "" Or EditText2.Text.Trim = "" Then
+		xui.MsgboxAsync("Please enter the complete score/rate (e.g. 15/20).", "Validation Error")
+		Return
+	End If
+	
+	' Determine attendance selection
+	Dim attendance As String = "present"
+	If CheckBox2.Checked Then
+		attendance = "late"
+	Else If CheckBox3.Checked Then
+		attendance = "absent"
+	End If
+	
+	' Construct rate string
+	Dim rate As String = EditText1.Text.Trim & "/" & EditText2.Text.Trim
+	
+	Dim msg As String
+	If editRowIndex > -1 Then
+		' Update existing record
+		Dim row() As String = StudentList.Get(editRowIndex)
+		row(0) = STUDENT_NAME.Text.Trim
+		row(1) = STUDENT_ID.Text.Trim
+		row(2) = SELECTSUBJECTS.SelectedItem
+		row(3) = STUDENT_ACTIVITY.SelectedItem
+		row(4) = attendance
+		row(5) = rate
+		StudentList.Set(editRowIndex, row)
+		msg = "Student record updated successfully!"
+	Else
+		' Create new student row array
+		Dim newRow(6) As String
+		newRow(0) = STUDENT_NAME.Text.Trim
+		newRow(1) = STUDENT_ID.Text.Trim
+		newRow(2) = SELECTSUBJECTS.SelectedItem
+		newRow(3) = STUDENT_ACTIVITY.SelectedItem
+		newRow(4) = attendance
+		newRow(5) = rate
+		StudentList.Add(newRow)
+		msg = "Student record added successfully!"
+	End If
+	
+	' Save the list back to CSV file
+	StringUtils1.SaveCSV2(File.DirInternal, "student.csv", ",", StudentList, CSVHeaders)
+	
+	' Reload data to refresh all lists in memory
+	LoadStudentData
+	
+	' Show success message and navigate back to edit screen
+	xui.MsgboxAsync(msg, "Success")
+	showedit
 End Sub

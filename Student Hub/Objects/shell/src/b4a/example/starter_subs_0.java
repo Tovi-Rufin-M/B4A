@@ -38,15 +38,15 @@ try {
 if (RapidSub.canDelegate("service_create")) { return b4a.example.starter.remoteMe.runUserSub(false, "starter","service_create");}
  BA.debugLineNum = 12;BA.debugLine="Sub Service_Create";
 Debug.ShouldStop(2048);
- BA.debugLineNum = 17;BA.debugLine="If File.Exists(File.DirInternal, \"citylist.csv\")";
+ BA.debugLineNum = 17;BA.debugLine="If File.Exists(File.DirInternal, \"student.csv\") =";
 Debug.ShouldStop(65536);
-if (RemoteObject.solveBoolean("=",starter.mostCurrent.__c.getField(false,"File").runMethod(true,"Exists",(Object)(starter.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirInternal")),(Object)(RemoteObject.createImmutable("citylist.csv"))),starter.mostCurrent.__c.getField(true,"False"))) { 
- BA.debugLineNum = 18;BA.debugLine="File.Copy(File.DirAssets, \"citylist.csv\", File.D";
+if (RemoteObject.solveBoolean("=",starter.mostCurrent.__c.getField(false,"File").runMethod(true,"Exists",(Object)(starter.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirInternal")),(Object)(RemoteObject.createImmutable("student.csv"))),starter.mostCurrent.__c.getField(true,"False"))) { 
+ BA.debugLineNum = 18;BA.debugLine="File.Copy(File.DirAssets, \"student.csv\", File.Di";
 Debug.ShouldStop(131072);
-starter.mostCurrent.__c.getField(false,"File").runVoidMethod ("Copy",(Object)(starter.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(BA.ObjectToString("citylist.csv")),(Object)(starter.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirInternal")),(Object)(RemoteObject.createImmutable("citylist.csv")));
- BA.debugLineNum = 19;BA.debugLine="Log(\"First launch: copied citylist.csv to DirInt";
+starter.mostCurrent.__c.getField(false,"File").runVoidMethod ("Copy",(Object)(starter.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirAssets")),(Object)(BA.ObjectToString("student.csv")),(Object)(starter.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirInternal")),(Object)(RemoteObject.createImmutable("student.csv")));
+ BA.debugLineNum = 19;BA.debugLine="Log(\"First launch: copied student.csv to DirInte";
 Debug.ShouldStop(262144);
-starter.mostCurrent.__c.runVoidMethod ("LogImpl","51769479",RemoteObject.createImmutable("First launch: copied citylist.csv to DirInternal"),0);
+starter.mostCurrent.__c.runVoidMethod ("LogImpl","82949127",RemoteObject.createImmutable("First launch: copied student.csv to DirInternal"),0);
  };
  BA.debugLineNum = 21;BA.debugLine="End Sub";
 Debug.ShouldStop(1048576);

@@ -399,6 +399,15 @@ public anywheresoftware.b4a.objects.PanelWrapper _profilebtn = null;
 public anywheresoftware.b4a.objects.PanelWrapper _dashbtn = null;
 public anywheresoftware.b4a.objects.PanelWrapper _grdbtn = null;
 public anywheresoftware.b4a.objects.PanelWrapper _editbtn = null;
+public anywheresoftware.b4a.objects.collections.List _student_names = null;
+public anywheresoftware.b4a.objects.collections.List _student_ids = null;
+public anywheresoftware.b4a.objects.collections.List _student_subjects = null;
+public anywheresoftware.b4a.objects.collections.List _student_activitys = null;
+public anywheresoftware.b4a.objects.collections.List _student_attendance = null;
+public anywheresoftware.b4a.objects.collections.List _student_rate = null;
+public static boolean _isselectingid = false;
+public static boolean _showselectid = false;
+public static boolean _todelete = false;
 public anywheresoftware.b4a.objects.PanelWrapper _datapnl = null;
 public anywheresoftware.b4a.objects.PanelWrapper _gradepnl = null;
 public anywheresoftware.b4a.objects.ScrollViewWrapper _sv1 = null;
@@ -413,62 +422,75 @@ public static int _headerfontcolor = 0;
 public static float _fontsize = 0f;
 public static int _alignment = 0;
 public anywheresoftware.b4a.objects.PanelWrapper _panel1 = null;
-public anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper _checkbox1 = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _edittext = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _edittext2 = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _edittext3 = null;
 public anywheresoftware.b4a.objects.collections.List _studentlist = null;
 public anywheresoftware.b4a.objects.collections.List _csvheaders = null;
-public static int _editingrowindex = 0;
 public static int _col_name = 0;
-public static int _col_id = 0;
-public static int _col_subject = 0;
-public static int _col_activity = 0;
-public static int _col_attendance = 0;
 public static int _col_rate = 0;
+public static int _col_activity = 0;
+public anywheresoftware.b4a.objects.LabelWrapper _name1 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _name2 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _name3 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _rate1 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _rate2 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _rate3 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _activity1 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _activity2 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _activity3 = null;
+public anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper _checkbox1 = null;
+public anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper _checkbox2 = null;
+public anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper _checkbox3 = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _edittext2 = null;
+public anywheresoftware.b4a.objects.SpinnerWrapper _selectsubjects = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _student_id = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _student_name = null;
+public anywheresoftware.b4a.objects.SpinnerWrapper _student_activity = null;
+public anywheresoftware.b4a.objects.PanelWrapper _update = null;
+public anywheresoftware.b4a.objects.PanelWrapper _bak = null;
+public anywheresoftware.b4a.objects.SpinnerWrapper _spinner = null;
+public static int _editrowindex = 0;
 public b4a.example.starter _starter = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-RDebugUtils.currentLine=262144;
- //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=262145;
- //BA.debugLineNum = 262145;BA.debugLine="Activity.LoadLayout(\"main\")";
+RDebugUtils.currentLine=131072;
+ //BA.debugLineNum = 131072;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=131073;
+ //BA.debugLineNum = 131073;BA.debugLine="Activity.LoadLayout(\"main\")";
 mostCurrent._activity.LoadLayout("main",mostCurrent.activityBA);
-RDebugUtils.currentLine=262147;
- //BA.debugLineNum = 262147;BA.debugLine="initdrawer";
+RDebugUtils.currentLine=131075;
+ //BA.debugLineNum = 131075;BA.debugLine="initdrawer";
 _initdrawer();
-RDebugUtils.currentLine=262150;
- //BA.debugLineNum = 262150;BA.debugLine="HeaderColor = Colors.Transparent";
+RDebugUtils.currentLine=131078;
+ //BA.debugLineNum = 131078;BA.debugLine="HeaderColor = Colors.Transparent";
 _headercolor = anywheresoftware.b4a.keywords.Common.Colors.Transparent;
-RDebugUtils.currentLine=262151;
- //BA.debugLineNum = 262151;BA.debugLine="NumberOfColumns = 6";
+RDebugUtils.currentLine=131079;
+ //BA.debugLineNum = 131079;BA.debugLine="NumberOfColumns = 6";
 _numberofcolumns = (int) (6);
-RDebugUtils.currentLine=262152;
- //BA.debugLineNum = 262152;BA.debugLine="RowHeight = 30dip";
+RDebugUtils.currentLine=131080;
+ //BA.debugLineNum = 131080;BA.debugLine="RowHeight = 30dip";
 _rowheight = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30));
-RDebugUtils.currentLine=262153;
- //BA.debugLineNum = 262153;BA.debugLine="FontColor = Colors.Black";
+RDebugUtils.currentLine=131081;
+ //BA.debugLineNum = 131081;BA.debugLine="FontColor = Colors.Black";
 _fontcolor = anywheresoftware.b4a.keywords.Common.Colors.Black;
-RDebugUtils.currentLine=262154;
- //BA.debugLineNum = 262154;BA.debugLine="HeaderFontColor = Colors.Black";
+RDebugUtils.currentLine=131082;
+ //BA.debugLineNum = 131082;BA.debugLine="HeaderFontColor = Colors.Black";
 _headerfontcolor = anywheresoftware.b4a.keywords.Common.Colors.Black;
-RDebugUtils.currentLine=262155;
- //BA.debugLineNum = 262155;BA.debugLine="FontSize = 14";
+RDebugUtils.currentLine=131083;
+ //BA.debugLineNum = 131083;BA.debugLine="FontSize = 14";
 _fontsize = (float) (14);
-RDebugUtils.currentLine=262156;
- //BA.debugLineNum = 262156;BA.debugLine="Alignment = Gravity.LEFT";
+RDebugUtils.currentLine=131084;
+ //BA.debugLineNum = 131084;BA.debugLine="Alignment = Gravity.LEFT";
 _alignment = anywheresoftware.b4a.keywords.Common.Gravity.LEFT;
-RDebugUtils.currentLine=262159;
- //BA.debugLineNum = 262159;BA.debugLine="LoadStudentData";
+RDebugUtils.currentLine=131087;
+ //BA.debugLineNum = 131087;BA.debugLine="LoadStudentData";
 _loadstudentdata();
-RDebugUtils.currentLine=262162;
- //BA.debugLineNum = 262162;BA.debugLine="showgrades";
-_showgrades();
-RDebugUtils.currentLine=262163;
- //BA.debugLineNum = 262163;BA.debugLine="End Sub";
+RDebugUtils.currentLine=131089;
+ //BA.debugLineNum = 131089;BA.debugLine="showedit";
+_showedit();
+RDebugUtils.currentLine=131090;
+ //BA.debugLineNum = 131090;BA.debugLine="End Sub";
 return "";
 }
 public static String  _initdrawer() throws Exception{
@@ -506,74 +528,205 @@ public static String  _loadstudentdata() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "loadstudentdata", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "loadstudentdata", null));}
-RDebugUtils.currentLine=16515072;
- //BA.debugLineNum = 16515072;BA.debugLine="Sub LoadStudentData";
-RDebugUtils.currentLine=16515073;
- //BA.debugLineNum = 16515073;BA.debugLine="CSVHeaders.Initialize";
+int _i = 0;
+String[] _row = null;
+RDebugUtils.currentLine=1114112;
+ //BA.debugLineNum = 1114112;BA.debugLine="Sub LoadStudentData";
+RDebugUtils.currentLine=1114113;
+ //BA.debugLineNum = 1114113;BA.debugLine="CSVHeaders.Initialize";
 mostCurrent._csvheaders.Initialize();
-RDebugUtils.currentLine=16515074;
- //BA.debugLineNum = 16515074;BA.debugLine="StudentList = StringUtils1.LoadCSV2(File.DirInter";
-mostCurrent._studentlist = _stringutils1.LoadCSV2(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"citylist.csv",BA.ObjectToChar(","),mostCurrent._csvheaders);
-RDebugUtils.currentLine=16515075;
- //BA.debugLineNum = 16515075;BA.debugLine="Log(\"Loaded \" & StudentList.Size & \" student reco";
-anywheresoftware.b4a.keywords.Common.LogImpl("516515075","Loaded "+BA.NumberToString(mostCurrent._studentlist.getSize())+" student records",0);
-RDebugUtils.currentLine=16515076;
- //BA.debugLineNum = 16515076;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1114114;
+ //BA.debugLineNum = 1114114;BA.debugLine="StudentList = StringUtils1.LoadCSV2(File.DirInter";
+mostCurrent._studentlist = _stringutils1.LoadCSV2(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"student.csv",BA.ObjectToChar(","),mostCurrent._csvheaders);
+RDebugUtils.currentLine=1114117;
+ //BA.debugLineNum = 1114117;BA.debugLine="student_names.Initialize";
+mostCurrent._student_names.Initialize();
+RDebugUtils.currentLine=1114118;
+ //BA.debugLineNum = 1114118;BA.debugLine="student_ids.Initialize";
+mostCurrent._student_ids.Initialize();
+RDebugUtils.currentLine=1114119;
+ //BA.debugLineNum = 1114119;BA.debugLine="student_subjects.Initialize";
+mostCurrent._student_subjects.Initialize();
+RDebugUtils.currentLine=1114120;
+ //BA.debugLineNum = 1114120;BA.debugLine="student_activitys.Initialize";
+mostCurrent._student_activitys.Initialize();
+RDebugUtils.currentLine=1114121;
+ //BA.debugLineNum = 1114121;BA.debugLine="student_attendance.Initialize";
+mostCurrent._student_attendance.Initialize();
+RDebugUtils.currentLine=1114122;
+ //BA.debugLineNum = 1114122;BA.debugLine="student_rate.Initialize";
+mostCurrent._student_rate.Initialize();
+RDebugUtils.currentLine=1114125;
+ //BA.debugLineNum = 1114125;BA.debugLine="For i = 0 To StudentList.Size - 1";
+{
+final int step9 = 1;
+final int limit9 = (int) (mostCurrent._studentlist.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit9 ;_i = _i + step9 ) {
+RDebugUtils.currentLine=1114126;
+ //BA.debugLineNum = 1114126;BA.debugLine="Dim row() As String = StudentList.Get(i)";
+_row = (String[])(mostCurrent._studentlist.Get(_i));
+RDebugUtils.currentLine=1114127;
+ //BA.debugLineNum = 1114127;BA.debugLine="student_names.Add(row(0))";
+mostCurrent._student_names.Add((Object)(_row[(int) (0)]));
+RDebugUtils.currentLine=1114128;
+ //BA.debugLineNum = 1114128;BA.debugLine="student_ids.Add(row(1))";
+mostCurrent._student_ids.Add((Object)(_row[(int) (1)]));
+RDebugUtils.currentLine=1114129;
+ //BA.debugLineNum = 1114129;BA.debugLine="student_subjects.Add(row(2))";
+mostCurrent._student_subjects.Add((Object)(_row[(int) (2)]));
+RDebugUtils.currentLine=1114130;
+ //BA.debugLineNum = 1114130;BA.debugLine="student_activitys.Add(row(3))";
+mostCurrent._student_activitys.Add((Object)(_row[(int) (3)]));
+RDebugUtils.currentLine=1114131;
+ //BA.debugLineNum = 1114131;BA.debugLine="student_attendance.Add(row(4))";
+mostCurrent._student_attendance.Add((Object)(_row[(int) (4)]));
+RDebugUtils.currentLine=1114132;
+ //BA.debugLineNum = 1114132;BA.debugLine="student_rate.Add(row(5))";
+mostCurrent._student_rate.Add((Object)(_row[(int) (5)]));
+ }
+};
+RDebugUtils.currentLine=1114134;
+ //BA.debugLineNum = 1114134;BA.debugLine="End Sub";
 return "";
 }
-public static String  _showgrades() throws Exception{
+public static String  _showedit() throws Exception{
 RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showgrades", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showgrades", null));}
-anywheresoftware.b4a.objects.collections.List _names = null;
-int _studentsize = 0;
-RDebugUtils.currentLine=917504;
- //BA.debugLineNum = 917504;BA.debugLine="Sub showgrades";
-RDebugUtils.currentLine=917505;
- //BA.debugLineNum = 917505;BA.debugLine="pnlmain.RemoveAllViews";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "showedit", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showedit", null));}
+RDebugUtils.currentLine=2031616;
+ //BA.debugLineNum = 2031616;BA.debugLine="Sub showedit";
+RDebugUtils.currentLine=2031617;
+ //BA.debugLineNum = 2031617;BA.debugLine="pnlmain.RemoveAllViews";
 mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=917506;
- //BA.debugLineNum = 917506;BA.debugLine="pnlmain.LoadLayout(\"grades\")";
-mostCurrent._pnlmain.LoadLayout("grades",mostCurrent.activityBA);
-RDebugUtils.currentLine=917508;
- //BA.debugLineNum = 917508;BA.debugLine="gradepnl = SV1.Panel";
-mostCurrent._gradepnl = mostCurrent._sv1.getPanel();
-RDebugUtils.currentLine=917509;
- //BA.debugLineNum = 917509;BA.debugLine="gradepnl.Width = SV1.Width";
-mostCurrent._gradepnl.setWidth(mostCurrent._sv1.getWidth());
-RDebugUtils.currentLine=917511;
- //BA.debugLineNum = 917511;BA.debugLine="Dim names As List = GetUniqueStudentNames";
-_names = new anywheresoftware.b4a.objects.collections.List();
-_names = _getuniquestudentnames();
-RDebugUtils.currentLine=917512;
- //BA.debugLineNum = 917512;BA.debugLine="Dim studentSize As Int = names.Size";
-_studentsize = _names.getSize();
-RDebugUtils.currentLine=917514;
- //BA.debugLineNum = 917514;BA.debugLine="gradepnl.Height = (studentSize * 108dip) + 20dip";
-mostCurrent._gradepnl.setHeight((int) ((_studentsize*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (108)))+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))));
-RDebugUtils.currentLine=917515;
- //BA.debugLineNum = 917515;BA.debugLine="makeshadow(studentSize, names)";
-_makeshadow(_studentsize,_names);
-RDebugUtils.currentLine=917516;
- //BA.debugLineNum = 917516;BA.debugLine="End Sub";
+RDebugUtils.currentLine=2031618;
+ //BA.debugLineNum = 2031618;BA.debugLine="pnlmain.LoadLayout(\"edit\")";
+mostCurrent._pnlmain.LoadLayout("edit",mostCurrent.activityBA);
+RDebugUtils.currentLine=2031619;
+ //BA.debugLineNum = 2031619;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
 RDebugUtils.currentModule="main";
-RDebugUtils.currentLine=196608;
- //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=196609;
- //BA.debugLineNum = 196609;BA.debugLine="End Sub";
+RDebugUtils.currentLine=262144;
+ //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=262145;
+ //BA.debugLineNum = 262145;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=131072;
- //BA.debugLineNum = 131072;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=131073;
- //BA.debugLineNum = 131073;BA.debugLine="End Sub";
+RDebugUtils.currentLine=196608;
+ //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=196609;
+ //BA.debugLineNum = 196609;BA.debugLine="End Sub";
+return "";
+}
+public static String  _add_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "add_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "add_click", null));}
+RDebugUtils.currentLine=4390912;
+ //BA.debugLineNum = 4390912;BA.debugLine="Private Sub add_Click";
+RDebugUtils.currentLine=4390913;
+ //BA.debugLineNum = 4390913;BA.debugLine="editRowIndex = -1";
+_editrowindex = (int) (-1);
+RDebugUtils.currentLine=4390914;
+ //BA.debugLineNum = 4390914;BA.debugLine="todelete = False";
+_todelete = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=4390915;
+ //BA.debugLineNum = 4390915;BA.debugLine="pnlmain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+RDebugUtils.currentLine=4390916;
+ //BA.debugLineNum = 4390916;BA.debugLine="pnlmain.LoadLayout(\"CREAT\")";
+mostCurrent._pnlmain.LoadLayout("CREAT",mostCurrent.activityBA);
+RDebugUtils.currentLine=4390917;
+ //BA.debugLineNum = 4390917;BA.debugLine="loadspinner";
+_loadspinner();
+RDebugUtils.currentLine=4390920;
+ //BA.debugLineNum = 4390920;BA.debugLine="STUDENT_NAME.Text = \"\"";
+mostCurrent._student_name.setText(BA.ObjectToCharSequence(""));
+RDebugUtils.currentLine=4390921;
+ //BA.debugLineNum = 4390921;BA.debugLine="STUDENT_ID.Text = \"\"";
+mostCurrent._student_id.setText(BA.ObjectToCharSequence(""));
+RDebugUtils.currentLine=4390922;
+ //BA.debugLineNum = 4390922;BA.debugLine="EditText1.Text = \"\"";
+mostCurrent._edittext1.setText(BA.ObjectToCharSequence(""));
+RDebugUtils.currentLine=4390923;
+ //BA.debugLineNum = 4390923;BA.debugLine="EditText2.Text = \"\"";
+mostCurrent._edittext2.setText(BA.ObjectToCharSequence(""));
+RDebugUtils.currentLine=4390924;
+ //BA.debugLineNum = 4390924;BA.debugLine="CheckBox1.Checked = True";
+mostCurrent._checkbox1.setChecked(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=4390925;
+ //BA.debugLineNum = 4390925;BA.debugLine="CheckBox2.Checked = False";
+mostCurrent._checkbox2.setChecked(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=4390926;
+ //BA.debugLineNum = 4390926;BA.debugLine="CheckBox3.Checked = False";
+mostCurrent._checkbox3.setChecked(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=4390927;
+ //BA.debugLineNum = 4390927;BA.debugLine="End Sub";
+return "";
+}
+public static String  _loadspinner() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "loadspinner", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "loadspinner", null));}
+anywheresoftware.b4a.objects.collections.List _unique_subjects = null;
+int _i = 0;
+anywheresoftware.b4a.objects.collections.List _unique_activities = null;
+RDebugUtils.currentLine=10616832;
+ //BA.debugLineNum = 10616832;BA.debugLine="Sub loadspinner";
+RDebugUtils.currentLine=10616833;
+ //BA.debugLineNum = 10616833;BA.debugLine="If student_subjects.IsInitialized = False Then Re";
+if (mostCurrent._student_subjects.IsInitialized()==anywheresoftware.b4a.keywords.Common.False) { 
+if (true) return "";};
+RDebugUtils.currentLine=10616834;
+ //BA.debugLineNum = 10616834;BA.debugLine="SELECTSUBJECTS.Clear";
+mostCurrent._selectsubjects.Clear();
+RDebugUtils.currentLine=10616835;
+ //BA.debugLineNum = 10616835;BA.debugLine="Dim unique_subjects As List = GetUnique(student_s";
+_unique_subjects = new anywheresoftware.b4a.objects.collections.List();
+_unique_subjects = _getunique(mostCurrent._student_subjects);
+RDebugUtils.currentLine=10616836;
+ //BA.debugLineNum = 10616836;BA.debugLine="For i = 0 To unique_subjects.Size - 1";
+{
+final int step4 = 1;
+final int limit4 = (int) (_unique_subjects.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit4 ;_i = _i + step4 ) {
+RDebugUtils.currentLine=10616837;
+ //BA.debugLineNum = 10616837;BA.debugLine="SELECTSUBJECTS.Add(unique_subjects.Get(i))";
+mostCurrent._selectsubjects.Add(BA.ObjectToString(_unique_subjects.Get(_i)));
+ }
+};
+RDebugUtils.currentLine=10616839;
+ //BA.debugLineNum = 10616839;BA.debugLine="If student_activitys.IsInitialized = False Then R";
+if (mostCurrent._student_activitys.IsInitialized()==anywheresoftware.b4a.keywords.Common.False) { 
+if (true) return "";};
+RDebugUtils.currentLine=10616840;
+ //BA.debugLineNum = 10616840;BA.debugLine="STUDENT_ACTIVITY.Clear";
+mostCurrent._student_activity.Clear();
+RDebugUtils.currentLine=10616841;
+ //BA.debugLineNum = 10616841;BA.debugLine="Dim unique_activities As List = GetUnique(student";
+_unique_activities = new anywheresoftware.b4a.objects.collections.List();
+_unique_activities = _getunique(mostCurrent._student_activitys);
+RDebugUtils.currentLine=10616842;
+ //BA.debugLineNum = 10616842;BA.debugLine="For i = 0 To unique_activities.Size - 1";
+{
+final int step10 = 1;
+final int limit10 = (int) (_unique_activities.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit10 ;_i = _i + step10 ) {
+RDebugUtils.currentLine=10616843;
+ //BA.debugLineNum = 10616843;BA.debugLine="STUDENT_ACTIVITY.Add(unique_activities.Get(i))";
+mostCurrent._student_activity.Add(BA.ObjectToString(_unique_activities.Get(_i)));
+ }
+};
+RDebugUtils.currentLine=10616845;
+ //BA.debugLineNum = 10616845;BA.debugLine="End Sub";
 return "";
 }
 public static String  _addtablerow(String[] _values,int _rowindex) throws Exception{
@@ -583,148 +736,458 @@ if (Debug.shouldDelegate(mostCurrent.activityBA, "addtablerow", false))
 int _i = 0;
 anywheresoftware.b4a.objects.LabelWrapper _l = null;
 b4a.example.main._rowcol _rc = null;
-RDebugUtils.currentLine=17432576;
- //BA.debugLineNum = 17432576;BA.debugLine="Sub AddTableRow(Values() As String, rowIndex As In";
-RDebugUtils.currentLine=17432577;
- //BA.debugLineNum = 17432577;BA.debugLine="If Values.Length <> NumberOfColumns Then";
+RDebugUtils.currentLine=2818048;
+ //BA.debugLineNum = 2818048;BA.debugLine="Sub AddTableRow(Values() As String, rowIndex As In";
+RDebugUtils.currentLine=2818049;
+ //BA.debugLineNum = 2818049;BA.debugLine="If Values.Length <> NumberOfColumns Then";
 if (_values.length!=_numberofcolumns) { 
-RDebugUtils.currentLine=17432578;
- //BA.debugLineNum = 17432578;BA.debugLine="Log(\"Wrong number of values.\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("517432578","Wrong number of values.",0);
-RDebugUtils.currentLine=17432579;
- //BA.debugLineNum = 17432579;BA.debugLine="Return";
+RDebugUtils.currentLine=2818050;
+ //BA.debugLineNum = 2818050;BA.debugLine="Log(\"Wrong number of values.\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("82818050","Wrong number of values.",0);
+RDebugUtils.currentLine=2818051;
+ //BA.debugLineNum = 2818051;BA.debugLine="Return";
 if (true) return "";
  };
-RDebugUtils.currentLine=17432581;
- //BA.debugLineNum = 17432581;BA.debugLine="For i = 0 To NumberOfColumns - 1";
+RDebugUtils.currentLine=2818053;
+ //BA.debugLineNum = 2818053;BA.debugLine="For i = 0 To NumberOfColumns - 1";
 {
 final int step5 = 1;
 final int limit5 = (int) (_numberofcolumns-1);
 _i = (int) (0) ;
 for (;_i <= limit5 ;_i = _i + step5 ) {
-RDebugUtils.currentLine=17432582;
- //BA.debugLineNum = 17432582;BA.debugLine="Dim l As Label";
+RDebugUtils.currentLine=2818054;
+ //BA.debugLineNum = 2818054;BA.debugLine="Dim l As Label";
 _l = new anywheresoftware.b4a.objects.LabelWrapper();
-RDebugUtils.currentLine=17432583;
- //BA.debugLineNum = 17432583;BA.debugLine="l.Initialize(\"cell\")";
+RDebugUtils.currentLine=2818055;
+ //BA.debugLineNum = 2818055;BA.debugLine="l.Initialize(\"cell\")";
 _l.Initialize(mostCurrent.activityBA,"cell");
-RDebugUtils.currentLine=17432584;
- //BA.debugLineNum = 17432584;BA.debugLine="l.Text = Values(i)";
+RDebugUtils.currentLine=2818056;
+ //BA.debugLineNum = 2818056;BA.debugLine="l.Text = Values(i)";
 _l.setText(BA.ObjectToCharSequence(_values[_i]));
-RDebugUtils.currentLine=17432585;
- //BA.debugLineNum = 17432585;BA.debugLine="l.Gravity = Alignment";
+RDebugUtils.currentLine=2818057;
+ //BA.debugLineNum = 2818057;BA.debugLine="l.Gravity = Alignment";
 _l.setGravity(_alignment);
-RDebugUtils.currentLine=17432586;
- //BA.debugLineNum = 17432586;BA.debugLine="l.TextSize = FontSize";
+RDebugUtils.currentLine=2818058;
+ //BA.debugLineNum = 2818058;BA.debugLine="l.TextSize = FontSize";
 _l.setTextSize(_fontsize);
-RDebugUtils.currentLine=17432587;
- //BA.debugLineNum = 17432587;BA.debugLine="l.TextColor = FontColor";
+RDebugUtils.currentLine=2818059;
+ //BA.debugLineNum = 2818059;BA.debugLine="l.TextColor = FontColor";
 _l.setTextColor(_fontcolor);
-RDebugUtils.currentLine=17432588;
- //BA.debugLineNum = 17432588;BA.debugLine="l.Padding = Array As Int(10dip, 0, 0, 0)";
+RDebugUtils.currentLine=2818060;
+ //BA.debugLineNum = 2818060;BA.debugLine="l.Padding = Array As Int(10dip, 0, 0, 0)";
 _l.setPadding(new int[]{anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),(int) (0),(int) (0),(int) (0)});
-RDebugUtils.currentLine=17432589;
- //BA.debugLineNum = 17432589;BA.debugLine="Dim rc As RowCol";
+RDebugUtils.currentLine=2818061;
+ //BA.debugLineNum = 2818061;BA.debugLine="Dim rc As RowCol";
 _rc = new b4a.example.main._rowcol();
-RDebugUtils.currentLine=17432590;
- //BA.debugLineNum = 17432590;BA.debugLine="rc.Initialize";
+RDebugUtils.currentLine=2818062;
+ //BA.debugLineNum = 2818062;BA.debugLine="rc.Initialize";
 _rc.Initialize();
-RDebugUtils.currentLine=17432591;
- //BA.debugLineNum = 17432591;BA.debugLine="rc.Col = i";
+RDebugUtils.currentLine=2818063;
+ //BA.debugLineNum = 2818063;BA.debugLine="rc.Col = i";
 _rc.Col /*int*/  = _i;
-RDebugUtils.currentLine=17432592;
- //BA.debugLineNum = 17432592;BA.debugLine="rc.Row = rowIndex";
+RDebugUtils.currentLine=2818064;
+ //BA.debugLineNum = 2818064;BA.debugLine="rc.Row = rowIndex";
 _rc.Row /*int*/  = _rowindex;
-RDebugUtils.currentLine=17432593;
- //BA.debugLineNum = 17432593;BA.debugLine="l.Tag = rc";
+RDebugUtils.currentLine=2818065;
+ //BA.debugLineNum = 2818065;BA.debugLine="l.Tag = rc";
 _l.setTag((Object)(_rc));
-RDebugUtils.currentLine=17432594;
- //BA.debugLineNum = 17432594;BA.debugLine="Table.AddView(l, ColumnWidth * i, RowHeight * ro";
+RDebugUtils.currentLine=2818066;
+ //BA.debugLineNum = 2818066;BA.debugLine="Table.AddView(l, ColumnWidth * i, RowHeight * ro";
 mostCurrent._table.AddView((android.view.View)(_l.getObject()),(int) (_columnwidth*_i),(int) (_rowheight*_rowindex),_columnwidth,_rowheight);
  }
 };
-RDebugUtils.currentLine=17432596;
- //BA.debugLineNum = 17432596;BA.debugLine="End Sub";
+RDebugUtils.currentLine=2818068;
+ //BA.debugLineNum = 2818068;BA.debugLine="End Sub";
 return "";
 }
-public static String  _btnaddnew_click() throws Exception{
+public static String  _bak_click() throws Exception{
 RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnaddnew_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnaddnew_click", null));}
-RDebugUtils.currentLine=17104896;
- //BA.debugLineNum = 17104896;BA.debugLine="Sub btnAddNew_Click";
-RDebugUtils.currentLine=17104897;
- //BA.debugLineNum = 17104897;BA.debugLine="EditingRowIndex = -1";
-_editingrowindex = (int) (-1);
-RDebugUtils.currentLine=17104898;
- //BA.debugLineNum = 17104898;BA.debugLine="ShowCREATForm(\"\", \"\", \"\", \"\", False)";
-_showcreatform("","","","",anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=17104899;
- //BA.debugLineNum = 17104899;BA.debugLine="End Sub";
-return "";
-}
-public static String  _showcreatform(String _name,String _id,String _activitytitle,String _rate,boolean _attendance) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showcreatform", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showcreatform", new Object[] {_name,_id,_activitytitle,_rate,_attendance}));}
-anywheresoftware.b4a.objects.ButtonWrapper _btnsave = null;
-RDebugUtils.currentLine=17301504;
- //BA.debugLineNum = 17301504;BA.debugLine="Sub ShowCREATForm(name As String, id As String, ac";
-RDebugUtils.currentLine=17301505;
- //BA.debugLineNum = 17301505;BA.debugLine="pnlmain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=17301506;
- //BA.debugLineNum = 17301506;BA.debugLine="pnlmain.LoadLayout(\"CREAT\")";
-mostCurrent._pnlmain.LoadLayout("CREAT",mostCurrent.activityBA);
-RDebugUtils.currentLine=17301509;
- //BA.debugLineNum = 17301509;BA.debugLine="EditText.Text = name         ' Student Name";
-mostCurrent._edittext.setText(BA.ObjectToCharSequence(_name));
-RDebugUtils.currentLine=17301510;
- //BA.debugLineNum = 17301510;BA.debugLine="EditText3.Text = id          ' Student ID";
-mostCurrent._edittext3.setText(BA.ObjectToCharSequence(_id));
-RDebugUtils.currentLine=17301511;
- //BA.debugLineNum = 17301511;BA.debugLine="EditText1.Text = activityTitle    ' Activity Titl";
-mostCurrent._edittext1.setText(BA.ObjectToCharSequence(_activitytitle));
-RDebugUtils.currentLine=17301512;
- //BA.debugLineNum = 17301512;BA.debugLine="EditText2.Text = rate        ' Result";
-mostCurrent._edittext2.setText(BA.ObjectToCharSequence(_rate));
-RDebugUtils.currentLine=17301513;
- //BA.debugLineNum = 17301513;BA.debugLine="CheckBox1.Checked = attendance";
-mostCurrent._checkbox1.setChecked(_attendance);
-RDebugUtils.currentLine=17301516;
- //BA.debugLineNum = 17301516;BA.debugLine="Dim btnSave As Button";
-_btnsave = new anywheresoftware.b4a.objects.ButtonWrapper();
-RDebugUtils.currentLine=17301517;
- //BA.debugLineNum = 17301517;BA.debugLine="btnSave.Initialize(\"btnSave\")";
-_btnsave.Initialize(mostCurrent.activityBA,"btnSave");
-RDebugUtils.currentLine=17301518;
- //BA.debugLineNum = 17301518;BA.debugLine="If EditingRowIndex >= 0 Then";
-if (_editingrowindex>=0) { 
-RDebugUtils.currentLine=17301519;
- //BA.debugLineNum = 17301519;BA.debugLine="btnSave.Text = \"UPDATE RECORD\"";
-_btnsave.setText(BA.ObjectToCharSequence("UPDATE RECORD"));
+if (Debug.shouldDelegate(mostCurrent.activityBA, "bak_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "bak_click", null));}
+RDebugUtils.currentLine=12255232;
+ //BA.debugLineNum = 12255232;BA.debugLine="Private Sub bak_Click";
+RDebugUtils.currentLine=12255233;
+ //BA.debugLineNum = 12255233;BA.debugLine="If isselectingid Then";
+if (_isselectingid) { 
+RDebugUtils.currentLine=12255234;
+ //BA.debugLineNum = 12255234;BA.debugLine="showselectid = False";
+_showselectid = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=12255235;
+ //BA.debugLineNum = 12255235;BA.debugLine="isselectingid = False";
+_isselectingid = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=12255236;
+ //BA.debugLineNum = 12255236;BA.debugLine="update.Enabled = True";
+mostCurrent._update.setEnabled(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=12255237;
+ //BA.debugLineNum = 12255237;BA.debugLine="showselectids";
+_showselectids();
  }else {
-RDebugUtils.currentLine=17301521;
- //BA.debugLineNum = 17301521;BA.debugLine="btnSave.Text = \"SAVE RECORD\"";
-_btnsave.setText(BA.ObjectToCharSequence("SAVE RECORD"));
+RDebugUtils.currentLine=12255239;
+ //BA.debugLineNum = 12255239;BA.debugLine="showselectids";
+_showselectids();
+RDebugUtils.currentLine=12255240;
+ //BA.debugLineNum = 12255240;BA.debugLine="MsgboxAsync(\"run\", \"works\") ' Fixed warning #34";
+anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence("run"),BA.ObjectToCharSequence("works"),processBA);
+RDebugUtils.currentLine=12255241;
+ //BA.debugLineNum = 12255241;BA.debugLine="Return";
+if (true) return "";
  };
-RDebugUtils.currentLine=17301523;
- //BA.debugLineNum = 17301523;BA.debugLine="btnSave.TextSize = 16";
-_btnsave.setTextSize((float) (16));
-RDebugUtils.currentLine=17301524;
- //BA.debugLineNum = 17301524;BA.debugLine="btnSave.TextColor = Colors.Black";
-_btnsave.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
-RDebugUtils.currentLine=17301525;
- //BA.debugLineNum = 17301525;BA.debugLine="btnSave.Color = 0xFFFFD400";
-_btnsave.setColor(((int)0xffffd400));
-RDebugUtils.currentLine=17301526;
- //BA.debugLineNum = 17301526;BA.debugLine="btnSave.Typeface = Typeface.DEFAULT_BOLD";
-_btnsave.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.DEFAULT_BOLD);
-RDebugUtils.currentLine=17301529;
- //BA.debugLineNum = 17301529;BA.debugLine="pnlmain.AddView(btnSave, 20dip, pnlmain.Height -";
-mostCurrent._pnlmain.AddView((android.view.View)(_btnsave.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)),(int) (mostCurrent._pnlmain.getHeight()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (120))),(int) (mostCurrent._pnlmain.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
-RDebugUtils.currentLine=17301530;
- //BA.debugLineNum = 17301530;BA.debugLine="End Sub";
+RDebugUtils.currentLine=12255243;
+ //BA.debugLineNum = 12255243;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showselectids() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "showselectids", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showselectids", null));}
+anywheresoftware.b4a.objects.PanelWrapper _pnlcard = null;
+anywheresoftware.b4a.objects.drawable.ColorDrawable _cdcard = null;
+int _pnlleft = 0;
+int _pnltop = 0;
+int _pnlwidth = 0;
+int _pnlheight = 0;
+anywheresoftware.b4a.objects.LabelWrapper _lbl = null;
+anywheresoftware.b4a.objects.ButtonWrapper _btn = null;
+RDebugUtils.currentLine=12124160;
+ //BA.debugLineNum = 12124160;BA.debugLine="Sub showselectids";
+RDebugUtils.currentLine=12124161;
+ //BA.debugLineNum = 12124161;BA.debugLine="If showselectid Then";
+if (_showselectid) { 
+RDebugUtils.currentLine=12124162;
+ //BA.debugLineNum = 12124162;BA.debugLine="isselectingid = True";
+_isselectingid = anywheresoftware.b4a.keywords.Common.True;
+RDebugUtils.currentLine=12124163;
+ //BA.debugLineNum = 12124163;BA.debugLine="update.Enabled = False";
+mostCurrent._update.setEnabled(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=12124166;
+ //BA.debugLineNum = 12124166;BA.debugLine="If bak.IsInitialized Then";
+if (mostCurrent._bak.IsInitialized()) { 
+RDebugUtils.currentLine=12124167;
+ //BA.debugLineNum = 12124167;BA.debugLine="bak.RemoveView";
+mostCurrent._bak.RemoveView();
+ };
+RDebugUtils.currentLine=12124171;
+ //BA.debugLineNum = 12124171;BA.debugLine="bak.Initialize(\"bak\")";
+mostCurrent._bak.Initialize(mostCurrent.activityBA,"bak");
+RDebugUtils.currentLine=12124172;
+ //BA.debugLineNum = 12124172;BA.debugLine="bak.Color = 0x68000000";
+mostCurrent._bak.setColor(((int)0x68000000));
+RDebugUtils.currentLine=12124174;
+ //BA.debugLineNum = 12124174;BA.debugLine="Dim pnlCard As Panel";
+_pnlcard = new anywheresoftware.b4a.objects.PanelWrapper();
+RDebugUtils.currentLine=12124175;
+ //BA.debugLineNum = 12124175;BA.debugLine="pnlCard.Initialize(\"pnlCard\")";
+_pnlcard.Initialize(mostCurrent.activityBA,"pnlCard");
+RDebugUtils.currentLine=12124178;
+ //BA.debugLineNum = 12124178;BA.debugLine="Dim cdCard As ColorDrawable";
+_cdcard = new anywheresoftware.b4a.objects.drawable.ColorDrawable();
+RDebugUtils.currentLine=12124179;
+ //BA.debugLineNum = 12124179;BA.debugLine="cdCard.Initialize2(0xFF2C2C2C, 40dip, 0dip, 0xFF";
+_cdcard.Initialize2(((int)0xff2c2c2c),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),((int)0xff000000));
+RDebugUtils.currentLine=12124180;
+ //BA.debugLineNum = 12124180;BA.debugLine="pnlCard.Background = cdCard";
+_pnlcard.setBackground((android.graphics.drawable.Drawable)(_cdcard.getObject()));
+RDebugUtils.currentLine=12124181;
+ //BA.debugLineNum = 12124181;BA.debugLine="pnlCard.Elevation = 4dip";
+_pnlcard.setElevation((float) (anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (4))));
+RDebugUtils.currentLine=12124184;
+ //BA.debugLineNum = 12124184;BA.debugLine="Dim pnlLeft As Int = 30dip";
+_pnlleft = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30));
+RDebugUtils.currentLine=12124185;
+ //BA.debugLineNum = 12124185;BA.debugLine="Dim pnlTop As Int = 220dip";
+_pnltop = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (220));
+RDebugUtils.currentLine=12124186;
+ //BA.debugLineNum = 12124186;BA.debugLine="Dim pnlWidth As Int = 300dip";
+_pnlwidth = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300));
+RDebugUtils.currentLine=12124187;
+ //BA.debugLineNum = 12124187;BA.debugLine="Dim pnlHeight As Int = 280dip";
+_pnlheight = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (280));
+RDebugUtils.currentLine=12124190;
+ //BA.debugLineNum = 12124190;BA.debugLine="Dim lbl As Label";
+_lbl = new anywheresoftware.b4a.objects.LabelWrapper();
+RDebugUtils.currentLine=12124191;
+ //BA.debugLineNum = 12124191;BA.debugLine="lbl.Initialize(\"lbl\")";
+_lbl.Initialize(mostCurrent.activityBA,"lbl");
+RDebugUtils.currentLine=12124192;
+ //BA.debugLineNum = 12124192;BA.debugLine="lbl.Text = \"SELECT ID\"";
+_lbl.setText(BA.ObjectToCharSequence("SELECT ID"));
+RDebugUtils.currentLine=12124193;
+ //BA.debugLineNum = 12124193;BA.debugLine="lbl.Gravity = Bit.Or(Gravity.CENTER_HORIZONTAL,";
+_lbl.setGravity(anywheresoftware.b4a.keywords.Common.Bit.Or(anywheresoftware.b4a.keywords.Common.Gravity.CENTER_HORIZONTAL,anywheresoftware.b4a.keywords.Common.Gravity.CENTER_VERTICAL));
+RDebugUtils.currentLine=12124194;
+ //BA.debugLineNum = 12124194;BA.debugLine="lbl.Typeface = Typeface.CreateNew(Typeface.SERIF";
+_lbl.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.CreateNew(anywheresoftware.b4a.keywords.Common.Typeface.SERIF,anywheresoftware.b4a.keywords.Common.Typeface.STYLE_BOLD_ITALIC));
+RDebugUtils.currentLine=12124195;
+ //BA.debugLineNum = 12124195;BA.debugLine="lbl.TextSize = 20";
+_lbl.setTextSize((float) (20));
+RDebugUtils.currentLine=12124196;
+ //BA.debugLineNum = 12124196;BA.debugLine="lbl.TextColor = Colors.White";
+_lbl.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
+RDebugUtils.currentLine=12124197;
+ //BA.debugLineNum = 12124197;BA.debugLine="pnlCard.AddView(lbl, 35dip, 30dip, 230dip, 40dip";
+_pnlcard.AddView((android.view.View)(_lbl.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (35)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (230)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
+RDebugUtils.currentLine=12124200;
+ //BA.debugLineNum = 12124200;BA.debugLine="spinner.Initialize(\"spinner\")";
+mostCurrent._spinner.Initialize(mostCurrent.activityBA,"spinner");
+RDebugUtils.currentLine=12124201;
+ //BA.debugLineNum = 12124201;BA.debugLine="spinner.TextColor = Colors.Black";
+mostCurrent._spinner.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
+RDebugUtils.currentLine=12124202;
+ //BA.debugLineNum = 12124202;BA.debugLine="spinner.AddAll(GetUnique(student_ids))";
+mostCurrent._spinner.AddAll(_getunique(mostCurrent._student_ids));
+RDebugUtils.currentLine=12124203;
+ //BA.debugLineNum = 12124203;BA.debugLine="spinner.Color = Colors.White";
+mostCurrent._spinner.setColor(anywheresoftware.b4a.keywords.Common.Colors.White);
+RDebugUtils.currentLine=12124204;
+ //BA.debugLineNum = 12124204;BA.debugLine="pnlCard.AddView(spinner, 75dip, 115dip, 150dip,";
+_pnlcard.AddView((android.view.View)(mostCurrent._spinner.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (75)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (115)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (150)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
+RDebugUtils.currentLine=12124207;
+ //BA.debugLineNum = 12124207;BA.debugLine="Dim btn As Button";
+_btn = new anywheresoftware.b4a.objects.ButtonWrapper();
+RDebugUtils.currentLine=12124208;
+ //BA.debugLineNum = 12124208;BA.debugLine="btn.Initialize(\"btn\")";
+_btn.Initialize(mostCurrent.activityBA,"btn");
+RDebugUtils.currentLine=12124209;
+ //BA.debugLineNum = 12124209;BA.debugLine="btn.Text = \"SELECT\"";
+_btn.setText(BA.ObjectToCharSequence("SELECT"));
+RDebugUtils.currentLine=12124210;
+ //BA.debugLineNum = 12124210;BA.debugLine="btn.Gravity = Bit.Or(Gravity.CENTER_HORIZONTAL,";
+_btn.setGravity(anywheresoftware.b4a.keywords.Common.Bit.Or(anywheresoftware.b4a.keywords.Common.Gravity.CENTER_HORIZONTAL,anywheresoftware.b4a.keywords.Common.Gravity.CENTER_VERTICAL));
+RDebugUtils.currentLine=12124211;
+ //BA.debugLineNum = 12124211;BA.debugLine="btn.Typeface = Typeface.DEFAULT_BOLD";
+_btn.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.DEFAULT_BOLD);
+RDebugUtils.currentLine=12124212;
+ //BA.debugLineNum = 12124212;BA.debugLine="btn.TextColor = Colors.Black";
+_btn.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
+RDebugUtils.currentLine=12124213;
+ //BA.debugLineNum = 12124213;BA.debugLine="btn.Color = Colors.White";
+_btn.setColor(anywheresoftware.b4a.keywords.Common.Colors.White);
+RDebugUtils.currentLine=12124214;
+ //BA.debugLineNum = 12124214;BA.debugLine="pnlCard.AddView(btn, 50dip, 210dip, 200dip, 43di";
+_pnlcard.AddView((android.view.View)(_btn.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (210)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (200)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (43)));
+RDebugUtils.currentLine=12124217;
+ //BA.debugLineNum = 12124217;BA.debugLine="bak.AddView(pnlCard, pnlLeft, pnlTop, pnlWidth,";
+mostCurrent._bak.AddView((android.view.View)(_pnlcard.getObject()),_pnlleft,_pnltop,_pnlwidth,_pnlheight);
+RDebugUtils.currentLine=12124220;
+ //BA.debugLineNum = 12124220;BA.debugLine="Activity.AddView(bak, 0, 0, Activity.Width, Acti";
+mostCurrent._activity.AddView((android.view.View)(mostCurrent._bak.getObject()),(int) (0),(int) (0),mostCurrent._activity.getWidth(),mostCurrent._activity.getHeight());
+ }else {
+RDebugUtils.currentLine=12124224;
+ //BA.debugLineNum = 12124224;BA.debugLine="If bak.IsInitialized Then";
+if (mostCurrent._bak.IsInitialized()) { 
+RDebugUtils.currentLine=12124225;
+ //BA.debugLineNum = 12124225;BA.debugLine="bak.RemoveView";
+mostCurrent._bak.RemoveView();
+ };
+ };
+RDebugUtils.currentLine=12124228;
+ //BA.debugLineNum = 12124228;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btn_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btn_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btn_click", null));}
+String _serch_id = "";
+int _i = 0;
+String[] _row = null;
+String _studentname = "";
+String _subject = "";
+String _activity11 = "";
+String _attendance = "";
+String _rate = "";
+String[] _parts = null;
+RDebugUtils.currentLine=12320768;
+ //BA.debugLineNum = 12320768;BA.debugLine="Private Sub btn_Click";
+RDebugUtils.currentLine=12320770;
+ //BA.debugLineNum = 12320770;BA.debugLine="Dim serch_id As String = spinner.SelectedItem";
+_serch_id = mostCurrent._spinner.getSelectedItem();
+RDebugUtils.currentLine=12320773;
+ //BA.debugLineNum = 12320773;BA.debugLine="showselectid = False";
+_showselectid = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=12320774;
+ //BA.debugLineNum = 12320774;BA.debugLine="isselectingid = False";
+_isselectingid = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=12320775;
+ //BA.debugLineNum = 12320775;BA.debugLine="update.Enabled = True";
+mostCurrent._update.setEnabled(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=12320776;
+ //BA.debugLineNum = 12320776;BA.debugLine="showselectids";
+_showselectids();
+RDebugUtils.currentLine=12320779;
+ //BA.debugLineNum = 12320779;BA.debugLine="editRowIndex = -1";
+_editrowindex = (int) (-1);
+RDebugUtils.currentLine=12320780;
+ //BA.debugLineNum = 12320780;BA.debugLine="For i = 0 To StudentList.Size - 1";
+{
+final int step7 = 1;
+final int limit7 = (int) (mostCurrent._studentlist.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit7 ;_i = _i + step7 ) {
+RDebugUtils.currentLine=12320781;
+ //BA.debugLineNum = 12320781;BA.debugLine="Dim row() As String = StudentList.Get(i)";
+_row = (String[])(mostCurrent._studentlist.Get(_i));
+RDebugUtils.currentLine=12320782;
+ //BA.debugLineNum = 12320782;BA.debugLine="If row(1) = serch_id Then";
+if ((_row[(int) (1)]).equals(_serch_id)) { 
+RDebugUtils.currentLine=12320783;
+ //BA.debugLineNum = 12320783;BA.debugLine="editRowIndex = i";
+_editrowindex = _i;
+RDebugUtils.currentLine=12320784;
+ //BA.debugLineNum = 12320784;BA.debugLine="Exit";
+if (true) break;
+ };
+ }
+};
+RDebugUtils.currentLine=12320789;
+ //BA.debugLineNum = 12320789;BA.debugLine="If editRowIndex > -1 Then";
+if (_editrowindex>-1) { 
+RDebugUtils.currentLine=12320790;
+ //BA.debugLineNum = 12320790;BA.debugLine="If todelete Then";
+if (_todelete) { 
+RDebugUtils.currentLine=12320791;
+ //BA.debugLineNum = 12320791;BA.debugLine="Dim row() As String = StudentList.Get(editRowIn";
+_row = (String[])(mostCurrent._studentlist.Get(_editrowindex));
+RDebugUtils.currentLine=12320792;
+ //BA.debugLineNum = 12320792;BA.debugLine="Dim studentName As String = row(0)";
+_studentname = _row[(int) (0)];
+RDebugUtils.currentLine=12320795;
+ //BA.debugLineNum = 12320795;BA.debugLine="StudentList.RemoveAt(editRowIndex)";
+mostCurrent._studentlist.RemoveAt(_editrowindex);
+RDebugUtils.currentLine=12320798;
+ //BA.debugLineNum = 12320798;BA.debugLine="StringUtils1.SaveCSV2(File.DirInternal, \"studen";
+_stringutils1.SaveCSV2(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"student.csv",BA.ObjectToChar(","),mostCurrent._studentlist,mostCurrent._csvheaders);
+RDebugUtils.currentLine=12320801;
+ //BA.debugLineNum = 12320801;BA.debugLine="LoadStudentData";
+_loadstudentdata();
+RDebugUtils.currentLine=12320803;
+ //BA.debugLineNum = 12320803;BA.debugLine="xui.MsgboxAsync(\"Deleted record for \" & student";
+_xui.MsgboxAsync(processBA,BA.ObjectToCharSequence("Deleted record for "+_studentname+" successfully."),BA.ObjectToCharSequence("Success"));
+RDebugUtils.currentLine=12320805;
+ //BA.debugLineNum = 12320805;BA.debugLine="editRowIndex = -1";
+_editrowindex = (int) (-1);
+RDebugUtils.currentLine=12320806;
+ //BA.debugLineNum = 12320806;BA.debugLine="todelete = False";
+_todelete = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=12320807;
+ //BA.debugLineNum = 12320807;BA.debugLine="Return";
+if (true) return "";
+ };
+ };
+RDebugUtils.currentLine=12320812;
+ //BA.debugLineNum = 12320812;BA.debugLine="pnlmain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+RDebugUtils.currentLine=12320813;
+ //BA.debugLineNum = 12320813;BA.debugLine="pnlmain.LoadLayout(\"CREAT\")";
+mostCurrent._pnlmain.LoadLayout("CREAT",mostCurrent.activityBA);
+RDebugUtils.currentLine=12320815;
+ //BA.debugLineNum = 12320815;BA.debugLine="If editRowIndex > -1 Then";
+if (_editrowindex>-1) { 
+RDebugUtils.currentLine=12320816;
+ //BA.debugLineNum = 12320816;BA.debugLine="Dim row() As String = StudentList.Get(editRowInd";
+_row = (String[])(mostCurrent._studentlist.Get(_editrowindex));
+RDebugUtils.currentLine=12320817;
+ //BA.debugLineNum = 12320817;BA.debugLine="STUDENT_NAME.Text = row(0)";
+mostCurrent._student_name.setText(BA.ObjectToCharSequence(_row[(int) (0)]));
+RDebugUtils.currentLine=12320818;
+ //BA.debugLineNum = 12320818;BA.debugLine="STUDENT_ID.Text = row(1)";
+mostCurrent._student_id.setText(BA.ObjectToCharSequence(_row[(int) (1)]));
+RDebugUtils.currentLine=12320821;
+ //BA.debugLineNum = 12320821;BA.debugLine="loadspinner";
+_loadspinner();
+RDebugUtils.currentLine=12320824;
+ //BA.debugLineNum = 12320824;BA.debugLine="Dim subject As String = row(2)";
+_subject = _row[(int) (2)];
+RDebugUtils.currentLine=12320825;
+ //BA.debugLineNum = 12320825;BA.debugLine="For i = 0 To SELECTSUBJECTS.Size - 1";
+{
+final int step35 = 1;
+final int limit35 = (int) (mostCurrent._selectsubjects.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit35 ;_i = _i + step35 ) {
+RDebugUtils.currentLine=12320826;
+ //BA.debugLineNum = 12320826;BA.debugLine="If SELECTSUBJECTS.GetItem(i) = subject Then";
+if ((mostCurrent._selectsubjects.GetItem(_i)).equals(_subject)) { 
+RDebugUtils.currentLine=12320827;
+ //BA.debugLineNum = 12320827;BA.debugLine="SELECTSUBJECTS.SelectedIndex = i";
+mostCurrent._selectsubjects.setSelectedIndex(_i);
+RDebugUtils.currentLine=12320828;
+ //BA.debugLineNum = 12320828;BA.debugLine="Exit";
+if (true) break;
+ };
+ }
+};
+RDebugUtils.currentLine=12320833;
+ //BA.debugLineNum = 12320833;BA.debugLine="Dim activity11 As String = row(3)";
+_activity11 = _row[(int) (3)];
+RDebugUtils.currentLine=12320834;
+ //BA.debugLineNum = 12320834;BA.debugLine="For i = 0 To STUDENT_ACTIVITY.Size - 1";
+{
+final int step42 = 1;
+final int limit42 = (int) (mostCurrent._student_activity.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit42 ;_i = _i + step42 ) {
+RDebugUtils.currentLine=12320835;
+ //BA.debugLineNum = 12320835;BA.debugLine="If STUDENT_ACTIVITY.GetItem(i) = activity11 The";
+if ((mostCurrent._student_activity.GetItem(_i)).equals(_activity11)) { 
+RDebugUtils.currentLine=12320836;
+ //BA.debugLineNum = 12320836;BA.debugLine="STUDENT_ACTIVITY.SelectedIndex = i";
+mostCurrent._student_activity.setSelectedIndex(_i);
+RDebugUtils.currentLine=12320837;
+ //BA.debugLineNum = 12320837;BA.debugLine="Exit";
+if (true) break;
+ };
+ }
+};
+RDebugUtils.currentLine=12320842;
+ //BA.debugLineNum = 12320842;BA.debugLine="Dim attendance As String = row(4)";
+_attendance = _row[(int) (4)];
+RDebugUtils.currentLine=12320843;
+ //BA.debugLineNum = 12320843;BA.debugLine="CheckBox1.Checked = (attendance = \"present\")";
+mostCurrent._checkbox1.setChecked(((_attendance).equals("present")));
+RDebugUtils.currentLine=12320844;
+ //BA.debugLineNum = 12320844;BA.debugLine="CheckBox2.Checked = (attendance = \"late\")";
+mostCurrent._checkbox2.setChecked(((_attendance).equals("late")));
+RDebugUtils.currentLine=12320845;
+ //BA.debugLineNum = 12320845;BA.debugLine="CheckBox3.Checked = (attendance = \"absent\")";
+mostCurrent._checkbox3.setChecked(((_attendance).equals("absent")));
+RDebugUtils.currentLine=12320848;
+ //BA.debugLineNum = 12320848;BA.debugLine="Dim rate As String = row(5)";
+_rate = _row[(int) (5)];
+RDebugUtils.currentLine=12320849;
+ //BA.debugLineNum = 12320849;BA.debugLine="If rate.Contains(\"/\") Then";
+if (_rate.contains("/")) { 
+RDebugUtils.currentLine=12320850;
+ //BA.debugLineNum = 12320850;BA.debugLine="Dim parts() As String = Regex.Split(\"/\", rate)";
+_parts = anywheresoftware.b4a.keywords.Common.Regex.Split("/",_rate);
+RDebugUtils.currentLine=12320851;
+ //BA.debugLineNum = 12320851;BA.debugLine="If parts.Length = 2 Then";
+if (_parts.length==2) { 
+RDebugUtils.currentLine=12320852;
+ //BA.debugLineNum = 12320852;BA.debugLine="EditText1.Text = parts(0)";
+mostCurrent._edittext1.setText(BA.ObjectToCharSequence(_parts[(int) (0)]));
+RDebugUtils.currentLine=12320853;
+ //BA.debugLineNum = 12320853;BA.debugLine="EditText2.Text = parts(1)";
+mostCurrent._edittext2.setText(BA.ObjectToCharSequence(_parts[(int) (1)]));
+ }else {
+RDebugUtils.currentLine=12320855;
+ //BA.debugLineNum = 12320855;BA.debugLine="EditText1.Text = rate";
+mostCurrent._edittext1.setText(BA.ObjectToCharSequence(_rate));
+RDebugUtils.currentLine=12320856;
+ //BA.debugLineNum = 12320856;BA.debugLine="EditText2.Text = \"\"";
+mostCurrent._edittext2.setText(BA.ObjectToCharSequence(""));
+ };
+ }else {
+RDebugUtils.currentLine=12320859;
+ //BA.debugLineNum = 12320859;BA.debugLine="EditText1.Text = rate";
+mostCurrent._edittext1.setText(BA.ObjectToCharSequence(_rate));
+RDebugUtils.currentLine=12320860;
+ //BA.debugLineNum = 12320860;BA.debugLine="EditText2.Text = \"\"";
+mostCurrent._edittext2.setText(BA.ObjectToCharSequence(""));
+ };
+ };
+RDebugUtils.currentLine=12320863;
+ //BA.debugLineNum = 12320863;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btndashboard_click() throws Exception{
@@ -747,143 +1210,35 @@ public static String  _showdashboard() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "showdashboard", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showdashboard", null));}
-RDebugUtils.currentLine=786432;
- //BA.debugLineNum = 786432;BA.debugLine="Sub showdashboard";
-RDebugUtils.currentLine=786433;
- //BA.debugLineNum = 786433;BA.debugLine="pnlmain.RemoveAllViews";
+RDebugUtils.currentLine=1703936;
+ //BA.debugLineNum = 1703936;BA.debugLine="Sub showdashboard";
+RDebugUtils.currentLine=1703937;
+ //BA.debugLineNum = 1703937;BA.debugLine="pnlmain.RemoveAllViews";
 mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=786434;
- //BA.debugLineNum = 786434;BA.debugLine="pnlmain.LoadLayout(\"dashboard\")";
+RDebugUtils.currentLine=1703938;
+ //BA.debugLineNum = 1703938;BA.debugLine="pnlmain.LoadLayout(\"dashboard\")";
 mostCurrent._pnlmain.LoadLayout("dashboard",mostCurrent.activityBA);
-RDebugUtils.currentLine=786435;
- //BA.debugLineNum = 786435;BA.debugLine="generategraph";
+RDebugUtils.currentLine=1703939;
+ //BA.debugLineNum = 1703939;BA.debugLine="generategraph";
 _generategraph();
-RDebugUtils.currentLine=786436;
- //BA.debugLineNum = 786436;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btndeleterow_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btndeleterow_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btndeleterow_click", null));}
-anywheresoftware.b4a.objects.ButtonWrapper _btn = null;
-int _deleteindex = 0;
-String[] _row = null;
-String _msg = "";
-int _result = 0;
-RDebugUtils.currentLine=17235968;
- //BA.debugLineNum = 17235968;BA.debugLine="Sub btnDeleteRow_Click";
-RDebugUtils.currentLine=17235969;
- //BA.debugLineNum = 17235969;BA.debugLine="Dim btn As Button = Sender";
-_btn = new anywheresoftware.b4a.objects.ButtonWrapper();
-_btn = (anywheresoftware.b4a.objects.ButtonWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ButtonWrapper(), (android.widget.Button)(anywheresoftware.b4a.keywords.Common.Sender(mostCurrent.activityBA)));
-RDebugUtils.currentLine=17235970;
- //BA.debugLineNum = 17235970;BA.debugLine="Dim deleteIndex As Int = btn.Tag";
-_deleteindex = (int)(BA.ObjectToNumber(_btn.getTag()));
-RDebugUtils.currentLine=17235971;
- //BA.debugLineNum = 17235971;BA.debugLine="Dim row() As String = StudentList.Get(deleteIndex";
-_row = (String[])(mostCurrent._studentlist.Get(_deleteindex));
-RDebugUtils.currentLine=17235972;
- //BA.debugLineNum = 17235972;BA.debugLine="Dim msg As String = \"Delete record for \" & row(CO";
-_msg = "Delete record for "+_row[_col_name]+" ("+_row[_col_subject]+")?";
-RDebugUtils.currentLine=17235974;
- //BA.debugLineNum = 17235974;BA.debugLine="Dim result As Int = Msgbox2(msg, \"Confirm Delete\"";
-_result = anywheresoftware.b4a.keywords.Common.Msgbox2(BA.ObjectToCharSequence(_msg),BA.ObjectToCharSequence("Confirm Delete"),"Delete","","Cancel",(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null),mostCurrent.activityBA);
-RDebugUtils.currentLine=17235975;
- //BA.debugLineNum = 17235975;BA.debugLine="If result = DialogResponse.POSITIVE Then";
-if (_result==anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE) { 
-RDebugUtils.currentLine=17235976;
- //BA.debugLineNum = 17235976;BA.debugLine="StudentList.RemoveAt(deleteIndex)";
-mostCurrent._studentlist.RemoveAt(_deleteindex);
-RDebugUtils.currentLine=17235977;
- //BA.debugLineNum = 17235977;BA.debugLine="SaveStudentData";
-_savestudentdata();
-RDebugUtils.currentLine=17235978;
- //BA.debugLineNum = 17235978;BA.debugLine="showedit ' refresh list";
-_showedit();
- };
-RDebugUtils.currentLine=17235980;
- //BA.debugLineNum = 17235980;BA.debugLine="End Sub";
-return "";
-}
-public static String  _savestudentdata() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "savestudentdata", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "savestudentdata", null));}
-RDebugUtils.currentLine=16580608;
- //BA.debugLineNum = 16580608;BA.debugLine="Sub SaveStudentData";
-RDebugUtils.currentLine=16580609;
- //BA.debugLineNum = 16580609;BA.debugLine="StringUtils1.SaveCSV2(File.DirInternal, \"citylist";
-_stringutils1.SaveCSV2(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"citylist.csv",BA.ObjectToChar(","),mostCurrent._studentlist,mostCurrent._csvheaders);
-RDebugUtils.currentLine=16580610;
- //BA.debugLineNum = 16580610;BA.debugLine="Log(\"Saved \" & StudentList.Size & \" student recor";
-anywheresoftware.b4a.keywords.Common.LogImpl("516580610","Saved "+BA.NumberToString(mostCurrent._studentlist.getSize())+" student records",0);
-RDebugUtils.currentLine=16580611;
- //BA.debugLineNum = 16580611;BA.debugLine="End Sub";
-return "";
-}
-public static String  _showedit() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "showedit", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showedit", null));}
-RDebugUtils.currentLine=3342336;
- //BA.debugLineNum = 3342336;BA.debugLine="Sub showedit";
-RDebugUtils.currentLine=3342337;
- //BA.debugLineNum = 3342337;BA.debugLine="pnlmain.RemoveAllViews";
-mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=3342338;
- //BA.debugLineNum = 3342338;BA.debugLine="pnlmain.LoadLayout(\"edit\")";
-mostCurrent._pnlmain.LoadLayout("edit",mostCurrent.activityBA);
-RDebugUtils.currentLine=3342339;
- //BA.debugLineNum = 3342339;BA.debugLine="BuildEditList";
-_buildeditlist();
-RDebugUtils.currentLine=3342340;
- //BA.debugLineNum = 3342340;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1703940;
+ //BA.debugLineNum = 1703940;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnedit_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnedit_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnedit_click", null));}
-RDebugUtils.currentLine=3604480;
- //BA.debugLineNum = 3604480;BA.debugLine="Sub btnedit_Click";
-RDebugUtils.currentLine=3604481;
- //BA.debugLineNum = 3604481;BA.debugLine="Drawer.LeftOpen = False";
+RDebugUtils.currentLine=655360;
+ //BA.debugLineNum = 655360;BA.debugLine="Sub btnedit_Click";
+RDebugUtils.currentLine=655361;
+ //BA.debugLineNum = 655361;BA.debugLine="Drawer.LeftOpen = False";
 mostCurrent._drawer._setleftopen /*boolean*/ (null,anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=3604482;
- //BA.debugLineNum = 3604482;BA.debugLine="showedit";
+RDebugUtils.currentLine=655362;
+ //BA.debugLineNum = 655362;BA.debugLine="showedit";
 _showedit();
-RDebugUtils.currentLine=3604483;
- //BA.debugLineNum = 3604483;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btneditrow_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btneditrow_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btneditrow_click", null));}
-anywheresoftware.b4a.objects.ButtonWrapper _btn = null;
-String[] _row = null;
-boolean _ispresent = false;
-RDebugUtils.currentLine=17170432;
- //BA.debugLineNum = 17170432;BA.debugLine="Sub btnEditRow_Click";
-RDebugUtils.currentLine=17170433;
- //BA.debugLineNum = 17170433;BA.debugLine="Dim btn As Button = Sender";
-_btn = new anywheresoftware.b4a.objects.ButtonWrapper();
-_btn = (anywheresoftware.b4a.objects.ButtonWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ButtonWrapper(), (android.widget.Button)(anywheresoftware.b4a.keywords.Common.Sender(mostCurrent.activityBA)));
-RDebugUtils.currentLine=17170434;
- //BA.debugLineNum = 17170434;BA.debugLine="EditingRowIndex = btn.Tag";
-_editingrowindex = (int)(BA.ObjectToNumber(_btn.getTag()));
-RDebugUtils.currentLine=17170435;
- //BA.debugLineNum = 17170435;BA.debugLine="Dim row() As String = StudentList.Get(EditingRowI";
-_row = (String[])(mostCurrent._studentlist.Get(_editingrowindex));
-RDebugUtils.currentLine=17170436;
- //BA.debugLineNum = 17170436;BA.debugLine="Dim isPresent As Boolean = (row(COL_ATTENDANCE).T";
-_ispresent = ((_row[_col_attendance].toLowerCase(anywheresoftware.b4a.keywords.Common.stringLocale)).equals("present"));
-RDebugUtils.currentLine=17170437;
- //BA.debugLineNum = 17170437;BA.debugLine="ShowCREATForm(row(COL_NAME), row(COL_ID), row(COL";
-_showcreatform(_row[_col_name],_row[_col_id],_row[_col_activity],_row[_col_rate],_ispresent);
-RDebugUtils.currentLine=17170438;
- //BA.debugLineNum = 17170438;BA.debugLine="End Sub";
+RDebugUtils.currentLine=655363;
+ //BA.debugLineNum = 655363;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btngrades_click() throws Exception{
@@ -900,6 +1255,47 @@ RDebugUtils.currentLine=589826;
 _showgrades();
 RDebugUtils.currentLine=589827;
  //BA.debugLineNum = 589827;BA.debugLine="End Sub";
+return "";
+}
+public static String  _showgrades() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "showgrades", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showgrades", null));}
+anywheresoftware.b4a.objects.collections.List _names = null;
+int _studentsize = 0;
+int _totalheight = 0;
+RDebugUtils.currentLine=1835008;
+ //BA.debugLineNum = 1835008;BA.debugLine="Sub showgrades";
+RDebugUtils.currentLine=1835009;
+ //BA.debugLineNum = 1835009;BA.debugLine="pnlmain.RemoveAllViews";
+mostCurrent._pnlmain.RemoveAllViews();
+RDebugUtils.currentLine=1835010;
+ //BA.debugLineNum = 1835010;BA.debugLine="pnlmain.LoadLayout(\"grades\")";
+mostCurrent._pnlmain.LoadLayout("grades",mostCurrent.activityBA);
+RDebugUtils.currentLine=1835013;
+ //BA.debugLineNum = 1835013;BA.debugLine="Dim names As List = GetUniqueStudentNames";
+_names = new anywheresoftware.b4a.objects.collections.List();
+_names = _getuniquestudentnames();
+RDebugUtils.currentLine=1835014;
+ //BA.debugLineNum = 1835014;BA.debugLine="Dim studentSize As Int = names.Size";
+_studentsize = _names.getSize();
+RDebugUtils.currentLine=1835018;
+ //BA.debugLineNum = 1835018;BA.debugLine="Dim totalHeight As Int = (studentSize * 108dip) +";
+_totalheight = (int) ((_studentsize*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (108)))+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
+RDebugUtils.currentLine=1835019;
+ //BA.debugLineNum = 1835019;BA.debugLine="SV1.Panel.Height = totalHeight";
+mostCurrent._sv1.getPanel().setHeight(_totalheight);
+RDebugUtils.currentLine=1835020;
+ //BA.debugLineNum = 1835020;BA.debugLine="SV1.Panel.Width = SV1.Width";
+mostCurrent._sv1.getPanel().setWidth(mostCurrent._sv1.getWidth());
+RDebugUtils.currentLine=1835022;
+ //BA.debugLineNum = 1835022;BA.debugLine="SV1.Panel.RemoveAllViews";
+mostCurrent._sv1.getPanel().RemoveAllViews();
+RDebugUtils.currentLine=1835024;
+ //BA.debugLineNum = 1835024;BA.debugLine="makeshadow(studentSize, names)";
+_makeshadow(_studentsize,_names);
+RDebugUtils.currentLine=1835025;
+ //BA.debugLineNum = 1835025;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnmenu_click() throws Exception{
@@ -935,432 +1331,94 @@ public static String  _showprofile() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "showprofile", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showprofile", null));}
-RDebugUtils.currentLine=1179648;
- //BA.debugLineNum = 1179648;BA.debugLine="Sub showprofile";
-RDebugUtils.currentLine=1179649;
- //BA.debugLineNum = 1179649;BA.debugLine="HighlightTab(profilebtn)";
+RDebugUtils.currentLine=2621440;
+ //BA.debugLineNum = 2621440;BA.debugLine="Sub showprofile";
+RDebugUtils.currentLine=2621441;
+ //BA.debugLineNum = 2621441;BA.debugLine="HighlightTab(profilebtn)";
 _highlighttab(mostCurrent._profilebtn);
-RDebugUtils.currentLine=1179650;
- //BA.debugLineNum = 1179650;BA.debugLine="ShowTable";
+RDebugUtils.currentLine=2621442;
+ //BA.debugLineNum = 2621442;BA.debugLine="ShowTable";
 _showtable();
-RDebugUtils.currentLine=1179651;
- //BA.debugLineNum = 1179651;BA.debugLine="End Sub";
-return "";
-}
-public static String  _btnsave_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "btnsave_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnsave_click", null));}
-String _sname = "";
-String _sid = "";
-String _sactivity = "";
-String _srate = "";
-String _sattendance = "";
-String _ssubject = "";
-String[] _existingrow = null;
-String[] _newrow = null;
-RDebugUtils.currentLine=17367040;
- //BA.debugLineNum = 17367040;BA.debugLine="Sub btnSave_Click";
-RDebugUtils.currentLine=17367042;
- //BA.debugLineNum = 17367042;BA.debugLine="Dim sName As String = EditText.Text.Trim";
-_sname = mostCurrent._edittext.getText().trim();
-RDebugUtils.currentLine=17367043;
- //BA.debugLineNum = 17367043;BA.debugLine="Dim sID As String = EditText3.Text.Trim";
-_sid = mostCurrent._edittext3.getText().trim();
-RDebugUtils.currentLine=17367044;
- //BA.debugLineNum = 17367044;BA.debugLine="Dim sActivity As String = EditText1.Text.Trim";
-_sactivity = mostCurrent._edittext1.getText().trim();
-RDebugUtils.currentLine=17367045;
- //BA.debugLineNum = 17367045;BA.debugLine="Dim sRate As String = EditText2.Text.Trim";
-_srate = mostCurrent._edittext2.getText().trim();
-RDebugUtils.currentLine=17367047;
- //BA.debugLineNum = 17367047;BA.debugLine="If sName.Length = 0 Then";
-if (_sname.length()==0) { 
-RDebugUtils.currentLine=17367048;
- //BA.debugLineNum = 17367048;BA.debugLine="Msgbox(\"Please enter a Student Name.\", \"Validati";
-anywheresoftware.b4a.keywords.Common.Msgbox(BA.ObjectToCharSequence("Please enter a Student Name."),BA.ObjectToCharSequence("Validation Error"),mostCurrent.activityBA);
-RDebugUtils.currentLine=17367049;
- //BA.debugLineNum = 17367049;BA.debugLine="Return";
-if (true) return "";
- };
-RDebugUtils.currentLine=17367051;
- //BA.debugLineNum = 17367051;BA.debugLine="If sID.Length = 0 Then";
-if (_sid.length()==0) { 
-RDebugUtils.currentLine=17367052;
- //BA.debugLineNum = 17367052;BA.debugLine="Msgbox(\"Please enter a Student ID.\", \"Validation";
-anywheresoftware.b4a.keywords.Common.Msgbox(BA.ObjectToCharSequence("Please enter a Student ID."),BA.ObjectToCharSequence("Validation Error"),mostCurrent.activityBA);
-RDebugUtils.currentLine=17367053;
- //BA.debugLineNum = 17367053;BA.debugLine="Return";
-if (true) return "";
- };
-RDebugUtils.currentLine=17367055;
- //BA.debugLineNum = 17367055;BA.debugLine="If sActivity.Length = 0 Then";
-if (_sactivity.length()==0) { 
-RDebugUtils.currentLine=17367056;
- //BA.debugLineNum = 17367056;BA.debugLine="Msgbox(\"Please enter an Activity Title.\", \"Valid";
-anywheresoftware.b4a.keywords.Common.Msgbox(BA.ObjectToCharSequence("Please enter an Activity Title."),BA.ObjectToCharSequence("Validation Error"),mostCurrent.activityBA);
-RDebugUtils.currentLine=17367057;
- //BA.debugLineNum = 17367057;BA.debugLine="Return";
-if (true) return "";
- };
-RDebugUtils.currentLine=17367059;
- //BA.debugLineNum = 17367059;BA.debugLine="If sRate.Length = 0 Or sRate.Contains(\"/\") = Fals";
-if (_srate.length()==0 || _srate.contains("/")==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=17367060;
- //BA.debugLineNum = 17367060;BA.debugLine="Msgbox(\"Please enter a valid Result (e.g. 11/20)";
-anywheresoftware.b4a.keywords.Common.Msgbox(BA.ObjectToCharSequence("Please enter a valid Result (e.g. 11/20)."),BA.ObjectToCharSequence("Validation Error"),mostCurrent.activityBA);
-RDebugUtils.currentLine=17367061;
- //BA.debugLineNum = 17367061;BA.debugLine="Return";
-if (true) return "";
- };
-RDebugUtils.currentLine=17367065;
- //BA.debugLineNum = 17367065;BA.debugLine="Dim sAttendance As String";
-_sattendance = "";
-RDebugUtils.currentLine=17367066;
- //BA.debugLineNum = 17367066;BA.debugLine="If CheckBox1.Checked Then";
-if (mostCurrent._checkbox1.getChecked()) { 
-RDebugUtils.currentLine=17367067;
- //BA.debugLineNum = 17367067;BA.debugLine="sAttendance = \"present\"";
-_sattendance = "present";
- }else {
-RDebugUtils.currentLine=17367069;
- //BA.debugLineNum = 17367069;BA.debugLine="sAttendance = \"absent\"";
-_sattendance = "absent";
- };
-RDebugUtils.currentLine=17367073;
- //BA.debugLineNum = 17367073;BA.debugLine="Dim sSubject As String";
-_ssubject = "";
-RDebugUtils.currentLine=17367074;
- //BA.debugLineNum = 17367074;BA.debugLine="If EditingRowIndex >= 0 Then";
-if (_editingrowindex>=0) { 
-RDebugUtils.currentLine=17367075;
- //BA.debugLineNum = 17367075;BA.debugLine="Dim existingRow() As String = StudentList.Get(Ed";
-_existingrow = (String[])(mostCurrent._studentlist.Get(_editingrowindex));
-RDebugUtils.currentLine=17367076;
- //BA.debugLineNum = 17367076;BA.debugLine="sSubject = existingRow(COL_SUBJECT)";
-_ssubject = _existingrow[_col_subject];
- }else {
-RDebugUtils.currentLine=17367079;
- //BA.debugLineNum = 17367079;BA.debugLine="sSubject = \"general\"";
-_ssubject = "general";
- };
-RDebugUtils.currentLine=17367083;
- //BA.debugLineNum = 17367083;BA.debugLine="Dim newRow(6) As String";
-_newrow = new String[(int) (6)];
-java.util.Arrays.fill(_newrow,"");
-RDebugUtils.currentLine=17367084;
- //BA.debugLineNum = 17367084;BA.debugLine="newRow(COL_NAME) = sName";
-_newrow[_col_name] = _sname;
-RDebugUtils.currentLine=17367085;
- //BA.debugLineNum = 17367085;BA.debugLine="newRow(COL_ID) = sID";
-_newrow[_col_id] = _sid;
-RDebugUtils.currentLine=17367086;
- //BA.debugLineNum = 17367086;BA.debugLine="newRow(COL_SUBJECT) = sSubject";
-_newrow[_col_subject] = _ssubject;
-RDebugUtils.currentLine=17367087;
- //BA.debugLineNum = 17367087;BA.debugLine="newRow(COL_ACTIVITY) = sActivity";
-_newrow[_col_activity] = _sactivity;
-RDebugUtils.currentLine=17367088;
- //BA.debugLineNum = 17367088;BA.debugLine="newRow(COL_ATTENDANCE) = sAttendance";
-_newrow[_col_attendance] = _sattendance;
-RDebugUtils.currentLine=17367089;
- //BA.debugLineNum = 17367089;BA.debugLine="newRow(COL_RATE) = sRate";
-_newrow[_col_rate] = _srate;
-RDebugUtils.currentLine=17367091;
- //BA.debugLineNum = 17367091;BA.debugLine="If EditingRowIndex >= 0 Then";
-if (_editingrowindex>=0) { 
-RDebugUtils.currentLine=17367093;
- //BA.debugLineNum = 17367093;BA.debugLine="StudentList.Set(EditingRowIndex, newRow)";
-mostCurrent._studentlist.Set(_editingrowindex,(Object)(_newrow));
-RDebugUtils.currentLine=17367094;
- //BA.debugLineNum = 17367094;BA.debugLine="Log(\"Updated row at index \" & EditingRowIndex)";
-anywheresoftware.b4a.keywords.Common.LogImpl("517367094","Updated row at index "+BA.NumberToString(_editingrowindex),0);
- }else {
-RDebugUtils.currentLine=17367097;
- //BA.debugLineNum = 17367097;BA.debugLine="StudentList.Add(newRow)";
-mostCurrent._studentlist.Add((Object)(_newrow));
-RDebugUtils.currentLine=17367098;
- //BA.debugLineNum = 17367098;BA.debugLine="Log(\"Added new row, total: \" & StudentList.Size)";
-anywheresoftware.b4a.keywords.Common.LogImpl("517367098","Added new row, total: "+BA.NumberToString(mostCurrent._studentlist.getSize()),0);
- };
-RDebugUtils.currentLine=17367102;
- //BA.debugLineNum = 17367102;BA.debugLine="SaveStudentData";
-_savestudentdata();
-RDebugUtils.currentLine=17367103;
- //BA.debugLineNum = 17367103;BA.debugLine="EditingRowIndex = -1";
-_editingrowindex = (int) (-1);
-RDebugUtils.currentLine=17367104;
- //BA.debugLineNum = 17367104;BA.debugLine="showedit";
-_showedit();
-RDebugUtils.currentLine=17367105;
- //BA.debugLineNum = 17367105;BA.debugLine="End Sub";
-return "";
-}
-public static String  _buildeditlist() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "buildeditlist", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "buildeditlist", null));}
-anywheresoftware.b4a.objects.ScrollViewWrapper _sv2 = null;
-anywheresoftware.b4a.objects.PanelWrapper _listpanel = null;
-int _rowh = 0;
-int _spacing = 0;
-int _currenty = 0;
-anywheresoftware.b4a.objects.ButtonWrapper _btnadd = null;
-int _i = 0;
-String[] _row = null;
-anywheresoftware.b4a.objects.PanelWrapper _pnlrow = null;
-anywheresoftware.b4a.objects.drawable.ColorDrawable _cd = null;
-anywheresoftware.b4a.objects.LabelWrapper _lblinfo = null;
-anywheresoftware.b4a.objects.LabelWrapper _lbldetail = null;
-anywheresoftware.b4a.objects.ButtonWrapper _btnedit = null;
-anywheresoftware.b4a.objects.ButtonWrapper _btndel = null;
-RDebugUtils.currentLine=17039360;
- //BA.debugLineNum = 17039360;BA.debugLine="Sub BuildEditList";
-RDebugUtils.currentLine=17039364;
- //BA.debugLineNum = 17039364;BA.debugLine="Dim sv2 As ScrollView";
-_sv2 = new anywheresoftware.b4a.objects.ScrollViewWrapper();
-RDebugUtils.currentLine=17039365;
- //BA.debugLineNum = 17039365;BA.debugLine="sv2.Initialize(0)";
-_sv2.Initialize(mostCurrent.activityBA,(int) (0));
-RDebugUtils.currentLine=17039366;
- //BA.debugLineNum = 17039366;BA.debugLine="pnlmain.AddView(sv2, 0, 50dip, pnlmain.Width, pnl";
-mostCurrent._pnlmain.AddView((android.view.View)(_sv2.getObject()),(int) (0),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)),mostCurrent._pnlmain.getWidth(),(int) (mostCurrent._pnlmain.getHeight()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (110))));
-RDebugUtils.currentLine=17039368;
- //BA.debugLineNum = 17039368;BA.debugLine="Dim listPanel As Panel = sv2.Panel";
-_listpanel = new anywheresoftware.b4a.objects.PanelWrapper();
-_listpanel = _sv2.getPanel();
-RDebugUtils.currentLine=17039369;
- //BA.debugLineNum = 17039369;BA.debugLine="listPanel.Width = sv2.Width";
-_listpanel.setWidth(_sv2.getWidth());
-RDebugUtils.currentLine=17039371;
- //BA.debugLineNum = 17039371;BA.debugLine="Dim rowH As Int = 80dip";
-_rowh = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (80));
-RDebugUtils.currentLine=17039372;
- //BA.debugLineNum = 17039372;BA.debugLine="Dim spacing As Int = 5dip";
-_spacing = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5));
-RDebugUtils.currentLine=17039373;
- //BA.debugLineNum = 17039373;BA.debugLine="Dim currentY As Int = 10dip";
-_currenty = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10));
-RDebugUtils.currentLine=17039376;
- //BA.debugLineNum = 17039376;BA.debugLine="Dim btnAdd As Button";
-_btnadd = new anywheresoftware.b4a.objects.ButtonWrapper();
-RDebugUtils.currentLine=17039377;
- //BA.debugLineNum = 17039377;BA.debugLine="btnAdd.Initialize(\"btnAddNew\")";
-_btnadd.Initialize(mostCurrent.activityBA,"btnAddNew");
-RDebugUtils.currentLine=17039378;
- //BA.debugLineNum = 17039378;BA.debugLine="btnAdd.Text = \"+ Add New Student Record\"";
-_btnadd.setText(BA.ObjectToCharSequence("+ Add New Student Record"));
-RDebugUtils.currentLine=17039379;
- //BA.debugLineNum = 17039379;BA.debugLine="btnAdd.TextSize = 14";
-_btnadd.setTextSize((float) (14));
-RDebugUtils.currentLine=17039380;
- //BA.debugLineNum = 17039380;BA.debugLine="btnAdd.TextColor = Colors.White";
-_btnadd.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=17039381;
- //BA.debugLineNum = 17039381;BA.debugLine="btnAdd.Color = Colors.RGB(52, 168, 83)";
-_btnadd.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (52),(int) (168),(int) (83)));
-RDebugUtils.currentLine=17039382;
- //BA.debugLineNum = 17039382;BA.debugLine="listPanel.AddView(btnAdd, 10dip, currentY, sv2.Wi";
-_listpanel.AddView((android.view.View)(_btnadd.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),_currenty,(int) (_sv2.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (45)));
-RDebugUtils.currentLine=17039383;
- //BA.debugLineNum = 17039383;BA.debugLine="currentY = currentY + 55dip";
-_currenty = (int) (_currenty+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (55)));
-RDebugUtils.currentLine=17039386;
- //BA.debugLineNum = 17039386;BA.debugLine="For i = 0 To StudentList.Size - 1";
-{
-final int step17 = 1;
-final int limit17 = (int) (mostCurrent._studentlist.getSize()-1);
-_i = (int) (0) ;
-for (;_i <= limit17 ;_i = _i + step17 ) {
-RDebugUtils.currentLine=17039387;
- //BA.debugLineNum = 17039387;BA.debugLine="Dim row() As String = StudentList.Get(i)";
-_row = (String[])(mostCurrent._studentlist.Get(_i));
-RDebugUtils.currentLine=17039390;
- //BA.debugLineNum = 17039390;BA.debugLine="Dim pnlRow As Panel";
-_pnlrow = new anywheresoftware.b4a.objects.PanelWrapper();
-RDebugUtils.currentLine=17039391;
- //BA.debugLineNum = 17039391;BA.debugLine="pnlRow.Initialize(\"pnlRow\")";
-_pnlrow.Initialize(mostCurrent.activityBA,"pnlRow");
-RDebugUtils.currentLine=17039392;
- //BA.debugLineNum = 17039392;BA.debugLine="Dim cd As ColorDrawable";
-_cd = new anywheresoftware.b4a.objects.drawable.ColorDrawable();
-RDebugUtils.currentLine=17039393;
- //BA.debugLineNum = 17039393;BA.debugLine="cd.Initialize2(Colors.White, 4dip, 1dip, Colors.";
-_cd.Initialize2(anywheresoftware.b4a.keywords.Common.Colors.White,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (4)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1)),anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (200),(int) (200),(int) (200)));
-RDebugUtils.currentLine=17039394;
- //BA.debugLineNum = 17039394;BA.debugLine="pnlRow.Background = cd";
-_pnlrow.setBackground((android.graphics.drawable.Drawable)(_cd.getObject()));
-RDebugUtils.currentLine=17039395;
- //BA.debugLineNum = 17039395;BA.debugLine="pnlRow.Tag = i";
-_pnlrow.setTag((Object)(_i));
-RDebugUtils.currentLine=17039396;
- //BA.debugLineNum = 17039396;BA.debugLine="listPanel.AddView(pnlRow, 10dip, currentY, sv2.W";
-_listpanel.AddView((android.view.View)(_pnlrow.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),_currenty,(int) (_sv2.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))),_rowh);
-RDebugUtils.currentLine=17039399;
- //BA.debugLineNum = 17039399;BA.debugLine="Dim lblInfo As Label";
-_lblinfo = new anywheresoftware.b4a.objects.LabelWrapper();
-RDebugUtils.currentLine=17039400;
- //BA.debugLineNum = 17039400;BA.debugLine="lblInfo.Initialize(\"\")";
-_lblinfo.Initialize(mostCurrent.activityBA,"");
-RDebugUtils.currentLine=17039401;
- //BA.debugLineNum = 17039401;BA.debugLine="lblInfo.Text = row(COL_NAME) & \" (\" & row(COL_ID";
-_lblinfo.setText(BA.ObjectToCharSequence(_row[_col_name]+" ("+_row[_col_id]+")"));
-RDebugUtils.currentLine=17039402;
- //BA.debugLineNum = 17039402;BA.debugLine="lblInfo.TextSize = 13";
-_lblinfo.setTextSize((float) (13));
-RDebugUtils.currentLine=17039403;
- //BA.debugLineNum = 17039403;BA.debugLine="lblInfo.TextColor = Colors.Black";
-_lblinfo.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
-RDebugUtils.currentLine=17039404;
- //BA.debugLineNum = 17039404;BA.debugLine="lblInfo.Gravity = Gravity.CENTER_VERTICAL";
-_lblinfo.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER_VERTICAL);
-RDebugUtils.currentLine=17039405;
- //BA.debugLineNum = 17039405;BA.debugLine="lblInfo.Typeface = Typeface.DEFAULT_BOLD";
-_lblinfo.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.DEFAULT_BOLD);
-RDebugUtils.currentLine=17039406;
- //BA.debugLineNum = 17039406;BA.debugLine="lblInfo.Padding = Array As Int(10dip, 0, 0, 0)";
-_lblinfo.setPadding(new int[]{anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),(int) (0),(int) (0),(int) (0)});
-RDebugUtils.currentLine=17039407;
- //BA.debugLineNum = 17039407;BA.debugLine="pnlRow.AddView(lblInfo, 0, 0, sv2.Width - 180dip";
-_pnlrow.AddView((android.view.View)(_lblinfo.getObject()),(int) (0),(int) (0),(int) (_sv2.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (180))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
-RDebugUtils.currentLine=17039409;
- //BA.debugLineNum = 17039409;BA.debugLine="Dim lblDetail As Label";
-_lbldetail = new anywheresoftware.b4a.objects.LabelWrapper();
-RDebugUtils.currentLine=17039410;
- //BA.debugLineNum = 17039410;BA.debugLine="lblDetail.Initialize(\"\")";
-_lbldetail.Initialize(mostCurrent.activityBA,"");
-RDebugUtils.currentLine=17039411;
- //BA.debugLineNum = 17039411;BA.debugLine="lblDetail.Text = row(COL_SUBJECT) & \" | \" & row(";
-_lbldetail.setText(BA.ObjectToCharSequence(_row[_col_subject]+" | "+_row[_col_activity]+" | "+_row[_col_attendance]+" | "+_row[_col_rate]+" ("+_computegrade(_row[_col_rate])+")"));
-RDebugUtils.currentLine=17039412;
- //BA.debugLineNum = 17039412;BA.debugLine="lblDetail.TextSize = 11";
-_lbldetail.setTextSize((float) (11));
-RDebugUtils.currentLine=17039413;
- //BA.debugLineNum = 17039413;BA.debugLine="lblDetail.TextColor = Colors.DarkGray";
-_lbldetail.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.DarkGray);
-RDebugUtils.currentLine=17039414;
- //BA.debugLineNum = 17039414;BA.debugLine="lblDetail.Gravity = Gravity.CENTER_VERTICAL";
-_lbldetail.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER_VERTICAL);
-RDebugUtils.currentLine=17039415;
- //BA.debugLineNum = 17039415;BA.debugLine="lblDetail.Padding = Array As Int(10dip, 0, 0, 0)";
-_lbldetail.setPadding(new int[]{anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),(int) (0),(int) (0),(int) (0)});
-RDebugUtils.currentLine=17039416;
- //BA.debugLineNum = 17039416;BA.debugLine="pnlRow.AddView(lblDetail, 0, 38dip, sv2.Width -";
-_pnlrow.AddView((android.view.View)(_lbldetail.getObject()),(int) (0),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (38)),(int) (_sv2.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (180))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
-RDebugUtils.currentLine=17039419;
- //BA.debugLineNum = 17039419;BA.debugLine="Dim btnEdit As Button";
-_btnedit = new anywheresoftware.b4a.objects.ButtonWrapper();
-RDebugUtils.currentLine=17039420;
- //BA.debugLineNum = 17039420;BA.debugLine="btnEdit.Initialize(\"btnEditRow\")";
-_btnedit.Initialize(mostCurrent.activityBA,"btnEditRow");
-RDebugUtils.currentLine=17039421;
- //BA.debugLineNum = 17039421;BA.debugLine="btnEdit.Text = \"Edit\"";
-_btnedit.setText(BA.ObjectToCharSequence("Edit"));
-RDebugUtils.currentLine=17039422;
- //BA.debugLineNum = 17039422;BA.debugLine="btnEdit.TextSize = 12";
-_btnedit.setTextSize((float) (12));
-RDebugUtils.currentLine=17039423;
- //BA.debugLineNum = 17039423;BA.debugLine="btnEdit.TextColor = Colors.White";
-_btnedit.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=17039424;
- //BA.debugLineNum = 17039424;BA.debugLine="btnEdit.Color = Colors.RGB(66, 133, 244)";
-_btnedit.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (66),(int) (133),(int) (244)));
-RDebugUtils.currentLine=17039425;
- //BA.debugLineNum = 17039425;BA.debugLine="btnEdit.Tag = i";
-_btnedit.setTag((Object)(_i));
-RDebugUtils.currentLine=17039426;
- //BA.debugLineNum = 17039426;BA.debugLine="pnlRow.AddView(btnEdit, sv2.Width - 175dip, 15di";
-_pnlrow.AddView((android.view.View)(_btnedit.getObject()),(int) (_sv2.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (175))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (15)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (70)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (45)));
-RDebugUtils.currentLine=17039429;
- //BA.debugLineNum = 17039429;BA.debugLine="Dim btnDel As Button";
-_btndel = new anywheresoftware.b4a.objects.ButtonWrapper();
-RDebugUtils.currentLine=17039430;
- //BA.debugLineNum = 17039430;BA.debugLine="btnDel.Initialize(\"btnDeleteRow\")";
-_btndel.Initialize(mostCurrent.activityBA,"btnDeleteRow");
-RDebugUtils.currentLine=17039431;
- //BA.debugLineNum = 17039431;BA.debugLine="btnDel.Text = \"Del\"";
-_btndel.setText(BA.ObjectToCharSequence("Del"));
-RDebugUtils.currentLine=17039432;
- //BA.debugLineNum = 17039432;BA.debugLine="btnDel.TextSize = 12";
-_btndel.setTextSize((float) (12));
-RDebugUtils.currentLine=17039433;
- //BA.debugLineNum = 17039433;BA.debugLine="btnDel.TextColor = Colors.White";
-_btndel.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=17039434;
- //BA.debugLineNum = 17039434;BA.debugLine="btnDel.Color = Colors.RGB(234, 67, 53)";
-_btndel.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (234),(int) (67),(int) (53)));
-RDebugUtils.currentLine=17039435;
- //BA.debugLineNum = 17039435;BA.debugLine="btnDel.Tag = i";
-_btndel.setTag((Object)(_i));
-RDebugUtils.currentLine=17039436;
- //BA.debugLineNum = 17039436;BA.debugLine="pnlRow.AddView(btnDel, sv2.Width - 95dip, 15dip,";
-_pnlrow.AddView((android.view.View)(_btndel.getObject()),(int) (_sv2.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (95))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (15)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (70)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (45)));
-RDebugUtils.currentLine=17039438;
- //BA.debugLineNum = 17039438;BA.debugLine="currentY = currentY + rowH + spacing";
-_currenty = (int) (_currenty+_rowh+_spacing);
- }
-};
-RDebugUtils.currentLine=17039441;
- //BA.debugLineNum = 17039441;BA.debugLine="listPanel.Height = currentY + 20dip";
-_listpanel.setHeight((int) (_currenty+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))));
-RDebugUtils.currentLine=17039442;
- //BA.debugLineNum = 17039442;BA.debugLine="End Sub";
-return "";
-}
-public static String  _computegrade(String _rate) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "computegrade", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "computegrade", new Object[] {_rate}));}
-RDebugUtils.currentLine=16777216;
- //BA.debugLineNum = 16777216;BA.debugLine="Sub ComputeGrade(rate As String) As String";
-RDebugUtils.currentLine=16777217;
- //BA.debugLineNum = 16777217;BA.debugLine="Return PercentageToGrade(ComputePercentage(rate))";
-if (true) return _percentagetograde(_computepercentage(_rate));
-RDebugUtils.currentLine=16777218;
- //BA.debugLineNum = 16777218;BA.debugLine="End Sub";
+RDebugUtils.currentLine=2621443;
+ //BA.debugLineNum = 2621443;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "button1_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "button1_click", null));}
-RDebugUtils.currentLine=5308416;
- //BA.debugLineNum = 5308416;BA.debugLine="Private Sub Button1_Click";
-RDebugUtils.currentLine=5308418;
- //BA.debugLineNum = 5308418;BA.debugLine="showedit";
+RDebugUtils.currentLine=2424832;
+ //BA.debugLineNum = 2424832;BA.debugLine="Private Sub Button1_Click";
+RDebugUtils.currentLine=2424834;
+ //BA.debugLineNum = 2424834;BA.debugLine="showedit";
 _showedit();
-RDebugUtils.currentLine=5308419;
- //BA.debugLineNum = 5308419;BA.debugLine="End Sub";
+RDebugUtils.currentLine=2424835;
+ //BA.debugLineNum = 2424835;BA.debugLine="End Sub";
 return "";
 }
-public static String  _percentagetograde(double _pct) throws Exception{
+public static double  _calculatestudentgpa(String _studentname) throws Exception{
 RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "percentagetograde", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "percentagetograde", new Object[] {_pct}));}
-RDebugUtils.currentLine=16711680;
- //BA.debugLineNum = 16711680;BA.debugLine="Sub PercentageToGrade(pct As Double) As String";
-RDebugUtils.currentLine=16711681;
- //BA.debugLineNum = 16711681;BA.debugLine="If pct >= 90 Then Return \"A\"";
-if (_pct>=90) { 
-if (true) return "A";};
-RDebugUtils.currentLine=16711682;
- //BA.debugLineNum = 16711682;BA.debugLine="If pct >= 80 Then Return \"B\"";
-if (_pct>=80) { 
-if (true) return "B";};
-RDebugUtils.currentLine=16711683;
- //BA.debugLineNum = 16711683;BA.debugLine="If pct >= 70 Then Return \"C\"";
-if (_pct>=70) { 
-if (true) return "C";};
-RDebugUtils.currentLine=16711684;
- //BA.debugLineNum = 16711684;BA.debugLine="If pct >= 60 Then Return \"D\"";
-if (_pct>=60) { 
-if (true) return "D";};
-RDebugUtils.currentLine=16711685;
- //BA.debugLineNum = 16711685;BA.debugLine="Return \"F\"";
-if (true) return "F";
-RDebugUtils.currentLine=16711686;
- //BA.debugLineNum = 16711686;BA.debugLine="End Sub";
-return "";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "calculatestudentgpa", false))
+	 {return ((Double) Debug.delegate(mostCurrent.activityBA, "calculatestudentgpa", new Object[] {_studentname}));}
+double _totalpoints = 0;
+int _activitycount = 0;
+int _i = 0;
+String[] _row = null;
+String _currentname = "";
+String _ratestring = "";
+double _pct = 0;
+RDebugUtils.currentLine=12517376;
+ //BA.debugLineNum = 12517376;BA.debugLine="Sub CalculateStudentGPA(studentName As String) As";
+RDebugUtils.currentLine=12517377;
+ //BA.debugLineNum = 12517377;BA.debugLine="Dim totalPoints As Double = 0";
+_totalpoints = 0;
+RDebugUtils.currentLine=12517378;
+ //BA.debugLineNum = 12517378;BA.debugLine="Dim activityCount As Int = 0";
+_activitycount = (int) (0);
+RDebugUtils.currentLine=12517381;
+ //BA.debugLineNum = 12517381;BA.debugLine="For i = 0 To StudentList.Size - 1";
+{
+final int step3 = 1;
+final int limit3 = (int) (mostCurrent._studentlist.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit3 ;_i = _i + step3 ) {
+RDebugUtils.currentLine=12517382;
+ //BA.debugLineNum = 12517382;BA.debugLine="Dim row() As String = StudentList.Get(i)";
+_row = (String[])(mostCurrent._studentlist.Get(_i));
+RDebugUtils.currentLine=12517383;
+ //BA.debugLineNum = 12517383;BA.debugLine="Dim currentName As String = row(COL_NAME)";
+_currentname = _row[_col_name];
+RDebugUtils.currentLine=12517386;
+ //BA.debugLineNum = 12517386;BA.debugLine="If currentName = studentName Then";
+if ((_currentname).equals(_studentname)) { 
+RDebugUtils.currentLine=12517387;
+ //BA.debugLineNum = 12517387;BA.debugLine="Dim rateString As String = row(COL_RATE)";
+_ratestring = _row[_col_rate];
+RDebugUtils.currentLine=12517390;
+ //BA.debugLineNum = 12517390;BA.debugLine="Dim pct As Double = ComputePercentage(rateStrin";
+_pct = _computepercentage(_ratestring);
+RDebugUtils.currentLine=12517393;
+ //BA.debugLineNum = 12517393;BA.debugLine="totalPoints = totalPoints + PercentageToGrade(p";
+_totalpoints = _totalpoints+(double)(Double.parseDouble(_percentagetograde(_pct)));
+RDebugUtils.currentLine=12517394;
+ //BA.debugLineNum = 12517394;BA.debugLine="activityCount = activityCount + 1";
+_activitycount = (int) (_activitycount+1);
+ };
+ }
+};
+RDebugUtils.currentLine=12517399;
+ //BA.debugLineNum = 12517399;BA.debugLine="If activityCount < 3 Then";
+if (_activitycount<3) { 
+RDebugUtils.currentLine=12517400;
+ //BA.debugLineNum = 12517400;BA.debugLine="Return -1.0 ' Return -1.0 as a flag meaning \"Not";
+if (true) return -1.0;
+ };
+RDebugUtils.currentLine=12517404;
+ //BA.debugLineNum = 12517404;BA.debugLine="Return totalPoints / activityCount";
+if (true) return _totalpoints/(double)_activitycount;
+RDebugUtils.currentLine=12517405;
+ //BA.debugLineNum = 12517405;BA.debugLine="End Sub";
+return 0;
 }
 public static double  _computepercentage(String _rate) throws Exception{
 RDebugUtils.currentModule="main";
@@ -1369,50 +1427,123 @@ if (Debug.shouldDelegate(mostCurrent.activityBA, "computepercentage", false))
 String[] _parts = null;
 double _numerator = 0;
 double _denominator = 0;
-RDebugUtils.currentLine=16646144;
- //BA.debugLineNum = 16646144;BA.debugLine="Sub ComputePercentage(rate As String) As Double";
-RDebugUtils.currentLine=16646145;
- //BA.debugLineNum = 16646145;BA.debugLine="If rate.Contains(\"/\") = False Then Return 0";
+RDebugUtils.currentLine=1245184;
+ //BA.debugLineNum = 1245184;BA.debugLine="Sub ComputePercentage(rate As String) As Double";
+RDebugUtils.currentLine=1245185;
+ //BA.debugLineNum = 1245185;BA.debugLine="If rate.Contains(\"/\") = False Then Return 0";
 if (_rate.contains("/")==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return 0;};
-RDebugUtils.currentLine=16646146;
- //BA.debugLineNum = 16646146;BA.debugLine="Dim parts() As String = Regex.Split(\"/\", rate)";
+RDebugUtils.currentLine=1245186;
+ //BA.debugLineNum = 1245186;BA.debugLine="Dim parts() As String = Regex.Split(\"/\", rate)";
 _parts = anywheresoftware.b4a.keywords.Common.Regex.Split("/",_rate);
-RDebugUtils.currentLine=16646147;
- //BA.debugLineNum = 16646147;BA.debugLine="If parts.Length <> 2 Then Return 0";
+RDebugUtils.currentLine=1245187;
+ //BA.debugLineNum = 1245187;BA.debugLine="If parts.Length <> 2 Then Return 0";
 if (_parts.length!=2) { 
 if (true) return 0;};
-RDebugUtils.currentLine=16646148;
- //BA.debugLineNum = 16646148;BA.debugLine="Dim numerator As Double = parts(0)";
+RDebugUtils.currentLine=1245188;
+ //BA.debugLineNum = 1245188;BA.debugLine="Dim numerator As Double = parts(0)";
 _numerator = (double)(Double.parseDouble(_parts[(int) (0)]));
-RDebugUtils.currentLine=16646149;
- //BA.debugLineNum = 16646149;BA.debugLine="Dim denominator As Double = parts(1)";
+RDebugUtils.currentLine=1245189;
+ //BA.debugLineNum = 1245189;BA.debugLine="Dim denominator As Double = parts(1)";
 _denominator = (double)(Double.parseDouble(_parts[(int) (1)]));
-RDebugUtils.currentLine=16646150;
- //BA.debugLineNum = 16646150;BA.debugLine="If denominator = 0 Then Return 0";
+RDebugUtils.currentLine=1245190;
+ //BA.debugLineNum = 1245190;BA.debugLine="If denominator = 0 Then Return 0";
 if (_denominator==0) { 
 if (true) return 0;};
-RDebugUtils.currentLine=16646151;
- //BA.debugLineNum = 16646151;BA.debugLine="Return (numerator / denominator) * 100";
+RDebugUtils.currentLine=1245191;
+ //BA.debugLineNum = 1245191;BA.debugLine="Return (numerator / denominator) * 100";
 if (true) return (_numerator/(double)_denominator)*100;
-RDebugUtils.currentLine=16646152;
- //BA.debugLineNum = 16646152;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1245192;
+ //BA.debugLineNum = 1245192;BA.debugLine="End Sub";
 return 0;
 }
-public static String  _creat_click() throws Exception{
+public static String  _percentagetograde(double _pct) throws Exception{
 RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "creat_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "creat_click", null));}
-RDebugUtils.currentLine=5373952;
- //BA.debugLineNum = 5373952;BA.debugLine="Private Sub CREAT_Click";
-RDebugUtils.currentLine=5373954;
- //BA.debugLineNum = 5373954;BA.debugLine="EditingRowIndex = -1";
-_editingrowindex = (int) (-1);
-RDebugUtils.currentLine=5373955;
- //BA.debugLineNum = 5373955;BA.debugLine="ShowCREATForm(\"\", \"\", \"\", \"\", False)";
-_showcreatform("","","","",anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=5373956;
- //BA.debugLineNum = 5373956;BA.debugLine="End Sub";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "percentagetograde", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "percentagetograde", new Object[] {_pct}));}
+RDebugUtils.currentLine=1310720;
+ //BA.debugLineNum = 1310720;BA.debugLine="Sub PercentageToGrade(pct As Double) As String";
+RDebugUtils.currentLine=1310721;
+ //BA.debugLineNum = 1310721;BA.debugLine="If pct >= 90 Then Return \"A\"";
+if (_pct>=90) { 
+if (true) return "A";};
+RDebugUtils.currentLine=1310722;
+ //BA.debugLineNum = 1310722;BA.debugLine="If pct >= 80 Then Return \"B\"";
+if (_pct>=80) { 
+if (true) return "B";};
+RDebugUtils.currentLine=1310723;
+ //BA.debugLineNum = 1310723;BA.debugLine="If pct >= 70 Then Return \"C\"";
+if (_pct>=70) { 
+if (true) return "C";};
+RDebugUtils.currentLine=1310724;
+ //BA.debugLineNum = 1310724;BA.debugLine="If pct >= 60 Then Return \"D\"";
+if (_pct>=60) { 
+if (true) return "D";};
+RDebugUtils.currentLine=1310725;
+ //BA.debugLineNum = 1310725;BA.debugLine="Return \"F\"";
+if (true) return "F";
+RDebugUtils.currentLine=1310726;
+ //BA.debugLineNum = 1310726;BA.debugLine="End Sub";
+return "";
+}
+public static String  _checkbox1_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "checkbox1_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "checkbox1_click", null));}
+RDebugUtils.currentLine=10682368;
+ //BA.debugLineNum = 10682368;BA.debugLine="Private Sub CheckBox1_Click";
+RDebugUtils.currentLine=10682369;
+ //BA.debugLineNum = 10682369;BA.debugLine="If CheckBox1.Checked Then";
+if (mostCurrent._checkbox1.getChecked()) { 
+RDebugUtils.currentLine=10682370;
+ //BA.debugLineNum = 10682370;BA.debugLine="CheckBox2.Checked = False";
+mostCurrent._checkbox2.setChecked(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=10682371;
+ //BA.debugLineNum = 10682371;BA.debugLine="CheckBox3.Checked = False";
+mostCurrent._checkbox3.setChecked(anywheresoftware.b4a.keywords.Common.False);
+ };
+RDebugUtils.currentLine=10682373;
+ //BA.debugLineNum = 10682373;BA.debugLine="End Sub";
+return "";
+}
+public static String  _checkbox2_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "checkbox2_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "checkbox2_click", null));}
+RDebugUtils.currentLine=10747904;
+ //BA.debugLineNum = 10747904;BA.debugLine="Private Sub CheckBox2_Click";
+RDebugUtils.currentLine=10747905;
+ //BA.debugLineNum = 10747905;BA.debugLine="If CheckBox2.Checked Then";
+if (mostCurrent._checkbox2.getChecked()) { 
+RDebugUtils.currentLine=10747906;
+ //BA.debugLineNum = 10747906;BA.debugLine="CheckBox1.Checked = False";
+mostCurrent._checkbox1.setChecked(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=10747907;
+ //BA.debugLineNum = 10747907;BA.debugLine="CheckBox3.Checked = False";
+mostCurrent._checkbox3.setChecked(anywheresoftware.b4a.keywords.Common.False);
+ };
+RDebugUtils.currentLine=10747909;
+ //BA.debugLineNum = 10747909;BA.debugLine="End Sub";
+return "";
+}
+public static String  _checkbox3_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "checkbox3_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "checkbox3_click", null));}
+RDebugUtils.currentLine=10813440;
+ //BA.debugLineNum = 10813440;BA.debugLine="Private Sub CheckBox3_Click";
+RDebugUtils.currentLine=10813441;
+ //BA.debugLineNum = 10813441;BA.debugLine="If CheckBox3.Checked Then";
+if (mostCurrent._checkbox3.getChecked()) { 
+RDebugUtils.currentLine=10813442;
+ //BA.debugLineNum = 10813442;BA.debugLine="CheckBox1.Checked = False";
+mostCurrent._checkbox1.setChecked(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=10813443;
+ //BA.debugLineNum = 10813443;BA.debugLine="CheckBox2.Checked = False";
+mostCurrent._checkbox2.setChecked(anywheresoftware.b4a.keywords.Common.False);
+ };
+RDebugUtils.currentLine=10813445;
+ //BA.debugLineNum = 10813445;BA.debugLine="End Sub";
 return "";
 }
 public static String  _createmenu() throws Exception{
@@ -1503,57 +1634,76 @@ public static String  _dashbtn_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "dashbtn_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "dashbtn_click", null));}
-RDebugUtils.currentLine=851968;
- //BA.debugLineNum = 851968;BA.debugLine="Private Sub dashbtn_Click";
-RDebugUtils.currentLine=851969;
- //BA.debugLineNum = 851969;BA.debugLine="HighlightTab(dashbtn)";
+RDebugUtils.currentLine=786432;
+ //BA.debugLineNum = 786432;BA.debugLine="Private Sub dashbtn_Click";
+RDebugUtils.currentLine=786433;
+ //BA.debugLineNum = 786433;BA.debugLine="HighlightTab(dashbtn)";
 _highlighttab(mostCurrent._dashbtn);
-RDebugUtils.currentLine=851970;
- //BA.debugLineNum = 851970;BA.debugLine="showdashboard";
+RDebugUtils.currentLine=786434;
+ //BA.debugLineNum = 786434;BA.debugLine="showdashboard";
 _showdashboard();
-RDebugUtils.currentLine=851971;
- //BA.debugLineNum = 851971;BA.debugLine="End Sub";
+RDebugUtils.currentLine=786435;
+ //BA.debugLineNum = 786435;BA.debugLine="End Sub";
 return "";
 }
 public static String  _highlighttab(anywheresoftware.b4a.objects.PanelWrapper _activebtn) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "highlighttab", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "highlighttab", new Object[] {_activebtn}));}
-RDebugUtils.currentLine=16449536;
- //BA.debugLineNum = 16449536;BA.debugLine="Sub HighlightTab(activeBtn As Panel)";
-RDebugUtils.currentLine=16449537;
- //BA.debugLineNum = 16449537;BA.debugLine="dashbtn.Color = Colors.White";
+RDebugUtils.currentLine=1048576;
+ //BA.debugLineNum = 1048576;BA.debugLine="Sub HighlightTab(activeBtn As Panel)";
+RDebugUtils.currentLine=1048577;
+ //BA.debugLineNum = 1048577;BA.debugLine="dashbtn.Color = Colors.White";
 mostCurrent._dashbtn.setColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=16449538;
- //BA.debugLineNum = 16449538;BA.debugLine="grdbtn.Color = Colors.White";
+RDebugUtils.currentLine=1048578;
+ //BA.debugLineNum = 1048578;BA.debugLine="grdbtn.Color = Colors.White";
 mostCurrent._grdbtn.setColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=16449539;
- //BA.debugLineNum = 16449539;BA.debugLine="editbtn.Color = Colors.White";
+RDebugUtils.currentLine=1048579;
+ //BA.debugLineNum = 1048579;BA.debugLine="editbtn.Color = Colors.White";
 mostCurrent._editbtn.setColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=16449540;
- //BA.debugLineNum = 16449540;BA.debugLine="profilebtn.Color = Colors.White";
+RDebugUtils.currentLine=1048580;
+ //BA.debugLineNum = 1048580;BA.debugLine="profilebtn.Color = Colors.White";
 mostCurrent._profilebtn.setColor(anywheresoftware.b4a.keywords.Common.Colors.White);
-RDebugUtils.currentLine=16449541;
- //BA.debugLineNum = 16449541;BA.debugLine="activeBtn.Color = 0xFF1AEA00";
+RDebugUtils.currentLine=1048581;
+ //BA.debugLineNum = 1048581;BA.debugLine="activeBtn.Color = 0xFF1AEA00";
 _activebtn.setColor(((int)0xff1aea00));
-RDebugUtils.currentLine=16449542;
- //BA.debugLineNum = 16449542;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1048582;
+ //BA.debugLineNum = 1048582;BA.debugLine="End Sub";
+return "";
+}
+public static String  _delete_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "delete_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "delete_click", null));}
+RDebugUtils.currentLine=4325376;
+ //BA.debugLineNum = 4325376;BA.debugLine="Private Sub delete_Click";
+RDebugUtils.currentLine=4325377;
+ //BA.debugLineNum = 4325377;BA.debugLine="showselectid = True";
+_showselectid = anywheresoftware.b4a.keywords.Common.True;
+RDebugUtils.currentLine=4325378;
+ //BA.debugLineNum = 4325378;BA.debugLine="todelete = True";
+_todelete = anywheresoftware.b4a.keywords.Common.True;
+RDebugUtils.currentLine=4325379;
+ //BA.debugLineNum = 4325379;BA.debugLine="showselectids";
+_showselectids();
+RDebugUtils.currentLine=4325380;
+ //BA.debugLineNum = 4325380;BA.debugLine="End Sub";
 return "";
 }
 public static String  _editbtn_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "editbtn_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "editbtn_click", null));}
-RDebugUtils.currentLine=3538944;
- //BA.debugLineNum = 3538944;BA.debugLine="Private Sub editbtn_Click";
-RDebugUtils.currentLine=3538945;
- //BA.debugLineNum = 3538945;BA.debugLine="HighlightTab(editbtn)";
+RDebugUtils.currentLine=917504;
+ //BA.debugLineNum = 917504;BA.debugLine="Private Sub editbtn_Click";
+RDebugUtils.currentLine=917505;
+ //BA.debugLineNum = 917505;BA.debugLine="HighlightTab(editbtn)";
 _highlighttab(mostCurrent._editbtn);
-RDebugUtils.currentLine=3538946;
- //BA.debugLineNum = 3538946;BA.debugLine="showedit";
+RDebugUtils.currentLine=917506;
+ //BA.debugLineNum = 917506;BA.debugLine="showedit";
 _showedit();
-RDebugUtils.currentLine=3538947;
- //BA.debugLineNum = 3538947;BA.debugLine="End Sub";
+RDebugUtils.currentLine=917507;
+ //BA.debugLineNum = 917507;BA.debugLine="End Sub";
 return "";
 }
 public static String  _generategraph() throws Exception{
@@ -1579,173 +1729,311 @@ anywheresoftware.b4a.objects.LabelWrapper _lblvalue = null;
 anywheresoftware.b4a.objects.LabelWrapper _l = null;
 String _displayname = "";
 String[] _nameparts = null;
-RDebugUtils.currentLine=3145728;
- //BA.debugLineNum = 3145728;BA.debugLine="Sub generategraph";
-RDebugUtils.currentLine=3145729;
- //BA.debugLineNum = 3145729;BA.debugLine="Dim names As List = GetUniqueStudentNames";
+anywheresoftware.b4a.objects.collections.List _studentavgs = null;
+String[] _topnames = null;
+double[] _toprates = null;
+String[] _topactivities = null;
+int _rank = 0;
+int _bestidx = 0;
+double _bestval = 0;
+int _j = 0;
+Object[] _entry = null;
+Object[] _bestentry = null;
+RDebugUtils.currentLine=1769472;
+ //BA.debugLineNum = 1769472;BA.debugLine="Sub generategraph";
+RDebugUtils.currentLine=1769473;
+ //BA.debugLineNum = 1769473;BA.debugLine="Dim names As List = GetUniqueStudentNames";
 _names = new anywheresoftware.b4a.objects.collections.List();
 _names = _getuniquestudentnames();
-RDebugUtils.currentLine=3145730;
- //BA.debugLineNum = 3145730;BA.debugLine="If names.Size = 0 Then Return";
+RDebugUtils.currentLine=1769474;
+ //BA.debugLineNum = 1769474;BA.debugLine="If names.Size = 0 Then Return";
 if (_names.getSize()==0) { 
 if (true) return "";};
-RDebugUtils.currentLine=3145732;
- //BA.debugLineNum = 3145732;BA.debugLine="Dim numCols As Int = names.Size";
+RDebugUtils.currentLine=1769476;
+ //BA.debugLineNum = 1769476;BA.debugLine="Dim numCols As Int = names.Size";
 _numcols = _names.getSize();
-RDebugUtils.currentLine=3145733;
- //BA.debugLineNum = 3145733;BA.debugLine="Dim colWidth As Int = datapnl.Width / numCols";
+RDebugUtils.currentLine=1769477;
+ //BA.debugLineNum = 1769477;BA.debugLine="Dim colWidth As Int = datapnl.Width / numCols";
 _colwidth = (int) (mostCurrent._datapnl.getWidth()/(double)_numcols);
-RDebugUtils.currentLine=3145736;
- //BA.debugLineNum = 3145736;BA.debugLine="Dim barColors() As Int = Array As Int( _ 		Colors";
+RDebugUtils.currentLine=1769480;
+ //BA.debugLineNum = 1769480;BA.debugLine="Dim barColors() As Int = Array As Int( _ 		Colors";
 _barcolors = new int[]{anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (66),(int) (133),(int) (244)),anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (234),(int) (67),(int) (53)),anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (251),(int) (188),(int) (4)),anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (52),(int) (168),(int) (83)),anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (156),(int) (39),(int) (176))};
-RDebugUtils.currentLine=3145744;
- //BA.debugLineNum = 3145744;BA.debugLine="Dim maxVal As Double = 0";
+RDebugUtils.currentLine=1769488;
+ //BA.debugLineNum = 1769488;BA.debugLine="Dim maxVal As Double = 0";
 _maxval = 0;
-RDebugUtils.currentLine=3145745;
- //BA.debugLineNum = 3145745;BA.debugLine="For i = 0 To names.Size - 1";
+RDebugUtils.currentLine=1769489;
+ //BA.debugLineNum = 1769489;BA.debugLine="For i = 0 To names.Size - 1";
 {
 final int step7 = 1;
 final int limit7 = (int) (_names.getSize()-1);
 _i = (int) (0) ;
 for (;_i <= limit7 ;_i = _i + step7 ) {
-RDebugUtils.currentLine=3145746;
- //BA.debugLineNum = 3145746;BA.debugLine="Dim avg As Double = GetStudentAvgPercentage(name";
+RDebugUtils.currentLine=1769490;
+ //BA.debugLineNum = 1769490;BA.debugLine="Dim avg As Double = GetStudentAvgPercentage(name";
 _avg = _getstudentavgpercentage(BA.ObjectToString(_names.Get(_i)));
-RDebugUtils.currentLine=3145747;
- //BA.debugLineNum = 3145747;BA.debugLine="If avg > maxVal Then maxVal = avg";
+RDebugUtils.currentLine=1769491;
+ //BA.debugLineNum = 1769491;BA.debugLine="If avg > maxVal Then maxVal = avg";
 if (_avg>_maxval) { 
 _maxval = _avg;};
  }
 };
-RDebugUtils.currentLine=3145749;
- //BA.debugLineNum = 3145749;BA.debugLine="If maxVal = 0 Then maxVal = 100";
+RDebugUtils.currentLine=1769493;
+ //BA.debugLineNum = 1769493;BA.debugLine="If maxVal = 0 Then maxVal = 100";
 if (_maxval==0) { 
 _maxval = 100;};
-RDebugUtils.currentLine=3145751;
- //BA.debugLineNum = 3145751;BA.debugLine="Dim rowHeight As Int = 40dip";
+RDebugUtils.currentLine=1769495;
+ //BA.debugLineNum = 1769495;BA.debugLine="Dim RowHeight As Int = 40dip";
 _rowheight = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40));
-RDebugUtils.currentLine=3145752;
- //BA.debugLineNum = 3145752;BA.debugLine="Dim valueLabelHeight As Int = 30dip";
+RDebugUtils.currentLine=1769496;
+ //BA.debugLineNum = 1769496;BA.debugLine="Dim valueLabelHeight As Int = 30dip";
 _valuelabelheight = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30));
-RDebugUtils.currentLine=3145753;
- //BA.debugLineNum = 3145753;BA.debugLine="Dim chartAreaHeight As Int = datapnl.Height - row";
+RDebugUtils.currentLine=1769497;
+ //BA.debugLineNum = 1769497;BA.debugLine="Dim chartAreaHeight As Int = datapnl.Height - Row";
 _chartareaheight = (int) (mostCurrent._datapnl.getHeight()-_rowheight-_valuelabelheight);
-RDebugUtils.currentLine=3145754;
- //BA.debugLineNum = 3145754;BA.debugLine="Dim barPadding As Int = 10dip";
+RDebugUtils.currentLine=1769498;
+ //BA.debugLineNum = 1769498;BA.debugLine="Dim barPadding As Int = 10dip";
 _barpadding = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10));
-RDebugUtils.currentLine=3145756;
- //BA.debugLineNum = 3145756;BA.debugLine="For i = 0 To numCols - 1";
+RDebugUtils.currentLine=1769500;
+ //BA.debugLineNum = 1769500;BA.debugLine="For i = 0 To numCols - 1";
 {
 final int step16 = 1;
 final int limit16 = (int) (_numcols-1);
 _i = (int) (0) ;
 for (;_i <= limit16 ;_i = _i + step16 ) {
-RDebugUtils.currentLine=3145757;
- //BA.debugLineNum = 3145757;BA.debugLine="Dim studentName As String = names.Get(i)";
+RDebugUtils.currentLine=1769501;
+ //BA.debugLineNum = 1769501;BA.debugLine="Dim studentName As String = names.Get(i)";
 _studentname = BA.ObjectToString(_names.Get(_i));
-RDebugUtils.currentLine=3145758;
- //BA.debugLineNum = 3145758;BA.debugLine="Dim avgPct As Double = GetStudentAvgPercentage(s";
+RDebugUtils.currentLine=1769502;
+ //BA.debugLineNum = 1769502;BA.debugLine="Dim avgPct As Double = GetStudentAvgPercentage(s";
 _avgpct = _getstudentavgpercentage(_studentname);
-RDebugUtils.currentLine=3145761;
- //BA.debugLineNum = 3145761;BA.debugLine="Dim barHeight As Int";
+RDebugUtils.currentLine=1769505;
+ //BA.debugLineNum = 1769505;BA.debugLine="Dim barHeight As Int";
 _barheight = 0;
-RDebugUtils.currentLine=3145762;
- //BA.debugLineNum = 3145762;BA.debugLine="If maxVal > 0 Then";
+RDebugUtils.currentLine=1769506;
+ //BA.debugLineNum = 1769506;BA.debugLine="If maxVal > 0 Then";
 if (_maxval>0) { 
-RDebugUtils.currentLine=3145763;
- //BA.debugLineNum = 3145763;BA.debugLine="barHeight = (avgPct / maxVal) * chartAreaHeight";
+RDebugUtils.currentLine=1769507;
+ //BA.debugLineNum = 1769507;BA.debugLine="barHeight = (avgPct / maxVal) * chartAreaHeight";
 _barheight = (int) ((_avgpct/(double)_maxval)*_chartareaheight);
  }else {
-RDebugUtils.currentLine=3145765;
- //BA.debugLineNum = 3145765;BA.debugLine="barHeight = 0";
+RDebugUtils.currentLine=1769509;
+ //BA.debugLineNum = 1769509;BA.debugLine="barHeight = 0";
 _barheight = (int) (0);
  };
-RDebugUtils.currentLine=3145768;
- //BA.debugLineNum = 3145768;BA.debugLine="Dim barTop As Int = datapnl.Height - rowHeight -";
+RDebugUtils.currentLine=1769512;
+ //BA.debugLineNum = 1769512;BA.debugLine="Dim barTop As Int = datapnl.Height - RowHeight -";
 _bartop = (int) (mostCurrent._datapnl.getHeight()-_rowheight-_barheight);
-RDebugUtils.currentLine=3145770;
- //BA.debugLineNum = 3145770;BA.debugLine="Dim pnlBar As Panel";
+RDebugUtils.currentLine=1769514;
+ //BA.debugLineNum = 1769514;BA.debugLine="Dim pnlBar As Panel";
 _pnlbar = new anywheresoftware.b4a.objects.PanelWrapper();
-RDebugUtils.currentLine=3145771;
- //BA.debugLineNum = 3145771;BA.debugLine="pnlBar.Initialize(\"pnlBar\")";
+RDebugUtils.currentLine=1769515;
+ //BA.debugLineNum = 1769515;BA.debugLine="pnlBar.Initialize(\"pnlBar\")";
 _pnlbar.Initialize(mostCurrent.activityBA,"pnlBar");
-RDebugUtils.currentLine=3145772;
- //BA.debugLineNum = 3145772;BA.debugLine="pnlBar.Color = barColors(i Mod barColors.Length)";
+RDebugUtils.currentLine=1769516;
+ //BA.debugLineNum = 1769516;BA.debugLine="pnlBar.Color = barColors(i Mod barColors.Length)";
 _pnlbar.setColor(_barcolors[(int) (_i%_barcolors.length)]);
-RDebugUtils.currentLine=3145773;
- //BA.debugLineNum = 3145773;BA.debugLine="pnlBar.Tag = i";
+RDebugUtils.currentLine=1769517;
+ //BA.debugLineNum = 1769517;BA.debugLine="pnlBar.Tag = i";
 _pnlbar.setTag((Object)(_i));
-RDebugUtils.currentLine=3145774;
- //BA.debugLineNum = 3145774;BA.debugLine="datapnl.AddView(pnlBar, _ 			(colWidth * i) + ba";
+RDebugUtils.currentLine=1769518;
+ //BA.debugLineNum = 1769518;BA.debugLine="datapnl.AddView(pnlBar, _ 			(colWidth * i) + ba";
 mostCurrent._datapnl.AddView((android.view.View)(_pnlbar.getObject()),(int) ((_colwidth*_i)+_barpadding),_bartop,(int) (_colwidth-(_barpadding*2)),_barheight);
-RDebugUtils.currentLine=3145781;
- //BA.debugLineNum = 3145781;BA.debugLine="Dim lblValue As Label";
+RDebugUtils.currentLine=1769525;
+ //BA.debugLineNum = 1769525;BA.debugLine="Dim lblValue As Label";
 _lblvalue = new anywheresoftware.b4a.objects.LabelWrapper();
-RDebugUtils.currentLine=3145782;
- //BA.debugLineNum = 3145782;BA.debugLine="lblValue.Initialize(\"lblValue\")";
+RDebugUtils.currentLine=1769526;
+ //BA.debugLineNum = 1769526;BA.debugLine="lblValue.Initialize(\"lblValue\")";
 _lblvalue.Initialize(mostCurrent.activityBA,"lblValue");
-RDebugUtils.currentLine=3145783;
- //BA.debugLineNum = 3145783;BA.debugLine="lblValue.Text = Round2(avgPct, 0) & \"%\"";
+RDebugUtils.currentLine=1769527;
+ //BA.debugLineNum = 1769527;BA.debugLine="lblValue.Text = Round2(avgPct, 0) & \"%\"";
 _lblvalue.setText(BA.ObjectToCharSequence(BA.NumberToString(anywheresoftware.b4a.keywords.Common.Round2(_avgpct,(int) (0)))+"%"));
-RDebugUtils.currentLine=3145784;
- //BA.debugLineNum = 3145784;BA.debugLine="lblValue.Gravity = Gravity.CENTER";
+RDebugUtils.currentLine=1769528;
+ //BA.debugLineNum = 1769528;BA.debugLine="lblValue.Gravity = Gravity.CENTER";
 _lblvalue.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER);
-RDebugUtils.currentLine=3145785;
- //BA.debugLineNum = 3145785;BA.debugLine="lblValue.TextSize = 12";
+RDebugUtils.currentLine=1769529;
+ //BA.debugLineNum = 1769529;BA.debugLine="lblValue.TextSize = 12";
 _lblvalue.setTextSize((float) (12));
-RDebugUtils.currentLine=3145786;
- //BA.debugLineNum = 3145786;BA.debugLine="lblValue.TextColor = Colors.Black";
+RDebugUtils.currentLine=1769530;
+ //BA.debugLineNum = 1769530;BA.debugLine="lblValue.TextColor = Colors.Black";
 _lblvalue.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
-RDebugUtils.currentLine=3145787;
- //BA.debugLineNum = 3145787;BA.debugLine="datapnl.AddView(lblValue, _ 			colWidth * i, _";
+RDebugUtils.currentLine=1769531;
+ //BA.debugLineNum = 1769531;BA.debugLine="datapnl.AddView(lblValue, _ 			colWidth * i, _";
 mostCurrent._datapnl.AddView((android.view.View)(_lblvalue.getObject()),(int) (_colwidth*_i),(int) (_bartop-_valuelabelheight),_colwidth,_valuelabelheight);
-RDebugUtils.currentLine=3145794;
- //BA.debugLineNum = 3145794;BA.debugLine="Dim l As Label";
+RDebugUtils.currentLine=1769538;
+ //BA.debugLineNum = 1769538;BA.debugLine="Dim l As Label";
 _l = new anywheresoftware.b4a.objects.LabelWrapper();
-RDebugUtils.currentLine=3145795;
- //BA.debugLineNum = 3145795;BA.debugLine="l.Initialize(\"labels\")";
+RDebugUtils.currentLine=1769539;
+ //BA.debugLineNum = 1769539;BA.debugLine="l.Initialize(\"labels\")";
 _l.Initialize(mostCurrent.activityBA,"labels");
-RDebugUtils.currentLine=3145797;
- //BA.debugLineNum = 3145797;BA.debugLine="Dim displayName As String = studentName";
+RDebugUtils.currentLine=1769541;
+ //BA.debugLineNum = 1769541;BA.debugLine="Dim displayName As String = studentName";
 _displayname = _studentname;
-RDebugUtils.currentLine=3145798;
- //BA.debugLineNum = 3145798;BA.debugLine="If displayName.Length > 8 Then";
+RDebugUtils.currentLine=1769542;
+ //BA.debugLineNum = 1769542;BA.debugLine="If displayName.Length > 8 Then";
 if (_displayname.length()>8) { 
-RDebugUtils.currentLine=3145799;
- //BA.debugLineNum = 3145799;BA.debugLine="Dim nameParts() As String = Regex.Split(\" \", di";
+RDebugUtils.currentLine=1769543;
+ //BA.debugLineNum = 1769543;BA.debugLine="Dim nameParts() As String = Regex.Split(\" \", di";
 _nameparts = anywheresoftware.b4a.keywords.Common.Regex.Split(" ",_displayname);
-RDebugUtils.currentLine=3145800;
- //BA.debugLineNum = 3145800;BA.debugLine="displayName = nameParts(0)";
+RDebugUtils.currentLine=1769544;
+ //BA.debugLineNum = 1769544;BA.debugLine="displayName = nameParts(0)";
 _displayname = _nameparts[(int) (0)];
  };
-RDebugUtils.currentLine=3145802;
- //BA.debugLineNum = 3145802;BA.debugLine="l.Text = displayName";
+RDebugUtils.currentLine=1769546;
+ //BA.debugLineNum = 1769546;BA.debugLine="l.Text = displayName";
 _l.setText(BA.ObjectToCharSequence(_displayname));
-RDebugUtils.currentLine=3145803;
- //BA.debugLineNum = 3145803;BA.debugLine="l.Gravity = Gravity.CENTER";
+RDebugUtils.currentLine=1769547;
+ //BA.debugLineNum = 1769547;BA.debugLine="l.Gravity = Gravity.CENTER";
 _l.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER);
-RDebugUtils.currentLine=3145804;
- //BA.debugLineNum = 3145804;BA.debugLine="l.TextSize = 10";
+RDebugUtils.currentLine=1769548;
+ //BA.debugLineNum = 1769548;BA.debugLine="l.TextSize = 10";
 _l.setTextSize((float) (10));
-RDebugUtils.currentLine=3145805;
- //BA.debugLineNum = 3145805;BA.debugLine="l.Color = 0x00ffffff";
+RDebugUtils.currentLine=1769549;
+ //BA.debugLineNum = 1769549;BA.debugLine="l.Color = 0x00ffffff";
 _l.setColor(((int)0x00ffffff));
-RDebugUtils.currentLine=3145806;
- //BA.debugLineNum = 3145806;BA.debugLine="l.TextColor = Colors.Black";
+RDebugUtils.currentLine=1769550;
+ //BA.debugLineNum = 1769550;BA.debugLine="l.TextColor = Colors.Black";
 _l.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
-RDebugUtils.currentLine=3145807;
- //BA.debugLineNum = 3145807;BA.debugLine="l.Padding = Array As Int(0dip, 5dip, 0dip, 5dip)";
+RDebugUtils.currentLine=1769551;
+ //BA.debugLineNum = 1769551;BA.debugLine="l.Padding = Array As Int(0dip, 5dip, 0dip, 5dip)";
 _l.setPadding(new int[]{anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5))});
-RDebugUtils.currentLine=3145808;
- //BA.debugLineNum = 3145808;BA.debugLine="l.Tag = i";
+RDebugUtils.currentLine=1769552;
+ //BA.debugLineNum = 1769552;BA.debugLine="l.Tag = i";
 _l.setTag((Object)(_i));
-RDebugUtils.currentLine=3145809;
- //BA.debugLineNum = 3145809;BA.debugLine="datapnl.AddView(l, _ 			colWidth * i, _ 			datap";
+RDebugUtils.currentLine=1769553;
+ //BA.debugLineNum = 1769553;BA.debugLine="datapnl.AddView(l, _ 			colWidth * i, _ 			datap";
 mostCurrent._datapnl.AddView((android.view.View)(_l.getObject()),(int) (_colwidth*_i),(int) (mostCurrent._datapnl.getHeight()-_rowheight),_colwidth,_rowheight);
  }
 };
-RDebugUtils.currentLine=3145815;
- //BA.debugLineNum = 3145815;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1769561;
+ //BA.debugLineNum = 1769561;BA.debugLine="Dim studentAvgs As List";
+_studentavgs = new anywheresoftware.b4a.objects.collections.List();
+RDebugUtils.currentLine=1769562;
+ //BA.debugLineNum = 1769562;BA.debugLine="studentAvgs.Initialize";
+_studentavgs.Initialize();
+RDebugUtils.currentLine=1769563;
+ //BA.debugLineNum = 1769563;BA.debugLine="For i = 0 To names.Size - 1";
+{
+final int step56 = 1;
+final int limit56 = (int) (_names.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit56 ;_i = _i + step56 ) {
+RDebugUtils.currentLine=1769564;
+ //BA.debugLineNum = 1769564;BA.debugLine="Dim avg As Double = GetStudentAvgPercentage(name";
+_avg = _getstudentavgpercentage(BA.ObjectToString(_names.Get(_i)));
+RDebugUtils.currentLine=1769565;
+ //BA.debugLineNum = 1769565;BA.debugLine="studentAvgs.Add(Array As Object(names.Get(i), av";
+_studentavgs.Add((Object)(new Object[]{_names.Get(_i),(Object)(_avg)}));
+ }
+};
+RDebugUtils.currentLine=1769569;
+ //BA.debugLineNum = 1769569;BA.debugLine="Dim topNames(3) As String";
+_topnames = new String[(int) (3)];
+java.util.Arrays.fill(_topnames,"");
+RDebugUtils.currentLine=1769570;
+ //BA.debugLineNum = 1769570;BA.debugLine="Dim topRates(3) As Double";
+_toprates = new double[(int) (3)];
+;
+RDebugUtils.currentLine=1769571;
+ //BA.debugLineNum = 1769571;BA.debugLine="Dim topActivities(3) As String";
+_topactivities = new String[(int) (3)];
+java.util.Arrays.fill(_topactivities,"");
+RDebugUtils.currentLine=1769573;
+ //BA.debugLineNum = 1769573;BA.debugLine="For rank = 0 To Min(2, studentAvgs.Size - 1)";
+{
+final int step63 = 1;
+final int limit63 = (int) (anywheresoftware.b4a.keywords.Common.Min(2,_studentavgs.getSize()-1));
+_rank = (int) (0) ;
+for (;_rank <= limit63 ;_rank = _rank + step63 ) {
+RDebugUtils.currentLine=1769574;
+ //BA.debugLineNum = 1769574;BA.debugLine="Dim bestIdx As Int = -1";
+_bestidx = (int) (-1);
+RDebugUtils.currentLine=1769575;
+ //BA.debugLineNum = 1769575;BA.debugLine="Dim bestVal As Double = -1";
+_bestval = -1;
+RDebugUtils.currentLine=1769576;
+ //BA.debugLineNum = 1769576;BA.debugLine="For j = 0 To studentAvgs.Size - 1";
+{
+final int step66 = 1;
+final int limit66 = (int) (_studentavgs.getSize()-1);
+_j = (int) (0) ;
+for (;_j <= limit66 ;_j = _j + step66 ) {
+RDebugUtils.currentLine=1769577;
+ //BA.debugLineNum = 1769577;BA.debugLine="Dim entry() As Object = studentAvgs.Get(j)";
+_entry = (Object[])(_studentavgs.Get(_j));
+RDebugUtils.currentLine=1769578;
+ //BA.debugLineNum = 1769578;BA.debugLine="If entry(1) > bestVal Then";
+if ((double)(BA.ObjectToNumber(_entry[(int) (1)]))>_bestval) { 
+RDebugUtils.currentLine=1769579;
+ //BA.debugLineNum = 1769579;BA.debugLine="bestVal = entry(1)";
+_bestval = (double)(BA.ObjectToNumber(_entry[(int) (1)]));
+RDebugUtils.currentLine=1769580;
+ //BA.debugLineNum = 1769580;BA.debugLine="bestIdx = j";
+_bestidx = _j;
+ };
+ }
+};
+RDebugUtils.currentLine=1769583;
+ //BA.debugLineNum = 1769583;BA.debugLine="If bestIdx >= 0 Then";
+if (_bestidx>=0) { 
+RDebugUtils.currentLine=1769584;
+ //BA.debugLineNum = 1769584;BA.debugLine="Dim bestEntry() As Object = studentAvgs.Get(bes";
+_bestentry = (Object[])(_studentavgs.Get(_bestidx));
+RDebugUtils.currentLine=1769585;
+ //BA.debugLineNum = 1769585;BA.debugLine="topNames(rank) = bestEntry(0)";
+_topnames[_rank] = BA.ObjectToString(_bestentry[(int) (0)]);
+RDebugUtils.currentLine=1769586;
+ //BA.debugLineNum = 1769586;BA.debugLine="topRates(rank) = bestEntry(1)";
+_toprates[_rank] = (double)(BA.ObjectToNumber(_bestentry[(int) (1)]));
+RDebugUtils.currentLine=1769587;
+ //BA.debugLineNum = 1769587;BA.debugLine="topActivities(rank) = GetStudentTopActivity(bes";
+_topactivities[_rank] = _getstudenttopactivity(BA.ObjectToString(_bestentry[(int) (0)]));
+RDebugUtils.currentLine=1769588;
+ //BA.debugLineNum = 1769588;BA.debugLine="studentAvgs.RemoveAt(bestIdx) ' remove so next";
+_studentavgs.RemoveAt(_bestidx);
+ };
+ }
+};
+RDebugUtils.currentLine=1769593;
+ //BA.debugLineNum = 1769593;BA.debugLine="If topNames(0) <> \"\" Then";
+if ((_topnames[(int) (0)]).equals("") == false) { 
+RDebugUtils.currentLine=1769594;
+ //BA.debugLineNum = 1769594;BA.debugLine="NAME1.Text = topNames(0)";
+mostCurrent._name1.setText(BA.ObjectToCharSequence(_topnames[(int) (0)]));
+RDebugUtils.currentLine=1769595;
+ //BA.debugLineNum = 1769595;BA.debugLine="RATE1.Text = Round2(topRates(0), 1) & \"%\"";
+mostCurrent._rate1.setText(BA.ObjectToCharSequence(BA.NumberToString(anywheresoftware.b4a.keywords.Common.Round2(_toprates[(int) (0)],(int) (1)))+"%"));
+RDebugUtils.currentLine=1769596;
+ //BA.debugLineNum = 1769596;BA.debugLine="ACTIVITY1.Text = topActivities(0)";
+mostCurrent._activity1.setText(BA.ObjectToCharSequence(_topactivities[(int) (0)]));
+ };
+RDebugUtils.currentLine=1769598;
+ //BA.debugLineNum = 1769598;BA.debugLine="If topNames(1) <> \"\" Then";
+if ((_topnames[(int) (1)]).equals("") == false) { 
+RDebugUtils.currentLine=1769599;
+ //BA.debugLineNum = 1769599;BA.debugLine="NAME2.Text = topNames(1)";
+mostCurrent._name2.setText(BA.ObjectToCharSequence(_topnames[(int) (1)]));
+RDebugUtils.currentLine=1769600;
+ //BA.debugLineNum = 1769600;BA.debugLine="RATE2.Text = Round2(topRates(1), 1) & \"%\"";
+mostCurrent._rate2.setText(BA.ObjectToCharSequence(BA.NumberToString(anywheresoftware.b4a.keywords.Common.Round2(_toprates[(int) (1)],(int) (1)))+"%"));
+RDebugUtils.currentLine=1769601;
+ //BA.debugLineNum = 1769601;BA.debugLine="ACTIVITY2.Text = topActivities(1)";
+mostCurrent._activity2.setText(BA.ObjectToCharSequence(_topactivities[(int) (1)]));
+ };
+RDebugUtils.currentLine=1769603;
+ //BA.debugLineNum = 1769603;BA.debugLine="If topNames(2) <> \"\" Then";
+if ((_topnames[(int) (2)]).equals("") == false) { 
+RDebugUtils.currentLine=1769604;
+ //BA.debugLineNum = 1769604;BA.debugLine="NAME3.Text = topNames(2)";
+mostCurrent._name3.setText(BA.ObjectToCharSequence(_topnames[(int) (2)]));
+RDebugUtils.currentLine=1769605;
+ //BA.debugLineNum = 1769605;BA.debugLine="RATE3.Text = Round2(topRates(2), 1) & \"%\"";
+mostCurrent._rate3.setText(BA.ObjectToCharSequence(BA.NumberToString(anywheresoftware.b4a.keywords.Common.Round2(_toprates[(int) (2)],(int) (1)))+"%"));
+RDebugUtils.currentLine=1769606;
+ //BA.debugLineNum = 1769606;BA.debugLine="ACTIVITY3.Text = topActivities(2)";
+mostCurrent._activity3.setText(BA.ObjectToCharSequence(_topactivities[(int) (2)]));
+ };
+RDebugUtils.currentLine=1769608;
+ //BA.debugLineNum = 1769608;BA.debugLine="End Sub";
 return "";
 }
 public static anywheresoftware.b4a.objects.collections.List  _getuniquestudentnames() throws Exception{
@@ -1756,41 +2044,41 @@ anywheresoftware.b4a.objects.collections.List _names = null;
 int _i = 0;
 String[] _row = null;
 String _name = "";
-RDebugUtils.currentLine=16842752;
- //BA.debugLineNum = 16842752;BA.debugLine="Sub GetUniqueStudentNames As List";
-RDebugUtils.currentLine=16842753;
- //BA.debugLineNum = 16842753;BA.debugLine="Dim names As List";
+RDebugUtils.currentLine=1441792;
+ //BA.debugLineNum = 1441792;BA.debugLine="Sub GetUniqueStudentNames As List";
+RDebugUtils.currentLine=1441793;
+ //BA.debugLineNum = 1441793;BA.debugLine="Dim names As List";
 _names = new anywheresoftware.b4a.objects.collections.List();
-RDebugUtils.currentLine=16842754;
- //BA.debugLineNum = 16842754;BA.debugLine="names.Initialize";
+RDebugUtils.currentLine=1441794;
+ //BA.debugLineNum = 1441794;BA.debugLine="names.Initialize";
 _names.Initialize();
-RDebugUtils.currentLine=16842755;
- //BA.debugLineNum = 16842755;BA.debugLine="For i = 0 To StudentList.Size - 1";
+RDebugUtils.currentLine=1441795;
+ //BA.debugLineNum = 1441795;BA.debugLine="For i = 0 To StudentList.Size - 1";
 {
 final int step3 = 1;
 final int limit3 = (int) (mostCurrent._studentlist.getSize()-1);
 _i = (int) (0) ;
 for (;_i <= limit3 ;_i = _i + step3 ) {
-RDebugUtils.currentLine=16842756;
- //BA.debugLineNum = 16842756;BA.debugLine="Dim row() As String = StudentList.Get(i)";
+RDebugUtils.currentLine=1441796;
+ //BA.debugLineNum = 1441796;BA.debugLine="Dim row() As String = StudentList.Get(i)";
 _row = (String[])(mostCurrent._studentlist.Get(_i));
-RDebugUtils.currentLine=16842757;
- //BA.debugLineNum = 16842757;BA.debugLine="Dim name As String = row(COL_NAME)";
+RDebugUtils.currentLine=1441797;
+ //BA.debugLineNum = 1441797;BA.debugLine="Dim name As String = row(COL_NAME)";
 _name = _row[_col_name];
-RDebugUtils.currentLine=16842758;
- //BA.debugLineNum = 16842758;BA.debugLine="If names.IndexOf(name) = -1 Then";
+RDebugUtils.currentLine=1441798;
+ //BA.debugLineNum = 1441798;BA.debugLine="If names.IndexOf(name) = -1 Then";
 if (_names.IndexOf((Object)(_name))==-1) { 
-RDebugUtils.currentLine=16842759;
- //BA.debugLineNum = 16842759;BA.debugLine="names.Add(name)";
+RDebugUtils.currentLine=1441799;
+ //BA.debugLineNum = 1441799;BA.debugLine="names.Add(name)";
 _names.Add((Object)(_name));
  };
  }
 };
-RDebugUtils.currentLine=16842762;
- //BA.debugLineNum = 16842762;BA.debugLine="Return names";
+RDebugUtils.currentLine=1441802;
+ //BA.debugLineNum = 1441802;BA.debugLine="Return names";
 if (true) return _names;
-RDebugUtils.currentLine=16842763;
- //BA.debugLineNum = 16842763;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1441803;
+ //BA.debugLineNum = 1441803;BA.debugLine="End Sub";
 return null;
 }
 public static double  _getstudentavgpercentage(String _studentname) throws Exception{
@@ -1801,74 +2089,216 @@ double _total = 0;
 int _count = 0;
 int _i = 0;
 String[] _row = null;
-RDebugUtils.currentLine=16908288;
- //BA.debugLineNum = 16908288;BA.debugLine="Sub GetStudentAvgPercentage(studentName As String)";
-RDebugUtils.currentLine=16908289;
- //BA.debugLineNum = 16908289;BA.debugLine="Dim total As Double = 0";
+RDebugUtils.currentLine=1507328;
+ //BA.debugLineNum = 1507328;BA.debugLine="Sub GetStudentAvgPercentage(studentname As String)";
+RDebugUtils.currentLine=1507329;
+ //BA.debugLineNum = 1507329;BA.debugLine="Dim total As Double = 0";
 _total = 0;
-RDebugUtils.currentLine=16908290;
- //BA.debugLineNum = 16908290;BA.debugLine="Dim count As Int = 0";
+RDebugUtils.currentLine=1507330;
+ //BA.debugLineNum = 1507330;BA.debugLine="Dim count As Int = 0";
 _count = (int) (0);
-RDebugUtils.currentLine=16908291;
- //BA.debugLineNum = 16908291;BA.debugLine="For i = 0 To StudentList.Size - 1";
+RDebugUtils.currentLine=1507331;
+ //BA.debugLineNum = 1507331;BA.debugLine="For i = 0 To StudentList.Size - 1";
 {
 final int step3 = 1;
 final int limit3 = (int) (mostCurrent._studentlist.getSize()-1);
 _i = (int) (0) ;
 for (;_i <= limit3 ;_i = _i + step3 ) {
-RDebugUtils.currentLine=16908292;
- //BA.debugLineNum = 16908292;BA.debugLine="Dim row() As String = StudentList.Get(i)";
+RDebugUtils.currentLine=1507332;
+ //BA.debugLineNum = 1507332;BA.debugLine="Dim row() As String = StudentList.Get(i)";
 _row = (String[])(mostCurrent._studentlist.Get(_i));
-RDebugUtils.currentLine=16908293;
- //BA.debugLineNum = 16908293;BA.debugLine="If row(COL_NAME) = studentName Then";
+RDebugUtils.currentLine=1507333;
+ //BA.debugLineNum = 1507333;BA.debugLine="If row(COL_NAME) = studentname Then";
 if ((_row[_col_name]).equals(_studentname)) { 
-RDebugUtils.currentLine=16908294;
- //BA.debugLineNum = 16908294;BA.debugLine="total = total + ComputePercentage(row(COL_RATE)";
+RDebugUtils.currentLine=1507334;
+ //BA.debugLineNum = 1507334;BA.debugLine="total = total + ComputePercentage(row(COL_RATE)";
 _total = _total+_computepercentage(_row[_col_rate]);
-RDebugUtils.currentLine=16908295;
- //BA.debugLineNum = 16908295;BA.debugLine="count = count + 1";
+RDebugUtils.currentLine=1507335;
+ //BA.debugLineNum = 1507335;BA.debugLine="count = count + 1";
 _count = (int) (_count+1);
  };
  }
 };
-RDebugUtils.currentLine=16908298;
- //BA.debugLineNum = 16908298;BA.debugLine="If count = 0 Then Return 0";
+RDebugUtils.currentLine=1507338;
+ //BA.debugLineNum = 1507338;BA.debugLine="If count = 0 Then Return 0";
 if (_count==0) { 
 if (true) return 0;};
-RDebugUtils.currentLine=16908299;
- //BA.debugLineNum = 16908299;BA.debugLine="Return total / count";
+RDebugUtils.currentLine=1507339;
+ //BA.debugLineNum = 1507339;BA.debugLine="Return total / count";
 if (true) return _total/(double)_count;
-RDebugUtils.currentLine=16908300;
- //BA.debugLineNum = 16908300;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1507340;
+ //BA.debugLineNum = 1507340;BA.debugLine="End Sub";
 return 0;
+}
+public static String  _getstudenttopactivity(String _studentname) throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "getstudenttopactivity", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "getstudenttopactivity", new Object[] {_studentname}));}
+RDebugUtils.currentLine=4521984;
+ //BA.debugLineNum = 4521984;BA.debugLine="Sub GetStudentTopActivity(studentName As String) A";
+RDebugUtils.currentLine=4521988;
+ //BA.debugLineNum = 4521988;BA.debugLine="Return getActivity(studentName)";
+if (true) return _getactivity(_studentname);
+RDebugUtils.currentLine=4521989;
+ //BA.debugLineNum = 4521989;BA.debugLine="End Sub";
+return "";
+}
+public static String  _getactivity(String _studentname) throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "getactivity", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "getactivity", new Object[] {_studentname}));}
+String _activities = "";
+int _i = 0;
+String[] _row = null;
+String _name = "";
+String _activitys = "";
+RDebugUtils.currentLine=5308416;
+ //BA.debugLineNum = 5308416;BA.debugLine="Sub getActivity(studentName As String) As String";
+RDebugUtils.currentLine=5308417;
+ //BA.debugLineNum = 5308417;BA.debugLine="Dim activities As String";
+_activities = "";
+RDebugUtils.currentLine=5308418;
+ //BA.debugLineNum = 5308418;BA.debugLine="For i = 0 To StudentList.Size - 1";
+{
+final int step2 = 1;
+final int limit2 = (int) (mostCurrent._studentlist.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit2 ;_i = _i + step2 ) {
+RDebugUtils.currentLine=5308419;
+ //BA.debugLineNum = 5308419;BA.debugLine="Dim row() As String = StudentList.Get(i)";
+_row = (String[])(mostCurrent._studentlist.Get(_i));
+RDebugUtils.currentLine=5308420;
+ //BA.debugLineNum = 5308420;BA.debugLine="Dim name As String = row(COL_NAME) ' compare aga";
+_name = _row[_col_name];
+RDebugUtils.currentLine=5308421;
+ //BA.debugLineNum = 5308421;BA.debugLine="If name = studentName Then";
+if ((_name).equals(_studentname)) { 
+RDebugUtils.currentLine=5308422;
+ //BA.debugLineNum = 5308422;BA.debugLine="Dim Activitys As String = row(COL_ACTIVITY)";
+_activitys = _row[_col_activity];
+RDebugUtils.currentLine=5308423;
+ //BA.debugLineNum = 5308423;BA.debugLine="If activities.IndexOf(Activitys) = -1 Then";
+if (_activities.indexOf(_activitys)==-1) { 
+RDebugUtils.currentLine=5308424;
+ //BA.debugLineNum = 5308424;BA.debugLine="activities = Activitys";
+_activities = _activitys;
+ };
+ };
+ }
+};
+RDebugUtils.currentLine=5308428;
+ //BA.debugLineNum = 5308428;BA.debugLine="Return activities";
+if (true) return _activities;
+RDebugUtils.currentLine=5308429;
+ //BA.debugLineNum = 5308429;BA.debugLine="End Sub";
+return "";
+}
+public static String  _getgpadisplaytext(String _studentname) throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "getgpadisplaytext", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "getgpadisplaytext", new Object[] {_studentname}));}
+double _gpa = 0;
+RDebugUtils.currentLine=12582912;
+ //BA.debugLineNum = 12582912;BA.debugLine="Sub GetGPADisplayText(studentName As String) As St";
+RDebugUtils.currentLine=12582913;
+ //BA.debugLineNum = 12582913;BA.debugLine="Dim gpa As Double = CalculateStudentGPA(studentNa";
+_gpa = _calculatestudentgpa(_studentname);
+RDebugUtils.currentLine=12582915;
+ //BA.debugLineNum = 12582915;BA.debugLine="If gpa = -1.0 Then";
+if (_gpa==-1.0) { 
+RDebugUtils.currentLine=12582916;
+ //BA.debugLineNum = 12582916;BA.debugLine="Return \"N/A (Min 3 activities required)\"";
+if (true) return "N/A (Min 3 activities required)";
+ }else {
+RDebugUtils.currentLine=12582919;
+ //BA.debugLineNum = 12582919;BA.debugLine="Return NumberFormat2(gpa, 1, 2, 2, False)";
+if (true) return anywheresoftware.b4a.keywords.Common.NumberFormat2(_gpa,(int) (1),(int) (2),(int) (2),anywheresoftware.b4a.keywords.Common.False);
+ };
+RDebugUtils.currentLine=12582921;
+ //BA.debugLineNum = 12582921;BA.debugLine="End Sub";
+return "";
 }
 public static String  _getstudentgrade(String _studentname) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "getstudentgrade", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "getstudentgrade", new Object[] {_studentname}));}
-RDebugUtils.currentLine=16973824;
- //BA.debugLineNum = 16973824;BA.debugLine="Sub GetStudentGrade(studentName As String) As Stri";
-RDebugUtils.currentLine=16973825;
- //BA.debugLineNum = 16973825;BA.debugLine="Return PercentageToGrade(GetStudentAvgPercentage(";
+RDebugUtils.currentLine=1572864;
+ //BA.debugLineNum = 1572864;BA.debugLine="Sub GetStudentGrade(studentname As String) As Stri";
+RDebugUtils.currentLine=1572865;
+ //BA.debugLineNum = 1572865;BA.debugLine="Return PercentageToGrade(GetStudentAvgPercentage(";
 if (true) return _percentagetograde(_getstudentavgpercentage(_studentname));
-RDebugUtils.currentLine=16973826;
- //BA.debugLineNum = 16973826;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1572866;
+ //BA.debugLineNum = 1572866;BA.debugLine="End Sub";
 return "";
+}
+public static anywheresoftware.b4a.objects.collections.List  _getunique(anywheresoftware.b4a.objects.collections.List _source) throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "getunique", false))
+	 {return ((anywheresoftware.b4a.objects.collections.List) Debug.delegate(mostCurrent.activityBA, "getunique", new Object[] {_source}));}
+anywheresoftware.b4a.objects.collections.Map _seen = null;
+anywheresoftware.b4a.objects.collections.List _unique = null;
+String _item = "";
+int _i = 0;
+RDebugUtils.currentLine=10354688;
+ //BA.debugLineNum = 10354688;BA.debugLine="Sub GetUnique(source As List) As List";
+RDebugUtils.currentLine=10354689;
+ //BA.debugLineNum = 10354689;BA.debugLine="Dim seen As Map";
+_seen = new anywheresoftware.b4a.objects.collections.Map();
+RDebugUtils.currentLine=10354690;
+ //BA.debugLineNum = 10354690;BA.debugLine="seen.Initialize";
+_seen.Initialize();
+RDebugUtils.currentLine=10354691;
+ //BA.debugLineNum = 10354691;BA.debugLine="Dim unique As List";
+_unique = new anywheresoftware.b4a.objects.collections.List();
+RDebugUtils.currentLine=10354692;
+ //BA.debugLineNum = 10354692;BA.debugLine="unique.Initialize";
+_unique.Initialize();
+RDebugUtils.currentLine=10354693;
+ //BA.debugLineNum = 10354693;BA.debugLine="Dim item As String        ' ✅ Declared outside th";
+_item = "";
+RDebugUtils.currentLine=10354694;
+ //BA.debugLineNum = 10354694;BA.debugLine="For i = 0 To source.Size - 1";
+{
+final int step6 = 1;
+final int limit6 = (int) (_source.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit6 ;_i = _i + step6 ) {
+RDebugUtils.currentLine=10354695;
+ //BA.debugLineNum = 10354695;BA.debugLine="item = source.Get(i)  ' ✅ Only assignment inside";
+_item = BA.ObjectToString(_source.Get(_i));
+RDebugUtils.currentLine=10354696;
+ //BA.debugLineNum = 10354696;BA.debugLine="If seen.ContainsKey(item) = False Then";
+if (_seen.ContainsKey((Object)(_item))==anywheresoftware.b4a.keywords.Common.False) { 
+RDebugUtils.currentLine=10354697;
+ //BA.debugLineNum = 10354697;BA.debugLine="seen.Put(item, True)";
+_seen.Put((Object)(_item),(Object)(anywheresoftware.b4a.keywords.Common.True));
+RDebugUtils.currentLine=10354698;
+ //BA.debugLineNum = 10354698;BA.debugLine="unique.Add(item)";
+_unique.Add((Object)(_item));
+ };
+ }
+};
+RDebugUtils.currentLine=10354701;
+ //BA.debugLineNum = 10354701;BA.debugLine="Return unique";
+if (true) return _unique;
+RDebugUtils.currentLine=10354702;
+ //BA.debugLineNum = 10354702;BA.debugLine="End Sub";
+return null;
 }
 public static String  _grdbtn_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "grdbtn_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "grdbtn_click", null));}
-RDebugUtils.currentLine=983040;
- //BA.debugLineNum = 983040;BA.debugLine="Private Sub grdbtn_Click";
-RDebugUtils.currentLine=983041;
- //BA.debugLineNum = 983041;BA.debugLine="HighlightTab(grdbtn)";
+RDebugUtils.currentLine=851968;
+ //BA.debugLineNum = 851968;BA.debugLine="Private Sub grdbtn_Click";
+RDebugUtils.currentLine=851969;
+ //BA.debugLineNum = 851969;BA.debugLine="HighlightTab(grdbtn)";
 _highlighttab(mostCurrent._grdbtn);
-RDebugUtils.currentLine=983042;
- //BA.debugLineNum = 983042;BA.debugLine="showgrades";
+RDebugUtils.currentLine=851970;
+ //BA.debugLineNum = 851970;BA.debugLine="showgrades";
 _showgrades();
-RDebugUtils.currentLine=983043;
- //BA.debugLineNum = 983043;BA.debugLine="End Sub";
+RDebugUtils.currentLine=851971;
+ //BA.debugLineNum = 851971;BA.debugLine="End Sub";
 return "";
 }
 public static String  _setgradient(anywheresoftware.b4a.objects.PanelWrapper _pnl,int _color1,int _color2) throws Exception{
@@ -1895,90 +2325,76 @@ public static String  _loadtable() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "loadtable", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "loadtable", null));}
-anywheresoftware.b4a.objects.collections.List _list1 = null;
-anywheresoftware.b4a.objects.collections.List _headers = null;
 int _i = 0;
 anywheresoftware.b4a.objects.LabelWrapper _l = null;
 String[] _row = null;
-RDebugUtils.currentLine=1376256;
- //BA.debugLineNum = 1376256;BA.debugLine="Sub loadtable";
-RDebugUtils.currentLine=1376258;
- //BA.debugLineNum = 1376258;BA.debugLine="Dim List1 As List";
-_list1 = new anywheresoftware.b4a.objects.collections.List();
-RDebugUtils.currentLine=1376259;
- //BA.debugLineNum = 1376259;BA.debugLine="Dim headers As List";
-_headers = new anywheresoftware.b4a.objects.collections.List();
-RDebugUtils.currentLine=1376260;
- //BA.debugLineNum = 1376260;BA.debugLine="headers.Initialize";
-_headers.Initialize();
-RDebugUtils.currentLine=1376261;
- //BA.debugLineNum = 1376261;BA.debugLine="List1 = StringUtils1.LoadCSV2(File.DirInternal, \"";
-_list1 = _stringutils1.LoadCSV2(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"citylist.csv",BA.ObjectToChar(","),_headers);
-RDebugUtils.currentLine=1376262;
- //BA.debugLineNum = 1376262;BA.debugLine="NumberOfColumns = headers.Size";
-_numberofcolumns = _headers.getSize();
-RDebugUtils.currentLine=1376263;
- //BA.debugLineNum = 1376263;BA.debugLine="ColumnWidth = SV.Width / NumberOfColumns";
+RDebugUtils.currentLine=2752512;
+ //BA.debugLineNum = 2752512;BA.debugLine="Sub loadtable";
+RDebugUtils.currentLine=2752514;
+ //BA.debugLineNum = 2752514;BA.debugLine="NumberOfColumns = CSVHeaders.Size";
+_numberofcolumns = mostCurrent._csvheaders.getSize();
+RDebugUtils.currentLine=2752515;
+ //BA.debugLineNum = 2752515;BA.debugLine="ColumnWidth = SV.Width / NumberOfColumns";
 _columnwidth = (int) (mostCurrent._sv.getWidth()/(double)_numberofcolumns);
-RDebugUtils.currentLine=1376265;
- //BA.debugLineNum = 1376265;BA.debugLine="For i = 0 To NumberOfColumns - 1";
+RDebugUtils.currentLine=2752518;
+ //BA.debugLineNum = 2752518;BA.debugLine="For i = 0 To NumberOfColumns - 1";
 {
-final int step7 = 1;
-final int limit7 = (int) (_numberofcolumns-1);
+final int step3 = 1;
+final int limit3 = (int) (_numberofcolumns-1);
 _i = (int) (0) ;
-for (;_i <= limit7 ;_i = _i + step7 ) {
-RDebugUtils.currentLine=1376266;
- //BA.debugLineNum = 1376266;BA.debugLine="Dim l As Label";
+for (;_i <= limit3 ;_i = _i + step3 ) {
+RDebugUtils.currentLine=2752519;
+ //BA.debugLineNum = 2752519;BA.debugLine="Dim l As Label";
 _l = new anywheresoftware.b4a.objects.LabelWrapper();
-RDebugUtils.currentLine=1376267;
- //BA.debugLineNum = 1376267;BA.debugLine="l.Initialize(\"header\")";
+RDebugUtils.currentLine=2752520;
+ //BA.debugLineNum = 2752520;BA.debugLine="l.Initialize(\"header\")";
 _l.Initialize(mostCurrent.activityBA,"header");
-RDebugUtils.currentLine=1376268;
- //BA.debugLineNum = 1376268;BA.debugLine="l.Text = headers.Get(i)";
-_l.setText(BA.ObjectToCharSequence(_headers.Get(_i)));
-RDebugUtils.currentLine=1376269;
- //BA.debugLineNum = 1376269;BA.debugLine="l.Gravity = Gravity.LEFT";
+RDebugUtils.currentLine=2752521;
+ //BA.debugLineNum = 2752521;BA.debugLine="l.Text = CSVHeaders.Get(i)";
+_l.setText(BA.ObjectToCharSequence(mostCurrent._csvheaders.Get(_i)));
+RDebugUtils.currentLine=2752522;
+ //BA.debugLineNum = 2752522;BA.debugLine="l.Gravity = Gravity.LEFT";
 _l.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.LEFT);
-RDebugUtils.currentLine=1376270;
- //BA.debugLineNum = 1376270;BA.debugLine="l.TextSize = FontSize";
-_l.setTextSize(_fontsize);
-RDebugUtils.currentLine=1376271;
- //BA.debugLineNum = 1376271;BA.debugLine="l.Color = HeaderColor";
+RDebugUtils.currentLine=2752523;
+ //BA.debugLineNum = 2752523;BA.debugLine="l.TextSize = FontSize - 4";
+_l.setTextSize((float) (_fontsize-4));
+RDebugUtils.currentLine=2752524;
+ //BA.debugLineNum = 2752524;BA.debugLine="l.Color = HeaderColor";
 _l.setColor(_headercolor);
-RDebugUtils.currentLine=1376272;
- //BA.debugLineNum = 1376272;BA.debugLine="l.TextColor = HeaderFontColor";
+RDebugUtils.currentLine=2752525;
+ //BA.debugLineNum = 2752525;BA.debugLine="l.TextColor = HeaderFontColor";
 _l.setTextColor(_headerfontcolor);
-RDebugUtils.currentLine=1376273;
- //BA.debugLineNum = 1376273;BA.debugLine="l.Padding = Array As Int(10dip, 5dip, 0dip, 5dip";
+RDebugUtils.currentLine=2752526;
+ //BA.debugLineNum = 2752526;BA.debugLine="l.Padding = Array As Int(10dip, 5dip, 0dip, 5dip";
 _l.setPadding(new int[]{anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5))});
-RDebugUtils.currentLine=1376274;
- //BA.debugLineNum = 1376274;BA.debugLine="l.Tag = i";
+RDebugUtils.currentLine=2752527;
+ //BA.debugLineNum = 2752527;BA.debugLine="l.Tag = i";
 _l.setTag((Object)(_i));
-RDebugUtils.currentLine=1376275;
- //BA.debugLineNum = 1376275;BA.debugLine="Table.AddView(l, ColumnWidth * i, 0, ColumnWidth";
+RDebugUtils.currentLine=2752528;
+ //BA.debugLineNum = 2752528;BA.debugLine="Table.AddView(l, ColumnWidth * i, 0, ColumnWidth";
 mostCurrent._table.AddView((android.view.View)(_l.getObject()),(int) (_columnwidth*_i),(int) (0),_columnwidth,_rowheight);
  }
 };
-RDebugUtils.currentLine=1376279;
- //BA.debugLineNum = 1376279;BA.debugLine="For i = 0 To List1.Size - 1";
+RDebugUtils.currentLine=2752532;
+ //BA.debugLineNum = 2752532;BA.debugLine="For i = 0 To StudentList.Size - 1";
 {
-final int step19 = 1;
-final int limit19 = (int) (_list1.getSize()-1);
+final int step15 = 1;
+final int limit15 = (int) (mostCurrent._studentlist.getSize()-1);
 _i = (int) (0) ;
-for (;_i <= limit19 ;_i = _i + step19 ) {
-RDebugUtils.currentLine=1376280;
- //BA.debugLineNum = 1376280;BA.debugLine="Dim row() As String = List1.Get(i)";
-_row = (String[])(_list1.Get(_i));
-RDebugUtils.currentLine=1376281;
- //BA.debugLineNum = 1376281;BA.debugLine="AddTableRow(row, i + 1)  ' +1 to skip header row";
+for (;_i <= limit15 ;_i = _i + step15 ) {
+RDebugUtils.currentLine=2752533;
+ //BA.debugLineNum = 2752533;BA.debugLine="Dim row() As String = StudentList.Get(i)";
+_row = (String[])(mostCurrent._studentlist.Get(_i));
+RDebugUtils.currentLine=2752534;
+ //BA.debugLineNum = 2752534;BA.debugLine="AddTableRow(row, i + 1)  ' +1 to skip header row";
 _addtablerow(_row,(int) (_i+1));
  }
 };
-RDebugUtils.currentLine=1376284;
- //BA.debugLineNum = 1376284;BA.debugLine="Table.Height = (List1.Size + 1) * RowHeight";
-mostCurrent._table.setHeight((int) ((_list1.getSize()+1)*_rowheight));
-RDebugUtils.currentLine=1376285;
- //BA.debugLineNum = 1376285;BA.debugLine="End Sub";
+RDebugUtils.currentLine=2752537;
+ //BA.debugLineNum = 2752537;BA.debugLine="Table.Height = (StudentList.Size + 1) * RowHeight";
+mostCurrent._table.setHeight((int) ((mostCurrent._studentlist.getSize()+1)*_rowheight));
+RDebugUtils.currentLine=2752538;
+ //BA.debugLineNum = 2752538;BA.debugLine="End Sub";
 return "";
 }
 public static String  _makeshadow(int _numstudent,anywheresoftware.b4a.objects.collections.List _studentnames) throws Exception{
@@ -1997,70 +2413,70 @@ int _shadowleftpos = 0;
 int _shadowtoppos = 0;
 String _name = "";
 String _grade = "";
-RDebugUtils.currentLine=5242880;
- //BA.debugLineNum = 5242880;BA.debugLine="Sub makeshadow(numstudent As Int, studentNames As";
-RDebugUtils.currentLine=5242881;
- //BA.debugLineNum = 5242881;BA.debugLine="Dim itemSpacing As Int = 108dip";
+RDebugUtils.currentLine=1900544;
+ //BA.debugLineNum = 1900544;BA.debugLine="Sub makeshadow(numstudent As Int, studentNames As";
+RDebugUtils.currentLine=1900545;
+ //BA.debugLineNum = 1900545;BA.debugLine="Dim itemSpacing As Int = 108dip";
 _itemspacing = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (108));
-RDebugUtils.currentLine=5242882;
- //BA.debugLineNum = 5242882;BA.debugLine="Dim startTopMargin As Int = 20dip";
+RDebugUtils.currentLine=1900546;
+ //BA.debugLineNum = 1900546;BA.debugLine="Dim startTopMargin As Int = 20dip";
 _starttopmargin = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20));
-RDebugUtils.currentLine=5242884;
- //BA.debugLineNum = 5242884;BA.debugLine="For i = 0 To numstudent - 1";
+RDebugUtils.currentLine=1900548;
+ //BA.debugLineNum = 1900548;BA.debugLine="For i = 0 To numstudent - 1";
 {
 final int step3 = 1;
 final int limit3 = (int) (_numstudent-1);
 _i = (int) (0) ;
 for (;_i <= limit3 ;_i = _i + step3 ) {
-RDebugUtils.currentLine=5242885;
- //BA.debugLineNum = 5242885;BA.debugLine="Dim currentTop As Int = startTopMargin + (i * it";
+RDebugUtils.currentLine=1900549;
+ //BA.debugLineNum = 1900549;BA.debugLine="Dim currentTop As Int = startTopMargin + (i * it";
 _currenttop = (int) (_starttopmargin+(_i*_itemspacing));
-RDebugUtils.currentLine=5242888;
- //BA.debugLineNum = 5242888;BA.debugLine="Dim pnlShadow As Panel";
+RDebugUtils.currentLine=1900552;
+ //BA.debugLineNum = 1900552;BA.debugLine="Dim pnlShadow As Panel";
 _pnlshadow = new anywheresoftware.b4a.objects.PanelWrapper();
-RDebugUtils.currentLine=5242889;
- //BA.debugLineNum = 5242889;BA.debugLine="pnlShadow.Initialize(\"pnlShadow\")";
+RDebugUtils.currentLine=1900553;
+ //BA.debugLineNum = 1900553;BA.debugLine="pnlShadow.Initialize(\"pnlShadow\")";
 _pnlshadow.Initialize(mostCurrent.activityBA,"pnlShadow");
-RDebugUtils.currentLine=5242891;
- //BA.debugLineNum = 5242891;BA.debugLine="Dim cd As ColorDrawable";
+RDebugUtils.currentLine=1900555;
+ //BA.debugLineNum = 1900555;BA.debugLine="Dim cd As ColorDrawable";
 _cd = new anywheresoftware.b4a.objects.drawable.ColorDrawable();
-RDebugUtils.currentLine=5242892;
- //BA.debugLineNum = 5242892;BA.debugLine="cd.Initialize2(0xFF000000, 4dip, 0dip, 0xFF00000";
+RDebugUtils.currentLine=1900556;
+ //BA.debugLineNum = 1900556;BA.debugLine="cd.Initialize2(0xFF000000, 4dip, 0dip, 0xFF00000";
 _cd.Initialize2(((int)0xff000000),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (4)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),((int)0xff000000));
-RDebugUtils.currentLine=5242893;
- //BA.debugLineNum = 5242893;BA.debugLine="pnlShadow.Background = cd";
+RDebugUtils.currentLine=1900557;
+ //BA.debugLineNum = 1900557;BA.debugLine="pnlShadow.Background = cd";
 _pnlshadow.setBackground((android.graphics.drawable.Drawable)(_cd.getObject()));
-RDebugUtils.currentLine=5242894;
- //BA.debugLineNum = 5242894;BA.debugLine="pnlShadow.Elevation = 0";
+RDebugUtils.currentLine=1900558;
+ //BA.debugLineNum = 1900558;BA.debugLine="pnlShadow.Elevation = 0";
 _pnlshadow.setElevation((float) (0));
-RDebugUtils.currentLine=5242896;
- //BA.debugLineNum = 5242896;BA.debugLine="Dim pnlWidth As Int = 330dip";
+RDebugUtils.currentLine=1900560;
+ //BA.debugLineNum = 1900560;BA.debugLine="Dim pnlWidth As Int = 330dip";
 _pnlwidth = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (330));
-RDebugUtils.currentLine=5242897;
- //BA.debugLineNum = 5242897;BA.debugLine="Dim pnlHeight As Int = 88dip";
+RDebugUtils.currentLine=1900561;
+ //BA.debugLineNum = 1900561;BA.debugLine="Dim pnlHeight As Int = 88dip";
 _pnlheight = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (88));
-RDebugUtils.currentLine=5242899;
- //BA.debugLineNum = 5242899;BA.debugLine="Dim shadowLeftPos As Int = gradepnl.Width - 13di";
+RDebugUtils.currentLine=1900563;
+ //BA.debugLineNum = 1900563;BA.debugLine="Dim shadowLeftPos As Int = gradepnl.Width - 13di";
 _shadowleftpos = (int) (mostCurrent._gradepnl.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (13))-_pnlwidth);
-RDebugUtils.currentLine=5242900;
- //BA.debugLineNum = 5242900;BA.debugLine="Dim shadowTopPos As Int = currentTop + 7dip";
+RDebugUtils.currentLine=1900564;
+ //BA.debugLineNum = 1900564;BA.debugLine="Dim shadowTopPos As Int = currentTop + 7dip";
 _shadowtoppos = (int) (_currenttop+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (7)));
-RDebugUtils.currentLine=5242902;
- //BA.debugLineNum = 5242902;BA.debugLine="gradepnl.AddView(pnlShadow, shadowLeftPos, shado";
-mostCurrent._gradepnl.AddView((android.view.View)(_pnlshadow.getObject()),_shadowleftpos,_shadowtoppos,_pnlwidth,_pnlheight);
-RDebugUtils.currentLine=5242904;
- //BA.debugLineNum = 5242904;BA.debugLine="Dim name As String = studentNames.Get(i)";
+RDebugUtils.currentLine=1900566;
+ //BA.debugLineNum = 1900566;BA.debugLine="SV1.Panel.AddView(pnlShadow, shadowLeftPos, shad";
+mostCurrent._sv1.getPanel().AddView((android.view.View)(_pnlshadow.getObject()),_shadowleftpos,_shadowtoppos,_pnlwidth,_pnlheight);
+RDebugUtils.currentLine=1900568;
+ //BA.debugLineNum = 1900568;BA.debugLine="Dim name As String = studentNames.Get(i)";
 _name = BA.ObjectToString(_studentnames.Get(_i));
-RDebugUtils.currentLine=5242905;
- //BA.debugLineNum = 5242905;BA.debugLine="Dim grade As String = GetStudentGrade(name)";
+RDebugUtils.currentLine=1900569;
+ //BA.debugLineNum = 1900569;BA.debugLine="Dim grade As String = GetStudentGrade(name)";
 _grade = _getstudentgrade(_name);
-RDebugUtils.currentLine=5242906;
- //BA.debugLineNum = 5242906;BA.debugLine="studentgrade(name, grade, currentTop)";
+RDebugUtils.currentLine=1900570;
+ //BA.debugLineNum = 1900570;BA.debugLine="studentgrade(name, grade, currentTop)";
 _studentgrade(_name,_grade,_currenttop);
  }
 };
-RDebugUtils.currentLine=5242908;
- //BA.debugLineNum = 5242908;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1900572;
+ //BA.debugLineNum = 1900572;BA.debugLine="End Sub";
 return "";
 }
 public static String  _studentgrade(String _studentname,String _grade,int _currenttop) throws Exception{
@@ -2078,156 +2494,332 @@ anywheresoftware.b4a.objects.LabelWrapper _lblgrade = null;
 int _graderightedge = 0;
 int _gradewidth = 0;
 anywheresoftware.b4a.objects.LabelWrapper _lbl = null;
-RDebugUtils.currentLine=4587520;
- //BA.debugLineNum = 4587520;BA.debugLine="Sub studentgrade(studentName As String, grade As S";
-RDebugUtils.currentLine=4587521;
- //BA.debugLineNum = 4587521;BA.debugLine="Dim pnlCard As Panel";
+RDebugUtils.currentLine=1966080;
+ //BA.debugLineNum = 1966080;BA.debugLine="Sub studentgrade(studentName As String, grade As S";
+RDebugUtils.currentLine=1966081;
+ //BA.debugLineNum = 1966081;BA.debugLine="Dim pnlCard As Panel";
 _pnlcard = new anywheresoftware.b4a.objects.PanelWrapper();
-RDebugUtils.currentLine=4587522;
- //BA.debugLineNum = 4587522;BA.debugLine="pnlCard.Initialize(\"pnlCard\")";
+RDebugUtils.currentLine=1966082;
+ //BA.debugLineNum = 1966082;BA.debugLine="pnlCard.Initialize(\"pnlCard\")";
 _pnlcard.Initialize(mostCurrent.activityBA,"pnlCard");
-RDebugUtils.currentLine=4587524;
- //BA.debugLineNum = 4587524;BA.debugLine="Dim cd As ColorDrawable";
+RDebugUtils.currentLine=1966084;
+ //BA.debugLineNum = 1966084;BA.debugLine="Dim cd As ColorDrawable";
 _cd = new anywheresoftware.b4a.objects.drawable.ColorDrawable();
-RDebugUtils.currentLine=4587525;
- //BA.debugLineNum = 4587525;BA.debugLine="cd.Initialize2(0xFFFFD400, 2dip, 2dip, 0xFF000000";
+RDebugUtils.currentLine=1966085;
+ //BA.debugLineNum = 1966085;BA.debugLine="cd.Initialize2(0xFFFFD400, 2dip, 2dip, 0xFF000000";
 _cd.Initialize2(((int)0xffffd400),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (2)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (2)),((int)0xff000000));
-RDebugUtils.currentLine=4587526;
- //BA.debugLineNum = 4587526;BA.debugLine="pnlCard.Background = cd";
+RDebugUtils.currentLine=1966086;
+ //BA.debugLineNum = 1966086;BA.debugLine="pnlCard.Background = cd";
 _pnlcard.setBackground((android.graphics.drawable.Drawable)(_cd.getObject()));
-RDebugUtils.currentLine=4587527;
- //BA.debugLineNum = 4587527;BA.debugLine="pnlCard.Elevation = 0";
+RDebugUtils.currentLine=1966087;
+ //BA.debugLineNum = 1966087;BA.debugLine="pnlCard.Elevation = 0";
 _pnlcard.setElevation((float) (0));
-RDebugUtils.currentLine=4587529;
- //BA.debugLineNum = 4587529;BA.debugLine="Dim pnlWidth As Int = 330dip";
+RDebugUtils.currentLine=1966089;
+ //BA.debugLineNum = 1966089;BA.debugLine="Dim pnlWidth As Int = 330dip";
 _pnlwidth = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (330));
-RDebugUtils.currentLine=4587530;
- //BA.debugLineNum = 4587530;BA.debugLine="Dim pnlHeight As Int = 88dip";
+RDebugUtils.currentLine=1966090;
+ //BA.debugLineNum = 1966090;BA.debugLine="Dim pnlHeight As Int = 88dip";
 _pnlheight = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (88));
-RDebugUtils.currentLine=4587531;
- //BA.debugLineNum = 4587531;BA.debugLine="Dim rightEdgeDistance As Int = 20dip";
+RDebugUtils.currentLine=1966091;
+ //BA.debugLineNum = 1966091;BA.debugLine="Dim rightEdgeDistance As Int = 20dip";
 _rightedgedistance = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20));
-RDebugUtils.currentLine=4587533;
- //BA.debugLineNum = 4587533;BA.debugLine="Dim leftPos As Int = gradepnl.Width - rightEdgeDi";
+RDebugUtils.currentLine=1966093;
+ //BA.debugLineNum = 1966093;BA.debugLine="Dim leftPos As Int = gradepnl.Width - rightEdgeDi";
 _leftpos = (int) (mostCurrent._gradepnl.getWidth()-_rightedgedistance-_pnlwidth);
-RDebugUtils.currentLine=4587534;
- //BA.debugLineNum = 4587534;BA.debugLine="Dim topPos As Int = currentTop";
+RDebugUtils.currentLine=1966094;
+ //BA.debugLineNum = 1966094;BA.debugLine="Dim topPos As Int = currentTop";
 _toppos = _currenttop;
-RDebugUtils.currentLine=4587536;
- //BA.debugLineNum = 4587536;BA.debugLine="gradepnl.AddView(pnlCard, leftPos, topPos, pnlWid";
-mostCurrent._gradepnl.AddView((android.view.View)(_pnlcard.getObject()),_leftpos,_toppos,_pnlwidth,_pnlheight);
-RDebugUtils.currentLine=4587539;
- //BA.debugLineNum = 4587539;BA.debugLine="Dim lblGrade As Label";
+RDebugUtils.currentLine=1966097;
+ //BA.debugLineNum = 1966097;BA.debugLine="Dim lblGrade As Label";
 _lblgrade = new anywheresoftware.b4a.objects.LabelWrapper();
-RDebugUtils.currentLine=4587540;
- //BA.debugLineNum = 4587540;BA.debugLine="lblGrade.Initialize(\"lblGrade\")";
+RDebugUtils.currentLine=1966098;
+ //BA.debugLineNum = 1966098;BA.debugLine="lblGrade.Initialize(\"lblGrade\")";
 _lblgrade.Initialize(mostCurrent.activityBA,"lblGrade");
-RDebugUtils.currentLine=4587541;
- //BA.debugLineNum = 4587541;BA.debugLine="lblGrade.Text = grade";
+RDebugUtils.currentLine=1966099;
+ //BA.debugLineNum = 1966099;BA.debugLine="lblGrade.Text = grade";
 _lblgrade.setText(BA.ObjectToCharSequence(_grade));
-RDebugUtils.currentLine=4587542;
- //BA.debugLineNum = 4587542;BA.debugLine="lblGrade.TextSize = 30";
+RDebugUtils.currentLine=1966100;
+ //BA.debugLineNum = 1966100;BA.debugLine="lblGrade.TextSize = 30";
 _lblgrade.setTextSize((float) (30));
-RDebugUtils.currentLine=4587543;
- //BA.debugLineNum = 4587543;BA.debugLine="lblGrade.TextColor = Colors.Black";
+RDebugUtils.currentLine=1966101;
+ //BA.debugLineNum = 1966101;BA.debugLine="lblGrade.TextColor = Colors.Black";
 _lblgrade.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
-RDebugUtils.currentLine=4587544;
- //BA.debugLineNum = 4587544;BA.debugLine="lblGrade.Gravity = Bit.Or(Gravity.CENTER_HORIZONT";
+RDebugUtils.currentLine=1966102;
+ //BA.debugLineNum = 1966102;BA.debugLine="lblGrade.Gravity = Bit.Or(Gravity.CENTER_HORIZONT";
 _lblgrade.setGravity(anywheresoftware.b4a.keywords.Common.Bit.Or(anywheresoftware.b4a.keywords.Common.Gravity.CENTER_HORIZONTAL,anywheresoftware.b4a.keywords.Common.Gravity.CENTER_VERTICAL));
-RDebugUtils.currentLine=4587545;
- //BA.debugLineNum = 4587545;BA.debugLine="lblGrade.Typeface = Typeface.CreateNew(Typeface.S";
+RDebugUtils.currentLine=1966103;
+ //BA.debugLineNum = 1966103;BA.debugLine="lblGrade.Typeface = Typeface.CreateNew(Typeface.S";
 _lblgrade.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.CreateNew(anywheresoftware.b4a.keywords.Common.Typeface.SERIF,anywheresoftware.b4a.keywords.Common.Typeface.STYLE_BOLD_ITALIC));
-RDebugUtils.currentLine=4587546;
- //BA.debugLineNum = 4587546;BA.debugLine="lblGrade.SingleLine = False";
+RDebugUtils.currentLine=1966104;
+ //BA.debugLineNum = 1966104;BA.debugLine="lblGrade.SingleLine = False";
 _lblgrade.setSingleLine(anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=4587547;
- //BA.debugLineNum = 4587547;BA.debugLine="lblGrade.Enabled = True";
+RDebugUtils.currentLine=1966105;
+ //BA.debugLineNum = 1966105;BA.debugLine="lblGrade.Enabled = True";
 _lblgrade.setEnabled(anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=4587548;
- //BA.debugLineNum = 4587548;BA.debugLine="lblGrade.Visible = True";
+RDebugUtils.currentLine=1966106;
+ //BA.debugLineNum = 1966106;BA.debugLine="lblGrade.Visible = True";
 _lblgrade.setVisible(anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=4587550;
- //BA.debugLineNum = 4587550;BA.debugLine="Dim gradeRightEdge As Int = 264dip";
+RDebugUtils.currentLine=1966108;
+ //BA.debugLineNum = 1966108;BA.debugLine="Dim gradeRightEdge As Int = 264dip";
 _graderightedge = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (264));
-RDebugUtils.currentLine=4587551;
- //BA.debugLineNum = 4587551;BA.debugLine="Dim gradeWidth As Int = pnlWidth - gradeRightEdge";
+RDebugUtils.currentLine=1966109;
+ //BA.debugLineNum = 1966109;BA.debugLine="Dim gradeWidth As Int = pnlWidth - gradeRightEdge";
 _gradewidth = (int) (_pnlwidth-_graderightedge);
-RDebugUtils.currentLine=4587552;
- //BA.debugLineNum = 4587552;BA.debugLine="pnlCard.AddView(lblGrade, 0, 0, gradeWidth, pnlHe";
+RDebugUtils.currentLine=1966110;
+ //BA.debugLineNum = 1966110;BA.debugLine="pnlCard.AddView(lblGrade, 0, 0, gradeWidth, pnlHe";
 _pnlcard.AddView((android.view.View)(_lblgrade.getObject()),(int) (0),(int) (0),_gradewidth,_pnlheight);
-RDebugUtils.currentLine=4587555;
- //BA.debugLineNum = 4587555;BA.debugLine="Dim lbl As Label";
+RDebugUtils.currentLine=1966113;
+ //BA.debugLineNum = 1966113;BA.debugLine="Dim lbl As Label";
 _lbl = new anywheresoftware.b4a.objects.LabelWrapper();
-RDebugUtils.currentLine=4587556;
- //BA.debugLineNum = 4587556;BA.debugLine="lbl.Initialize(\"lbl\")";
+RDebugUtils.currentLine=1966114;
+ //BA.debugLineNum = 1966114;BA.debugLine="lbl.Initialize(\"lbl\")";
 _lbl.Initialize(mostCurrent.activityBA,"lbl");
-RDebugUtils.currentLine=4587557;
- //BA.debugLineNum = 4587557;BA.debugLine="lbl.Text = studentName";
+RDebugUtils.currentLine=1966115;
+ //BA.debugLineNum = 1966115;BA.debugLine="lbl.Text = studentName";
 _lbl.setText(BA.ObjectToCharSequence(_studentname));
-RDebugUtils.currentLine=4587558;
- //BA.debugLineNum = 4587558;BA.debugLine="lbl.Gravity = Gravity.CENTER_VERTICAL";
+RDebugUtils.currentLine=1966116;
+ //BA.debugLineNum = 1966116;BA.debugLine="lbl.Gravity = Gravity.CENTER_VERTICAL";
 _lbl.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER_VERTICAL);
-RDebugUtils.currentLine=4587559;
- //BA.debugLineNum = 4587559;BA.debugLine="lbl.Typeface = Typeface.CreateNew(Typeface.SERIF,";
+RDebugUtils.currentLine=1966117;
+ //BA.debugLineNum = 1966117;BA.debugLine="lbl.Typeface = Typeface.CreateNew(Typeface.SERIF,";
 _lbl.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.CreateNew(anywheresoftware.b4a.keywords.Common.Typeface.SERIF,anywheresoftware.b4a.keywords.Common.Typeface.STYLE_BOLD_ITALIC));
-RDebugUtils.currentLine=4587560;
- //BA.debugLineNum = 4587560;BA.debugLine="lbl.TextSize = 20";
+RDebugUtils.currentLine=1966118;
+ //BA.debugLineNum = 1966118;BA.debugLine="lbl.TextSize = 20";
 _lbl.setTextSize((float) (20));
-RDebugUtils.currentLine=4587561;
- //BA.debugLineNum = 4587561;BA.debugLine="lbl.TextColor = Colors.Black";
+RDebugUtils.currentLine=1966119;
+ //BA.debugLineNum = 1966119;BA.debugLine="lbl.TextColor = Colors.Black";
 _lbl.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
-RDebugUtils.currentLine=4587562;
- //BA.debugLineNum = 4587562;BA.debugLine="lbl.Padding = Array As Int(10dip, 5dip, 10dip, 5d";
+RDebugUtils.currentLine=1966120;
+ //BA.debugLineNum = 1966120;BA.debugLine="lbl.Padding = Array As Int(10dip, 5dip, 10dip, 5d";
 _lbl.setPadding(new int[]{anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5))});
-RDebugUtils.currentLine=4587563;
- //BA.debugLineNum = 4587563;BA.debugLine="pnlCard.AddView(lbl, gradeWidth, 0, pnlWidth - gr";
+RDebugUtils.currentLine=1966121;
+ //BA.debugLineNum = 1966121;BA.debugLine="pnlCard.AddView(lbl, gradeWidth, 0, pnlWidth - gr";
 _pnlcard.AddView((android.view.View)(_lbl.getObject()),_gradewidth,(int) (0),(int) (_pnlwidth-_gradewidth),_pnlheight);
-RDebugUtils.currentLine=4587564;
- //BA.debugLineNum = 4587564;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1966122;
+ //BA.debugLineNum = 1966122;BA.debugLine="SV1.Panel.AddView(pnlCard, leftPos, topPos, pnlWi";
+mostCurrent._sv1.getPanel().AddView((android.view.View)(_pnlcard.getObject()),_leftpos,_toppos,_pnlwidth,_pnlheight);
+RDebugUtils.currentLine=1966123;
+ //BA.debugLineNum = 1966123;BA.debugLine="End Sub";
+return "";
+}
+public static String  _panel2_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "panel2_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "panel2_click", null));}
+RDebugUtils.currentLine=10878976;
+ //BA.debugLineNum = 10878976;BA.debugLine="Private Sub Panel2_Click";
+RDebugUtils.currentLine=10878977;
+ //BA.debugLineNum = 10878977;BA.debugLine="updatedata";
+_updatedata();
+RDebugUtils.currentLine=10878978;
+ //BA.debugLineNum = 10878978;BA.debugLine="End Sub";
+return "";
+}
+public static String  _updatedata() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "updatedata", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "updatedata", null));}
+String _attendance = "";
+String _rate = "";
+String _msg = "";
+String[] _row = null;
+String[] _newrow = null;
+RDebugUtils.currentLine=12386304;
+ //BA.debugLineNum = 12386304;BA.debugLine="Sub updatedata";
+RDebugUtils.currentLine=12386306;
+ //BA.debugLineNum = 12386306;BA.debugLine="If STUDENT_NAME.Text.Trim = \"\" Or STUDENT_ID.Text";
+if ((mostCurrent._student_name.getText().trim()).equals("") || (mostCurrent._student_id.getText().trim()).equals("")) { 
+RDebugUtils.currentLine=12386307;
+ //BA.debugLineNum = 12386307;BA.debugLine="xui.MsgboxAsync(\"Please enter Student Name and S";
+_xui.MsgboxAsync(processBA,BA.ObjectToCharSequence("Please enter Student Name and Student ID."),BA.ObjectToCharSequence("Validation Error"));
+RDebugUtils.currentLine=12386308;
+ //BA.debugLineNum = 12386308;BA.debugLine="Return";
+if (true) return "";
+ };
+RDebugUtils.currentLine=12386312;
+ //BA.debugLineNum = 12386312;BA.debugLine="If EditText1.Text.Trim = \"\" Or EditText2.Text.Tri";
+if ((mostCurrent._edittext1.getText().trim()).equals("") || (mostCurrent._edittext2.getText().trim()).equals("")) { 
+RDebugUtils.currentLine=12386313;
+ //BA.debugLineNum = 12386313;BA.debugLine="xui.MsgboxAsync(\"Please enter the complete score";
+_xui.MsgboxAsync(processBA,BA.ObjectToCharSequence("Please enter the complete score/rate (e.g. 15/20)."),BA.ObjectToCharSequence("Validation Error"));
+RDebugUtils.currentLine=12386314;
+ //BA.debugLineNum = 12386314;BA.debugLine="Return";
+if (true) return "";
+ };
+RDebugUtils.currentLine=12386318;
+ //BA.debugLineNum = 12386318;BA.debugLine="Dim attendance As String = \"present\"";
+_attendance = "present";
+RDebugUtils.currentLine=12386319;
+ //BA.debugLineNum = 12386319;BA.debugLine="If CheckBox2.Checked Then";
+if (mostCurrent._checkbox2.getChecked()) { 
+RDebugUtils.currentLine=12386320;
+ //BA.debugLineNum = 12386320;BA.debugLine="attendance = \"late\"";
+_attendance = "late";
+ }else 
+{RDebugUtils.currentLine=12386321;
+ //BA.debugLineNum = 12386321;BA.debugLine="Else If CheckBox3.Checked Then";
+if (mostCurrent._checkbox3.getChecked()) { 
+RDebugUtils.currentLine=12386322;
+ //BA.debugLineNum = 12386322;BA.debugLine="attendance = \"absent\"";
+_attendance = "absent";
+ }}
+;
+RDebugUtils.currentLine=12386326;
+ //BA.debugLineNum = 12386326;BA.debugLine="Dim rate As String = EditText1.Text.Trim & \"/\" &";
+_rate = mostCurrent._edittext1.getText().trim()+"/"+mostCurrent._edittext2.getText().trim();
+RDebugUtils.currentLine=12386328;
+ //BA.debugLineNum = 12386328;BA.debugLine="Dim msg As String";
+_msg = "";
+RDebugUtils.currentLine=12386329;
+ //BA.debugLineNum = 12386329;BA.debugLine="If editRowIndex > -1 Then";
+if (_editrowindex>-1) { 
+RDebugUtils.currentLine=12386331;
+ //BA.debugLineNum = 12386331;BA.debugLine="Dim row() As String = StudentList.Get(editRowInd";
+_row = (String[])(mostCurrent._studentlist.Get(_editrowindex));
+RDebugUtils.currentLine=12386332;
+ //BA.debugLineNum = 12386332;BA.debugLine="row(0) = STUDENT_NAME.Text.Trim";
+_row[(int) (0)] = mostCurrent._student_name.getText().trim();
+RDebugUtils.currentLine=12386333;
+ //BA.debugLineNum = 12386333;BA.debugLine="row(1) = STUDENT_ID.Text.Trim";
+_row[(int) (1)] = mostCurrent._student_id.getText().trim();
+RDebugUtils.currentLine=12386334;
+ //BA.debugLineNum = 12386334;BA.debugLine="row(2) = SELECTSUBJECTS.SelectedItem";
+_row[(int) (2)] = mostCurrent._selectsubjects.getSelectedItem();
+RDebugUtils.currentLine=12386335;
+ //BA.debugLineNum = 12386335;BA.debugLine="row(3) = STUDENT_ACTIVITY.SelectedItem";
+_row[(int) (3)] = mostCurrent._student_activity.getSelectedItem();
+RDebugUtils.currentLine=12386336;
+ //BA.debugLineNum = 12386336;BA.debugLine="row(4) = attendance";
+_row[(int) (4)] = _attendance;
+RDebugUtils.currentLine=12386337;
+ //BA.debugLineNum = 12386337;BA.debugLine="row(5) = rate";
+_row[(int) (5)] = _rate;
+RDebugUtils.currentLine=12386338;
+ //BA.debugLineNum = 12386338;BA.debugLine="StudentList.Set(editRowIndex, row)";
+mostCurrent._studentlist.Set(_editrowindex,(Object)(_row));
+RDebugUtils.currentLine=12386339;
+ //BA.debugLineNum = 12386339;BA.debugLine="msg = \"Student record updated successfully!\"";
+_msg = "Student record updated successfully!";
+ }else {
+RDebugUtils.currentLine=12386342;
+ //BA.debugLineNum = 12386342;BA.debugLine="Dim newRow(6) As String";
+_newrow = new String[(int) (6)];
+java.util.Arrays.fill(_newrow,"");
+RDebugUtils.currentLine=12386343;
+ //BA.debugLineNum = 12386343;BA.debugLine="newRow(0) = STUDENT_NAME.Text.Trim";
+_newrow[(int) (0)] = mostCurrent._student_name.getText().trim();
+RDebugUtils.currentLine=12386344;
+ //BA.debugLineNum = 12386344;BA.debugLine="newRow(1) = STUDENT_ID.Text.Trim";
+_newrow[(int) (1)] = mostCurrent._student_id.getText().trim();
+RDebugUtils.currentLine=12386345;
+ //BA.debugLineNum = 12386345;BA.debugLine="newRow(2) = SELECTSUBJECTS.SelectedItem";
+_newrow[(int) (2)] = mostCurrent._selectsubjects.getSelectedItem();
+RDebugUtils.currentLine=12386346;
+ //BA.debugLineNum = 12386346;BA.debugLine="newRow(3) = STUDENT_ACTIVITY.SelectedItem";
+_newrow[(int) (3)] = mostCurrent._student_activity.getSelectedItem();
+RDebugUtils.currentLine=12386347;
+ //BA.debugLineNum = 12386347;BA.debugLine="newRow(4) = attendance";
+_newrow[(int) (4)] = _attendance;
+RDebugUtils.currentLine=12386348;
+ //BA.debugLineNum = 12386348;BA.debugLine="newRow(5) = rate";
+_newrow[(int) (5)] = _rate;
+RDebugUtils.currentLine=12386349;
+ //BA.debugLineNum = 12386349;BA.debugLine="StudentList.Add(newRow)";
+mostCurrent._studentlist.Add((Object)(_newrow));
+RDebugUtils.currentLine=12386350;
+ //BA.debugLineNum = 12386350;BA.debugLine="msg = \"Student record added successfully!\"";
+_msg = "Student record added successfully!";
+ };
+RDebugUtils.currentLine=12386354;
+ //BA.debugLineNum = 12386354;BA.debugLine="StringUtils1.SaveCSV2(File.DirInternal, \"student.";
+_stringutils1.SaveCSV2(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"student.csv",BA.ObjectToChar(","),mostCurrent._studentlist,mostCurrent._csvheaders);
+RDebugUtils.currentLine=12386357;
+ //BA.debugLineNum = 12386357;BA.debugLine="LoadStudentData";
+_loadstudentdata();
+RDebugUtils.currentLine=12386360;
+ //BA.debugLineNum = 12386360;BA.debugLine="xui.MsgboxAsync(msg, \"Success\")";
+_xui.MsgboxAsync(processBA,BA.ObjectToCharSequence(_msg),BA.ObjectToCharSequence("Success"));
+RDebugUtils.currentLine=12386361;
+ //BA.debugLineNum = 12386361;BA.debugLine="showedit";
+_showedit();
+RDebugUtils.currentLine=12386362;
+ //BA.debugLineNum = 12386362;BA.debugLine="End Sub";
 return "";
 }
 public static String  _profilebtn_click() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "profilebtn_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "profilebtn_click", null));}
-RDebugUtils.currentLine=1245184;
- //BA.debugLineNum = 1245184;BA.debugLine="Private Sub profilebtn_Click";
-RDebugUtils.currentLine=1245185;
- //BA.debugLineNum = 1245185;BA.debugLine="HighlightTab(profilebtn)";
+RDebugUtils.currentLine=983040;
+ //BA.debugLineNum = 983040;BA.debugLine="Private Sub profilebtn_Click";
+RDebugUtils.currentLine=983041;
+ //BA.debugLineNum = 983041;BA.debugLine="HighlightTab(profilebtn)";
 _highlighttab(mostCurrent._profilebtn);
-RDebugUtils.currentLine=1245186;
- //BA.debugLineNum = 1245186;BA.debugLine="showprofile";
+RDebugUtils.currentLine=983042;
+ //BA.debugLineNum = 983042;BA.debugLine="showprofile";
 _showprofile();
-RDebugUtils.currentLine=1245187;
- //BA.debugLineNum = 1245187;BA.debugLine="End Sub";
+RDebugUtils.currentLine=983043;
+ //BA.debugLineNum = 983043;BA.debugLine="End Sub";
 return "";
 }
 public static String  _showtable() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "showtable", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "showtable", null));}
-RDebugUtils.currentLine=1310720;
- //BA.debugLineNum = 1310720;BA.debugLine="Sub ShowTable";
-RDebugUtils.currentLine=1310721;
- //BA.debugLineNum = 1310721;BA.debugLine="pnlmain.RemoveAllViews";
+RDebugUtils.currentLine=2686976;
+ //BA.debugLineNum = 2686976;BA.debugLine="Sub ShowTable";
+RDebugUtils.currentLine=2686977;
+ //BA.debugLineNum = 2686977;BA.debugLine="pnlmain.RemoveAllViews";
 mostCurrent._pnlmain.RemoveAllViews();
-RDebugUtils.currentLine=1310722;
- //BA.debugLineNum = 1310722;BA.debugLine="pnlmain.LoadLayout(\"profile\")";
+RDebugUtils.currentLine=2686978;
+ //BA.debugLineNum = 2686978;BA.debugLine="pnlmain.LoadLayout(\"profile\")";
 mostCurrent._pnlmain.LoadLayout("profile",mostCurrent.activityBA);
-RDebugUtils.currentLine=1310723;
- //BA.debugLineNum = 1310723;BA.debugLine="Table = SV.Panel";
+RDebugUtils.currentLine=2686979;
+ //BA.debugLineNum = 2686979;BA.debugLine="Table = SV.Panel";
 mostCurrent._table = mostCurrent._sv.getPanel();
-RDebugUtils.currentLine=1310724;
- //BA.debugLineNum = 1310724;BA.debugLine="NumberOfColumns = 6";
+RDebugUtils.currentLine=2686980;
+ //BA.debugLineNum = 2686980;BA.debugLine="NumberOfColumns = 6";
 _numberofcolumns = (int) (6);
-RDebugUtils.currentLine=1310725;
- //BA.debugLineNum = 1310725;BA.debugLine="ColumnWidth = SV.Width / NumberOfColumns";
+RDebugUtils.currentLine=2686981;
+ //BA.debugLineNum = 2686981;BA.debugLine="ColumnWidth = SV.Width / NumberOfColumns";
 _columnwidth = (int) (mostCurrent._sv.getWidth()/(double)_numberofcolumns);
-RDebugUtils.currentLine=1310726;
- //BA.debugLineNum = 1310726;BA.debugLine="loadtable";
+RDebugUtils.currentLine=2686982;
+ //BA.debugLineNum = 2686982;BA.debugLine="loadtable";
 _loadtable();
-RDebugUtils.currentLine=1310727;
- //BA.debugLineNum = 1310727;BA.debugLine="End Sub";
+RDebugUtils.currentLine=2686983;
+ //BA.debugLineNum = 2686983;BA.debugLine="End Sub";
+return "";
+}
+public static String  _update_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "update_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "update_click", null));}
+RDebugUtils.currentLine=4259840;
+ //BA.debugLineNum = 4259840;BA.debugLine="Private Sub update_Click";
+RDebugUtils.currentLine=4259841;
+ //BA.debugLineNum = 4259841;BA.debugLine="todelete = False";
+_todelete = anywheresoftware.b4a.keywords.Common.False;
+RDebugUtils.currentLine=4259842;
+ //BA.debugLineNum = 4259842;BA.debugLine="showselectid = True";
+_showselectid = anywheresoftware.b4a.keywords.Common.True;
+RDebugUtils.currentLine=4259843;
+ //BA.debugLineNum = 4259843;BA.debugLine="showselectids";
+_showselectids();
+RDebugUtils.currentLine=4259844;
+ //BA.debugLineNum = 4259844;BA.debugLine="End Sub";
+return "";
+}
+public static String  _updatedata_click() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "updatedata_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "updatedata_click", null));}
+RDebugUtils.currentLine=12451840;
+ //BA.debugLineNum = 12451840;BA.debugLine="Private Sub updatedata_Click";
+RDebugUtils.currentLine=12451841;
+ //BA.debugLineNum = 12451841;BA.debugLine="updatedata";
+_updatedata();
+RDebugUtils.currentLine=12451842;
+ //BA.debugLineNum = 12451842;BA.debugLine="End Sub";
 return "";
 }
 }

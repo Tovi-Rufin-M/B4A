@@ -54,26 +54,26 @@ RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "setleftopen", true))
 	 {return ((String) Debug.delegate(ba, "setleftopen", new Object[] {_b}));}
 float _x = 0f;
-RDebugUtils.currentLine=2686976;
- //BA.debugLineNum = 2686976;BA.debugLine="Public Sub setLeftOpen (b As Boolean)";
-RDebugUtils.currentLine=2686977;
- //BA.debugLineNum = 2686977;BA.debugLine="If b = IsOpen Then Return";
+RDebugUtils.currentLine=3866624;
+ //BA.debugLineNum = 3866624;BA.debugLine="Public Sub setLeftOpen (b As Boolean)";
+RDebugUtils.currentLine=3866625;
+ //BA.debugLineNum = 3866625;BA.debugLine="If b = IsOpen Then Return";
 if (_b==__ref._isopen /*boolean*/ ) { 
 if (true) return "";};
-RDebugUtils.currentLine=2686978;
- //BA.debugLineNum = 2686978;BA.debugLine="Dim x As Float";
+RDebugUtils.currentLine=3866626;
+ //BA.debugLineNum = 3866626;BA.debugLine="Dim x As Float";
 _x = 0f;
-RDebugUtils.currentLine=2686979;
- //BA.debugLineNum = 2686979;BA.debugLine="If b Then x = 0 Else x = -mSideWidth";
+RDebugUtils.currentLine=3866627;
+ //BA.debugLineNum = 3866627;BA.debugLine="If b Then x = 0 Else x = -mSideWidth";
 if (_b) { 
 _x = (float) (0);}
 else {
 _x = (float) (-__ref._msidewidth /*int*/ );};
-RDebugUtils.currentLine=2686980;
- //BA.debugLineNum = 2686980;BA.debugLine="ChangeOffset(x, False, False)";
+RDebugUtils.currentLine=3866628;
+ //BA.debugLineNum = 3866628;BA.debugLine="ChangeOffset(x, False, False)";
 __ref._changeoffset /*String*/ (null,_x,__c.False,__c.False);
-RDebugUtils.currentLine=2686981;
- //BA.debugLineNum = 2686981;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3866629;
+ //BA.debugLineNum = 3866629;BA.debugLine="End Sub";
 return "";
 }
 public boolean  _getleftopen(b4a.example.b4xdrawer __ref) throws Exception{
@@ -81,13 +81,13 @@ __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "getleftopen", true))
 	 {return ((Boolean) Debug.delegate(ba, "getleftopen", null));}
-RDebugUtils.currentLine=2621440;
- //BA.debugLineNum = 2621440;BA.debugLine="Public Sub getLeftOpen As Boolean";
-RDebugUtils.currentLine=2621441;
- //BA.debugLineNum = 2621441;BA.debugLine="Return IsOpen";
+RDebugUtils.currentLine=3801088;
+ //BA.debugLineNum = 3801088;BA.debugLine="Public Sub getLeftOpen As Boolean";
+RDebugUtils.currentLine=3801089;
+ //BA.debugLineNum = 3801089;BA.debugLine="Return IsOpen";
 if (true) return __ref._isopen /*boolean*/ ;
-RDebugUtils.currentLine=2621442;
- //BA.debugLineNum = 2621442;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3801090;
+ //BA.debugLineNum = 3801090;BA.debugLine="End Sub";
 return false;
 }
 public String  _initialize(b4a.example.b4xdrawer __ref,anywheresoftware.b4a.BA _ba,Object _callback,String _eventname,anywheresoftware.b4a.objects.B4XViewWrapper _parent,int _sidewidth) throws Exception{
@@ -98,56 +98,56 @@ if (Debug.shouldDelegate(ba, "initialize", true))
 	 {return ((String) Debug.delegate(ba, "initialize", new Object[] {_ba,_callback,_eventname,_parent,_sidewidth}));}
 anywheresoftware.b4a.objects.TouchPanelCreator _creator = null;
 anywheresoftware.b4a.objects.PanelWrapper _p = null;
-RDebugUtils.currentLine=2162688;
- //BA.debugLineNum = 2162688;BA.debugLine="Public Sub Initialize (Callback As Object, EventNa";
-RDebugUtils.currentLine=2162689;
- //BA.debugLineNum = 2162689;BA.debugLine="mEventName = EventName";
+RDebugUtils.currentLine=3342336;
+ //BA.debugLineNum = 3342336;BA.debugLine="Public Sub Initialize (Callback As Object, EventNa";
+RDebugUtils.currentLine=3342337;
+ //BA.debugLineNum = 3342337;BA.debugLine="mEventName = EventName";
 __ref._meventname /*String*/  = _eventname;
-RDebugUtils.currentLine=2162690;
- //BA.debugLineNum = 2162690;BA.debugLine="mCallBack = Callback";
+RDebugUtils.currentLine=3342338;
+ //BA.debugLineNum = 3342338;BA.debugLine="mCallBack = Callback";
 __ref._mcallback /*Object*/  = _callback;
-RDebugUtils.currentLine=2162691;
- //BA.debugLineNum = 2162691;BA.debugLine="mSideWidth = SideWidth";
+RDebugUtils.currentLine=3342339;
+ //BA.debugLineNum = 3342339;BA.debugLine="mSideWidth = SideWidth";
 __ref._msidewidth /*int*/  = _sidewidth;
-RDebugUtils.currentLine=2162693;
- //BA.debugLineNum = 2162693;BA.debugLine="Dim creator As TouchPanelCreator";
+RDebugUtils.currentLine=3342341;
+ //BA.debugLineNum = 3342341;BA.debugLine="Dim creator As TouchPanelCreator";
 _creator = new anywheresoftware.b4a.objects.TouchPanelCreator();
-RDebugUtils.currentLine=2162694;
- //BA.debugLineNum = 2162694;BA.debugLine="mBasePanel = creator.CreateTouchPanel(\"base\")";
+RDebugUtils.currentLine=3342342;
+ //BA.debugLineNum = 3342342;BA.debugLine="mBasePanel = creator.CreateTouchPanel(\"base\")";
 __ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/  = (anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(_creator.CreateTouchPanel(ba,"base").getObject()));
-RDebugUtils.currentLine=2162703;
- //BA.debugLineNum = 2162703;BA.debugLine="Parent.AddView(mBasePanel, 0, 0, Parent.Width, Pa";
+RDebugUtils.currentLine=3342351;
+ //BA.debugLineNum = 3342351;BA.debugLine="Parent.AddView(mBasePanel, 0, 0, Parent.Width, Pa";
 _parent.AddView((android.view.View)(__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(int) (0),(int) (0),_parent.getWidth(),_parent.getHeight());
-RDebugUtils.currentLine=2162704;
- //BA.debugLineNum = 2162704;BA.debugLine="mCenterPanel = xui.CreatePanel(\"\")";
+RDebugUtils.currentLine=3342352;
+ //BA.debugLineNum = 3342352;BA.debugLine="mCenterPanel = xui.CreatePanel(\"\")";
 __ref._mcenterpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/  = __ref._xui /*anywheresoftware.b4a.objects.B4XViewWrapper.XUI*/ .CreatePanel(ba,"");
-RDebugUtils.currentLine=2162705;
- //BA.debugLineNum = 2162705;BA.debugLine="mBasePanel.AddView(mCenterPanel, 0, 0, mBasePanel";
+RDebugUtils.currentLine=3342353;
+ //BA.debugLineNum = 3342353;BA.debugLine="mBasePanel.AddView(mCenterPanel, 0, 0, mBasePanel";
 __ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .AddView((android.view.View)(__ref._mcenterpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(int) (0),(int) (0),__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getWidth(),__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getHeight());
-RDebugUtils.currentLine=2162706;
- //BA.debugLineNum = 2162706;BA.debugLine="mDarkPanel = xui.CreatePanel(\"dark\")";
+RDebugUtils.currentLine=3342354;
+ //BA.debugLineNum = 3342354;BA.debugLine="mDarkPanel = xui.CreatePanel(\"dark\")";
 __ref._mdarkpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/  = __ref._xui /*anywheresoftware.b4a.objects.B4XViewWrapper.XUI*/ .CreatePanel(ba,"dark");
-RDebugUtils.currentLine=2162707;
- //BA.debugLineNum = 2162707;BA.debugLine="mBasePanel.AddView(mDarkPanel, 0, 0, mBasePanel.W";
+RDebugUtils.currentLine=3342355;
+ //BA.debugLineNum = 3342355;BA.debugLine="mBasePanel.AddView(mDarkPanel, 0, 0, mBasePanel.W";
 __ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .AddView((android.view.View)(__ref._mdarkpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(int) (0),(int) (0),__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getWidth(),__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getHeight());
-RDebugUtils.currentLine=2162708;
- //BA.debugLineNum = 2162708;BA.debugLine="mLeftPanel = xui.CreatePanel(\"LeftPanel\")";
+RDebugUtils.currentLine=3342356;
+ //BA.debugLineNum = 3342356;BA.debugLine="mLeftPanel = xui.CreatePanel(\"LeftPanel\")";
 __ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/  = __ref._xui /*anywheresoftware.b4a.objects.B4XViewWrapper.XUI*/ .CreatePanel(ba,"LeftPanel");
-RDebugUtils.currentLine=2162709;
- //BA.debugLineNum = 2162709;BA.debugLine="mBasePanel.AddView(mLeftPanel, -SideWidth, 0, Sid";
+RDebugUtils.currentLine=3342357;
+ //BA.debugLineNum = 3342357;BA.debugLine="mBasePanel.AddView(mLeftPanel, -SideWidth, 0, Sid";
 __ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .AddView((android.view.View)(__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(int) (-_sidewidth),(int) (0),_sidewidth,__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getHeight());
-RDebugUtils.currentLine=2162710;
- //BA.debugLineNum = 2162710;BA.debugLine="mLeftPanel.Color = xui.Color_Red";
+RDebugUtils.currentLine=3342358;
+ //BA.debugLineNum = 3342358;BA.debugLine="mLeftPanel.Color = xui.Color_Red";
 __ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .setColor(__ref._xui /*anywheresoftware.b4a.objects.B4XViewWrapper.XUI*/ .Color_Red);
-RDebugUtils.currentLine=2162712;
- //BA.debugLineNum = 2162712;BA.debugLine="Dim p As Panel = mLeftPanel";
+RDebugUtils.currentLine=3342360;
+ //BA.debugLineNum = 3342360;BA.debugLine="Dim p As Panel = mLeftPanel";
 _p = new anywheresoftware.b4a.objects.PanelWrapper();
 _p = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()));
-RDebugUtils.currentLine=2162713;
- //BA.debugLineNum = 2162713;BA.debugLine="p.Elevation = 4dip";
+RDebugUtils.currentLine=3342361;
+ //BA.debugLineNum = 3342361;BA.debugLine="p.Elevation = 4dip";
 _p.setElevation((float) (__c.DipToCurrent((int) (4))));
-RDebugUtils.currentLine=2162727;
- //BA.debugLineNum = 2162727;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3342375;
+ //BA.debugLineNum = 3342375;BA.debugLine="End Sub";
 return "";
 }
 public anywheresoftware.b4a.objects.B4XViewWrapper  _getcenterpanel(b4a.example.b4xdrawer __ref) throws Exception{
@@ -155,13 +155,13 @@ __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "getcenterpanel", true))
 	 {return ((anywheresoftware.b4a.objects.B4XViewWrapper) Debug.delegate(ba, "getcenterpanel", null));}
-RDebugUtils.currentLine=2818048;
- //BA.debugLineNum = 2818048;BA.debugLine="Public Sub getCenterPanel As B4XView";
-RDebugUtils.currentLine=2818049;
- //BA.debugLineNum = 2818049;BA.debugLine="Return mCenterPanel";
+RDebugUtils.currentLine=3997696;
+ //BA.debugLineNum = 3997696;BA.debugLine="Public Sub getCenterPanel As B4XView";
+RDebugUtils.currentLine=3997697;
+ //BA.debugLineNum = 3997697;BA.debugLine="Return mCenterPanel";
 if (true) return __ref._mcenterpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ ;
-RDebugUtils.currentLine=2818050;
- //BA.debugLineNum = 2818050;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3997698;
+ //BA.debugLineNum = 3997698;BA.debugLine="End Sub";
 return null;
 }
 public anywheresoftware.b4a.objects.B4XViewWrapper  _getleftpanel(b4a.example.b4xdrawer __ref) throws Exception{
@@ -169,13 +169,13 @@ __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "getleftpanel", true))
 	 {return ((anywheresoftware.b4a.objects.B4XViewWrapper) Debug.delegate(ba, "getleftpanel", null));}
-RDebugUtils.currentLine=2752512;
- //BA.debugLineNum = 2752512;BA.debugLine="Public Sub getLeftPanel As B4XView";
-RDebugUtils.currentLine=2752513;
- //BA.debugLineNum = 2752513;BA.debugLine="Return mLeftPanel";
+RDebugUtils.currentLine=3932160;
+ //BA.debugLineNum = 3932160;BA.debugLine="Public Sub getLeftPanel As B4XView";
+RDebugUtils.currentLine=3932161;
+ //BA.debugLineNum = 3932161;BA.debugLine="Return mLeftPanel";
 if (true) return __ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ ;
-RDebugUtils.currentLine=2752514;
- //BA.debugLineNum = 2752514;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3932162;
+ //BA.debugLineNum = 3932162;BA.debugLine="End Sub";
 return null;
 }
 public boolean  _base_onintercepttouchevent(b4a.example.b4xdrawer __ref,int _action,float _x,float _y,Object _motionevent) throws Exception{
@@ -185,63 +185,63 @@ if (Debug.shouldDelegate(ba, "base_onintercepttouchevent", true))
 	 {return ((Boolean) Debug.delegate(ba, "base_onintercepttouchevent", new Object[] {_action,_x,_y,_motionevent}));}
 float _dx = 0f;
 float _dy = 0f;
-RDebugUtils.currentLine=2359296;
- //BA.debugLineNum = 2359296;BA.debugLine="Private Sub Base_OnInterceptTouchEvent (Action As";
-RDebugUtils.currentLine=2359297;
- //BA.debugLineNum = 2359297;BA.debugLine="If mEnabled = False Then Return False";
+RDebugUtils.currentLine=3538944;
+ //BA.debugLineNum = 3538944;BA.debugLine="Private Sub Base_OnInterceptTouchEvent (Action As";
+RDebugUtils.currentLine=3538945;
+ //BA.debugLineNum = 3538945;BA.debugLine="If mEnabled = False Then Return False";
 if (__ref._menabled /*boolean*/ ==__c.False) { 
 if (true) return __c.False;};
-RDebugUtils.currentLine=2359298;
- //BA.debugLineNum = 2359298;BA.debugLine="If IsOpen = False And x > mLeftPanel.Left + mLeft";
+RDebugUtils.currentLine=3538946;
+ //BA.debugLineNum = 3538946;BA.debugLine="If IsOpen = False And x > mLeftPanel.Left + mLeft";
 if (__ref._isopen /*boolean*/ ==__c.False && _x>__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getLeft()+__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getWidth()+__ref._extrawidth /*int*/ ) { 
 if (true) return __c.False;};
-RDebugUtils.currentLine=2359299;
- //BA.debugLineNum = 2359299;BA.debugLine="If IsOpen And x > mLeftPanel.Left + mLeftPanel.Wi";
+RDebugUtils.currentLine=3538947;
+ //BA.debugLineNum = 3538947;BA.debugLine="If IsOpen And x > mLeftPanel.Left + mLeftPanel.Wi";
 if (__ref._isopen /*boolean*/  && _x>__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getLeft()+__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getWidth()) { 
-RDebugUtils.currentLine=2359301;
- //BA.debugLineNum = 2359301;BA.debugLine="Return True";
+RDebugUtils.currentLine=3538949;
+ //BA.debugLineNum = 3538949;BA.debugLine="Return True";
 if (true) return __c.True;
  };
-RDebugUtils.currentLine=2359303;
- //BA.debugLineNum = 2359303;BA.debugLine="If HandlingSwipe Then Return True";
+RDebugUtils.currentLine=3538951;
+ //BA.debugLineNum = 3538951;BA.debugLine="If HandlingSwipe Then Return True";
 if (__ref._handlingswipe /*boolean*/ ) { 
 if (true) return __c.True;};
-RDebugUtils.currentLine=2359304;
- //BA.debugLineNum = 2359304;BA.debugLine="Select Action";
+RDebugUtils.currentLine=3538952;
+ //BA.debugLineNum = 3538952;BA.debugLine="Select Action";
 switch (BA.switchObjectToInt(_action,__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .TOUCH_ACTION_DOWN,__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .TOUCH_ACTION_MOVE)) {
 case 0: {
-RDebugUtils.currentLine=2359306;
- //BA.debugLineNum = 2359306;BA.debugLine="TouchXStart = X";
+RDebugUtils.currentLine=3538954;
+ //BA.debugLineNum = 3538954;BA.debugLine="TouchXStart = X";
 __ref._touchxstart /*float*/  = _x;
-RDebugUtils.currentLine=2359307;
- //BA.debugLineNum = 2359307;BA.debugLine="TouchYStart = Y";
+RDebugUtils.currentLine=3538955;
+ //BA.debugLineNum = 3538955;BA.debugLine="TouchYStart = Y";
 __ref._touchystart /*float*/  = _y;
-RDebugUtils.currentLine=2359308;
- //BA.debugLineNum = 2359308;BA.debugLine="HandlingSwipe = False";
+RDebugUtils.currentLine=3538956;
+ //BA.debugLineNum = 3538956;BA.debugLine="HandlingSwipe = False";
 __ref._handlingswipe /*boolean*/  = __c.False;
  break; }
 case 1: {
-RDebugUtils.currentLine=2359310;
- //BA.debugLineNum = 2359310;BA.debugLine="Dim dx As Float = Abs(x - TouchXStart)";
+RDebugUtils.currentLine=3538958;
+ //BA.debugLineNum = 3538958;BA.debugLine="Dim dx As Float = Abs(x - TouchXStart)";
 _dx = (float) (__c.Abs(_x-__ref._touchxstart /*float*/ ));
-RDebugUtils.currentLine=2359311;
- //BA.debugLineNum = 2359311;BA.debugLine="Dim dy As Float = Abs(y - TouchYStart)";
+RDebugUtils.currentLine=3538959;
+ //BA.debugLineNum = 3538959;BA.debugLine="Dim dy As Float = Abs(y - TouchYStart)";
 _dy = (float) (__c.Abs(_y-__ref._touchystart /*float*/ ));
-RDebugUtils.currentLine=2359312;
- //BA.debugLineNum = 2359312;BA.debugLine="If dy < 20dip And dx > 10dip Then";
+RDebugUtils.currentLine=3538960;
+ //BA.debugLineNum = 3538960;BA.debugLine="If dy < 20dip And dx > 10dip Then";
 if (_dy<__c.DipToCurrent((int) (20)) && _dx>__c.DipToCurrent((int) (10))) { 
-RDebugUtils.currentLine=2359313;
- //BA.debugLineNum = 2359313;BA.debugLine="HandlingSwipe = True";
+RDebugUtils.currentLine=3538961;
+ //BA.debugLineNum = 3538961;BA.debugLine="HandlingSwipe = True";
 __ref._handlingswipe /*boolean*/  = __c.True;
  };
  break; }
 }
 ;
-RDebugUtils.currentLine=2359316;
- //BA.debugLineNum = 2359316;BA.debugLine="Return HandlingSwipe";
+RDebugUtils.currentLine=3538964;
+ //BA.debugLineNum = 3538964;BA.debugLine="Return HandlingSwipe";
 if (true) return __ref._handlingswipe /*boolean*/ ;
-RDebugUtils.currentLine=2359317;
- //BA.debugLineNum = 2359317;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3538965;
+ //BA.debugLineNum = 3538965;BA.debugLine="End Sub";
 return false;
 }
 public boolean  _base_ontouchevent(b4a.example.b4xdrawer __ref,int _action,float _x,float _y,Object _motionevent) throws Exception{
@@ -251,80 +251,80 @@ if (Debug.shouldDelegate(ba, "base_ontouchevent", true))
 	 {return ((Boolean) Debug.delegate(ba, "base_ontouchevent", new Object[] {_action,_x,_y,_motionevent}));}
 int _leftpanelrightside = 0;
 float _dx = 0f;
-RDebugUtils.currentLine=2293760;
- //BA.debugLineNum = 2293760;BA.debugLine="Private Sub Base_OnTouchEvent (Action As Int, X As";
-RDebugUtils.currentLine=2293761;
- //BA.debugLineNum = 2293761;BA.debugLine="If mEnabled = False Then Return False";
+RDebugUtils.currentLine=3473408;
+ //BA.debugLineNum = 3473408;BA.debugLine="Private Sub Base_OnTouchEvent (Action As Int, X As";
+RDebugUtils.currentLine=3473409;
+ //BA.debugLineNum = 3473409;BA.debugLine="If mEnabled = False Then Return False";
 if (__ref._menabled /*boolean*/ ==__c.False) { 
 if (true) return __c.False;};
-RDebugUtils.currentLine=2293762;
- //BA.debugLineNum = 2293762;BA.debugLine="Dim LeftPanelRightSide As Int = mLeftPanel.Left +";
+RDebugUtils.currentLine=3473410;
+ //BA.debugLineNum = 3473410;BA.debugLine="Dim LeftPanelRightSide As Int = mLeftPanel.Left +";
 _leftpanelrightside = (int) (__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getLeft()+__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getWidth());
-RDebugUtils.currentLine=2293763;
- //BA.debugLineNum = 2293763;BA.debugLine="If HandlingSwipe = False And x > LeftPanelRightSi";
+RDebugUtils.currentLine=3473411;
+ //BA.debugLineNum = 3473411;BA.debugLine="If HandlingSwipe = False And x > LeftPanelRightSi";
 if (__ref._handlingswipe /*boolean*/ ==__c.False && _x>_leftpanelrightside) { 
-RDebugUtils.currentLine=2293764;
- //BA.debugLineNum = 2293764;BA.debugLine="If IsOpen Then";
+RDebugUtils.currentLine=3473412;
+ //BA.debugLineNum = 3473412;BA.debugLine="If IsOpen Then";
 if (__ref._isopen /*boolean*/ ) { 
-RDebugUtils.currentLine=2293765;
- //BA.debugLineNum = 2293765;BA.debugLine="TouchXStart = X";
+RDebugUtils.currentLine=3473413;
+ //BA.debugLineNum = 3473413;BA.debugLine="TouchXStart = X";
 __ref._touchxstart /*float*/  = _x;
-RDebugUtils.currentLine=2293766;
- //BA.debugLineNum = 2293766;BA.debugLine="If Action = mBasePanel.TOUCH_ACTION_UP Then set";
+RDebugUtils.currentLine=3473414;
+ //BA.debugLineNum = 3473414;BA.debugLine="If Action = mBasePanel.TOUCH_ACTION_UP Then set";
 if (_action==__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .TOUCH_ACTION_UP) { 
 __ref._setleftopen /*String*/ (null,__c.False);};
-RDebugUtils.currentLine=2293767;
- //BA.debugLineNum = 2293767;BA.debugLine="Return True";
+RDebugUtils.currentLine=3473415;
+ //BA.debugLineNum = 3473415;BA.debugLine="Return True";
 if (true) return __c.True;
  };
-RDebugUtils.currentLine=2293769;
- //BA.debugLineNum = 2293769;BA.debugLine="If IsOpen = False And x > LeftPanelRightSide + E";
+RDebugUtils.currentLine=3473417;
+ //BA.debugLineNum = 3473417;BA.debugLine="If IsOpen = False And x > LeftPanelRightSide + E";
 if (__ref._isopen /*boolean*/ ==__c.False && _x>_leftpanelrightside+__ref._extrawidth /*int*/ ) { 
-RDebugUtils.currentLine=2293770;
- //BA.debugLineNum = 2293770;BA.debugLine="Return False";
+RDebugUtils.currentLine=3473418;
+ //BA.debugLineNum = 3473418;BA.debugLine="Return False";
 if (true) return __c.False;
  };
  };
-RDebugUtils.currentLine=2293773;
- //BA.debugLineNum = 2293773;BA.debugLine="Select Action";
+RDebugUtils.currentLine=3473421;
+ //BA.debugLineNum = 3473421;BA.debugLine="Select Action";
 switch (BA.switchObjectToInt(_action,__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .TOUCH_ACTION_MOVE,__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .TOUCH_ACTION_UP)) {
 case 0: {
-RDebugUtils.currentLine=2293775;
- //BA.debugLineNum = 2293775;BA.debugLine="Dim dx As Float = x - TouchXStart";
+RDebugUtils.currentLine=3473423;
+ //BA.debugLineNum = 3473423;BA.debugLine="Dim dx As Float = x - TouchXStart";
 _dx = (float) (_x-__ref._touchxstart /*float*/ );
-RDebugUtils.currentLine=2293776;
- //BA.debugLineNum = 2293776;BA.debugLine="TouchXStart = X";
+RDebugUtils.currentLine=3473424;
+ //BA.debugLineNum = 3473424;BA.debugLine="TouchXStart = X";
 __ref._touchxstart /*float*/  = _x;
-RDebugUtils.currentLine=2293777;
- //BA.debugLineNum = 2293777;BA.debugLine="If HandlingSwipe Or Abs(dx) > 3dip Then";
+RDebugUtils.currentLine=3473425;
+ //BA.debugLineNum = 3473425;BA.debugLine="If HandlingSwipe Or Abs(dx) > 3dip Then";
 if (__ref._handlingswipe /*boolean*/  || __c.Abs(_dx)>__c.DipToCurrent((int) (3))) { 
-RDebugUtils.currentLine=2293778;
- //BA.debugLineNum = 2293778;BA.debugLine="HandlingSwipe = True";
+RDebugUtils.currentLine=3473426;
+ //BA.debugLineNum = 3473426;BA.debugLine="HandlingSwipe = True";
 __ref._handlingswipe /*boolean*/  = __c.True;
-RDebugUtils.currentLine=2293779;
- //BA.debugLineNum = 2293779;BA.debugLine="ChangeOffset(mLeftPanel.Left + dx, True, False";
+RDebugUtils.currentLine=3473427;
+ //BA.debugLineNum = 3473427;BA.debugLine="ChangeOffset(mLeftPanel.Left + dx, True, False";
 __ref._changeoffset /*String*/ (null,(float) (__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getLeft()+_dx),__c.True,__c.False);
  };
  break; }
 case 1: {
-RDebugUtils.currentLine=2293782;
- //BA.debugLineNum = 2293782;BA.debugLine="If HandlingSwipe Then";
+RDebugUtils.currentLine=3473430;
+ //BA.debugLineNum = 3473430;BA.debugLine="If HandlingSwipe Then";
 if (__ref._handlingswipe /*boolean*/ ) { 
-RDebugUtils.currentLine=2293783;
- //BA.debugLineNum = 2293783;BA.debugLine="ChangeOffset(mLeftPanel.Left, False, False)";
+RDebugUtils.currentLine=3473431;
+ //BA.debugLineNum = 3473431;BA.debugLine="ChangeOffset(mLeftPanel.Left, False, False)";
 __ref._changeoffset /*String*/ (null,(float) (__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getLeft()),__c.False,__c.False);
  };
-RDebugUtils.currentLine=2293785;
- //BA.debugLineNum = 2293785;BA.debugLine="HandlingSwipe = False";
+RDebugUtils.currentLine=3473433;
+ //BA.debugLineNum = 3473433;BA.debugLine="HandlingSwipe = False";
 __ref._handlingswipe /*boolean*/  = __c.False;
  break; }
 }
 ;
-RDebugUtils.currentLine=2293787;
- //BA.debugLineNum = 2293787;BA.debugLine="Return True";
+RDebugUtils.currentLine=3473435;
+ //BA.debugLineNum = 3473435;BA.debugLine="Return True";
 if (true) return __c.True;
-RDebugUtils.currentLine=2293788;
- //BA.debugLineNum = 2293788;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3473436;
+ //BA.debugLineNum = 3473436;BA.debugLine="End Sub";
 return false;
 }
 public String  _changeoffset(b4a.example.b4xdrawer __ref,float _x,boolean _currentlytouching,boolean _noanimation) throws Exception{
@@ -335,60 +335,60 @@ if (Debug.shouldDelegate(ba, "changeoffset", true))
 int _visibleoffset = 0;
 int _dx = 0;
 int _duration = 0;
-RDebugUtils.currentLine=2424832;
- //BA.debugLineNum = 2424832;BA.debugLine="Private Sub ChangeOffset (x As Float, CurrentlyTou";
-RDebugUtils.currentLine=2424833;
- //BA.debugLineNum = 2424833;BA.debugLine="x = Max(-mSideWidth, Min(0, x))";
+RDebugUtils.currentLine=3604480;
+ //BA.debugLineNum = 3604480;BA.debugLine="Private Sub ChangeOffset (x As Float, CurrentlyTou";
+RDebugUtils.currentLine=3604481;
+ //BA.debugLineNum = 3604481;BA.debugLine="x = Max(-mSideWidth, Min(0, x))";
 _x = (float) (__c.Max(-__ref._msidewidth /*int*/ ,__c.Min(0,_x)));
-RDebugUtils.currentLine=2424834;
- //BA.debugLineNum = 2424834;BA.debugLine="Dim VisibleOffset As Int = mSideWidth + x";
+RDebugUtils.currentLine=3604482;
+ //BA.debugLineNum = 3604482;BA.debugLine="Dim VisibleOffset As Int = mSideWidth + x";
 _visibleoffset = (int) (__ref._msidewidth /*int*/ +_x);
-RDebugUtils.currentLine=2424843;
- //BA.debugLineNum = 2424843;BA.debugLine="If CurrentlyTouching = False Then";
+RDebugUtils.currentLine=3604491;
+ //BA.debugLineNum = 3604491;BA.debugLine="If CurrentlyTouching = False Then";
 if (_currentlytouching==__c.False) { 
-RDebugUtils.currentLine=2424844;
- //BA.debugLineNum = 2424844;BA.debugLine="If (IsOpen And VisibleOffset < 0.8 * mSideWidth)";
+RDebugUtils.currentLine=3604492;
+ //BA.debugLineNum = 3604492;BA.debugLine="If (IsOpen And VisibleOffset < 0.8 * mSideWidth)";
 if ((__ref._isopen /*boolean*/  && _visibleoffset<0.8*__ref._msidewidth /*int*/ ) || (__ref._isopen /*boolean*/ ==__c.False && _visibleoffset<0.2*__ref._msidewidth /*int*/ )) { 
-RDebugUtils.currentLine=2424845;
- //BA.debugLineNum = 2424845;BA.debugLine="x = -mSideWidth";
+RDebugUtils.currentLine=3604493;
+ //BA.debugLineNum = 3604493;BA.debugLine="x = -mSideWidth";
 _x = (float) (-__ref._msidewidth /*int*/ );
-RDebugUtils.currentLine=2424846;
- //BA.debugLineNum = 2424846;BA.debugLine="SetIsOpen(False)";
+RDebugUtils.currentLine=3604494;
+ //BA.debugLineNum = 3604494;BA.debugLine="SetIsOpen(False)";
 __ref._setisopen /*String*/ (null,__c.False);
  }else {
-RDebugUtils.currentLine=2424848;
- //BA.debugLineNum = 2424848;BA.debugLine="x = 0";
+RDebugUtils.currentLine=3604496;
+ //BA.debugLineNum = 3604496;BA.debugLine="x = 0";
 _x = (float) (0);
-RDebugUtils.currentLine=2424849;
- //BA.debugLineNum = 2424849;BA.debugLine="SetIsOpen(True)";
+RDebugUtils.currentLine=3604497;
+ //BA.debugLineNum = 3604497;BA.debugLine="SetIsOpen(True)";
 __ref._setisopen /*String*/ (null,__c.True);
  };
-RDebugUtils.currentLine=2424851;
- //BA.debugLineNum = 2424851;BA.debugLine="Dim dx As Int = Abs(mLeftPanel.Left - x)";
+RDebugUtils.currentLine=3604499;
+ //BA.debugLineNum = 3604499;BA.debugLine="Dim dx As Int = Abs(mLeftPanel.Left - x)";
 _dx = (int) (__c.Abs(__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getLeft()-_x));
-RDebugUtils.currentLine=2424852;
- //BA.debugLineNum = 2424852;BA.debugLine="Dim duration As Int = Max(0, 200 * dx / mSideWid";
+RDebugUtils.currentLine=3604500;
+ //BA.debugLineNum = 3604500;BA.debugLine="Dim duration As Int = Max(0, 200 * dx / mSideWid";
 _duration = (int) (__c.Max(0,200*_dx/(double)__ref._msidewidth /*int*/ ));
-RDebugUtils.currentLine=2424853;
- //BA.debugLineNum = 2424853;BA.debugLine="If NoAnimation Then duration = 0";
+RDebugUtils.currentLine=3604501;
+ //BA.debugLineNum = 3604501;BA.debugLine="If NoAnimation Then duration = 0";
 if (_noanimation) { 
 _duration = (int) (0);};
-RDebugUtils.currentLine=2424854;
- //BA.debugLineNum = 2424854;BA.debugLine="mLeftPanel.SetLayoutAnimated(duration, x, 0, mLe";
+RDebugUtils.currentLine=3604502;
+ //BA.debugLineNum = 3604502;BA.debugLine="mLeftPanel.SetLayoutAnimated(duration, x, 0, mLe";
 __ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .SetLayoutAnimated(_duration,(int) (_x),(int) (0),__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getWidth(),__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getHeight());
-RDebugUtils.currentLine=2424855;
- //BA.debugLineNum = 2424855;BA.debugLine="mDarkPanel.SetColorAnimated(duration, mDarkPanel";
+RDebugUtils.currentLine=3604503;
+ //BA.debugLineNum = 3604503;BA.debugLine="mDarkPanel.SetColorAnimated(duration, mDarkPanel";
 __ref._mdarkpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .SetColorAnimated(_duration,__ref._mdarkpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getColor(),__ref._offsettocolor /*int*/ (null,(int) (_x)));
  }else {
-RDebugUtils.currentLine=2424865;
- //BA.debugLineNum = 2424865;BA.debugLine="mDarkPanel.Color = OffsetToColor(x)";
+RDebugUtils.currentLine=3604513;
+ //BA.debugLineNum = 3604513;BA.debugLine="mDarkPanel.Color = OffsetToColor(x)";
 __ref._mdarkpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .setColor(__ref._offsettocolor /*int*/ (null,(int) (_x)));
-RDebugUtils.currentLine=2424866;
- //BA.debugLineNum = 2424866;BA.debugLine="mLeftPanel.Left = x";
+RDebugUtils.currentLine=3604514;
+ //BA.debugLineNum = 3604514;BA.debugLine="mLeftPanel.Left = x";
 __ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .setLeft((int) (_x));
  };
-RDebugUtils.currentLine=2424868;
- //BA.debugLineNum = 2424868;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3604516;
+ //BA.debugLineNum = 3604516;BA.debugLine="End Sub";
 return "";
 }
 public String  _setisopen(b4a.example.b4xdrawer __ref,boolean _newstate) throws Exception{
@@ -396,24 +396,24 @@ __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "setisopen", true))
 	 {return ((String) Debug.delegate(ba, "setisopen", new Object[] {_newstate}));}
-RDebugUtils.currentLine=2490368;
- //BA.debugLineNum = 2490368;BA.debugLine="Private Sub SetIsOpen (NewState As Boolean)";
-RDebugUtils.currentLine=2490369;
- //BA.debugLineNum = 2490369;BA.debugLine="If IsOpen = NewState Then Return";
+RDebugUtils.currentLine=3670016;
+ //BA.debugLineNum = 3670016;BA.debugLine="Private Sub SetIsOpen (NewState As Boolean)";
+RDebugUtils.currentLine=3670017;
+ //BA.debugLineNum = 3670017;BA.debugLine="If IsOpen = NewState Then Return";
 if (__ref._isopen /*boolean*/ ==_newstate) { 
 if (true) return "";};
-RDebugUtils.currentLine=2490370;
- //BA.debugLineNum = 2490370;BA.debugLine="IsOpen = NewState";
+RDebugUtils.currentLine=3670018;
+ //BA.debugLineNum = 3670018;BA.debugLine="IsOpen = NewState";
 __ref._isopen /*boolean*/  = _newstate;
-RDebugUtils.currentLine=2490371;
- //BA.debugLineNum = 2490371;BA.debugLine="If xui.SubExists(mCallBack, mEventName & \"_StateC";
+RDebugUtils.currentLine=3670019;
+ //BA.debugLineNum = 3670019;BA.debugLine="If xui.SubExists(mCallBack, mEventName & \"_StateC";
 if (__ref._xui /*anywheresoftware.b4a.objects.B4XViewWrapper.XUI*/ .SubExists(ba,__ref._mcallback /*Object*/ ,__ref._meventname /*String*/ +"_StateChanged",(int) (1))) { 
-RDebugUtils.currentLine=2490372;
- //BA.debugLineNum = 2490372;BA.debugLine="CallSubDelayed2(mCallBack,  mEventName & \"_State";
+RDebugUtils.currentLine=3670020;
+ //BA.debugLineNum = 3670020;BA.debugLine="CallSubDelayed2(mCallBack,  mEventName & \"_State";
 __c.CallSubDelayed2(ba,__ref._mcallback /*Object*/ ,__ref._meventname /*String*/ +"_StateChanged",(Object)(__ref._isopen /*boolean*/ ));
  };
-RDebugUtils.currentLine=2490374;
- //BA.debugLineNum = 2490374;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3670022;
+ //BA.debugLineNum = 3670022;BA.debugLine="End Sub";
 return "";
 }
 public int  _offsettocolor(b4a.example.b4xdrawer __ref,int _x) throws Exception{
@@ -422,68 +422,68 @@ RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "offsettocolor", true))
 	 {return ((Integer) Debug.delegate(ba, "offsettocolor", new Object[] {_x}));}
 float _visible = 0f;
-RDebugUtils.currentLine=2555904;
- //BA.debugLineNum = 2555904;BA.debugLine="Private Sub OffsetToColor (x As Int) As Int";
-RDebugUtils.currentLine=2555905;
- //BA.debugLineNum = 2555905;BA.debugLine="Dim Visible As Float = (mSideWidth + x) / mSideWi";
+RDebugUtils.currentLine=3735552;
+ //BA.debugLineNum = 3735552;BA.debugLine="Private Sub OffsetToColor (x As Int) As Int";
+RDebugUtils.currentLine=3735553;
+ //BA.debugLineNum = 3735553;BA.debugLine="Dim Visible As Float = (mSideWidth + x) / mSideWi";
 _visible = (float) ((__ref._msidewidth /*int*/ +_x)/(double)__ref._msidewidth /*int*/ );
-RDebugUtils.currentLine=2555906;
- //BA.debugLineNum = 2555906;BA.debugLine="Return xui.Color_ARGB(100 * Visible, 0, 0, 0)";
+RDebugUtils.currentLine=3735554;
+ //BA.debugLineNum = 3735554;BA.debugLine="Return xui.Color_ARGB(100 * Visible, 0, 0, 0)";
 if (true) return __ref._xui /*anywheresoftware.b4a.objects.B4XViewWrapper.XUI*/ .Color_ARGB((int) (100*_visible),(int) (0),(int) (0),(int) (0));
-RDebugUtils.currentLine=2555907;
- //BA.debugLineNum = 2555907;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3735555;
+ //BA.debugLineNum = 3735555;BA.debugLine="End Sub";
 return 0;
 }
 public String  _class_globals(b4a.example.b4xdrawer __ref) throws Exception{
 __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
-RDebugUtils.currentLine=2097152;
- //BA.debugLineNum = 2097152;BA.debugLine="Sub Class_Globals";
-RDebugUtils.currentLine=2097153;
- //BA.debugLineNum = 2097153;BA.debugLine="Private mEventName As String 'ignore";
+RDebugUtils.currentLine=3276800;
+ //BA.debugLineNum = 3276800;BA.debugLine="Sub Class_Globals";
+RDebugUtils.currentLine=3276801;
+ //BA.debugLineNum = 3276801;BA.debugLine="Private mEventName As String 'ignore";
 _meventname = "";
-RDebugUtils.currentLine=2097154;
- //BA.debugLineNum = 2097154;BA.debugLine="Private mCallBack As Object 'ignore";
+RDebugUtils.currentLine=3276802;
+ //BA.debugLineNum = 3276802;BA.debugLine="Private mCallBack As Object 'ignore";
 _mcallback = new Object();
-RDebugUtils.currentLine=2097155;
- //BA.debugLineNum = 2097155;BA.debugLine="Private xui As XUI 'ignore";
+RDebugUtils.currentLine=3276803;
+ //BA.debugLineNum = 3276803;BA.debugLine="Private xui As XUI 'ignore";
 _xui = new anywheresoftware.b4a.objects.B4XViewWrapper.XUI();
-RDebugUtils.currentLine=2097156;
- //BA.debugLineNum = 2097156;BA.debugLine="Private mSideWidth As Int";
+RDebugUtils.currentLine=3276804;
+ //BA.debugLineNum = 3276804;BA.debugLine="Private mSideWidth As Int";
 _msidewidth = 0;
-RDebugUtils.currentLine=2097157;
- //BA.debugLineNum = 2097157;BA.debugLine="Private mLeftPanel As B4XView";
+RDebugUtils.currentLine=3276805;
+ //BA.debugLineNum = 3276805;BA.debugLine="Private mLeftPanel As B4XView";
 _mleftpanel = new anywheresoftware.b4a.objects.B4XViewWrapper();
-RDebugUtils.currentLine=2097158;
- //BA.debugLineNum = 2097158;BA.debugLine="Private mDarkPanel As B4XView";
+RDebugUtils.currentLine=3276806;
+ //BA.debugLineNum = 3276806;BA.debugLine="Private mDarkPanel As B4XView";
 _mdarkpanel = new anywheresoftware.b4a.objects.B4XViewWrapper();
-RDebugUtils.currentLine=2097159;
- //BA.debugLineNum = 2097159;BA.debugLine="Private mBasePanel As B4XView";
+RDebugUtils.currentLine=3276807;
+ //BA.debugLineNum = 3276807;BA.debugLine="Private mBasePanel As B4XView";
 _mbasepanel = new anywheresoftware.b4a.objects.B4XViewWrapper();
-RDebugUtils.currentLine=2097160;
- //BA.debugLineNum = 2097160;BA.debugLine="Private mCenterPanel As B4XView";
+RDebugUtils.currentLine=3276808;
+ //BA.debugLineNum = 3276808;BA.debugLine="Private mCenterPanel As B4XView";
 _mcenterpanel = new anywheresoftware.b4a.objects.B4XViewWrapper();
-RDebugUtils.currentLine=2097161;
- //BA.debugLineNum = 2097161;BA.debugLine="Public ExtraWidth As Int = 50dip";
+RDebugUtils.currentLine=3276809;
+ //BA.debugLineNum = 3276809;BA.debugLine="Public ExtraWidth As Int = 50dip";
 _extrawidth = __c.DipToCurrent((int) (50));
-RDebugUtils.currentLine=2097162;
- //BA.debugLineNum = 2097162;BA.debugLine="Private TouchXStart, TouchYStart As Float 'ignore";
+RDebugUtils.currentLine=3276810;
+ //BA.debugLineNum = 3276810;BA.debugLine="Private TouchXStart, TouchYStart As Float 'ignore";
 _touchxstart = 0f;
 _touchystart = 0f;
-RDebugUtils.currentLine=2097163;
- //BA.debugLineNum = 2097163;BA.debugLine="Private IsOpen As Boolean";
+RDebugUtils.currentLine=3276811;
+ //BA.debugLineNum = 3276811;BA.debugLine="Private IsOpen As Boolean";
 _isopen = false;
-RDebugUtils.currentLine=2097164;
- //BA.debugLineNum = 2097164;BA.debugLine="Private HandlingSwipe As Boolean";
+RDebugUtils.currentLine=3276812;
+ //BA.debugLineNum = 3276812;BA.debugLine="Private HandlingSwipe As Boolean";
 _handlingswipe = false;
-RDebugUtils.currentLine=2097165;
- //BA.debugLineNum = 2097165;BA.debugLine="Private StartAtScrim As Boolean 'ignore";
+RDebugUtils.currentLine=3276813;
+ //BA.debugLineNum = 3276813;BA.debugLine="Private StartAtScrim As Boolean 'ignore";
 _startatscrim = false;
-RDebugUtils.currentLine=2097166;
- //BA.debugLineNum = 2097166;BA.debugLine="Private mEnabled As Boolean = True";
+RDebugUtils.currentLine=3276814;
+ //BA.debugLineNum = 3276814;BA.debugLine="Private mEnabled As Boolean = True";
 _menabled = __c.True;
-RDebugUtils.currentLine=2097167;
- //BA.debugLineNum = 2097167;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3276815;
+ //BA.debugLineNum = 3276815;BA.debugLine="End Sub";
 return "";
 }
 public boolean  _getgestureenabled(b4a.example.b4xdrawer __ref) throws Exception{
@@ -491,13 +491,13 @@ __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "getgestureenabled", true))
 	 {return ((Boolean) Debug.delegate(ba, "getgestureenabled", null));}
-RDebugUtils.currentLine=2949120;
- //BA.debugLineNum = 2949120;BA.debugLine="Public Sub getGestureEnabled As Boolean";
-RDebugUtils.currentLine=2949121;
- //BA.debugLineNum = 2949121;BA.debugLine="Return mEnabled";
+RDebugUtils.currentLine=4128768;
+ //BA.debugLineNum = 4128768;BA.debugLine="Public Sub getGestureEnabled As Boolean";
+RDebugUtils.currentLine=4128769;
+ //BA.debugLineNum = 4128769;BA.debugLine="Return mEnabled";
 if (true) return __ref._menabled /*boolean*/ ;
-RDebugUtils.currentLine=2949122;
- //BA.debugLineNum = 2949122;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4128770;
+ //BA.debugLineNum = 4128770;BA.debugLine="End Sub";
 return false;
 }
 public String  _leftpanel_click(b4a.example.b4xdrawer __ref) throws Exception{
@@ -505,10 +505,10 @@ __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "leftpanel_click", true))
 	 {return ((String) Debug.delegate(ba, "leftpanel_click", null));}
-RDebugUtils.currentLine=2228224;
- //BA.debugLineNum = 2228224;BA.debugLine="Private Sub LeftPanel_Click";
-RDebugUtils.currentLine=2228226;
- //BA.debugLineNum = 2228226;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3407872;
+ //BA.debugLineNum = 3407872;BA.debugLine="Private Sub LeftPanel_Click";
+RDebugUtils.currentLine=3407874;
+ //BA.debugLineNum = 3407874;BA.debugLine="End Sub";
 return "";
 }
 public String  _resize(b4a.example.b4xdrawer __ref,int _width,int _height) throws Exception{
@@ -516,26 +516,26 @@ __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "resize", true))
 	 {return ((String) Debug.delegate(ba, "resize", new Object[] {_width,_height}));}
-RDebugUtils.currentLine=2883584;
- //BA.debugLineNum = 2883584;BA.debugLine="Public Sub Resize(Width As Int, Height As Int)";
-RDebugUtils.currentLine=2883585;
- //BA.debugLineNum = 2883585;BA.debugLine="If IsOpen Then ChangeOffset(-mSideWidth, False, T";
+RDebugUtils.currentLine=4063232;
+ //BA.debugLineNum = 4063232;BA.debugLine="Public Sub Resize(Width As Int, Height As Int)";
+RDebugUtils.currentLine=4063233;
+ //BA.debugLineNum = 4063233;BA.debugLine="If IsOpen Then ChangeOffset(-mSideWidth, False, T";
 if (__ref._isopen /*boolean*/ ) { 
 __ref._changeoffset /*String*/ (null,(float) (-__ref._msidewidth /*int*/ ),__c.False,__c.True);};
-RDebugUtils.currentLine=2883586;
- //BA.debugLineNum = 2883586;BA.debugLine="mBasePanel.SetLayoutAnimated(0, 0, 0, Width, Heig";
+RDebugUtils.currentLine=4063234;
+ //BA.debugLineNum = 4063234;BA.debugLine="mBasePanel.SetLayoutAnimated(0, 0, 0, Width, Heig";
 __ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .SetLayoutAnimated((int) (0),(int) (0),(int) (0),_width,_height);
-RDebugUtils.currentLine=2883587;
- //BA.debugLineNum = 2883587;BA.debugLine="mLeftPanel.SetLayoutAnimated(0, mLeftPanel.Left,";
+RDebugUtils.currentLine=4063235;
+ //BA.debugLineNum = 4063235;BA.debugLine="mLeftPanel.SetLayoutAnimated(0, mLeftPanel.Left,";
 __ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .SetLayoutAnimated((int) (0),__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getLeft(),(int) (0),__ref._mleftpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getWidth(),__ref._mbasepanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getHeight());
-RDebugUtils.currentLine=2883588;
- //BA.debugLineNum = 2883588;BA.debugLine="mDarkPanel.SetLayoutAnimated(0, 0, 0, Width, Heig";
+RDebugUtils.currentLine=4063236;
+ //BA.debugLineNum = 4063236;BA.debugLine="mDarkPanel.SetLayoutAnimated(0, 0, 0, Width, Heig";
 __ref._mdarkpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .SetLayoutAnimated((int) (0),(int) (0),(int) (0),_width,_height);
-RDebugUtils.currentLine=2883589;
- //BA.debugLineNum = 2883589;BA.debugLine="mCenterPanel.SetLayoutAnimated(0, 0, 0, Width, He";
+RDebugUtils.currentLine=4063237;
+ //BA.debugLineNum = 4063237;BA.debugLine="mCenterPanel.SetLayoutAnimated(0, 0, 0, Width, He";
 __ref._mcenterpanel /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .SetLayoutAnimated((int) (0),(int) (0),(int) (0),_width,_height);
-RDebugUtils.currentLine=2883590;
- //BA.debugLineNum = 2883590;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4063238;
+ //BA.debugLineNum = 4063238;BA.debugLine="End Sub";
 return "";
 }
 public String  _setgestureenabled(b4a.example.b4xdrawer __ref,boolean _b) throws Exception{
@@ -543,13 +543,13 @@ __ref = this;
 RDebugUtils.currentModule="b4xdrawer";
 if (Debug.shouldDelegate(ba, "setgestureenabled", true))
 	 {return ((String) Debug.delegate(ba, "setgestureenabled", new Object[] {_b}));}
-RDebugUtils.currentLine=3014656;
- //BA.debugLineNum = 3014656;BA.debugLine="Public Sub setGestureEnabled (b As Boolean)";
-RDebugUtils.currentLine=3014657;
- //BA.debugLineNum = 3014657;BA.debugLine="mEnabled = b";
+RDebugUtils.currentLine=4194304;
+ //BA.debugLineNum = 4194304;BA.debugLine="Public Sub setGestureEnabled (b As Boolean)";
+RDebugUtils.currentLine=4194305;
+ //BA.debugLineNum = 4194305;BA.debugLine="mEnabled = b";
 __ref._menabled /*boolean*/  = _b;
-RDebugUtils.currentLine=3014658;
- //BA.debugLineNum = 3014658;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4194306;
+ //BA.debugLineNum = 4194306;BA.debugLine="End Sub";
 return "";
 }
 }
