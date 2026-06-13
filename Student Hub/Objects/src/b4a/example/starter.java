@@ -14,7 +14,7 @@ public class starter extends android.app.Service{
 			android.content.Intent in = new android.content.Intent(context, starter.class);
 			if (intent != null)
 				in.putExtra("b4a_internal_intent", intent);
-            ServiceHelper.StarterHelper.startServiceFromReceiver (context, in, true, anywheresoftware.b4a.ShellBA.class);
+            ServiceHelper.StarterHelper.startServiceFromReceiver (context, in, true, BA.class);
 		}
 
 	}
@@ -29,7 +29,7 @@ public class starter extends android.app.Service{
         super.onCreate();
         mostCurrent = this;
         if (processBA == null) {
-		    processBA = new anywheresoftware.b4a.ShellBA(this, null, null, "b4a.example", "b4a.example.starter");
+		    processBA = new BA(this, null, null, "b4a.example", "b4a.example.starter");
             if (BA.isShellModeRuntimeCheck(processBA)) {
                 processBA.raiseEvent2(null, true, "SHELL", false);
 		    }
@@ -138,73 +138,47 @@ public class starter extends android.app.Service{
 @Override
 	public android.os.IBinder onBind(android.content.Intent intent) {
 		return null;
-	}
-public anywheresoftware.b4a.keywords.Common __c = null;
+	}public anywheresoftware.b4a.keywords.Common __c = null;
 public b4a.example.main _main = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "application_error", false))
-	 {return ((Boolean) Debug.delegate(processBA, "application_error", new Object[] {_error,_stacktrace}));}
-RDebugUtils.currentLine=3145728;
- //BA.debugLineNum = 3145728;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
-RDebugUtils.currentLine=3145729;
- //BA.debugLineNum = 3145729;BA.debugLine="Return True";
+ //BA.debugLineNum = 32;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
+ //BA.debugLineNum = 33;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
-RDebugUtils.currentLine=3145730;
- //BA.debugLineNum = 3145730;BA.debugLine="End Sub";
+ //BA.debugLineNum = 34;BA.debugLine="End Sub";
 return false;
 }
+public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 10;BA.debugLine="End Sub";
+return "";
+}
 public static String  _service_create() throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "service_create", false))
-	 {return ((String) Debug.delegate(processBA, "service_create", null));}
-RDebugUtils.currentLine=2949120;
- //BA.debugLineNum = 2949120;BA.debugLine="Sub Service_Create";
-RDebugUtils.currentLine=2949125;
- //BA.debugLineNum = 2949125;BA.debugLine="If File.Exists(File.DirInternal, \"student.csv\") =";
+ //BA.debugLineNum = 12;BA.debugLine="Sub Service_Create";
+ //BA.debugLineNum = 17;BA.debugLine="If File.Exists(File.DirInternal, \"student.csv\") =";
 if (anywheresoftware.b4a.keywords.Common.File.Exists(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"student.csv")==anywheresoftware.b4a.keywords.Common.False) { 
-RDebugUtils.currentLine=2949126;
- //BA.debugLineNum = 2949126;BA.debugLine="File.Copy(File.DirAssets, \"student.csv\", File.Di";
+ //BA.debugLineNum = 18;BA.debugLine="File.Copy(File.DirAssets, \"student.csv\", File.Di";
 anywheresoftware.b4a.keywords.Common.File.Copy(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"student.csv",anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"student.csv");
-RDebugUtils.currentLine=2949127;
- //BA.debugLineNum = 2949127;BA.debugLine="Log(\"First launch: copied student.csv to DirInte";
-anywheresoftware.b4a.keywords.Common.LogImpl("82949127","First launch: copied student.csv to DirInternal",0);
+ //BA.debugLineNum = 19;BA.debugLine="Log(\"First launch: copied student.csv to DirInte";
+anywheresoftware.b4a.keywords.Common.LogImpl("13801095","First launch: copied student.csv to DirInternal",0);
  };
-RDebugUtils.currentLine=2949129;
- //BA.debugLineNum = 2949129;BA.debugLine="End Sub";
+ //BA.debugLineNum = 21;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_destroy() throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "service_destroy", false))
-	 {return ((String) Debug.delegate(processBA, "service_destroy", null));}
-RDebugUtils.currentLine=3211264;
- //BA.debugLineNum = 3211264;BA.debugLine="Sub Service_Destroy";
-RDebugUtils.currentLine=3211266;
- //BA.debugLineNum = 3211266;BA.debugLine="End Sub";
+ //BA.debugLineNum = 36;BA.debugLine="Sub Service_Destroy";
+ //BA.debugLineNum = 38;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_start(anywheresoftware.b4a.objects.IntentWrapper _startingintent) throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "service_start", false))
-	 {return ((String) Debug.delegate(processBA, "service_start", new Object[] {_startingintent}));}
-RDebugUtils.currentLine=3014656;
- //BA.debugLineNum = 3014656;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
-RDebugUtils.currentLine=3014657;
- //BA.debugLineNum = 3014657;BA.debugLine="Service.StopAutomaticForeground 'Starter service";
+ //BA.debugLineNum = 23;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
+ //BA.debugLineNum = 24;BA.debugLine="Service.StopAutomaticForeground 'Starter service";
 mostCurrent._service.StopAutomaticForeground();
-RDebugUtils.currentLine=3014658;
- //BA.debugLineNum = 3014658;BA.debugLine="End Sub";
+ //BA.debugLineNum = 25;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_taskremoved() throws Exception{
-RDebugUtils.currentModule="starter";
-if (Debug.shouldDelegate(processBA, "service_taskremoved", false))
-	 {return ((String) Debug.delegate(processBA, "service_taskremoved", null));}
-RDebugUtils.currentLine=3080192;
- //BA.debugLineNum = 3080192;BA.debugLine="Sub Service_TaskRemoved";
-RDebugUtils.currentLine=3080194;
- //BA.debugLineNum = 3080194;BA.debugLine="End Sub";
+ //BA.debugLineNum = 27;BA.debugLine="Sub Service_TaskRemoved";
+ //BA.debugLineNum = 29;BA.debugLine="End Sub";
 return "";
 }
 }

@@ -4,6 +4,6 @@ ModuleBreakpoints0=
 ModuleBreakpoints1=
 ModuleClosedNodes0=
 ModuleClosedNodes1=
-NavigationStack=Main,PercentageToGrade,257,0,Main,CalculateStudentGPA,295,0,Main,updatedata,1026,0,Main,GetGPADisplayText,297,0,Main,GetAverageAttendanceScore,321,0,Main,GetAverageAttendanceScoredisplay,374,6,Main,GetTop3Subjects,375,0,Visual Designer,main.bal,-100,5,Visual Designer,profile.bal,-100,6,Main,displaytop3,446,0
+NavigationStack=Main,updatedata,1268,0,Visual Designer,profile.bal,-100,6,Main,showedit,904,0,Main,profilebtn_Click,216,0,Main,ShowTable,933,0,Main,showprofile,922,0,Main,DisplayStudentProfile,929,0,Main,pnlCard_Click,830,6,Main,GetTop3Subjects,481,0,Main,dashbtn_Click,200,0,Main,Activity_Create,127,0
 SelectedBuild=0
 VisibleModules=1

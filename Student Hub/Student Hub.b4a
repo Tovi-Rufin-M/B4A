@@ -62,7 +62,6 @@ Sub Globals
 	Dim student_activitys, student_attendance, student_rate As List
 	Dim isselectingid As Boolean
 	Dim showselectid As Boolean
-	dim todelete as Boolean
 	
 	' --- Dashboard ---
 	Private datapnl As Panel
@@ -119,6 +118,19 @@ Sub Globals
 	Private spinner As Spinner
 	Private editRowIndex As Int = -1
 	Private todelete As Boolean = False
+	Dim selectedStudent As String = ""
+	Private anttslt As Label
+	Private gpaslt As Label
+	Private hstslt As Label
+	'Private IV As ImageView temporarly remove
+	Private studid As Label
+	Private studname As Label
+	Private Top1grd As Label
+	Private Top1sub As Label
+	Private Top2grd As Label
+	Private Top2sub As Label
+	Private Top3grd As Label
+	Private Top3sub As Label
 End Sub
 
 '=============================================================================
@@ -142,7 +154,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	' Load data from internal CSV
 	LoadStudentData
 	' Show grades as the default screen
-	showedit
+	dashbtn_Click
 End Sub
 
 Sub Activity_Resume
@@ -248,8 +260,31 @@ End Sub
 '=============================================================================
 
 Sub LoadStudentData
+	' Copy student.csv from Assets to Internal storage if it doesn't exist yet
+	If File.Exists(File.DirInternal, "student.csv") = False Then
+		If File.Exists(File.DirAssets, "student.csv") Then
+			File.Copy(File.DirAssets, "student.csv", File.DirInternal, "student.csv")
+		Else
+			' Create a default empty CSV file if it doesn't exist in assets
+			Dim headers As List
+			headers.Initialize2(Array As String("Name", "ID", "Subject", "Activity", "Attendance", "Rate"))
+			Dim emptyList As List
+			emptyList.Initialize
+			StringUtils1.SaveCSV2(File.DirInternal, "student.csv", ",", emptyList, headers)
+		End If
+	End If
+
 	CSVHeaders.Initialize
-	StudentList = StringUtils1.LoadCSV2(File.DirInternal, "student.csv", ",", CSVHeaders)
+	Dim rawList As List = StringUtils1.LoadCSV2(File.DirInternal, "student.csv", ",", CSVHeaders)
+	
+	' Only add valid rows (filtering out blank lines at the end of CSV)
+	StudentList.Initialize
+	For i = 0 To rawList.Size - 1
+		Dim row() As String = rawList.Get(i)
+		If row.Length >= 6 Then
+			StudentList.Add(row)
+		End If
+	Next
 	
 	' Initialize global lists for student properties
 	student_names.Initialize
@@ -292,6 +327,15 @@ Sub PercentageToGrade(pct As Double) As String
 	Return "F"
 End Sub
 
+' Converts percentage to 4.0 GPA scale points (Double)
+Sub PercentageToGPAPoints(pct As Double) As Double
+	If pct >= 90 Then Return 4.0
+	If pct >= 80 Then Return 3.0
+	If pct >= 70 Then Return 2.0
+	If pct >= 60 Then Return 1.0
+	Return 0.0
+End Sub
+
 ' Calculates the GPA for a student. Returns -1.0 if they have fewer than 3 activities.
 Sub CalculateStudentGPA(studentName As String) As Double
 	Dim totalPoints As Double = 0
@@ -310,7 +354,7 @@ Sub CalculateStudentGPA(studentName As String) As Double
 			Dim pct As Double = ComputePercentage(rateString)
 			
 			' Convert percentage to 4.0 scale points and add to sum
-			totalPoints = totalPoints + PercentageToGrade(pct)
+			totalPoints = totalPoints + PercentageToGPAPoints(pct)
 			activityCount = activityCount + 1
 		End If
 	Next
@@ -465,16 +509,6 @@ Sub GetTop3Subjects(studentName As String) As List
 	Return top3
 End Sub
 
-Sub displaytop3(studentName As String)
-	Dim topList As List = GetTop3Subjects(studentName)
-
-	For i = 0 To topList.Size - 1
-		Dim entry() As Object = topList.Get(i)
-		Dim subject As String = entry(0)
-		Dim avgScore As Double = entry(1)
-	Next
-	
-End Sub
 ' Returns a list of unique student names
 Sub GetUniqueStudentNames As List
 	Dim names As List
@@ -520,7 +554,7 @@ Sub SetGradient(pnl As Panel, Color1 As Int, Color2 As Int)
 End Sub
 
 Sub getActivity(studentName As String) As String
-	Dim activities As String
+	Dim activities As String = ""
 	For i = 0 To StudentList.Size - 1
 		Dim row() As String = StudentList.Get(i)
 		Dim name As String = row(COL_NAME) ' compare against student name column
@@ -532,6 +566,16 @@ Sub getActivity(studentName As String) As String
 		End If
 	Next
 	Return activities
+End Sub
+
+Sub GetStudentID(studentName As String) As String
+	For i = 0 To StudentList.Size - 1
+		Dim row() As String = StudentList.Get(i)
+		If row(COL_NAME) = studentName Then
+			Return row(1) ' ID is in column 1
+		End If
+	Next
+	Return ""
 End Sub
 
 Sub GetStudentTopActivity(studentName As String) As String
@@ -743,8 +787,18 @@ End Sub
 
 Sub studentgrade(studentName As String, grade As String, currentTop As Int)
 	Dim pnlCard As Panel
+	' Use a static event name "pnlCard" so one Sub handles all panel clicks
 	pnlCard.Initialize("pnlCard")
 
+	' Look up the student's ID
+	Dim studentIdVal As String = GetStudentID(studentName)
+	' Store all details inside the Tag Map
+	Dim details As Map
+	details.Initialize
+	details.Put("name", studentName)
+	details.Put("grade", grade)
+	details.Put("id", studentIdVal) ' <--- Put it in the map here
+	pnlCard.Tag = details
 	Dim cd As ColorDrawable
 	cd.Initialize2(0xFFFFD400, 2dip, 2dip, 0xFF000000)
 	pnlCard.Background = cd
@@ -759,7 +813,8 @@ Sub studentgrade(studentName As String, grade As String, currentTop As Int)
 
 	' --- Grade Label (left side of the card) ---
 	Dim lblGrade As Label
-	lblGrade.Initialize("lblGrade")
+	' Initialize with "" so the label doesn't block clicks from reaching the parent panel
+	lblGrade.Initialize("")
 	lblGrade.Text = grade
 	lblGrade.TextSize = 30
 	lblGrade.TextColor = Colors.Black
@@ -775,7 +830,8 @@ Sub studentgrade(studentName As String, grade As String, currentTop As Int)
 
 	' --- Name Label (right side of the card) ---
 	Dim lbl As Label
-	lbl.Initialize("lbl")
+	' Initialize with "" so the label doesn't block clicks from reaching the parent panel
+	lbl.Initialize("")
 	lbl.Text = studentName
 	lbl.Gravity = Gravity.CENTER_VERTICAL
 	lbl.Typeface = Typeface.CreateNew(Typeface.SERIF, Typeface.STYLE_BOLD_ITALIC)
@@ -784,6 +840,40 @@ Sub studentgrade(studentName As String, grade As String, currentTop As Int)
 	lbl.Padding = Array As Int(10dip, 5dip, 10dip, 5dip)
 	pnlCard.AddView(lbl, gradeWidth, 0, pnlWidth - gradeWidth, pnlHeight)
 	SV1.Panel.AddView(pnlCard, leftPos, topPos, pnlWidth, pnlHeight)
+End Sub
+
+Sub pnlCard_Click
+	' Sender refers to the specific Panel that was clicked
+	Dim clickedPanel As Panel = Sender
+	
+	' Retrieve the Map containing student details
+	Dim details As Map = clickedPanel.Tag
+	Dim studentName As String = details.Get("name")
+	
+	' 1. Show confirmation dialog (Message, Title, PositiveButton, CancelButton, NegativeButton, Icon, KeepAlive)
+	Msgbox2Async("Do you want to view the details for " & studentName & "?", "Confirm Selection", "Yes", "", "No", Null, False)
+	
+	' 2. Wait for the user to make a choice
+	Wait For Msgbox_Result (Result As Int)
+	
+	' 3. Proceed only if the user pressed "Yes"
+	If Result = DialogResponse.POSITIVE Then
+		selectedStudent = studentName
+		
+		' Load the profile screen layout so that the target labels (studid, studname, etc.) are initialized
+		pnlmain.RemoveAllViews
+		pnlmain.LoadLayout("profile")
+		HighlightTab(profilebtn)
+		
+		' Initialize the profile table
+		Table = SV.Panel
+		NumberOfColumns = 6
+		ColumnWidth = SV.Width / NumberOfColumns
+		loadtable
+		
+		' Display selected student profile
+		DisplayStudentProfile(selectedStudent)
+	End If
 End Sub
 
 '=============================================================================
@@ -822,6 +912,68 @@ Sub ShowTable
 	NumberOfColumns = 6
 	ColumnWidth = SV.Width / NumberOfColumns
 	loadtable
+	
+	' Display the currently selected student profile (fallback to first student if none selected)
+	If selectedStudent <> "" Then
+		DisplayStudentProfile(selectedStudent)
+	Else If StudentList.Size > 0 Then
+		Dim row() As String = StudentList.Get(0)
+		selectedStudent = row(COL_NAME)
+		DisplayStudentProfile(selectedStudent)
+	End If
+End Sub
+
+' Populates all labels on the profile layout for a given student
+Sub DisplayStudentProfile(studentName As String)
+	If studentName = "" Then Return
+	
+	' Retrieve student details
+	Dim id As String = GetStudentID(studentName)
+	Dim grade As String = GetStudentGrade(studentName)
+	
+	' Display Basic Details
+	studid.Text = id
+	studname.Text = studentName
+
+	' Display GPA and Attendance Status
+	gpaslt.Text = GetGPADisplayText(studentName)
+	anttslt.Text = GetAverageAttendanceScoredisplay(studentName)
+	hstslt.Text = grade
+
+	' Reset Top 3 Subject labels first
+	Top1sub.Text = "-"
+	Top1grd.Text = "-"
+	Top2sub.Text = "-"
+	Top2grd.Text = "-"
+	Top3sub.Text = "-"
+	Top3grd.Text = "-"
+
+	' Fetch and display top subjects
+	Dim topList As List = GetTop3Subjects(studentName)
+	
+	If topList.Size > 0 Then
+		Dim entry() As Object = topList.Get(0)
+		Dim subject As String = entry(0)
+		Dim avgScore As Double = entry(1)
+		Top1sub.Text = subject
+		Top1grd.Text = PercentageToGrade(avgScore) & " (" & NumberFormat2(avgScore, 1, 0, 1, False) & "%)"
+	End If
+	
+	If topList.Size > 1 Then
+		Dim entry() As Object = topList.Get(1)
+		Dim subject As String = entry(0)
+		Dim avgScore As Double = entry(1)
+		Top2sub.Text = subject
+		Top2grd.Text = PercentageToGrade(avgScore) & " (" & NumberFormat2(avgScore, 1, 0, 1, False) & "%)"
+	End If
+	
+	If topList.Size > 2 Then
+		Dim entry() As Object = topList.Get(2)
+		Dim subject As String = entry(0)
+		Dim avgScore As Double = entry(1)
+		Top3sub.Text = subject
+		Top3grd.Text = PercentageToGrade(avgScore) & " (" & NumberFormat2(avgScore, 1, 0, 1, False) & "%)"
+	End If
 End Sub
 
 Sub loadtable
@@ -908,7 +1060,7 @@ End Sub
 Sub showselectids
 	If showselectid Then
 		isselectingid = True
-		update.Enabled = False
+		If update.IsInitialized Then update.Enabled = False
 		
 		' 1. Safely remove the overlay if it was already initialized
 		If bak.IsInitialized Then
@@ -972,6 +1124,7 @@ Sub showselectids
 		If bak.IsInitialized Then
 			bak.RemoveView
 		End If
+		If update.IsInitialized Then update.Enabled = True
 	End If
 End Sub
 
@@ -982,7 +1135,7 @@ Private Sub btn_Click
 	' 2. Hide/remove the overlay panel
 	showselectid = False
 	isselectingid = False
-	update.Enabled = True
+	If update.IsInitialized Then update.Enabled = True
 	showselectids
 	
 	' 3. Find student index
@@ -1076,7 +1229,7 @@ Private Sub bak_Click
 	If isselectingid Then
 		showselectid = False
 		isselectingid = False
-		update.Enabled = True
+		If update.IsInitialized Then update.Enabled = True
 		showselectids
 	Else
 		showselectids
